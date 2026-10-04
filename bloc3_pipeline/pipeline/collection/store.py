@@ -54,6 +54,12 @@ def initialize(state):
           article_id TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'pending',
           payload TEXT, error TEXT, PRIMARY KEY(job_id,url), UNIQUE(job_id,article_id)
         );
+        -- Within a fixed job/status, SQLite's index also orders by rowid. Avoid
+        -- sorting every remaining task for each downloaded article.
+        CREATE INDEX IF NOT EXISTS tasks_pending ON tasks(job_id,status);
+        -- Rights apply across every job. This lookup also runs before each
+        -- download, so a full task-table scan would grow with the batch size.
+        CREATE INDEX IF NOT EXISTS tasks_article ON tasks(article_id);
         CREATE TABLE IF NOT EXISTS meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
         CREATE TABLE IF NOT EXISTS events (
           sequence INTEGER PRIMARY KEY AUTOINCREMENT, at TEXT NOT NULL,

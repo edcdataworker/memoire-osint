@@ -1,0 +1,294 @@
+{
+  "at": "2026-10-04T20:06:28.576191+00:00",
+  "results": [
+    {
+      "mode": "empty",
+      "baseline_heads": 0,
+      "articles": 100,
+      "repetition": 1,
+      "seconds": 1.277682,
+      "articles_per_second": 78.27,
+      "stage_seconds": {
+        "discovery": 0.009403,
+        "download": 0.942663,
+        "publication": 0.245009
+      },
+      "source_bytes": 2145064,
+      "catalog_bytes": 4759552,
+      "export_bytes": 4458631,
+      "mirror_bytes": 4759552,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "populated",
+      "baseline_heads": 21701,
+      "articles": 100,
+      "repetition": 1,
+      "seconds": 2.260133,
+      "articles_per_second": 44.25,
+      "stage_seconds": {
+        "discovery": 0.004668,
+        "download": 0.405693,
+        "publication": 1.097963
+      },
+      "source_bytes": 2145064,
+      "catalog_bytes": 78131200,
+      "export_bytes": 4458631,
+      "mirror_bytes": 81117184,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "populated",
+      "baseline_heads": 21701,
+      "articles": 100,
+      "repetition": 2,
+      "seconds": 3.01956,
+      "articles_per_second": 33.12,
+      "stage_seconds": {
+        "discovery": 0.005278,
+        "download": 0.417256,
+        "publication": 1.413446
+      },
+      "source_bytes": 2145064,
+      "catalog_bytes": 81113088,
+      "export_bytes": 4458631,
+      "mirror_bytes": 81117184,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "empty",
+      "baseline_heads": 0,
+      "articles": 100,
+      "repetition": 2,
+      "seconds": 0.760842,
+      "articles_per_second": 131.43,
+      "stage_seconds": {
+        "discovery": 0.00448,
+        "download": 0.442543,
+        "publication": 0.232599
+      },
+      "source_bytes": 2145064,
+      "catalog_bytes": 1781760,
+      "export_bytes": 4458631,
+      "mirror_bytes": 4759552,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "empty",
+      "baseline_heads": 0,
+      "articles": 100,
+      "repetition": 3,
+      "seconds": 0.668262,
+      "articles_per_second": 149.64,
+      "stage_seconds": {
+        "discovery": 0.00384,
+        "download": 0.338096,
+        "publication": 0.234802
+      },
+      "source_bytes": 2145064,
+      "catalog_bytes": 1781760,
+      "export_bytes": 4458631,
+      "mirror_bytes": 4759552,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "populated",
+      "baseline_heads": 21701,
+      "articles": 100,
+      "repetition": 3,
+      "seconds": 2.979504,
+      "articles_per_second": 33.56,
+      "stage_seconds": {
+        "discovery": 0.004561,
+        "download": 0.465162,
+        "publication": 1.335109
+      },
+      "source_bytes": 2145064,
+      "catalog_bytes": 78131200,
+      "export_bytes": 4458631,
+      "mirror_bytes": 81117184,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "empty",
+      "baseline_heads": 0,
+      "articles": 1000,
+      "repetition": 1,
+      "seconds": 16.859593,
+      "articles_per_second": 59.31,
+      "stage_seconds": {
+        "discovery": 0.157084,
+        "download": 13.488134,
+        "publication": 2.517894
+      },
+      "source_bytes": 21550266,
+      "catalog_bytes": 47058944,
+      "export_bytes": 44785535,
+      "mirror_bytes": 47058944,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "populated",
+      "baseline_heads": 21701,
+      "articles": 1000,
+      "repetition": 1,
+      "seconds": 18.888938,
+      "articles_per_second": 52.94,
+      "stage_seconds": {
+        "discovery": 0.119826,
+        "download": 14.226113,
+        "publication": 3.407498
+      },
+      "source_bytes": 21550266,
+      "catalog_bytes": 123420672,
+      "export_bytes": 44785535,
+      "mirror_bytes": 123420672,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "populated",
+      "baseline_heads": 21701,
+      "articles": 1000,
+      "repetition": 2,
+      "seconds": 19.802592,
+      "articles_per_second": 50.5,
+      "stage_seconds": {
+        "discovery": 0.103304,
+        "download": 14.454644,
+        "publication": 3.656425
+      },
+      "source_bytes": 21550266,
+      "catalog_bytes": 123420672,
+      "export_bytes": 44785535,
+      "mirror_bytes": 123420672,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "empty",
+      "baseline_heads": 0,
+      "articles": 1000,
+      "repetition": 2,
+      "seconds": 16.972865,
+      "articles_per_second": 58.92,
+      "stage_seconds": {
+        "discovery": 0.101396,
+        "download": 13.292934,
+        "publication": 2.902764
+      },
+      "source_bytes": 21550266,
+      "catalog_bytes": 47058944,
+      "export_bytes": 44785535,
+      "mirror_bytes": 47058944,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "empty",
+      "baseline_heads": 0,
+      "articles": 1000,
+      "repetition": 3,
+      "seconds": 16.47394,
+      "articles_per_second": 60.7,
+      "stage_seconds": {
+        "discovery": 0.096149,
+        "download": 13.333836,
+        "publication": 2.402724
+      },
+      "source_bytes": 21550266,
+      "catalog_bytes": 47058944,
+      "export_bytes": 44785535,
+      "mirror_bytes": 47058944,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "populated",
+      "baseline_heads": 21701,
+      "articles": 1000,
+      "repetition": 3,
+      "seconds": 20.012397,
+      "articles_per_second": 49.97,
+      "stage_seconds": {
+        "discovery": 0.118827,
+        "download": 14.584316,
+        "publication": 3.421604
+      },
+      "source_bytes": 21550266,
+      "catalog_bytes": 123420672,
+      "export_bytes": 44785535,
+      "mirror_bytes": 123420672,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "empty",
+      "baseline_heads": 0,
+      "articles": 2000,
+      "repetition": 1,
+      "seconds": 59.477857,
+      "articles_per_second": 33.63,
+      "stage_seconds": {
+        "discovery": 0.248293,
+        "download": 51.822291,
+        "publication": 6.084378
+      },
+      "source_bytes": 43144746,
+      "catalog_bytes": 94105600,
+      "export_bytes": 89659495,
+      "mirror_bytes": 94105600,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "populated",
+      "baseline_heads": 21701,
+      "articles": 2000,
+      "repetition": 1,
+      "seconds": 57.601671,
+      "articles_per_second": 34.72,
+      "stage_seconds": {
+        "discovery": 0.22775,
+        "download": 49.712621,
+        "publication": 6.147135
+      },
+      "source_bytes": 43144746,
+      "catalog_bytes": 170467328,
+      "export_bytes": 89659495,
+      "mirror_bytes": 170471424,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "populated",
+      "baseline_heads": 21701,
+      "articles": 2000,
+      "repetition": 2,
+      "seconds": 63.920511,
+      "articles_per_second": 31.29,
+      "stage_seconds": {
+        "discovery": 0.269401,
+        "download": 54.126054,
+        "publication": 6.617686
+      },
+      "source_bytes": 43144746,
+      "catalog_bytes": 170467328,
+      "export_bytes": 89659495,
+      "mirror_bytes": 170471424,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    }
+  ],
+  "complete": false,
+  "reason": "Exploratory pre-index runs; stopped to remove repeated pending-task sorting",
+  "store_sha256": "c168d7d031708654f5226d12a30866d2bf1ca949b551fd15a5614b052807d6b6",
+  "runtime_tree_sha256": "21ac2d7e7d059f5e0d1df0c2b2e7817210119061b51c0cd14191cda2cdc4a922"
+}

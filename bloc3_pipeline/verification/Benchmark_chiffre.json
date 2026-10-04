@@ -1,0 +1,492 @@
+{
+  "at": "2026-10-04T20:13:34.573685+00:00",
+  "python": "3.12.14",
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "worker_sha256": "4f21d27d4a46356c2fd28f04359014ba94b7d0f3b8a32030ee317e8ab21b21af",
+  "store_sha256": "25bbe9c78db3f26aade9d7140b27aee0826b20040f6b7646916b3602b17c00be",
+  "pending_task_query_plan": [
+    "SEARCH tasks USING INDEX tasks_pending (job_id=? AND status=?)"
+  ],
+  "rights_task_query_plan": [
+    "SEARCH tasks USING INDEX tasks_article (article_id=?)"
+  ],
+  "script_sha256": "2fdc25d3f976f6d44b5f90cd44ed9f603d1b4aae51a0a7cea10c8e80ce0ac677",
+  "storage": "Mounted AES-256 APFS disk image, same Mac",
+  "baseline": {
+    "heads": 21701,
+    "heads_sha256": "adc6fff5f8619b5e0399378dafe7b53fd7cd327720a8a609e19ceec9aca05635",
+    "integrity": "ok"
+  },
+  "after": {
+    "heads": 21701,
+    "heads_sha256": "adc6fff5f8619b5e0399378dafe7b53fd7cd327720a8a609e19ceec9aca05635",
+    "integrity": "ok"
+  },
+  "live_catalog_unchanged": true,
+  "results": [
+    {
+      "mode": "empty",
+      "baseline_heads": 0,
+      "articles": 100,
+      "repetition": 1,
+      "seconds": 1.385001,
+      "articles_per_second": 72.2,
+      "stage_seconds": {
+        "discovery": 0.010942,
+        "download": 1.041473,
+        "publication": 0.246543
+      },
+      "source_bytes": 2145064,
+      "catalog_bytes": 4775936,
+      "export_bytes": 4458631,
+      "mirror_bytes": 4775936,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "populated",
+      "baseline_heads": 21701,
+      "articles": 100,
+      "repetition": 1,
+      "seconds": 2.894075,
+      "articles_per_second": 34.55,
+      "stage_seconds": {
+        "discovery": 0.004804,
+        "download": 0.406039,
+        "publication": 1.320584
+      },
+      "source_bytes": 2145064,
+      "catalog_bytes": 81129472,
+      "export_bytes": 4458631,
+      "mirror_bytes": 81133568,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "populated",
+      "baseline_heads": 21701,
+      "articles": 100,
+      "repetition": 2,
+      "seconds": 2.945151,
+      "articles_per_second": 33.95,
+      "stage_seconds": {
+        "discovery": 0.004664,
+        "download": 0.39543,
+        "publication": 1.367587
+      },
+      "source_bytes": 2145064,
+      "catalog_bytes": 81129472,
+      "export_bytes": 4458631,
+      "mirror_bytes": 81133568,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "empty",
+      "baseline_heads": 0,
+      "articles": 100,
+      "repetition": 2,
+      "seconds": 0.784494,
+      "articles_per_second": 127.47,
+      "stage_seconds": {
+        "discovery": 0.004932,
+        "download": 0.445931,
+        "publication": 0.255092
+      },
+      "source_bytes": 2145064,
+      "catalog_bytes": 4775936,
+      "export_bytes": 4458631,
+      "mirror_bytes": 4775936,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "empty",
+      "baseline_heads": 0,
+      "articles": 100,
+      "repetition": 3,
+      "seconds": 0.690861,
+      "articles_per_second": 144.75,
+      "stage_seconds": {
+        "discovery": 0.004149,
+        "download": 0.35873,
+        "publication": 0.253632
+      },
+      "source_bytes": 2145064,
+      "catalog_bytes": 4775936,
+      "export_bytes": 4458631,
+      "mirror_bytes": 4775936,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "populated",
+      "baseline_heads": 21701,
+      "articles": 100,
+      "repetition": 3,
+      "seconds": 2.822032,
+      "articles_per_second": 35.44,
+      "stage_seconds": {
+        "discovery": 0.005113,
+        "download": 0.341814,
+        "publication": 1.297856
+      },
+      "source_bytes": 2145064,
+      "catalog_bytes": 81129472,
+      "export_bytes": 4458631,
+      "mirror_bytes": 81133568,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "empty",
+      "baseline_heads": 0,
+      "articles": 1000,
+      "repetition": 1,
+      "seconds": 12.755486,
+      "articles_per_second": 78.4,
+      "stage_seconds": {
+        "discovery": 0.15862,
+        "download": 9.651703,
+        "publication": 2.277687
+      },
+      "source_bytes": 21550266,
+      "catalog_bytes": 47144960,
+      "export_bytes": 44785535,
+      "mirror_bytes": 47144960,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "populated",
+      "baseline_heads": 21701,
+      "articles": 1000,
+      "repetition": 1,
+      "seconds": 14.288904,
+      "articles_per_second": 69.98,
+      "stage_seconds": {
+        "discovery": 0.114888,
+        "download": 8.804039,
+        "publication": 3.478277
+      },
+      "source_bytes": 21550266,
+      "catalog_bytes": 123510784,
+      "export_bytes": 44785535,
+      "mirror_bytes": 123510784,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "populated",
+      "baseline_heads": 21701,
+      "articles": 1000,
+      "repetition": 2,
+      "seconds": 14.98192,
+      "articles_per_second": 66.75,
+      "stage_seconds": {
+        "discovery": 0.111394,
+        "download": 9.563542,
+        "publication": 3.471907
+      },
+      "source_bytes": 21550266,
+      "catalog_bytes": 123510784,
+      "export_bytes": 44785535,
+      "mirror_bytes": 123510784,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "empty",
+      "baseline_heads": 0,
+      "articles": 1000,
+      "repetition": 2,
+      "seconds": 12.293275,
+      "articles_per_second": 81.35,
+      "stage_seconds": {
+        "discovery": 0.111231,
+        "download": 8.957192,
+        "publication": 2.568027
+      },
+      "source_bytes": 21550266,
+      "catalog_bytes": 47144960,
+      "export_bytes": 44785535,
+      "mirror_bytes": 47144960,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "empty",
+      "baseline_heads": 0,
+      "articles": 1000,
+      "repetition": 3,
+      "seconds": 12.382151,
+      "articles_per_second": 80.76,
+      "stage_seconds": {
+        "discovery": 0.107417,
+        "download": 9.32263,
+        "publication": 2.284147
+      },
+      "source_bytes": 21550266,
+      "catalog_bytes": 47144960,
+      "export_bytes": 44785535,
+      "mirror_bytes": 47144960,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "populated",
+      "baseline_heads": 21701,
+      "articles": 1000,
+      "repetition": 3,
+      "seconds": 14.12142,
+      "articles_per_second": 70.81,
+      "stage_seconds": {
+        "discovery": 0.11158,
+        "download": 8.705656,
+        "publication": 3.522873
+      },
+      "source_bytes": 21550266,
+      "catalog_bytes": 123510784,
+      "export_bytes": 44785535,
+      "mirror_bytes": 123510784,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "empty",
+      "baseline_heads": 0,
+      "articles": 2000,
+      "repetition": 1,
+      "seconds": 26.045515,
+      "articles_per_second": 76.79,
+      "stage_seconds": {
+        "discovery": 0.239368,
+        "download": 18.458043,
+        "publication": 6.034675
+      },
+      "source_bytes": 43144746,
+      "catalog_bytes": 94273536,
+      "export_bytes": 89659481,
+      "mirror_bytes": 94273536,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "populated",
+      "baseline_heads": 21701,
+      "articles": 2000,
+      "repetition": 1,
+      "seconds": 30.258006,
+      "articles_per_second": 66.1,
+      "stage_seconds": {
+        "discovery": 0.300509,
+        "download": 17.371714,
+        "publication": 5.794433
+      },
+      "source_bytes": 43144746,
+      "catalog_bytes": 170639360,
+      "export_bytes": 89659495,
+      "mirror_bytes": 170639360,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "populated",
+      "baseline_heads": 21701,
+      "articles": 2000,
+      "repetition": 2,
+      "seconds": 26.071206,
+      "articles_per_second": 76.71,
+      "stage_seconds": {
+        "discovery": 0.256534,
+        "download": 17.50231,
+        "publication": 5.954393
+      },
+      "source_bytes": 43144746,
+      "catalog_bytes": 170639360,
+      "export_bytes": 89659495,
+      "mirror_bytes": 170639360,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "empty",
+      "baseline_heads": 0,
+      "articles": 2000,
+      "repetition": 2,
+      "seconds": 24.92026,
+      "articles_per_second": 80.26,
+      "stage_seconds": {
+        "discovery": 0.277868,
+        "download": 18.720053,
+        "publication": 4.625203
+      },
+      "source_bytes": 43144746,
+      "catalog_bytes": 94273536,
+      "export_bytes": 89659495,
+      "mirror_bytes": 94273536,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "empty",
+      "baseline_heads": 0,
+      "articles": 2000,
+      "repetition": 3,
+      "seconds": 23.962634,
+      "articles_per_second": 83.46,
+      "stage_seconds": {
+        "discovery": 0.295035,
+        "download": 17.697236,
+        "publication": 4.716415
+      },
+      "source_bytes": 43144746,
+      "catalog_bytes": 94273536,
+      "export_bytes": 89659495,
+      "mirror_bytes": 94273536,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "mode": "populated",
+      "baseline_heads": 21701,
+      "articles": 2000,
+      "repetition": 3,
+      "seconds": 26.17471,
+      "articles_per_second": 76.41,
+      "stage_seconds": {
+        "discovery": 0.2627,
+        "download": 17.797753,
+        "publication": 5.653471
+      },
+      "source_bytes": 43144746,
+      "catalog_bytes": 170639360,
+      "export_bytes": 89659495,
+      "mirror_bytes": 170639360,
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    }
+  ],
+  "summary": [
+    {
+      "mode": "empty",
+      "articles": 100,
+      "median_s": 0.784494,
+      "min_s": 0.690861,
+      "max_s": 1.385001,
+      "stdev_s": 0.3766532745417196,
+      "median_articles_per_second": 127.47,
+      "median_stage_s": {
+        "discovery": 0.004932,
+        "download": 0.445931,
+        "publication": 0.253632
+      }
+    },
+    {
+      "mode": "empty",
+      "articles": 1000,
+      "median_s": 12.382151,
+      "min_s": 12.293275,
+      "max_s": 12.755486,
+      "stdev_s": 0.2452607368094886,
+      "median_articles_per_second": 80.76,
+      "median_stage_s": {
+        "discovery": 0.111231,
+        "download": 9.32263,
+        "publication": 2.284147
+      }
+    },
+    {
+      "mode": "empty",
+      "articles": 2000,
+      "median_s": 24.92026,
+      "min_s": 23.962634,
+      "max_s": 26.045515,
+      "stdev_s": 1.0425641172178974,
+      "median_articles_per_second": 80.26,
+      "median_stage_s": {
+        "discovery": 0.277868,
+        "download": 18.458043,
+        "publication": 4.716415
+      }
+    },
+    {
+      "mode": "populated",
+      "articles": 100,
+      "median_s": 2.894075,
+      "min_s": 2.822032,
+      "max_s": 2.945151,
+      "stdev_s": 0.061856338648516834,
+      "median_articles_per_second": 34.55,
+      "median_stage_s": {
+        "discovery": 0.004804,
+        "download": 0.39543,
+        "publication": 1.320584
+      }
+    },
+    {
+      "mode": "populated",
+      "articles": 1000,
+      "median_s": 14.288904,
+      "min_s": 14.12142,
+      "max_s": 14.98192,
+      "stdev_s": 0.45621309284733746,
+      "median_articles_per_second": 69.98,
+      "median_stage_s": {
+        "discovery": 0.11158,
+        "download": 8.804039,
+        "publication": 3.478277
+      }
+    },
+    {
+      "mode": "populated",
+      "articles": 2000,
+      "median_s": 26.17471,
+      "min_s": 26.071206,
+      "max_s": 30.258006,
+      "stdev_s": 2.3879319344582117,
+      "median_articles_per_second": 76.41,
+      "median_stage_s": {
+        "discovery": 0.2627,
+        "download": 17.50231,
+        "publication": 5.794433
+      }
+    }
+  ],
+  "methodology": "18 runs, three repetitions per size/mode; alternating mode order; fresh SQLite snapshot for each populated run; initialization and copying excluded; timed new_job through execute including checkpointing, export and full-catalog mirror; no network requests; approximately 1/10/50 KiB synthetic HTML bodies; export date absent from baseline; isolated copies deleted on encrypted volume",
+  "limitations": [
+    "Shared Mac and filesystem cache, not a controlled hardware laboratory",
+    "No isolated estimate of encryption overhead; both compared modes encrypted",
+    "No network throughput, SLA or extrapolation beyond 2000 candidates",
+    "Full populated catalog copied to mirror at each publication; initialization excluded from timings"
+  ],
+  "measured_runtime_tree_sha256": "986f79d51b9dc114262f55c1bc54b4b617c842b7c57e783173912af3a5a71e39",
+  "measured_runtime_files_sha256": {
+    "pipeline/worker.py": "a9d70451dc4a197c773dcd3944c195ed45b9b4f3e0ff48f2443384d42f6e3ccf",
+    "pipeline/monitor.py": "e9a842f33878dede901417a7ea87c3bb27bf91e1ff01580ff61eaadd477c8d2d",
+    "pipeline/__init__.py": "e6627eea550ecfe7a37bfd67cf8944d7660b0b01eea3796457f96f1a1952021a",
+    "pipeline/common.py": "c2779912811bffb50592c73b9e635f7c97c2585c291ac6fa4b3d7f2ab9525215",
+    "pipeline/rights.py": "dd30b467df3b662fa48e6e69ac42912e5bebb2947032c5a4586dde26b18670fe",
+    "pipeline/transform.py": "cb1b4969bacb05e75c26474e3a7b4367fd2eb3a7bf29cf6f9e9665b4654446ac",
+    "pipeline/scheduler.py": "135103ad4d0f305a9907de083fb9168b1640d9eb9796ac74497271236076479c",
+    "pipeline/source.py": "43723463d1a40f3b683f75b8e71c59880489164382225bc33b0863ad951f6947",
+    "pipeline/__main__.py": "ec68990a5a300dc0e0d0fdea097f694425e3f3fba93e578089248d3dddc2611d",
+    "pipeline/state.py": "138a3f01cf3cb63c56d49a50d8c9fe34eed50b0324725cf8bb47176ea2056f22",
+    "pipeline/publish.py": "0570a80e0019a85581f2bddbf7d67b53a0e40f7c74b8546caeab8b5bc509d2ce",
+    "pipeline/collection/worker.py": "4f21d27d4a46356c2fd28f04359014ba94b7d0f3b8a32030ee317e8ab21b21af",
+    "pipeline/collection/store.py": "25bbe9c78db3f26aade9d7140b27aee0826b20040f6b7646916b3602b17c00be",
+    "pipeline/collection/service.py": "75bdcef79f726cc0348f9bee6468a73f0ff44fd4d4c2febc33093e1341cc1eb6",
+    "pipeline/collection/security.py": "020775c93241b38cd35e014ac27fef9bcee8a9f50a7d296c650d9d52d0521c01",
+    "pipeline/collection/__init__.py": "59f0962850e6615718a924bc3f280e3024e15aeec0fe71f1e4220fb1a285e983",
+    "pipeline/collection/volume.py": "3b03010a5044655659ff1f0935e08454ec73175192eca0747a36291e7399c824",
+    "pipeline/collection/rights.py": "22fbcaeb8a984f53de76e0f9fbb8efafc8dd28257fce17c5b5af3199fb640543",
+    "pipeline/collection/source.py": "93568d14d32112138368550574f252ef7c3bd0a5d9a65e41a7ecebbd1d731016",
+    "pipeline/collection/resilience.py": "6793211569e4b7306adb65688e9eba55c1abc5b22904e2a4edf65f5e9d2d3666",
+    "pipeline/collection/static/index.html": "6fa5fc436a63f2065f343df424bb8d7467e8aef57fe900eaf77961e2fc1db7e3",
+    "pipeline/collection/static/style.css": "db99ba39914c42e92ac6f40f3f41544ff1379b5ff7a0f3ec3c89cfdaa49b6ef2",
+    "pipeline/collection/static/app.js": "0681558cd95a724190e40ae7a2da242a1f2933a7e2a48e88a62269aa7e800f41",
+    "Lancer_Observatoire_TASS.command": "5353228d50492c445332f9c739d19144f654869b93f105db6d817082cd7a9f55",
+    "Preparer_volume_chiffre.command": "fa6fbe4d911c7749ccaafe7fbcab31999e70b0d9f8fb728b46baa8bb0834674b"
+  },
+  "version_note": "Measured indexed collector before separate unchanged-export restart fix; exact source recorded in the dedicated benchmark commit. Final restart fix tested separately; worker/store/source parsing and export timing paths unchanged."
+}
