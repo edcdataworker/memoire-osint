@@ -1,0 +1,61 @@
+{
+  "global": {
+    "tp": 31,
+    "fp": 3,
+    "fn": 73,
+    "support": 104,
+    "precision": 0.9117647058823529,
+    "recall": 0.2980769230769231,
+    "f1": 0.4492753623188406
+  },
+  "per_label": {
+    "WEAPON": {
+      "tp": 17,
+      "fp": 3,
+      "fn": 38,
+      "support": 55,
+      "precision": 0.85,
+      "recall": 0.3090909090909091,
+      "f1": 0.4533333333333333
+    },
+    "MIL_UNIT": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 9,
+      "support": 13,
+      "precision": 1.0,
+      "recall": 0.3076923076923077,
+      "f1": 0.47058823529411764
+    },
+    "MIL_ORG": {
+      "tp": 10,
+      "fp": 0,
+      "fn": 26,
+      "support": 36,
+      "precision": 1.0,
+      "recall": 0.2777777777777778,
+      "f1": 0.43478260869565216
+    }
+  },
+  "documents": 18,
+  "definition": "Exact spans and labels, micro global; undefined denominators are null",
+  "at": "2026-10-04T06:32:25.902260+00:00",
+  "status": "diagnostic_against_ai_proposals_not_validated_quality",
+  "reference_provenance": "Codex (IA), full-text draft with unresolved decisions",
+  "reference_sha256": "01e933bd4b3f457a905e79870ff9ab5073cdf6468470ef71857347ac5325cf2f",
+  "source_sha256": "3d8bee149603972ad323bc198071811100905a6f9903e4af9f234d22418019e2",
+  "model_sha256": "f35d2e57acb16d96b802c1b578b3c9e780ea53114dcd28c7cb8d65b54fc5f918",
+  "model_version": "weak-efc7c759e0-s42-e6",
+  "human_reviewed_documents": 0,
+  "human_decisions_required": [
+    1042755,
+    1070736,
+    1197711,
+    1243265,
+    1321147,
+    1457869,
+    1621041,
+    1970201
+  ],
+  "limitation": "18 selected short articles, AI draft, anchoring and selection bias. Not human gold, not production quality, not eligible for promotion."
+}
