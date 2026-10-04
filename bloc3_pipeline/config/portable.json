@@ -1,0 +1,11 @@
+{
+  "source": "tests/fixtures/articles_synthetiques.json",
+  "state": ".state-portable",
+  "mode": "clean",
+  "batch_size": 2,
+  "max_reject_rate": 0,
+  "synthetic": true,
+  "slow_batch_seconds": 5,
+  "max_retries": 3,
+  "retry_seconds": 1
+}

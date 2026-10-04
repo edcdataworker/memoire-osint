@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools==84.0.0"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "osint-ner-local"
+version = "0.1.2"
+description = "Local reproducible OSINT NER demonstration with review gates"
+requires-python = ">=3.11"
+dependencies = ["spacy==3.8.7", "weasel==0.4.1", "typer==0.19.2", "click==8.3.0"]
+[project.scripts]
+osint-ner = "osint_ner.cli:main"
+[tool.setuptools.packages.find]
+where = ["src"]
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+[tool.ruff]
+line-length = 100
+[tool.setuptools.package-data]
+osint_ner = ["static/*"]

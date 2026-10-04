@@ -1,0 +1,1 @@
+{"source":"/input/corpus_clean.json","state":"/state","mode":"clean","batch_size":500,"max_reject_rate":0.005,"synthetic":false}

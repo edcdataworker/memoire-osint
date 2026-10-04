@@ -1,0 +1,30 @@
+Table sources {
+  source_id text [pk]
+  label text [not null]
+  base_url text [not null]
+}
+Table runs {
+  run_id uuid [pk]
+  kind text [not null]
+  source_sha256 char(64) [not null]
+  status text [not null]
+  checkpoint bigint [not null]
+  expected bigint [not null]
+  started_at timestamptz [not null]
+  completed_at timestamptz
+}
+Table articles {
+  article_id text [pk]
+  source_id text [not null, ref: > sources.source_id]
+  published_at timestamptz [not null]
+  content_sha256 char(64) [not null]
+  schema_version smallint [not null]
+  run_id uuid [not null, ref: > runs.run_id]
+  synthetic boolean [not null]
+}
+Table erasures {
+  article_id text [pk]
+  request_id uuid [not null]
+  requested_at timestamptz [not null]
+  status text [not null]
+}

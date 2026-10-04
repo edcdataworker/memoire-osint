@@ -1,0 +1,15 @@
+.venv/
+.state/
+.construction/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+dist/
+build/
+*.log
+.env*
+!.env.example
+Artefacts_locaux/
+Revue_annotations_locale.html
+Preuves/*.webm

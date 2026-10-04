@@ -1,0 +1,207 @@
+name: memoire_osint
+# Ports are loopback-only. Database services have no published host ports.
+x-app: &app
+  build: ./app
+  image: memoire-osint-app:1
+  networks: [data_net]
+  environment:
+    BATCH_SIZE: ${BATCH_SIZE:-2000}
+  volumes:
+    - ./.data:/data:ro
+    - ./.state:/state
+    - ./Preuves:/evidence
+  secrets: [ca.crt, writer, reader, data_key, api_password, api.crt, api.key]
+  mem_limit: 512m
+services:
+  postgres:
+    image: postgres@sha256:081f1bc7bd5e143dbb6e487b710bbc27712cdcfaced4c071b8e47349aa1b4171
+    entrypoint: [sh, /bootstrap/postgres-entrypoint.sh]
+    environment:
+      POSTGRES_DB: osint
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD_FILE: /run/secrets/pg_admin
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256
+    secrets: [pg_admin, writer, reader, postgres.key, postgres.crt]
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+      - ./sql:/docker-entrypoint-initdb.d:ro
+      - ./sql/pg_hba.conf:/etc/postgresql/pg_hba.conf:ro
+      - ./scripts:/bootstrap:ro
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U postgres -d osint']
+      interval: 5s
+      timeout: 3s
+      retries: 24
+    restart: unless-stopped
+    mem_limit: 640m
+    networks: [data_net]
+  mongo:
+    image: mongo@sha256:8ecb514b00bdcc0bde67ef4e6c330385377a9dc68e24ee94e28c07c891647348
+    entrypoint: [bash, /bootstrap/mongo-entrypoint.sh]
+    secrets: [mongo_admin, writer, reader, mongo.pem, ca.crt]
+    volumes:
+      - mongo_data:/data/db
+      - ./scripts/mongo-entrypoint.sh:/bootstrap/mongo-entrypoint.sh:ro
+      - ./mongo/init.js:/bootstrap/init.js:ro
+    healthcheck:
+      test: [CMD-SHELL, 'mongosh --quiet --tls --tlsCAFile /run/secrets/ca.crt --host mongo --eval "db.adminCommand({ping:1}).ok"']
+      interval: 10s
+      timeout: 8s
+      retries: 24
+    restart: unless-stopped
+    mem_limit: 768m
+    networks: [data_net]
+  app:
+    networks: [data_net, front_net]
+    <<: *app
+    # The read service cannot obtain writer credentials or mutate the erasure ledger.
+    secrets: [ca.crt, reader, data_key, api_password, api.crt, api.key]
+    volumes: ['./.state:/state:ro']
+    environment: {DB_ROLE: reader}
+    ports: ['127.0.0.1:${API_PORT:-18443}:8443']
+    depends_on:
+      postgres: {condition: service_healthy}
+      mongo: {condition: service_healthy}
+    read_only: true
+    tmpfs: [/tmp]
+    restart: unless-stopped
+    healthcheck:
+      test: [CMD, python, -c, 'import urllib.request,ssl; urllib.request.urlopen("https://localhost:8443/health",context=ssl.create_default_context(cafile="/run/secrets/ca.crt"))']
+      interval: 10s
+      timeout: 5s
+      retries: 10
+  ops:
+    <<: *app
+    profiles: [ops]
+    user: '0:0'
+    environment: {DB_ROLE: writer}
+    command: [python, -m, osint.cli, status]
+    secrets: [ca.crt, writer, reader, data_key, elastic, kibana, api_password]
+  elasticsearch:
+    profiles: [search]
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.19.22
+    entrypoint: [sh, -c, 'export ELASTIC_PASSWORD=$$(cat /run/secrets/elastic); exec /bin/tini -- /usr/local/bin/docker-entrypoint.sh eswrapper']
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: 'true'
+      xpack.security.http.ssl.enabled: 'true'
+      xpack.security.http.ssl.key: certs/elasticsearch.key
+      xpack.security.http.ssl.certificate: certs/elasticsearch.crt
+      xpack.security.http.ssl.certificate_authorities: certs/ca.crt
+      ES_JAVA_OPTS: -Xms256m -Xmx256m
+      xpack.ml.enabled: 'false'
+    secrets: [elastic]
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+      - ./.secrets/elasticsearch.key:/usr/share/elasticsearch/config/certs/elasticsearch.key:ro
+      - ./.secrets/elasticsearch.crt:/usr/share/elasticsearch/config/certs/elasticsearch.crt:ro
+      - ./.secrets/ca.crt:/usr/share/elasticsearch/config/certs/ca.crt:ro
+    mem_limit: 1g
+    restart: unless-stopped
+    networks: [data_net]
+  kibana:
+    profiles: [search]
+    image: docker.elastic.co/kibana/kibana:8.19.22
+    entrypoint: [sh, -c, 'export ELASTICSEARCH_PASSWORD=$$(cat /run/secrets/kibana); exec /usr/local/bin/kibana-docker']
+    environment:
+      SERVER_HOST: 0.0.0.0
+      SERVER_SSL_ENABLED: 'true'
+      SERVER_SSL_CERTIFICATE: /usr/share/kibana/config/certs/kibana.crt
+      SERVER_SSL_KEY: /usr/share/kibana/config/certs/kibana.key
+      ELASTICSEARCH_HOSTS: https://elasticsearch:9200
+      ELASTICSEARCH_USERNAME: kibana_system
+      ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES: /usr/share/kibana/config/certs/ca.crt
+      NODE_OPTIONS: --max-old-space-size=768
+      TELEMETRY_ENABLED: 'false'
+    secrets: [kibana]
+    volumes:
+      - ./.secrets/kibana.key:/usr/share/kibana/config/certs/kibana.key:ro
+      - ./.secrets/kibana.crt:/usr/share/kibana/config/certs/kibana.crt:ro
+      - ./.secrets/ca.crt:/usr/share/kibana/config/certs/ca.crt:ro
+    ports: ['127.0.0.1:${KIBANA_PORT:-15601}:5601']
+    mem_limit: 1280m
+    networks: [data_net, front_net]
+  pgadmin:
+    profiles: [admin]
+    image: dpage/pgadmin4@sha256:8a68677a97b8c8d1427dc915672a26d2c4a04376916a68256f53d669d6171be7
+    environment:
+      PGADMIN_DEFAULT_EMAIL: analyste@example.org
+      PGADMIN_DEFAULT_PASSWORD_FILE: /run/secrets/pgadmin
+    secrets: [pgadmin]
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+      - ./docs/pgadmin-servers.json:/pgadmin4/servers.json:ro
+    ports: ['127.0.0.1:${PGADMIN_PORT:-15050}:80']
+    mem_limit: 384m
+    networks: [data_net, front_net]
+  mongo-express:
+    profiles: [admin]
+    image: mongo-express@sha256:1b23d7976f0210dbec74045c209e52fbb26d29b2e873d6c6fa3d3f0ae32c2a64
+    entrypoint: [sh, -c, 'export ME_CONFIG_MONGODB_URL="mongodb://osint_reader:$$(cat /run/secrets/reader)@mongo:27017/osint?authSource=osint&tls=true&tlsCAFile=/run/secrets/ca.crt"; export ME_CONFIG_BASICAUTH_PASSWORD=$$(cat /run/secrets/mongo_express); exec node app.js']
+    environment:
+      ME_CONFIG_BASICAUTH_USERNAME: analyste
+      ME_CONFIG_MONGODB_SSL: 'true'
+      ME_CONFIG_MONGODB_CA_FILE: /run/secrets/ca.crt
+      ME_CONFIG_MONGODB_ENABLE_ADMIN: 'false'
+      ME_CONFIG_OPTIONS_READONLY: 'true'
+    secrets: [reader, mongo_express, ca.crt]
+    ports: ['127.0.0.1:${MONGOEXPRESS_PORT:-18081}:8081']
+    mem_limit: 256m
+    networks: [data_net, front_net]
+  portainer:
+    profiles: [admin]
+    image: portainer/portainer-ce@sha256:d27f76194b719bfe2a34779d51798a7adf02510cfba69ebcb538267f75aa4f47
+    command: [-H, 'unix:///var/run/docker.sock', --admin-password-file, /run/secrets/portainer]
+    secrets: [portainer]
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    ports: ['127.0.0.1:${PORTAINER_PORT:-19443}:9443']
+    mem_limit: 192m
+    networks: [data_net, front_net]
+    # Docker socket grants host-wide administration; profile is deliberately opt-in.
+volumes:
+  pg_data:
+  mongo_data:
+  es_data:
+  pgadmin_data:
+  portainer_data:
+networks:
+  front_net:
+  data_net:
+    internal: true
+secrets:
+  pg_admin:
+    file: ./.secrets/pg_admin
+  writer:
+    file: ./.secrets/writer
+  reader:
+    file: ./.secrets/reader
+  mongo_admin:
+    file: ./.secrets/mongo_admin
+  elastic:
+    file: ./.secrets/elastic
+  api_password:
+    file: ./.secrets/api_password
+  pgadmin:
+    file: ./.secrets/pgadmin
+  mongo_express:
+    file: ./.secrets/mongo_express
+  portainer:
+    file: ./.secrets/portainer
+  kibana:
+    file: ./.secrets/kibana
+  data_key:
+    file: ./.secrets/data_key
+  ca.crt:
+    file: ./.secrets/ca.crt
+  postgres.key:
+    file: ./.secrets/postgres.key
+  postgres.crt:
+    file: ./.secrets/postgres.crt
+  mongo.pem:
+    file: ./.secrets/mongo.pem
+  api.key:
+    file: ./.secrets/api.key
+  api.crt:
+    file: ./.secrets/api.crt

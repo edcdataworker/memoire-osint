@@ -1,0 +1,37 @@
+[
+  {
+    "id": "b3-synthetic-000",
+    "date": 1735689600,
+    "title": "Fictional training article 0",
+    "text": "Test item 0: Example Brigade used a fictional Drone-X at a training site.",
+    "url": "https://example.invalid/b3/0"
+  },
+  {
+    "id": "b3-synthetic-001",
+    "date": 1735689601,
+    "title": "Fictional training article 1",
+    "text": "Test item 1: Example Brigade used a fictional Drone-X at a training site.",
+    "url": "https://example.invalid/b3/1"
+  },
+  {
+    "id": "b3-synthetic-002",
+    "date": 1735689602,
+    "title": "Fictional training article 2",
+    "text": "Test item 2: Example Brigade used a fictional Drone-X at a training site.",
+    "url": "https://example.invalid/b3/2"
+  },
+  {
+    "id": "b3-synthetic-003",
+    "date": 1735689603,
+    "title": "Fictional training article 3",
+    "text": "Test item 3: Example Brigade used a fictional Drone-X at a training site.",
+    "url": "https://example.invalid/b3/3"
+  },
+  {
+    "id": "b3-synthetic-004",
+    "date": 1735689604,
+    "title": "Fictional training article 4",
+    "text": "Test item 4: Example Brigade used a fictional Drone-X at a training site.",
+    "url": "https://example.invalid/b3/4"
+  }
+]

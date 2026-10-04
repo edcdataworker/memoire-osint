@@ -1,0 +1,62 @@
+# Mémoire OSINT : gouvernance, architecture, pipeline et IA
+
+Projet transversal d’Edouard Cappaert pour une cellule de veille documentaire fictive. Un analyste et un responsable de veille explorent les mentions d’armes, d’unités et d’organisations militaires dans le corpus TASS afin de préparer des notes sourcées. Une mention constitue une information à vérifier dans son contexte.
+
+## Les quatre blocs
+
+| Bloc | Contenu | Code |
+| --- | --- | --- |
+| 1 | Gouvernance, responsabilités, qualité, risques et procédures | Plan de gouvernance dans le dossier de remise |
+| 2 | PostgreSQL, MongoDB, Elasticsearch, TLS, rôles, sauvegarde et restauration | [bloc2_architecture](bloc2_architecture/) |
+| 3 | Import JSON/JSONL, validation, déduplication, publication, reprise et suivi | [bloc3_pipeline](bloc3_pipeline/) |
+| 4 | NER spaCy, trois labels, annotations, entraînement, inférence, surveillance et livraison | [bloc4_ia](bloc4_ia/) |
+
+[Dossier de remise et supports par bloc](https://drive.google.com/drive/folders/1J8Z47ahaArvT0LjxEmnu_0ozatUgiXuO). Les consignes, grilles, rapports, vidéos et artefacts sont identifiés dans ce dossier. Télécharger l’archive complète pour conserver ses liens locaux.
+
+## Démarrage sans corpus externe
+
+Python 3.12 est utilisé pour les vérifications. Le pipeline B3 utilise la bibliothèque standard.
+
+```sh
+cd bloc3_pipeline
+python3 -m pipeline worker --config config/portable.json
+python3 -m pipeline status --state .state-portable
+python3 tests/integration.py
+```
+
+Pour l’IA, depuis la racine du dépôt :
+
+```sh
+python3.12 -m venv .venv
+.venv/bin/python -m pip install -r bloc4_ia/requirements.lock.txt
+.venv/bin/python -m pip install --no-deps -e bloc4_ia
+cd bloc4_ia
+../.venv/bin/python -m pytest -q
+../.venv/bin/python scripts/prepare_ci_demo.py
+../.venv/bin/python scripts/ci_local.py
+```
+
+La démonstration CI génère exclusivement des textes synthétiques, entraîne un petit modèle de contrôle, construit et installe le wheel, puis démarre et vérifie le service sur le loopback du runner. Ce service est arrêté après le contrôle. Aucun déploiement public permanent n’est effectué par le workflow.
+
+L’architecture B2 nécessite Docker et des secrets générés localement. Suivre [son mode d’emploi](bloc2_architecture/README.md). Le workflow contrôle son code et sa configuration ; les essais complets sur les stockages et les volumes sont documentés dans la remise.
+
+## Résultats et limites
+
+La version locale identifiée du pipeline a accepté 21 676 articles. L’inférence complète de la baseline expérimentale a produit 39 511 mentions. Quatorze tests de mécanismes B3 et trente-deux tests IA ont été exécutés localement. Les preuves, versions et conditions de mesure sont fournies dans les livrables.
+
+Le modèle TASS livré est entraîné sur des préannotations lexicales. Sa qualité métier n’est pas validée. Les F1 historiques de 34 %, 49,82 et 56,55 correspondent à des protocoles non réconciliés et ne sont pas des scores de cette baseline. Une relecture humaine historique est déclarée dans le notebook, avec les annotations correspondantes toujours non retrouvées. La relecture humaine requise et la mesure sur une référence traçable restent nécessaires.
+
+Le corpus réel et le modèle TASS sérialisé sont distribués dans le périmètre de remise choisi par le candidat, sans être ajoutés à ce dépôt de code. Les tests publics utilisent uniquement des fixtures synthétiques. Les paramètres de promotion sont des choix de projet, pas des seuils de certification.
+
+## Organisation de la livraison
+
+Le workflow [verification.yml](.github/workflows/verification.yml) exécute les contrôles des trois ensembles de code. Les identités exactes du commit et des exécutions réussies doivent être consultées dans GitHub Actions et dans le rapport de publication du dossier de pilotage. Un badge ou la présence d’un workflow ne prouve pas à lui seul son succès.
+
+`SOURCE_MAP.json` rattache le code initial aux archives locales de remise. Les adaptations du dépôt concernent son organisation, le workflow commun et le générateur de démonstration synthétique. Les modes d’emploi des blocs conservent leur contexte de version locale ; les ajouts de publication sont précisés ici et dans l’addendum de remise.
+
+## Crédits et droits
+
+Les travaux collectifs historiques conservent les crédits Edouard Cappaert, Jean-Christophe Dorn et Noah Segonds, ainsi que les références pédagogiques de Matthieu Larboullet. L’adaptation actuelle et les vérifications ont été assistées par Codex. Les anciens coauteurs ne sont pas présentés comme ayant validé cette nouvelle version.
+
+La mise à disposition du code ne crée pas de licence sur les cours, les textes TASS ou les ressources tierces. Aucune licence générale de réutilisation n’est ajoutée sans clarification des droits. Chaque dépendance conserve sa licence.
+

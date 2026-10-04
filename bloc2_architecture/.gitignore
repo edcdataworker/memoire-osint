@@ -1,0 +1,10 @@
+.env
+.secrets/
+.data/
+.backups/
+.state/
+__pycache__/
+.pytest_cache/
+.construction/
+*.cast
+.venv/

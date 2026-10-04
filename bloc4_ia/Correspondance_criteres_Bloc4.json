@@ -1,0 +1,545 @@
+[
+  {
+    "id": "B4-1.1",
+    "source_exacte": "Bloc 4!A6",
+    "critere_exact": "1.1 - Le degré d'adéquation entre les besoins spécifiés dans le cahier des charges et les fonctionnalités offertes par la solution d'IA est évalué. Toutes les exigences du cahier des charges doivent être couvertes par la solution incluant l'accessibilité aux personnes en situation de handicap.",
+    "statut": "Implémenté",
+    "existant": "Deux personas hypothétiques, parcours six étapes, matrice besoin/fonctionnalité, UI accessible.",
+    "preuves": [
+      "docs/Cahier_des_charges.md",
+      "Preuves/browser_accessibility.json"
+    ],
+    "ecart": "Aucun entretien ni test avec utilisateur ou lecteur d’écran.",
+    "prochaine_action": "Faire tester les parcours et couvrir les besoins réellement exprimés."
+  },
+  {
+    "id": "B4-1.2",
+    "source_exacte": "Bloc 4!A7",
+    "critere_exact": "1.2 - La qualité des prédictions ou des décisions faites par l'IA est mesurée en utilisant des métriques de performance appropriées pour le type de tâche (précision, rappel, AUC pour la classification; MAE, RMSE pour la régression; BLEU pour la traduction automatique, etc.).",
+    "statut": "Implémenté",
+    "existant": "Scorer exact global/par label, références protégées, métriques nulles.",
+    "preuves": [
+      "src/osint_ner/metrics.py",
+      "Preuves/quality_gate.json"
+    ],
+    "ecart": "Qualité actuelle non mesurée faute de référence humaine indépendante.",
+    "prochaine_action": "Retrouver les annotations historiques ou réaliser revue documentée, élargir le test."
+  },
+  {
+    "id": "B4-1.3",
+    "source_exacte": "Bloc 4!A8",
+    "critere_exact": "1.3 - La capacité de la solution à maintenir une performance acceptable même en présence de données d'entrée imparfaites ou erronées, ou de conditions de fonctionnement difficiles, est évaluée par des tests de stress ou de robustesse.",
+    "statut": "Implémenté",
+    "existant": "Rejets entrées invalides et essais bruit/longueur réalisés.",
+    "preuves": [
+      "Preuves/benchmark.json",
+      "Preuves/tests.xml"
+    ],
+    "ecart": "Robustesse opérationnelle testée ; maintien de qualité sous bruit inconnu.",
+    "prochaine_action": "Annoter les cas perturbés et mesurer les erreurs de NER."
+  },
+  {
+    "id": "B4-1.4",
+    "source_exacte": "Bloc 4!A9",
+    "critere_exact": "1.4 - La capacité de la solution à gérer une augmentation du volume de données ou de la complexité des tâches est évaluée en examinant la conception de la solution et en évaluant sa capacité à évoluer.",
+    "statut": "Testé",
+    "existant": "Traitement borné par lots, un processus, mesures croissantes et inférence corpus.",
+    "preuves": [
+      "Preuves/benchmark.json",
+      "Preuves/inference_full.json"
+    ],
+    "ecart": "Capacité locale mesurée, pas de charge multi-utilisateur de production.",
+    "prochaine_action": "Dimensionner sur charge cible et tester concurrence/quotas."
+  },
+  {
+    "id": "B4-1.5",
+    "source_exacte": "Bloc 4!A10",
+    "critere_exact": "1.5 - La capacité de la solution à fournir des explications compréhensibles sur ses prédictions ou décisions est évaluée en demandant au candidat d'expliquer le raisonnement du modèle ou en fournissant une interprétation des prédictions du modèle.",
+    "statut": "Implémenté",
+    "existant": "Texte intégral, spans, labels, URL et limites du modèle visibles.",
+    "preuves": [
+      "src/osint_ner/static/app.js",
+      "Preuves/captures/article_source.png"
+    ],
+    "ecart": "Aucune confiance calibrée, compréhension utilisateur non évaluée.",
+    "prochaine_action": "Faire expliquer et vérifier le résultat par un utilisateur."
+  },
+  {
+    "id": "B4-2.1",
+    "source_exacte": "Bloc 4!A11",
+    "critere_exact": "2.1 - La solution d'IA doit être compatible avec l'infrastructure de données existante. Les points à vérifier pourraient inclure la compatibilité des formats de données, l'adéquation avec les protocoles de communication existants, la capacité à interagir avec les bases de données existantes, etc.",
+    "statut": "Testé",
+    "existant": "Contrats B3, modèle, export index distinct, import TLS et readback transversal.",
+    "preuves": [
+      "../00_Pilotage/Integration_transversale/Preuves/Controle_B3_B2_B4_complet.json",
+      "config/elasticsearch-entities-mapping.json"
+    ],
+    "ecart": "Démonstration locale, modèle expérimental.",
+    "prochaine_action": "Conserver les versions concordantes et vérifier les accès avant remise."
+  },
+  {
+    "id": "B4-2.2",
+    "source_exacte": "Bloc 4!A12",
+    "critere_exact": "2.2 - La solution d'IA doit interagir sans heurts avec les autres composants du système. Il s'agit notamment d'éviter les interruptions de service, d'assurer un temps de réponse approprié, de respecter les limites de ressources (CPU, mémoire, stockage, bande passante), etc.",
+    "statut": "Implémenté",
+    "existant": "CPU/RAM et débit local mesurés ; intégration par fichiers et TLS.",
+    "preuves": [
+      "Preuves/benchmark.json",
+      "Preuves/inference_full.json"
+    ],
+    "ecart": "Pas de SLA ni mesure exhaustive de continuité/bande passante en charge multi-service.",
+    "prochaine_action": "Tester charge et indisponibilités représentatives en environnement cible."
+  },
+  {
+    "id": "B4-2.3",
+    "source_exacte": "Bloc 4!A13",
+    "critere_exact": "2.3 - La solution d'IA doit comporter des mécanismes appropriés pour la gestion des erreurs. Il peut s'agir de la détection d'erreurs, de la reprise après erreur, de la journalisation des erreurs pour faciliter le débogage, de l'envoi d'alertes en cas d'erreur, etc.",
+    "statut": "Testé",
+    "existant": "Exceptions explicites, codes sortie, alertes locales, artefacts immuables, contrôle des corruptions.",
+    "preuves": [
+      "Preuves/ci_tests.xml",
+      "src/osint_ner/automation.py",
+      "Preuves/quality_gate.json"
+    ],
+    "ecart": "Alertes par fichiers, pas d’astreinte ni envoi externe.",
+    "prochaine_action": "Brancher supervision opérationnelle autorisée et tester prise en charge."
+  },
+  {
+    "id": "B4-2.4",
+    "source_exacte": "Bloc 4!A14",
+    "critere_exact": "2.4 - La solution d'IA doit être facile à maintenir et à mettre à jour. Les aspects à évaluer pourraient inclure la modularité du code, l'utilisation de versions de code contrôlées, la facilité d'ajout de nouvelles fonctionnalités ou d'amélioration des performances, la présence de tests automatisés, etc.",
+    "statut": "Testé",
+    "existant": "Modules ciblés, Git, dépendances gelées, tests et wheel déployé.",
+    "preuves": [
+      "README.md",
+      "Preuves/ci_local.json"
+    ],
+    "ecart": "Maintenabilité observée localement, accès distant jury non publié.",
+    "prochaine_action": "Vérifier installation sur poste de remise et accès au code."
+  },
+  {
+    "id": "B4-2.5",
+    "source_exacte": "Bloc 4!A15",
+    "critere_exact": "2.5 - La solution d'IA doit respecter les normes de sécurité en vigueur. Cela comprend la protection des données sensibles, l'utilisation de protocoles de communication sécurisés, la résistance aux attaques courantes (injection SQL, attaques par déni de service, etc.), la conformité aux réglementations comme le RGPD et l'accessibilité aux personnes en situation de handicap.",
+    "statut": "Implémenté",
+    "existant": "Lecture locale, CSP, contrôles entrée/Host/routes, TLS B2, accessibilité responsive testée.",
+    "preuves": [
+      "docs/Integration_securite_gouvernance.md",
+      "Preuves/browser_accessibility.json",
+      "Preuves/ci_tests.xml"
+    ],
+    "ecart": "Conformité juridique, chiffrement poste et tests handicap réels non attestés.",
+    "prochaine_action": "Valider cadre de traitement, tester lecteur d’écran et exposition cible."
+  },
+  {
+    "id": "B4-3.1",
+    "source_exacte": "Bloc 4!A16",
+    "critere_exact": "3.1 - Le candidat a mis en place un système pour le réentrainement automatique des modèles d'IA. Cela peut être vérifié en examinant le code fourni, en inspectant les outils de gestion des tâches, les planificateurs de travaux, les scripts d'automatisation, etc.",
+    "statut": "Testé",
+    "existant": "Polling empreintes déclenche entraînement candidat réel.",
+    "preuves": [
+      "Preuves/retraining_events.jsonl",
+      "src/osint_ner/automation.py"
+    ],
+    "ecart": "Démonstration en supervision faible, pas de labels humains nouvellement validés.",
+    "prochaine_action": "Relier la file de labels revus et programmer la cadence retenue."
+  },
+  {
+    "id": "B4-3.2",
+    "source_exacte": "Bloc 4!A17",
+    "critere_exact": "3.2 - Le système d'automatisation réentraine les modèles de manière efficace et opportune. L'efficacité peut être évaluée par la fréquence de réentrainement, le temps nécessaire pour le réentrainement, l'absence d'erreurs ou de défaillances pendant le réentrainement, etc.",
+    "statut": "Testé",
+    "existant": "Durée de réentraînement mesurée, données inchangées ignorées, échec signalé.",
+    "preuves": [
+      "Preuves/retraining_events.jsonl",
+      "Preuves/ci_tests.xml"
+    ],
+    "ecart": "Mesures sur petit lot de démonstration.",
+    "prochaine_action": "Mesurer lot revu et cadence métier, valider délai attendu."
+  },
+  {
+    "id": "B4-3.3",
+    "source_exacte": "Bloc 4!A18",
+    "critere_exact": "3.3 - Le système d'automatisation prend en compte les changements dans les données. Cela peut être évalué par la capacité du système à gérer de nouvelles données, des formats de données modifiés, des changements dans la distribution des données, etc.",
+    "statut": "Testé",
+    "existant": "Nouveau hash provoque candidat, schéma2 rejeté, dérive de longueur suivie.",
+    "preuves": [
+      "Preuves/retraining_events.jsonl",
+      "Preuves/reproducibility.json",
+      "Preuves/monitor_current.json"
+    ],
+    "ecart": "Pas de nouvel exemple humain réellement livré.",
+    "prochaine_action": "Intégrer données revues en conservant manifeste et exclusions."
+  },
+  {
+    "id": "B4-3.4",
+    "source_exacte": "Bloc 4!A19",
+    "critere_exact": "3.4 - Le système d'automatisation détecte et gère la dérive du modèle. La dérive du modèle se produit lorsque le comportement du modèle change avec le temps en raison de changements dans les données sous-jacentes. Les indicateurs de ceci peuvent inclure des mécanismes de surveillance du modèle, des alertes en cas de dérive significative, des mesures correctives automatiques, etc.",
+    "statut": "Implémenté",
+    "existant": "Divergence de distribution, métrique qualité séparée, alerte et gel de promotion implémentés.",
+    "preuves": [
+      "Preuves/monitor_current.json",
+      "Preuves/monitor_synthetic_shift.json",
+      "Preuves/ci_tests.xml"
+    ],
+    "ecart": "Qualité réelle non observable sans labels ; seuils exploratoires, réaction intégrée partielle.",
+    "prochaine_action": "Constituer référence revue, calibrer seuils et relier le gel au pilote de production."
+  },
+  {
+    "id": "B4-3.5",
+    "source_exacte": "Bloc 4!A20",
+    "critere_exact": "3.5 - Le système d'automatisation garantit la prévisibilité et la reproductibilité du processus de réentrainement. Cela peut être évalué par la présence de contrôles de version pour les modèles et les données, l'enregistrement de métriques de performance du modèle, l'utilisation de graines aléatoires fixes, etc.",
+    "statut": "Testé",
+    "existant": "Graines, hashes, config, dépendances ; deux entraînements donnent même modèle local.",
+    "preuves": [
+      "Preuves/training_run.json",
+      "Preuves/reproducibility.json",
+      "requirements.lock.txt"
+    ],
+    "ecart": "Premier artefact comparé issu d’un entraînement fini dont rapport avait échoué ; déterminisme inter-plateforme non garanti.",
+    "prochaine_action": "Rejouer une installation propre et vérifier les hashes sur plateforme cible."
+  },
+  {
+    "id": "B4-4.1",
+    "source_exacte": "Bloc 4!A21",
+    "critere_exact": "4.1 - Le candidat a mis en place un pipeline d'intégration et de déploiement continu pour la solution d'IA. Cela peut être vérifié en examinant le code, la configuration du pipeline, et les outils ou services utilisés.",
+    "statut": "Testé",
+    "existant": "Build, tests, wheel, installation, démarrage et santé en chaîne locale.",
+    "preuves": [
+      "scripts/ci_local.py",
+      "Preuves/ci_local.json"
+    ],
+    "ecart": "Workflow GitHub préparé seulement, aucune production distante.",
+    "prochaine_action": "Exécuter sur environnement cible si publication explicitement autorisée."
+  },
+  {
+    "id": "B4-4.2",
+    "source_exacte": "Bloc 4!A22",
+    "critere_exact": "4.2 - Le pipeline fonctionne correctement, sans erreurs ou défaillances. Cela peut être vérifié par des tests automatisés, des rapports de build, des logs d'erreur, etc.",
+    "statut": "Testé",
+    "existant": "Chaîne finale réussie avec codes retour, logs et tests.",
+    "preuves": [
+      "Preuves/ci_local.json",
+      "Preuves/ci_tests.xml"
+    ],
+    "ecart": "Des incidents de développement sont documentés ; portée locale.",
+    "prochaine_action": "Conserver les preuves de la version effectivement remise."
+  },
+  {
+    "id": "B4-4.3",
+    "source_exacte": "Bloc 4!A23",
+    "critere_exact": "4.3 - Le pipeline assure une mise à jour et une livraison fluides de la solution d'IA. Cela peut être évalué par la durée des builds, la fréquence des mises à jour réussies, l'absence de problèmes lors de la mise à jour de la solution d'IA, etc.",
+    "statut": "Testé",
+    "existant": "Deux versions de wheel, durée, contrôle santé et retour arrière exécutés.",
+    "preuves": [
+      "Preuves/ci_first_run.json",
+      "Preuves/ci_second_run.json",
+      "Preuves/ci_local.json"
+    ],
+    "ecart": "Le service de contrôle démarre et s’arrête ; aucune continuité sans interruption revendiquée.",
+    "prochaine_action": "Tester bascule de service continue si besoin métier."
+  },
+  {
+    "id": "B4-4.4",
+    "source_exacte": "Bloc 4!A24",
+    "critere_exact": "4.4 - Le pipeline est entièrement automatisé, sans nécessiter d'interventions manuelles pour la build, les tests, ou le déploiement. Cela peut être vérifié par la configuration du pipeline et l'absence d'étapes manuelles.",
+    "statut": "Testé",
+    "existant": "Commande unique automatise build, tests et déploiement de démonstration sans étape intermédiaire.",
+    "preuves": [
+      "scripts/ci_local.py",
+      "Preuves/ci_local.json"
+    ],
+    "ecart": "Déclenchement manuel de la commande, cloud non exécuté ; promotion qualité volontairement verrouillée.",
+    "prochaine_action": "Raccorder un trigger CI au dépôt cible avec autorisation."
+  },
+  {
+    "id": "B4-4.5",
+    "source_exacte": "Bloc 4!A25",
+    "critere_exact": "4.5 - Le pipeline inclut une gestion des versions appropriée pour la solution d'IA. Cela peut être vérifié par l'utilisation de contrôles de version, l'étiquetage des versions, l'enregistrement des modifications, etc.",
+    "statut": "Testé",
+    "existant": "Git, commits, version paquet, hashes wheels/modèle/données et registre.",
+    "preuves": [
+      "Preuves/ci_local.json",
+      "Preuves/Versions.json"
+    ],
+    "ecart": "Dépôt local, accès jury externe à vérifier.",
+    "prochaine_action": "Vérifier bundle et accès du jury avant remise."
+  },
+  {
+    "id": "B4-4.6",
+    "source_exacte": "Bloc 4!A26",
+    "critere_exact": "4.6 - Le pipeline respecte les meilleures pratiques de sécurité, y compris l'utilisation de secrets pour les identifiants, le chiffrement des données sensibles, le respect des principes du moindre privilège, etc.",
+    "statut": "Implémenté",
+    "existant": "Secrets absents code, données hors Git, permissions lecture workflow, TLS côté B2.",
+    "preuves": [
+      "docs/Integration_securite_gouvernance.md",
+      ".github/workflows/tests.yml",
+      ".gitignore"
+    ],
+    "ecart": "Disque/poste non attesté chiffré et audit dépendances non exhaustif.",
+    "prochaine_action": "Vérifier chiffrement stockage et scanner dépendances sur environnement cible."
+  },
+  {
+    "id": "B4-5.1",
+    "source_exacte": "Bloc 4!A27",
+    "critere_exact": "5.1 - La solution d'IA est en conformité avec le Règlement général sur la protection des données (RGPD). Cela peut être vérifié par la présence d'une politique de gestion des données personnelles, des mécanismes pour l'obtention du consentement, l'anonymisation des données, etc.",
+    "statut": "Implémenté",
+    "existant": "Finalité et minimisation documentées, exclusions, procédure de purge transverse.",
+    "preuves": [
+      "docs/Integration_securite_gouvernance.md",
+      "../01_Bloc_1_Gouvernance/Plan_gouvernance_OSINT.pdf"
+    ],
+    "ecart": "Analyse juridique à valider, corpus public non synonyme de réutilisation libre.",
+    "prochaine_action": "Confirmer base légale, droits d’usage et traitement des demandes."
+  },
+  {
+    "id": "B4-5.2",
+    "source_exacte": "Bloc 4!A28",
+    "critere_exact": "5.2 - La solution d'IA respecte la loi Informatique et Libertés. Cela peut être vérifié par la présence de processus pour l'exercice des droits de l'individu (accès, rectification, suppression), l'enregistrement des traitements de données, etc.",
+    "statut": "Implémenté",
+    "existant": "Procédures de droits reliées au Bloc1 et journalisation d’exclusion.",
+    "preuves": [
+      "docs/Integration_securite_gouvernance.md",
+      "src/osint_ner/export.py"
+    ],
+    "ecart": "Purge de tous artefacts et désapprentissage non automatisés intégralement.",
+    "prochaine_action": "Exécuter exercice de droits complet jusqu’aux sauvegardes et modèles."
+  },
+  {
+    "id": "B4-5.3",
+    "source_exacte": "Bloc 4!A29",
+    "critere_exact": "5.3 - La solution d'IA respecte les normes de sécurité en vigueur. Cela peut être vérifié par la présence de mesures de sécurité telles que l'authentification à deux facteurs, le chiffrement des données, l'utilisation de réseaux privés virtuels, etc.",
+    "statut": "Implémenté",
+    "existant": "Mesures techniques locales et raccordement TLS adaptés au prototype.",
+    "preuves": [
+      "Preuves/ci_tests.xml",
+      "docs/Integration_securite_gouvernance.md"
+    ],
+    "ecart": "Pas d’exposition Internet/MFA applicative ni certification sécurité.",
+    "prochaine_action": "Durcir accès et stockage avant toute exposition."
+  },
+  {
+    "id": "B4-5.4",
+    "source_exacte": "Bloc 4!A30",
+    "critere_exact": "5.4 - Si applicable, la solution d'IA respecte la norme ISO 27001 pour les systèmes de gestion de la sécurité de l'information. Cela peut être vérifié par la présence d'une politique de sécurité de l'information, des processus de gestion des risques, des revues régulières de la sécurité, etc.",
+    "statut": "Implémenté",
+    "existant": "Alignement volontaire amorcé par les politiques, risques et accès du Bloc 1.",
+    "preuves": [
+      "docs/Integration_securite_gouvernance.md",
+      "../01_Bloc_1_Gouvernance/Plan_gouvernance_OSINT.pdf"
+    ],
+    "ecart": "Analyse complète des exigences ISO27001 et audit du système de management non réalisés ; aucune certification revendiquée.",
+    "prochaine_action": "Formaliser le périmètre applicable et conduire une revue complète des écarts."
+  },
+  {
+    "id": "B4-5.5",
+    "source_exacte": "Bloc 4!A31",
+    "critere_exact": "5.5 - La solution d'IA respecte les principes de l'IA éthique, notamment en termes d'explicabilité, de justesse, de non-discrimination, de respect de la vie privée, etc. Cela peut être vérifié par la présence de mécanismes d'explication des décisions de l'IA, de tests de biais, de protections de la vie privée, etc.",
+    "statut": "Implémenté",
+    "existant": "Biais de source et de supervision explicités, erreurs concrètes présentées, passage source conservé.",
+    "preuves": [
+      "docs/Annotation_et_protocole.md",
+      "Note_analyse.md"
+    ],
+    "ecart": "Équité et justesse non évaluées sur référence humaine stratifiée.",
+    "prochaine_action": "Mesurer erreurs par label/période et faire revue humaine des usages."
+  },
+  {
+    "id": "B4-6.1",
+    "source_exacte": "Bloc 4!A32",
+    "critere_exact": "6.1 - Le code est bien organisé et suit une structure logique. Les fichiers et dossiers sont clairement nommés et il est facile de comprendre comment le code est organisé.",
+    "statut": "Testé",
+    "existant": "Code organisé par fonctions avec CLI et paquet installable.",
+    "preuves": [
+      "src/osint_ner/",
+      "Preuves/ci_local.json"
+    ],
+    "ecart": "Données volumineuses séparées du code.",
+    "prochaine_action": "Vérifier la navigation dans le bundle remis."
+  },
+  {
+    "id": "B4-6.2",
+    "source_exacte": "Bloc 4!A33",
+    "critere_exact": "6.2 - Le code contient des commentaires utiles qui expliquent ce que fait le code. Les commentaires sont clairs et faciles à comprendre.",
+    "statut": "Implémenté",
+    "existant": "Commentaires sur offsets, groupes, tokenisation, règles et contrôles.",
+    "preuves": [
+      "src/osint_ner/data.py",
+      "src/osint_ner/model.py",
+      "src/osint_ner/contracts.py"
+    ],
+    "ecart": "Revue de compréhension par le candidat à effectuer.",
+    "prochaine_action": "Expliquer les commentaires et choix au jury."
+  },
+  {
+    "id": "B4-6.3",
+    "source_exacte": "Bloc 4!A34",
+    "critere_exact": "6.3 - Le code est écrit de manière claire et lisible. Les noms de variables et de fonctions sont descriptifs et il est facile de comprendre ce que fait le code.",
+    "statut": "Implémenté",
+    "existant": "Noms descriptifs, séparation de responsabilités, formatage Ruff.",
+    "preuves": [
+      "src/osint_ner/",
+      "Preuves/ci_lint.log"
+    ],
+    "ecart": "Maîtrise personnelle à confirmer par Edouard.",
+    "prochaine_action": "Relire et savoir modifier une fonction ciblée."
+  },
+  {
+    "id": "B4-6.4",
+    "source_exacte": "Bloc 4!A35",
+    "critere_exact": "6.4 - Il existe une documentation complète du code qui explique comment utiliser la solution d'IA, y compris comment installer et configurer le code, comment utiliser les différentes fonctionnalités, etc.",
+    "statut": "Implémenté",
+    "existant": "README, protocole, exploitation, sécurité et commandes de reconstruction.",
+    "preuves": [
+      "README.md",
+      "docs/",
+      "Artefacts_locaux/"
+    ],
+    "ecart": "Installation sur autre poste et accès jury non testés.",
+    "prochaine_action": "Tester le bundle sur environnement de remise."
+  },
+  {
+    "id": "B4-6.5",
+    "source_exacte": "Bloc 4!A36",
+    "critere_exact": "6.5 - Le code suit les normes de codage et les bonnes pratiques pour le langage de programmation utilisé. Cela peut être vérifié par la présence d'un style de codage cohérent, l'utilisation de principes de programmation tels que DRY (Don't Repeat Yourself), etc.",
+    "statut": "Testé",
+    "existant": "Ruff, paquet Python, helpers partagés et contrôles types à l’entrée.",
+    "preuves": [
+      "Preuves/ci_lint.log",
+      "Preuves/ci_tests.xml"
+    ],
+    "ecart": "Pas de preuve de conformité à toutes pratiques possibles.",
+    "prochaine_action": "Garder conventions et tests à chaque évolution."
+  },
+  {
+    "id": "B4-6.6",
+    "source_exacte": "Bloc 4!A37",
+    "critere_exact": "6.6 - Le code comprend une gestion appropriée des erreurs et des exceptions. Il ne doit pas échouer silencieusement en cas d'erreur, mais plutôt signaler l'erreur de manière appropriée.",
+    "statut": "Testé",
+    "existant": "Exceptions et codes non nuls, erreur du scheduler remontée.",
+    "preuves": [
+      "Preuves/ci_tests.xml",
+      "src/osint_ner/cli.py",
+      "src/osint_ner/automation.py"
+    ],
+    "ecart": "Verrou abandonné après SIGKILL nécessite procédure opérateur.",
+    "prochaine_action": "Documenter/tester reprise après arrêt brutal si automatisation permanente."
+  },
+  {
+    "id": "B4-6.7",
+    "source_exacte": "Bloc 4!A38",
+    "critere_exact": "6.7 - Le code est accompagné de tests unitaires, d'intégration ou fonctionnels appropriés, garantissant que le code fonctionne comme prévu.",
+    "statut": "Testé",
+    "existant": "Tests contrats, Unicode, métriques fixtures, HTTP, exclusions, cycle spaCy et scheduler.",
+    "preuves": [
+      "Preuves/ci_tests.xml",
+      "tests/test_pipeline.py"
+    ],
+    "ecart": "Exactitude NER et environnement cloud non couverts.",
+    "prochaine_action": "Compléter référence humaine et essais d’usage."
+  },
+  {
+    "id": "B4-6.8",
+    "source_exacte": "Bloc 4!A39",
+    "critere_exact": "6.8 - Le code est hébergé sur un système de versioning comme Git, et l'utilisation de ce système est appropriée, avec des commit messages clairs et informatifs.",
+    "statut": "Implémenté",
+    "existant": "Dépôt Git local, commits explicites, code exportable et crédits.",
+    "preuves": [
+      "Preuves/Versions.json",
+      "Code_OSINT_Bloc4.zip"
+    ],
+    "ecart": "Pas de nouveau dépôt distant publié ni accès jury vérifié.",
+    "prochaine_action": "Mettre le code à disposition par canal autorisé et vérifier accès."
+  },
+  {
+    "id": "B4-7.1",
+    "source_exacte": "Bloc 4!A40",
+    "critere_exact": "7.1 - Le candidat explique clairement la solution d'IA et son fonctionnement. Les informations sont présentées de manière structurée et logique, facilitant la compréhension.",
+    "statut": "Prévu",
+    "existant": "Support cinq minutes et guide de questions préparés.",
+    "preuves": [
+      "Presentation_Bloc4.pptx",
+      "Guide_oral_Bloc4.md"
+    ],
+    "ecart": "Prestation et chronométrage humains non observés.",
+    "prochaine_action": "Répéter et chronométrer la présentation ; faire évaluer écoute et réponses."
+  },
+  {
+    "id": "B4-7.2",
+    "source_exacte": "Bloc 4!A41",
+    "critere_exact": "7.2 - Le candidat explique les choix techniques qu'il a faits lors du développement et du déploiement de la solution d'IA. Ces explications devraient comprendre pourquoi certains choix ont été faits au détriment d'autres.",
+    "statut": "Prévu",
+    "existant": "Support cinq minutes et guide de questions préparés.",
+    "preuves": [
+      "Presentation_Bloc4.pptx",
+      "Guide_oral_Bloc4.md"
+    ],
+    "ecart": "Prestation et chronométrage humains non observés.",
+    "prochaine_action": "Répéter et chronométrer la présentation ; faire évaluer écoute et réponses."
+  },
+  {
+    "id": "B4-7.3",
+    "source_exacte": "Bloc 4!A42",
+    "critere_exact": "7.3 - Le candidat répond de manière claire et précise aux questions posées par le jury. Il montre une bonne compréhension de son travail et est capable d'expliquer ses choix et son processus de pensée.",
+    "statut": "Prévu",
+    "existant": "Support cinq minutes et guide de questions préparés.",
+    "preuves": [
+      "Presentation_Bloc4.pptx",
+      "Guide_oral_Bloc4.md"
+    ],
+    "ecart": "Prestation et chronométrage humains non observés.",
+    "prochaine_action": "Répéter et chronométrer la présentation ; faire évaluer écoute et réponses."
+  },
+  {
+    "id": "B4-7.4",
+    "source_exacte": "Bloc 4!A43",
+    "critere_exact": "7.4 - Le candidat communique clairement les performances de la solution d'IA, en expliquant comment il a évalué ces performances et en contextualisant ces résultats.",
+    "statut": "Prévu",
+    "existant": "Support cinq minutes et guide de questions préparés.",
+    "preuves": [
+      "Presentation_Bloc4.pptx",
+      "Guide_oral_Bloc4.md"
+    ],
+    "ecart": "Prestation et chronométrage humains non observés.",
+    "prochaine_action": "Répéter et chronométrer la présentation ; faire évaluer écoute et réponses."
+  },
+  {
+    "id": "B4-7.5",
+    "source_exacte": "Bloc 4!A44",
+    "critere_exact": "7.5 - Le candidat interagit de manière respectueuse et professionnelle avec le jury, en faisant preuve d'écoute et en respectant les opinions des autres.",
+    "statut": "Prévu",
+    "existant": "Support cinq minutes et guide de questions préparés.",
+    "preuves": [
+      "Presentation_Bloc4.pptx",
+      "Guide_oral_Bloc4.md"
+    ],
+    "ecart": "Prestation et chronométrage humains non observés.",
+    "prochaine_action": "Répéter et chronométrer la présentation ; faire évaluer écoute et réponses."
+  },
+  {
+    "id": "B4-7.6",
+    "source_exacte": "Bloc 4!A45",
+    "critere_exact": "7.6 - Le candidat utilise efficacement des supports visuels pour aider à expliquer la solution d'IA. Ces supports sont clairs, bien organisés et ajoutent de la valeur à la présentation.",
+    "statut": "Prévu",
+    "existant": "Support cinq minutes et guide de questions préparés.",
+    "preuves": [
+      "Presentation_Bloc4.pptx",
+      "Guide_oral_Bloc4.md"
+    ],
+    "ecart": "Prestation et chronométrage humains non observés.",
+    "prochaine_action": "Répéter et chronométrer la présentation ; faire évaluer écoute et réponses."
+  },
+  {
+    "id": "B4-7.7",
+    "source_exacte": "Bloc 4!A46",
+    "critere_exact": "7.7 - Le candidat respecte le temps imparti pour la présentation, couvrant tous les points importants sans se précipiter ou dépasser le temps alloué.",
+    "statut": "Prévu",
+    "existant": "Support cinq minutes et guide de questions préparés.",
+    "preuves": [
+      "Presentation_Bloc4.pptx",
+      "Guide_oral_Bloc4.md"
+    ],
+    "ecart": "Prestation et chronométrage humains non observés.",
+    "prochaine_action": "Répéter et chronométrer la présentation ; faire évaluer écoute et réponses."
+  }
+]

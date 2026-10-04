@@ -1,0 +1,9 @@
+{
+  "collection": "documents",
+  "authority": "text content, tied to the committed PostgreSQL identifier and checksum",
+  "required": ["_id", "published_at", "ciphertext", "content_sha256", "schema_version", "synthetic"],
+  "indexes": [{"_id": 1, "unique": true}, {"published_at": 1}, {"run_id": 1}],
+  "logical_plaintext_before_encryption": {"title": "article title", "text": "full article", "url": "source URL", "optional_fields": "retained inside the encrypted JSON"},
+  "encryption": "AES-256-GCM; random 96-bit nonce; article_id is authenticated associated data",
+  "migration": "Version 1 validated by MongoDB; changing versions requires an explicit validator migration"
+}

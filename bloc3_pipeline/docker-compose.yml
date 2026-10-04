@@ -1,0 +1,16 @@
+services:
+  pipeline:
+    build: .
+    restart: unless-stopped
+    network_mode: none
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    user: "${PIPELINE_UID:-1000}:${PIPELINE_GID:-1000}"
+    volumes:
+      - ./pipeline:/app/pipeline:ro
+      - ./config/docker.json:/config/corpus.json:ro
+      - ../00_Pilotage/Sources/Artefacts_reconstitues/corpus_clean.json:/input/corpus_clean.json:ro
+      - ./.state-docker:/state

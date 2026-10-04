@@ -1,0 +1,18 @@
+flowchart TB
+    user[Analyste et responsable] -->|HTTPS + authentification| app[Application de lecture]
+    source[Corpus TASS nettoyé] --> ingest[Ingestion par lots + reprise]
+    ingest -->|TLS, texte AES-GCM| mongo[(MongoDB documents)]
+    ingest -->|TLS, commit + checkpoint| pg[(PostgreSQL métadonnées)]
+    mongo --> index[Publication après contrôle des empreintes]
+    pg --> index
+    index -->|HTTPS| es[(Elasticsearch dérivé)]
+    app -->|lecture normale| pg
+    app -->|lecture normale| mongo
+    app -.->|lecture dégradée signalée| es
+    es --> kibana[Kibana, raccordement NER au bloc 4]
+    pg --> backup[Sauvegarde coordonnée AES-GCM]
+    mongo --> backup
+    ledger[Registre de suppressions] --> app
+    ledger --> ingest
+    ledger --> backup
+    backup --> restore[Contrôle dans des bases distinctes]

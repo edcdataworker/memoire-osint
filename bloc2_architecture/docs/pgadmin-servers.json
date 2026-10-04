@@ -1,0 +1,13 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "OSINT lecture TLS",
+      "Group": "M\u00e9moire",
+      "Host": "postgres",
+      "Port": 5432,
+      "MaintenanceDB": "osint",
+      "Username": "osint_reader",
+      "SSLMode": "require"
+    }
+  }
+}
