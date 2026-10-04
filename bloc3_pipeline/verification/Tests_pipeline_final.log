@@ -1,12 +1,12 @@
-{"at": "2026-10-04T18:28:54.786684+00:00", "event": "read_failover", "actor": "local_system_account", "run_id": "18cee5a1-75d8-4e64-9b04-272685743a00"}
-{"at": "2026-10-04T18:28:57.395905+00:00", "event": "alert", "actor": "local_system_account", "code": "SECURITY_PERMISSIONS", "previous_mode": "0o755", "action": "chmod_0700", "qualification": "technical_incident_requires_human_review"}
-{"at": "2026-10-04T18:28:57.397063+00:00", "event": "rights_access", "actor": "local_system_account", "article_id": "test-3", "matches": 1}
-{"at": "2026-10-04T18:28:57.401436+00:00", "event": "published", "actor": "local_system_account", "run_id": "18cee5a1-75d8-4e64-9b04-272685743a00", "articles": 39}
-{"at": "2026-10-04T18:28:57.402731+00:00", "event": "rights_erased_local", "actor": "local_system_account", "article_id": "test-3", "request_ref": "SYNTHETIC-RIGHTS-001", "external_propagation": "requires_B2_B4_source_backups_coordination"}
-{"at": "2026-10-04T18:28:57.403116+00:00", "event": "rights_access", "actor": "local_system_account", "article_id": "test-3", "matches": 0}
-{"at": "2026-10-04T18:28:57.501976+00:00", "event": "rights_access", "actor": "local_system_account", "article_id": "test-4", "matches": 0}
+{"at": "2026-10-04T20:07:55.144713+00:00", "event": "read_failover", "actor": "local_system_account", "run_id": "70588b83-0c5f-4140-b85d-63eccb99adb3"}
+{"at": "2026-10-04T20:07:57.742199+00:00", "event": "alert", "actor": "local_system_account", "code": "SECURITY_PERMISSIONS", "previous_mode": "0o755", "action": "chmod_0700", "qualification": "technical_incident_requires_human_review"}
+{"at": "2026-10-04T20:07:57.743296+00:00", "event": "rights_access", "actor": "local_system_account", "article_id": "test-3", "matches": 1}
+{"at": "2026-10-04T20:07:57.748206+00:00", "event": "published", "actor": "local_system_account", "run_id": "70588b83-0c5f-4140-b85d-63eccb99adb3", "articles": 39}
+{"at": "2026-10-04T20:07:57.749553+00:00", "event": "rights_erased_local", "actor": "local_system_account", "article_id": "test-3", "request_ref": "SYNTHETIC-RIGHTS-001", "external_propagation": "requires_B2_B4_source_backups_coordination"}
+{"at": "2026-10-04T20:07:57.749917+00:00", "event": "rights_access", "actor": "local_system_account", "article_id": "test-3", "matches": 0}
+{"at": "2026-10-04T20:07:57.875697+00:00", "event": "rights_access", "actor": "local_system_account", "article_id": "test-4", "matches": 0}
 {
-  "at": "2026-10-04T18:28:57.558819+00:00",
+  "at": "2026-10-04T20:07:57.929401+00:00",
   "synthetic": true,
   "tests": [
     {
@@ -47,11 +47,11 @@
       "accepted": 40,
       "attempts": 2,
       "trigger": {
-        "at": "2026-10-04T18:28:54.620629+00:00",
+        "at": "2026-10-04T20:07:54.995626+00:00",
         "event": "scheduled_trigger",
         "actor": "local_system_account",
-        "due_epoch": 1791138534.614356,
-        "trigger_epoch": 1791138534.6205928
+        "due_epoch": 1791144474.990605,
+        "trigger_epoch": 1791144474.99562
       }
     },
     {

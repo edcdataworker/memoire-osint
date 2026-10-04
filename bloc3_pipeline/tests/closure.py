@@ -58,6 +58,17 @@ class ClosureTests(unittest.TestCase):
         for path in (self.state / "exports").rglob("articles.*"):
             self.assertNotIn(MARKER, path.read_text())
 
+    def test_restart_preserves_unchanged_exports_and_repairs_stale_jsonl(self):
+        paths = [self.state / "current.json", *(self.state / "exports").rglob("*")]
+        before = {p: p.read_bytes() for p in paths if p.is_file()}
+        controller = Controller(self.config)
+        controller.stop_server.set()
+        self.assertEqual(before, {p: p.read_bytes() for p in before})
+        line_file = next((self.state / "exports").glob("*/articles.jsonl"))
+        atomic_json(line_file, {"stale": "fictional"})
+        rights.reapply(self.state, self.config)
+        self.assertEqual(line_file.read_bytes(), before[line_file])
+
     def test_rectification_purges_old_versions_and_survives_recollection(self):
         rights.rectify(self.state, self.config, "1", {"text": "Corrected fixture. Ω"}, "D-001")
         self.assert_purged()

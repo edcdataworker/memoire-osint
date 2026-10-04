@@ -1,34 +1,12 @@
-TAP version 13
-# Subtest: a temporary status failure clears on recovery, without clearing validation errors
-ok 1 - a temporary status failure clears on recovery, without clearing validation errors
-  ---
-  duration_ms: 39.258542
-  type: 'test'
-  ...
-# Subtest: initial service outage can recover through the next periodic refresh
-ok 2 - initial service outage can recover through the next periodic refresh
-  ---
-  duration_ms: 1.891084
-  type: 'test'
-  ...
-# Subtest: commands obtain the current session token and a failed mutation is never replayed
-ok 3 - commands obtain the current session token and a failed mutation is never replayed
-  ---
-  duration_ms: 2.643708
-  type: 'test'
-  ...
-# Subtest: degraded storage keeps reads available and blocks collection until restored
-ok 4 - degraded storage keeps reads available and blocks collection until restored
-  ---
-  duration_ms: 1.840584
-  type: 'test'
-  ...
-1..4
-# tests 4
-# suites 0
-# pass 4
-# fail 0
-# cancelled 0
-# skipped 0
-# todo 0
-# duration_ms 108.668833
+✔ a temporary status failure clears on recovery, without clearing validation errors (40.145875ms)
+✔ initial service outage can recover through the next periodic refresh (1.665542ms)
+✔ commands obtain the current session token and a failed mutation is never replayed (2.799666ms)
+✔ degraded storage keeps reads available and blocks collection until restored (1.377125ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 137.0315

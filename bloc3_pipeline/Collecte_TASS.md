@@ -15,7 +15,7 @@ SQLite conserve catalogue, versions et checkpoints. JSON tableau alimente B2, JS
 
 L’image sparse APFS AES-256 est dans le dossier personnel Application Support/MemoireOSINT. macOS gère le mot de passe. Image, états et pointeur sont exclus de GitHub. Catalogue, audits, exports gérés, droits et secours sont dans ce volume après migration. Les corpus originaux et stockages des autres blocs ont leur propre politique. Ce volume ne protège pas automatiquement toutes les copies du mémoire.
 
-État de preuve : volume APFS AES-256 activé et migration physique vérifiée le 4 octobre 2026. Les comptes de 21 681 articles au transfert, 69 fichiers du collecteur et 19 historiques ont été contrôlés. Preuves/Collecte_TASS/Volume_chiffre.json fait foi. Le test unitaire simule un montage ; la preuve physique est distincte. La protection concerne les états B3 migrés et ne démontre pas le chiffrement intégral du Mac. Aucun effacement physique garanti du SSD n’est revendiqué.
+État de preuve : volume APFS AES-256 activé et migration physique vérifiée le 4 octobre 2026. Les comptes de 21 681 articles au transfert, 69 fichiers du collecteur et 19 historiques ont été contrôlés. verification/Volume_chiffre.json fait foi. Le test unitaire simule un montage ; la preuve physique est distincte. La protection concerne les états B3 migrés et ne démontre pas le chiffrement intégral du Mac. Aucun effacement physique garanti du SSD n’est revendiqué.
 
 ```sh
 python3 -m pipeline collect-ui --state /Volumes/MemoireOSINT/B3 --require-encrypted --open
@@ -78,3 +78,25 @@ node --test tests/frontend_recovery.cjs
 Les fixtures couvrent droits après recollecte/export/restauration, purge SQLite/WAL, secours, corruption, qualité, dates, reprise et audit. Le test de migration simulée est distinct de l’activation physique. Les 9 benchmarks utilisent 100, 1 000 et 2 000 articles de tailles variées avec trois répétitions. Les 20 extractions réseau ont une preuve séparée sans texte conservé. La vidéo actuelle montre cinq articles fictifs dans le service réel, avec pause/reprise et panne/restauration. Historique conserve les anciens rendus sans les assimiler à des preuves actuelles.
 
 Les 33 critères sont reliés aux preuves dans Correspondance_criteres_Bloc3.json. Les huit critères oraux restent prévus jusqu’à une répétition personnelle observée. La gouvernance B1 précise la qualification juridique et les copies hors collecteur.
+
+## Contrôles complémentaires du 4 octobre 2026
+
+Les 18 mesures de Benchmark_chiffre.json utilisent le volume AES-256, des copies isolées et 100, 1 000 ou 2 000 articles fictifs de tailles variées. Le catalogue réel reste intact. Trois répétitions par taille pour chacun des catalogues, vide et rempli de 21 701 articles ; ordre alterné ; préparation et création des index exclues des durées ; checkpoints, export et copie du catalogue complet inclus. Catalogue rempli, médianes : 100 : 2.89 s (34.5 articles/s), 1000 : 14.29 s (70.0 articles/s), 2000 : 26.17 s (76.4 articles/s). Doubler le lot de 1 000 à 2 000 multiplie la durée par 1.83 et fait varier le débit de +9.2 %. Le volume des réponses, des exports et du secours, ainsi que les durées par étape et leur dispersion, sont conservés dans la preuve. catalog_bytes exclut un éventuel WAL ; mirror_bytes représente la copie complète publiée.
+
+Les requêtes de sélection du prochain article et de propagation des suppressions disposent désormais des index tasks_pending et tasks_article, créés automatiquement aussi sur un catalogue existant. Les premiers essais exploratoires avant correction sont conservés dans Benchmark_chiffre_avant_index.json, avec leurs répétitions réellement achevées ; ils ne constituent pas une série complète de validation. Aucun test n’isole le surcoût du chiffrement, aucun débit réseau ni SLA n’est déduit de ces mesures sur poste partagé.
+
+Pour reproduire les mesures, déverrouiller le volume, vérifier qu’aucune collecte n’est active et réserver assez d’espace pour une copie du catalogue, ses exports et son secours. La commande exige un état et un répertoire sur un volume chiffré macOS. Les fichiers de données temporaires restent dans ce volume et sont retirés à la fin.
+
+```sh
+python3 scripts/benchmark_encrypted.py --state /Volumes/MemoireOSINT/B3 --directory /Volumes/MemoireOSINT/Benchmark_B3
+```
+
+Procédure de cycle, état réel dans Cycle_volume_chiffre.json :
+
+1. Arrêter le serveur par Ctrl+C après la fin de toute collecte/import et checkpoint WAL.
+2. Démonter normalement le volume avec hdiutil detach /Volumes/MemoireOSINT. Ne pas forcer un volume occupé.
+3. Le service HTTP devient indisponible et un lancement direct avec --require-encrypted échoue sans recréer de catalogue en clair.
+4. Ouvrir Lancer_Observatoire_TASS.command et saisir personnellement le mot de passe au prompt natif Terminal. La session HTTP est renouvelée après reconnexion.
+5. Vérifier statut principal, AES-256, permissions, intégrité principal/secours et comptes/empreintes des tables et exports.
+
+Cycle complet non achevé : le démontage normal a été refusé par Docker, qui conserve des fichiers B4 ouverts. Le serveur B3 a été remis en service. Aucun démontage forcé ou arrêt des autres conteneurs n’a été effectué.

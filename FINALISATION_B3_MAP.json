@@ -1,5 +1,5 @@
 {
-  "release": "b3-tass-20261004-21ac2d7e7d05",
+  "release": "b3-tass-20261004-6522c9924557",
   "scope": "No corpus, state, key, encrypted image or real rights dossier; B4 unchanged",
   "public_evidence": [
     {
@@ -8,6 +8,41 @@
       "source_sha256": "1ec0df92d7efee0fc268c0d7b17f3cc28f28346d92b21863bc288429a760dd36",
       "published_sha256": "1ec0df92d7efee0fc268c0d7b17f3cc28f28346d92b21863bc288429a760dd36",
       "account_and_paths_redacted": true
+    },
+    {
+      "source": "03_Bloc_3_Pipelines/Preuves/Collecte_TASS/Benchmark_chiffre.json",
+      "published": "bloc3_pipeline/verification/Benchmark_chiffre.json",
+      "source_sha256": "e4c33a6741069e513dc39a19df8ca91571e4394a1d59f93f4bb0977eb1740254",
+      "published_sha256": "e4c33a6741069e513dc39a19df8ca91571e4394a1d59f93f4bb0977eb1740254",
+      "account_and_paths_redacted": true
+    },
+    {
+      "source": "03_Bloc_3_Pipelines/Preuves/Collecte_TASS/Benchmark_chiffre_avant_index.json",
+      "published": "bloc3_pipeline/verification/Benchmark_chiffre_avant_index.json",
+      "source_sha256": "90d81abc268cee81b386dfe28bea37733a0f2611cf57d8491d1ad3d02e43ea1f",
+      "published_sha256": "90d81abc268cee81b386dfe28bea37733a0f2611cf57d8491d1ad3d02e43ea1f",
+      "account_and_paths_redacted": true
+    },
+    {
+      "source": "03_Bloc_3_Pipelines/Preuves/Collecte_TASS/Analyse_benchmark_chiffre.md",
+      "published": "bloc3_pipeline/verification/Analyse_benchmark_chiffre.md",
+      "source_sha256": "ed380a792a6c1758201b9d00a445a4d3505665c7a7f8e729f9f899e1db182986",
+      "published_sha256": "ed380a792a6c1758201b9d00a445a4d3505665c7a7f8e729f9f899e1db182986",
+      "account_and_paths_redacted": false
+    },
+    {
+      "source": "03_Bloc_3_Pipelines/Preuves/Collecte_TASS/Cycle_volume_chiffre.json",
+      "published": "bloc3_pipeline/verification/Cycle_volume_chiffre.json",
+      "source_sha256": "de55896345ee1c268d78576bcab8c4cd44893ed48f8225570bdae7184d0dd21e",
+      "published_sha256": "de55896345ee1c268d78576bcab8c4cd44893ed48f8225570bdae7184d0dd21e",
+      "account_and_paths_redacted": true
+    },
+    {
+      "source": "03_Bloc_3_Pipelines/Preuves/Collecte_TASS/Cycle_interface_arretee.png",
+      "published": "bloc3_pipeline/verification/Cycle_interface_arretee.png",
+      "source_sha256": "4ddb78253d04e1ba643a7b04d9728eab4bb33f58b3e7c677489bf8523312a871",
+      "published_sha256": "4ddb78253d04e1ba643a7b04d9728eab4bb33f58b3e7c677489bf8523312a871",
+      "account_and_paths_redacted": false
     },
     {
       "source": "03_Bloc_3_Pipelines/Preuves/Collecte_TASS/Droits_B3_B2.json",
@@ -54,43 +89,43 @@
     {
       "source": "03_Bloc_3_Pipelines/Preuves/Collecte_TASS/Video_cloture.json",
       "published": "bloc3_pipeline/verification/Video_cloture.json",
-      "source_sha256": "e006862abf8c6c6a9396499d486077dac3881d4b7fe89c7f8af34ded9228d574",
-      "published_sha256": "e006862abf8c6c6a9396499d486077dac3881d4b7fe89c7f8af34ded9228d574",
+      "source_sha256": "70bd93acc0ef2f2d2cd4b566cfe3365c8fbbf88d4e11f7a288850f692fb9f492",
+      "published_sha256": "70bd93acc0ef2f2d2cd4b566cfe3365c8fbbf88d4e11f7a288850f692fb9f492",
       "account_and_paths_redacted": true
     },
     {
       "source": "03_Bloc_3_Pipelines/Preuves/Collecte_TASS/Version_finale.json",
       "published": "bloc3_pipeline/verification/Version_finale.json",
-      "source_sha256": "f5d2fbc9cbc4289ed20ea8eb94ef1a2e63cbbd3f813e150bb5d6ce4a82627991",
-      "published_sha256": "f5d2fbc9cbc4289ed20ea8eb94ef1a2e63cbbd3f813e150bb5d6ce4a82627991",
+      "source_sha256": "283b10106293441f5b636b6c355dc50b15b2c5000e21372eef5e653acc142bb0",
+      "published_sha256": "283b10106293441f5b636b6c355dc50b15b2c5000e21372eef5e653acc142bb0",
       "account_and_paths_redacted": true
     },
     {
       "source": "03_Bloc_3_Pipelines/Preuves/Collecte_TASS/Tests_collecte_final.log",
       "published": "bloc3_pipeline/verification/Tests_collecte_final.log",
-      "source_sha256": "00fa9938fc4df5e36c25ad34ae06da3c7aaff18b2e38b7a93bf10da09348c2a9",
-      "published_sha256": "4af4f1ecf9cfdd38d0e60989b5d6221a90d1a8189d55a0768f74903c1e9b8804",
+      "source_sha256": "ac2bf411a721f0c25dd2051d042f3c904f6d9fd65d6f0c8c59af4241e1a43e31",
+      "published_sha256": "ff77b2b2d93b99e35cdc874d3b0ed116b1bfdc6d59020fbdcf63badbefe469cf",
       "account_and_paths_redacted": true
     },
     {
       "source": "03_Bloc_3_Pipelines/Preuves/Collecte_TASS/Tests_cloture_final.log",
       "published": "bloc3_pipeline/verification/Tests_cloture_final.log",
-      "source_sha256": "f0dbddf30dfc05c451a3b8eee73c928ed738cf7695c80f328ca014040ca07d0f",
-      "published_sha256": "5d8c56e4e0473ebdcb6cff9869fa4334cb3f9ff29efbb506856160837d14a01b",
+      "source_sha256": "5f38c35c805a225fea07f3a845fd72acceba3316ccbf1b7530ebb7f57fb7cc30",
+      "published_sha256": "ff5a6d0bea759b0879c2c6a2d3d67f0220b7ffefb1257a01f764bfb8c294696f",
       "account_and_paths_redacted": true
     },
     {
       "source": "03_Bloc_3_Pipelines/Preuves/Collecte_TASS/Tests_pipeline_final.log",
       "published": "bloc3_pipeline/verification/Tests_pipeline_final.log",
-      "source_sha256": "39ca0ae79823cfb96cff06779fc4809fa2e5dc185f05467438c13e26b147edae",
-      "published_sha256": "ed3e47f3300efbccb242a3b54afd284cc8e8b73ee2ce507f9221c20be78a0f79",
+      "source_sha256": "53643fb703e0e001cb478185277a0dbfce68055c9910e680604d6cf9b9a9c8a4",
+      "published_sha256": "1646a36807050a3946fba9461d28680347b4d40c25732fa20c0c1e8b23f6d462",
       "account_and_paths_redacted": true
     },
     {
       "source": "03_Bloc_3_Pipelines/Preuves/Collecte_TASS/Frontend_tests.log",
       "published": "bloc3_pipeline/verification/Frontend_tests.log",
-      "source_sha256": "d969b10363130abc6105d032e15e6484dbf02e452b5c3a44f55cfd2802eeb45b",
-      "published_sha256": "d969b10363130abc6105d032e15e6484dbf02e452b5c3a44f55cfd2802eeb45b",
+      "source_sha256": "e4e45e2844fe76d6c7b5b08bb902222e3f32b97f64006bfcda70ff25c6be9152",
+      "published_sha256": "e4e45e2844fe76d6c7b5b08bb902222e3f32b97f64006bfcda70ff25c6be9152",
       "account_and_paths_redacted": true
     },
     {
@@ -152,8 +187,8 @@
     {
       "source": "03_Bloc_3_Pipelines/Preuves/Collecte_TASS/Archive_finale.json",
       "published": "bloc3_pipeline/verification/Archive_finale.json",
-      "source_sha256": "87b035446a51f560a41b7dd436d3226a5e2a7acddc1d5fbd9dd4198cefd69a94",
-      "published_sha256": "87b035446a51f560a41b7dd436d3226a5e2a7acddc1d5fbd9dd4198cefd69a94",
+      "source_sha256": "e7dfc1cd694b0e1f79c87e4bcc1786772c924bf3bd795cc7b060aa9df8224c1e",
+      "published_sha256": "e7dfc1cd694b0e1f79c87e4bcc1786772c924bf3bd795cc7b060aa9df8224c1e",
       "account_and_paths_redacted": true
     },
     {
@@ -162,6 +197,20 @@
       "source_sha256": "f08ad0463d826042d357b7e2684673e35aafdf81dc43a52e108d5eb7f4c37275",
       "published_sha256": "f08ad0463d826042d357b7e2684673e35aafdf81dc43a52e108d5eb7f4c37275",
       "account_and_paths_redacted": true
+    },
+    {
+      "source": "03_Bloc_3_Pipelines/Preuves/Collecte_TASS/Relance_exports_inchanges.json",
+      "published": "bloc3_pipeline/verification/Relance_exports_inchanges.json",
+      "source_sha256": "de63ea42d635a6a4cfbf5155730f57c2cb087e704b3e2f7bcf3cb6519c65861c",
+      "published_sha256": "de63ea42d635a6a4cfbf5155730f57c2cb087e704b3e2f7bcf3cb6519c65861c",
+      "account_and_paths_redacted": true
+    },
+    {
+      "source": "03_Bloc_3_Pipelines/Preuves/Collecte_TASS/Cycle_interface_reconnectee.png",
+      "published": "bloc3_pipeline/verification/Cycle_interface_reconnectee.png",
+      "source_sha256": "a63a6e83afada13a076734f7018176b18370f9c360bea6099f160d0ad7317daf",
+      "published_sha256": "a63a6e83afada13a076734f7018176b18370f9c360bea6099f160d0ad7317daf",
+      "account_and_paths_redacted": false
     }
   ],
   "source_code_sha256": {
@@ -169,14 +218,14 @@
     "pipeline/__main__.py": "ec68990a5a300dc0e0d0fdea097f694425e3f3fba93e578089248d3dddc2611d",
     "pipeline/collection/__init__.py": "59f0962850e6615718a924bc3f280e3024e15aeec0fe71f1e4220fb1a285e983",
     "pipeline/collection/resilience.py": "6793211569e4b7306adb65688e9eba55c1abc5b22904e2a4edf65f5e9d2d3666",
-    "pipeline/collection/rights.py": "22fbcaeb8a984f53de76e0f9fbb8efafc8dd28257fce17c5b5af3199fb640543",
+    "pipeline/collection/rights.py": "3ee4e074beb89ab34af755f1063529f92662b71fd8fd138e7fafe8c507ae6e8c",
     "pipeline/collection/security.py": "020775c93241b38cd35e014ac27fef9bcee8a9f50a7d296c650d9d52d0521c01",
     "pipeline/collection/service.py": "75bdcef79f726cc0348f9bee6468a73f0ff44fd4d4c2febc33093e1341cc1eb6",
     "pipeline/collection/source.py": "93568d14d32112138368550574f252ef7c3bd0a5d9a65e41a7ecebbd1d731016",
     "pipeline/collection/static/app.js": "0681558cd95a724190e40ae7a2da242a1f2933a7e2a48e88a62269aa7e800f41",
     "pipeline/collection/static/index.html": "6fa5fc436a63f2065f343df424bb8d7467e8aef57fe900eaf77961e2fc1db7e3",
     "pipeline/collection/static/style.css": "db99ba39914c42e92ac6f40f3f41544ff1379b5ff7a0f3ec3c89cfdaa49b6ef2",
-    "pipeline/collection/store.py": "c168d7d031708654f5226d12a30866d2bf1ca949b551fd15a5614b052807d6b6",
+    "pipeline/collection/store.py": "25bbe9c78db3f26aade9d7140b27aee0826b20040f6b7646916b3602b17c00be",
     "pipeline/collection/volume.py": "3b03010a5044655659ff1f0935e08454ec73175192eca0747a36291e7399c824",
     "pipeline/collection/worker.py": "4f21d27d4a46356c2fd28f04359014ba94b7d0f3b8a32030ee317e8ab21b21af",
     "pipeline/common.py": "c2779912811bffb50592c73b9e635f7c97c2585c291ac6fa4b3d7f2ab9525215",
@@ -188,14 +237,15 @@
     "pipeline/state.py": "138a3f01cf3cb63c56d49a50d8c9fe34eed50b0324725cf8bb47176ea2056f22",
     "pipeline/transform.py": "cb1b4969bacb05e75c26474e3a7b4367fd2eb3a7bf29cf6f9e9665b4654446ac",
     "pipeline/worker.py": "a9d70451dc4a197c773dcd3944c195ed45b9b4f3e0ff48f2443384d42f6e3ccf",
-    "tests/closure.py": "ac93815e132fdc809819af529b7a2ffeab8b48ce94159db94512e5e9d1ceadc3",
+    "tests/closure.py": "54786210aa289cf2bb68d5933dcc407ade9b77d00c6a14a98352138baa17de61",
     "tests/collection.py": "331fbd68989b3c7df342e95b27d07088e717e6d2cf9b72afc539c1f958f58020",
     "tests/frontend_recovery.cjs": "2745f46e4c72244895c9c771e4605156e990efeae4eb2a4cf2e59259aeac2433",
     "tests/integration.py": "0862753664eda73317d4399dd310a2a1d829afcc73218d758e7b2a13c29750a0",
     "scripts/benchmark.py": "94ebccb7ae2b8da0e6d55c99c33c0adfea93833487788851f4b6e8811c4d86e3",
     "scripts/benchmark_collection.py": "edc64c0feb3f8e8b6d090ae7daa822a837fa7b26223ba08983898735b0d3bb28",
+    "scripts/benchmark_encrypted.py": "2fdc25d3f976f6d44b5f90cd44ed9f603d1b4aae51a0a7cea10c8e80ce0ac677",
     "scripts/build_criteria.py": "b95916e8496a4924abc5918e01d8b53ae1faf7801474e2905f30ce8581d8637b",
-    "scripts/build_plan.py": "3f453daa6f989fa2777600d2eeef3538d8bb93da60c86998e569b878e5d290a1",
+    "scripts/build_plan.py": "0c7080b9c1a40f70a0e45315e8b3ccfade5eacb0f7b931d504262f1140737fc8",
     "scripts/capture_demo.py": "65c103beef72133fb1f352aedf39ad662f3d36c99d7fe215fdb220e084936d0e",
     "scripts/demo_collection_fixture.py": "25c40e1dcf638895c091a80f7e2b34c72e7b9bce5b0aece5e67ab15a5202333d",
     "scripts/verify_closure_ui.py": "38e515b82568188f30d5eb8cd786e9e47516be225863b9f3fde1a531d6826c81",

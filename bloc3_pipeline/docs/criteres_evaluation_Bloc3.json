@@ -7,13 +7,14 @@
     "critere_normalise": "1.1 - Indicateur relatif au temps nécessaire pour que le pipeline traite un ensemble de données spécifique. Cet indicateur peut être quantifié en termes de temps (par exemple, minutes, secondes) ou de taux (par exemple, lignes de données traitées par seconde).",
     "oral": false,
     "statut": "testé",
-    "existant": "Neuf mesures bout en bout sur 100, 1 000 et 2 000 articles fictifs de tailles variées ; durées par étape, débit, volumes et dispersion.",
+    "existant": "18 mesures sur volume APFS AES-256 : catalogues vide et rempli de 21 701 articles, trois répétitions par taille. Catalogue rempli, médianes : 100 : 2.89 s (34.5 articles/s), 1000 : 14.29 s (70.0 articles/s), 2000 : 26.17 s (76.4 articles/s). Étapes, volumes et dispersion conservés.",
     "preuves": [
-      "verification/Benchmark_collecteur.json",
+      "verification/Benchmark_chiffre.json",
+      "verification/Benchmark_chiffre_avant_index.json",
       "verification/Version_finale.json"
     ],
-    "ecart": "Poste partagé, trois passages par taille ; performances du volume chiffré non mesurées.",
-    "prochaine_action": "Calibrer les seuils sur le poste et la charge d’exploitation."
+    "ecart": "Poste partagé et caches non neutralisés ; aucun SLA ni débit réseau déduit de ces fixtures.",
+    "prochaine_action": "Présenter la durée bout en bout, ses étapes et les limites du protocole."
   },
   {
     "id": "B3-1.2",
@@ -58,14 +59,15 @@
     "critere_normalise": "1.4 - Indicateur relatif à la capacité du pipeline à gérer des variations dans les volumes de données, les formats de données ou les sources de données. Le pipeline peut-il s'adapter à des volumes de données plus importants sans ralentissement significatif ? Le pipeline peut-il traiter des formats de données variés ?",
     "oral": false,
     "statut": "testé",
-    "existant": "100, 1 000 et 2 000 articles de trois tailles ; JSON, JSONL et source HTML séparés en modules.",
+    "existant": "Deux index évitent le tri répété des tâches et le parcours complet pour les droits. Catalogue rempli, 100/1 000/2 000 candidats traités ; exports JSON/JSONL et empreintes vérifiés. Doubler le lot de 1 000 à 2 000 multiplie la durée par 1.83 et fait varier le débit de +9.2 %.",
     "preuves": [
-      "verification/Benchmark_collecteur.json",
+      "verification/Benchmark_chiffre.json",
+      "verification/Benchmark_chiffre_avant_index.json",
       "verification/Tests_pipeline_final.log",
       "verification/Version_finale.json"
     ],
-    "ecart": "Le débit diminue avec le volume ; absence de ralentissement significatif non établie. Le collecteur reste borné à 2 000 candidats.",
-    "prochaine_action": "Expliquer les limites de débit et de pagination sans extrapoler."
+    "ecart": "La hausse des volumes reste bornée à 2 000 candidats ; aucune garantie générale d’absence de ralentissement significatif ni extrapolation. Copie de secours complète à chaque publication.",
+    "prochaine_action": "Expliquer l’effet mesuré des index et le coût des checkpoints et du secours."
   },
   {
     "id": "B3-1.5",
@@ -313,13 +315,15 @@
     "critere_normalise": "4.4 - Indicateur relatif à la présence et à la qualité de la documentation technique. Le candidat a-t-il fourni une documentation technique qui explique le fonctionnement du pipeline, la manière de le déployer, de le faire fonctionner, et éventuellement de le dépanner ?",
     "oral": false,
     "statut": "testé",
-    "existant": "README, Collecte_TASS.md, plan PDF et guide oral actualisés ; CLI, migration, droits, restauration et limites documentés.",
+    "existant": "README, mode d’emploi, plan PDF et guide oral actualisés. Arrêt/relance du serveur et reconnexion observés ; une correction conserve les exports inchangés à l’identique et répare un JSONL incohérent.",
     "preuves": [
+      "verification/Cycle_volume_chiffre.json",
+      "verification/Relance_exports_inchanges.json",
       "verification/Livrables_final.json",
       "verification/Version_finale.json"
     ],
-    "ecart": "La reproduction sur un second poste n’a pas été observée ; les procédures publiques sur fixtures sont fournies.",
-    "prochaine_action": "Répéter oralement les commandes de collecte, droits et restauration."
+    "ecart": "Cycle de démontage/déverrouillage encore ouvert : Docker conserve des fichiers B4 ouverts sur le volume. Reproduction sur second poste non observée.",
+    "prochaine_action": "Après autorisation d’arrêter Docker, exécuter le cycle complet puis saisir personnellement le mot de passe natif."
   },
   {
     "id": "B3-4.5",
@@ -491,15 +495,17 @@
     "critere_normalise": "6.2 - Le pipeline de données intègre des mécanismes appropriés pour assurer la sécurité des données, tels que le cryptage des données, la gestion sécurisée des clés, la limitation de l'accès aux données, etc.",
     "oral": false,
     "statut": "testé",
-    "existant": "Volume APFS AES-256 activé, migration physique de 69 fichiers B3 et 19 historiques vérifiée ; 21 681 articles conservés au transfert, secours intègre, permissions sûres, lanceur strict et HTTP local protégé.",
+    "existant": "Volume APFS AES-256 activé et migration physique vérifiée. Après relance du serveur : 21 701 articles, tables et exports identiques, principal/secours intègres et permissions sûres. Aucun mot de passe lu ou enregistré.",
     "preuves": [
+      "verification/Cycle_volume_chiffre.json",
+      "verification/Relance_exports_inchanges.json",
       "verification/Volume_chiffre.json",
       "verification/Verification_HTTP.json",
       "verification/Tests_cloture_final.log",
       "verification/Version_finale.json"
     ],
-    "ecart": "Protection limitée aux états B3 migrés. Copies externes et autres blocs restent séparés ; aucun effacement physique garanti du SSD.",
-    "prochaine_action": "Maintenir les contrôles de montage, permissions et intégrité ; conserver le mot de passe hors code et dépôt."
+    "ecart": "Cycle complet volume fermé encore à observer : démontage refusé par Docker. Protection des états B3, pas du Mac entier ni des copies externes.",
+    "prochaine_action": "Libérer les fichiers ouverts par Docker avec accord de l’utilisateur, puis vérifier démontage, refus fermé, déverrouillage et relance."
   },
   {
     "id": "B3-6.3",

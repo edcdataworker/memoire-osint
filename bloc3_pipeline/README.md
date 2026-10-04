@@ -135,3 +135,7 @@ Le plan et la démarche reprennent le cours Data Pipelines for AI de Matthieu La
 Références techniques officielles consultées le 4 octobre 2026 : [transactions SQLite](https://www.sqlite.org/atomiccommit.html), [journal WAL](https://www.sqlite.org/wal.html), [écritures et remplacement atomique Python](https://docs.python.org/3/library/os.html). Les preuves exécutées localement font foi pour cette version, dans les limites explicitées.
 
 Les générateurs de documents et de capture sont des outils de préparation facultatifs. `build_plan.py` requiert ReportLab et les preuves associées ; la capture requiert agent-browser et ffmpeg. Ces outils ne sont pas nécessaires pour exécuter le pipeline et ses tests.
+
+## Vérifications sur le volume chiffré
+
+Les nouvelles mesures et l’état du cycle physique de relance sont décrits dans [Collecte_TASS.md](Collecte_TASS.md#contrôles-complémentaires-du-4-octobre-2026). Preuves : Benchmark_chiffre.json et Cycle_volume_chiffre.json. Deux index ciblés accélèrent les recherches de tâches ; le contrôle des droits reste effectué avant chaque téléchargement. Les essais antérieurs restent historiques.

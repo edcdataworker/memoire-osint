@@ -150,7 +150,8 @@ def footer(canvas, doc):
 
 
 FINAL = ROOT / "Preuves/Collecte_TASS"
-bench = json.loads((FINAL / "Benchmark_collecteur.json").read_text())
+bench = json.loads((FINAL / "Benchmark_chiffre.json").read_text())
+cycle = json.loads((FINAL / "Cycle_volume_chiffre.json").read_text())
 volume_file = FINAL / "Volume_chiffre.json"
 volume = (
     json.loads(volume_file.read_text())
@@ -300,7 +301,7 @@ table(
     [130, 350],
 )
 p(
-    "Preuves : Tests_collecte_final.log, Tests_cloture.log et Frontend_tests.log. Les fixtures servent aux pannes et aux droits ; elles ne constituent pas des faits journalistiques.",
+    "Preuves : Tests_collecte_final.log, Tests_cloture_final.log et Frontend_tests.log. Les fixtures servent aux pannes et aux droits ; elles ne constituent pas des faits journalistiques.",
     "SmallText",
 )
 page("Problèmes rencontrés, droits et sécurité")
@@ -334,7 +335,11 @@ h("Protection au repos", 2)
 p(
     "Le lanceur exige le volume macOS chiffré AES-256 et ne crée aucun état en clair si le volume est fermé. État observé : "
     + (
-        "volume activé et migration vérifiée."
+        (
+            "volume activé, migration et cycle arrêt, démontage, déverrouillage personnel et relance vérifiés. Les 21 701 articles, tables et exports sont conservés par empreinte. Démarrage strict refusé lorsque le volume est fermé (Cycle_volume_chiffre.json)."
+            if cycle.get("complete")
+            else "volume activé et migration vérifiée. Arrêt et relance observés, mais démontage refusé : Docker garde des fichiers B4 ouverts sur le volume. Le cycle complet reste à vérifier (Cycle_volume_chiffre.json)."
+        )
         if volume.get("encrypted_volume")
         else "préparation disponible ; saisie personnelle du mot de passe et migration à terminer."
     )
@@ -348,20 +353,26 @@ p(
 )
 page("Analyse des données et résultats mesurés")
 table(
-    ["Articles fictifs", "Répétitions", "Médiane", "Minimum", "Maximum"],
+    ["Catalogue initial", "Articles ajoutés", "Médiane", "Articles/s", "Minimum / maximum"],
     [
-        [r["articles"], 3, f"{r['median_s']:.3f} s", f"{r['min_s']:.3f} s", f"{r['max_s']:.3f} s"]
+        [
+            "Vide" if r["mode"] == "empty" else "21 701 articles",
+            r["articles"],
+            f"{r['median_s']:.2f} s",
+            f"{r['median_articles_per_second']:.1f}",
+            f"{r['min_s']:.2f} / {r['max_s']:.2f} s",
+        ]
         for r in bench["summary"]
     ],
-    [110, 80, 100, 95, 95],
+    [105, 80, 80, 65, 150],
 )
 p(
-    "Corps HTML fictifs d’environ 1, 10 et 50 Kio. Chaque exécution vérifie le nombre d’articles, les empreintes du texte et l’égalité JSON/JSONL. Durée totale : découverte, extraction, SQLite, publication et copie de secours. Le détail par étape figure dans Benchmark_collecteur.json.",
+    "18 exécutions sur le même volume APFS AES-256, trois répétitions par taille et catalogue. Copies isolées du catalogue rempli, corps HTML fictifs d’environ 1, 10 et 50 Kio. Préparation des copies exclue ; découverte, extraction, checkpoints, exports et copie de secours inclus. Comptes, empreintes et égalité JSON/JSONL vérifiés. Détail, dispersion et volumes : Benchmark_chiffre.json.",
     "CaptionText",
 )
 h("Interprétation", 2)
 p(
-    "Ces neuf exécutions démontrent le traitement de volumes variés dans la limite choisie de 2 000 candidats par collecte. Le débit dépend des écritures par article et de la taille des textes. Ce benchmark local sans réseau ne mesure ni le débit TASS ni un SLA de production. Les anciens essais de 100 000 lignes concernent l’import historique."
+    "La publication recopie le catalogue entier vers le secours : son coût fixe pénalise les petits lots. Les durées et débits sont à comparer entre tailles et catalogues ; aucun seuil d’absence de ralentissement significatif n’est fixé par la grille. Poste partagé, caches non neutralisés, collecte bornée à 2 000 candidats. Sans réseau ni mesure isolée du coût du chiffrement. Les anciens benchmarks restent historiques."
 )
 h("Qualité et archives", 2)
 p(
@@ -385,7 +396,7 @@ p(
     "Actualisation chaque seconde : découvert, téléchargé, validé, nouveau, modifié, inchangé, filtré, supprimé, rejeté, durée, débit, tentatives, étape et dernière activité. Le statut indique aussi backend, fraîcheur du secours et sécurité. Les événements stage_duration ajoutent les durées par étape sans modifier le contrat des articles."
 )
 p(
-    "Une alerte SLOW_ARTICLE est déclenchée par franchissement d’un seuil configurable. SECURITY_PERMISSIONS signale et contient des droits trop ouverts ; CATALOG_INTEGRITY signale la bascule. Les alertes restent locales, sans destinataire externe. Preuves : Tests_cloture.log et Incident_simule.json."
+    "Une alerte SLOW_ARTICLE est déclenchée par franchissement d’un seuil configurable. SECURITY_PERMISSIONS signale et contient des droits trop ouverts ; CATALOG_INTEGRITY signale la bascule. Les alertes restent locales, sans destinataire externe. Preuves : Tests_cloture_final.log et Incident_simule.json."
 )
 page("Documentation d’utilisation")
 h("Application personnelle sur le Mac", 2)

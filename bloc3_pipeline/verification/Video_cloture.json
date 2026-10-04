@@ -1,5 +1,5 @@
 {
-  "release": "b3-tass-20261004-21ac2d7e7d05",
+  "release": "b3-tass-20261004-6522c9924557",
   "file": "Demonstration_locale_pipeline.mp4",
   "sha256": "f41579e8670400ded88c965725a4243d57cb89d3d5f261db7fcbc8e08a50b719",
   "seconds": 20.9,
@@ -21,5 +21,8 @@
   "network_performance_claim": false,
   "rendering": "H264 conversion, continuous fictional-exercise caption, no speed modification",
   "visual_inspection": "Frames sampled every five seconds, article and incident screenshots reviewed",
-  "personal_oral_observed": false
+  "personal_oral_observed": false,
+  "recorded_release": "b3-tass-20261004-21ac2d7e7d05",
+  "delivery_release": "b3-tass-20261004-6522c9924557",
+  "compatibility": "Unchanged previous video. Index and unchanged-export fixes validated separately; no full encrypted unlock cycle shown."
 }

@@ -96,7 +96,7 @@ Le taux de rejet maximal du collecteur est configurable, 20 % par défaut. Il s�
 | Recollecte | Articles inchangés évités, révisions distinctes conservées. |
 | Droits | Correction persistante et suppression prioritaires sur la recollecte. |
 
-Preuves : Tests_collecte_final.log, Tests_cloture.log et Frontend_tests.log. Les fixtures servent aux pannes et aux droits ; elles ne constituent pas des faits journalistiques.
+Preuves : Tests_collecte_final.log, Tests_cloture_final.log et Frontend_tests.log. Les fixtures servent aux pannes et aux droits ; elles ne constituent pas des faits journalistiques.
 
 ## Problèmes rencontrés, droits et sécurité
 
@@ -110,7 +110,7 @@ Preuves : Tests_collecte_final.log, Tests_cloture.log et Frontend_tests.log. Les
 
 ### Protection au repos
 
-Le lanceur exige le volume macOS chiffré AES-256 et ne crée aucun état en clair si le volume est fermé. État observé : volume activé et migration vérifiée.
+Le lanceur exige le volume macOS chiffré AES-256 et ne crée aucun état en clair si le volume est fermé. État observé : volume activé et migration vérifiée. Arrêt et relance observés, mais démontage refusé : Docker garde des fichiers B4 ouverts sur le volume. Le cycle complet reste à vérifier (Cycle_volume_chiffre.json).
 
 ### Traçabilité et coordination
 
@@ -120,17 +120,20 @@ La fixture Droits_B3_B2.json vérifie correction, purge et refus de réimport da
 
 ## Analyse des données et résultats mesurés
 
-| Articles fictifs | Répétitions | Médiane | Minimum | Maximum |
+| Catalogue initial | Articles ajoutés | Médiane | Articles/s | Minimum / maximum |
 | --- | --- | --- | --- | --- |
-| 100 | 3 | 0.420 s | 0.342 s | 0.705 s |
-| 1000 | 3 | 7.461 s | 7.417 s | 7.922 s |
-| 2000 | 3 | 17.267 s | 16.997 s | 17.967 s |
+| Vide | 100 | 0.78 s | 127.5 | 0.69 / 1.39 s |
+| Vide | 1000 | 12.38 s | 80.8 | 12.29 / 12.76 s |
+| Vide | 2000 | 24.92 s | 80.3 | 23.96 / 26.05 s |
+| 21 701 articles | 100 | 2.89 s | 34.5 | 2.82 / 2.95 s |
+| 21 701 articles | 1000 | 14.29 s | 70.0 | 14.12 / 14.98 s |
+| 21 701 articles | 2000 | 26.17 s | 76.4 | 26.07 / 30.26 s |
 
-Corps HTML fictifs d’environ 1, 10 et 50 Kio. Chaque exécution vérifie le nombre d’articles, les empreintes du texte et l’égalité JSON/JSONL. Durée totale : découverte, extraction, SQLite, publication et copie de secours. Le détail par étape figure dans Benchmark_collecteur.json.
+18 exécutions sur le même volume APFS AES-256, trois répétitions par taille et catalogue. Copies isolées du catalogue rempli, corps HTML fictifs d’environ 1, 10 et 50 Kio. Préparation des copies exclue ; découverte, extraction, checkpoints, exports et copie de secours inclus. Comptes, empreintes et égalité JSON/JSONL vérifiés. Détail, dispersion et volumes : Benchmark_chiffre.json.
 
 ### Interprétation
 
-Ces neuf exécutions démontrent le traitement de volumes variés dans la limite choisie de 2 000 candidats par collecte. Le débit dépend des écritures par article et de la taille des textes. Ce benchmark local sans réseau ne mesure ni le débit TASS ni un SLA de production. Les anciens essais de 100 000 lignes concernent l’import historique.
+La publication recopie le catalogue entier vers le secours : son coût fixe pénalise les petits lots. Les durées et débits sont à comparer entre tailles et catalogues ; aucun seuil d’absence de ralentissement significatif n’est fixé par la grille. Poste partagé, caches non neutralisés, collecte bornée à 2 000 candidats. Sans réseau ni mesure isolée du coût du chiffrement. Les anciens benchmarks restent historiques.
 
 ### Qualité et archives
 
@@ -150,7 +153,7 @@ Figure 2. Suivi dans l’interface actuelle ; nature fictive de la démonstratio
 
 Actualisation chaque seconde : découvert, téléchargé, validé, nouveau, modifié, inchangé, filtré, supprimé, rejeté, durée, débit, tentatives, étape et dernière activité. Le statut indique aussi backend, fraîcheur du secours et sécurité. Les événements stage_duration ajoutent les durées par étape sans modifier le contrat des articles.
 
-Une alerte SLOW_ARTICLE est déclenchée par franchissement d’un seuil configurable. SECURITY_PERMISSIONS signale et contient des droits trop ouverts ; CATALOG_INTEGRITY signale la bascule. Les alertes restent locales, sans destinataire externe. Preuves : Tests_cloture.log et Incident_simule.json.
+Une alerte SLOW_ARTICLE est déclenchée par franchissement d’un seuil configurable. SECURITY_PERMISSIONS signale et contient des droits trop ouverts ; CATALOG_INTEGRITY signale la bascule. Les alertes restent locales, sans destinataire externe. Preuves : Tests_cloture_final.log et Incident_simule.json.
 
 ## Documentation d’utilisation
 

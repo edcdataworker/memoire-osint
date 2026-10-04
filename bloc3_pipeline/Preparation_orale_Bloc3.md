@@ -18,7 +18,7 @@ Déroulé préparé sans répétition personnelle observée. B3-5.1 à B3-5.8 re
 
 Montrer la vidéo actuelle sur cinq articles fictifs : compteurs, pause/reprise, secours puis restauration hors serveur. Les lectures restent possibles ; les écritures sont bloquées. Après restauration, le compte reste cinq.
 
-Lire les médianes exactes dans Benchmark_collecteur.json : 100, 1 000 et 2 000 articles, trois répétitions, tailles HTML d’environ 1/10/50 Kio. Poste partagé et baisse de débit avec le volume. Aucune extrapolation ni performance du volume chiffré mesurée. Les 20 extractions TASS réelles sont séparées dans Reseau_final.json.
+Benchmark_chiffre.json contient 18 mesures sur APFS AES-256, trois répétitions par taille pour un catalogue vide et une copie du catalogue de 21 701 articles. Médianes du catalogue rempli : 100 : 2.89 s (34.5 articles/s), 1000 : 14.29 s (70.0 articles/s), 2000 : 26.17 s (76.4 articles/s). Doubler le lot de 1 000 à 2 000 multiplie la durée par 1.83 et fait varier le débit de +9.2 %. Deux index évitent les tris et parcours complets des tâches, tout en conservant les contrôles de suppression. Poste partagé, caches non neutralisés, aucun SLA ni extrapolation. Les anciens essais restent historiques et les 20 extractions TASS réelles sont séparées dans Reseau_final.json.
 
 ## 3:25 à 4:25 : droits et sécurité
 
@@ -44,3 +44,7 @@ Lire les médianes exactes dans Benchmark_collecteur.json : 100, 1 000 et 2 000 
 ## Fiche de répétition personnelle
 
 Date, durée observée et observateur : à renseigner. Clarté, choix techniques, réponses, écoute, regard/posture, respect du jury, supports et temps : à observer. Actions d’amélioration : à renseigner. Ne pas compléter fictivement cette fiche.
+
+## Cycle de verrouillage restant
+
+L’arrêt et la relance du service ont été observés. Le démontage normal est refusé car Docker garde des fichiers B4 ouverts sur le volume. Le cycle complet reste à vérifier ; aucune fermeture forcée ni interruption des autres conteneurs n’a été effectuée.

@@ -72,6 +72,22 @@ def rewrite_exports(state, decisions):
                 row = decisions["corrections"][key]["row"]
                 row = {**row, "revision_sha256": store.revision(row)}
             values.append(row)
+        if values == data:
+            # A restart must not rewrite an unchanged publication or move its
+            # rights timestamp. Still repair stale/corrupt JSONL or hash metadata.
+            try:
+                lines = [
+                    json.loads(line)
+                    for line in (path.parent / "articles.jsonl").read_text().splitlines()
+                ]
+                matching = all(
+                    manifest["sha256"][kind] == store.sha256(path.parent / ("articles." + kind))
+                    for kind in ("json", "jsonl")
+                )
+                if lines == values and matching:
+                    continue
+            except (OSError, ValueError, KeyError):
+                pass
         atomic_json(path.parent / "articles.json", values)
         atomic_bytes(
             path.parent / "articles.jsonl",
