@@ -1,6 +1,6 @@
 # Collecte TASS, stockages et protection des copies
 
-Version 1.2 du 4 octobre 2026. Cette fiche décrit le périmètre commun B3/B2. Les résultats cités sont des essais locaux, avec données réelles ou fixtures explicitement distinguées.
+Version 1.3 du 4 octobre 2026. Cette fiche décrit le périmètre commun B3/B2. Les résultats cités sont des essais locaux, avec données réelles ou fixtures explicitement distinguées.
 
 ## Parcours et autorités
 
@@ -24,7 +24,7 @@ L’API B2 authentifiée `/api/articles?start=YYYY-MM-DD&end=YYYY-MM-DD` appliqu
 
 | Copie | Protection et accès | Reprise et effacement | État et limite |
 | --- | --- | --- | --- |
-| Catalogue SQLite B3, WAL, jobs et événements | Permissions restrictives ; le lanceur exige un volume chiffré. Host et session CSRF sur HTTP local. | Checkpoints durables ; exclusion avant lecture/publication ; purge des versions gérées. | Implémenté. Pas de comptes individuels ; montage chiffré à vérifier sur le poste. |
+| Catalogue SQLite B3, WAL, jobs et événements | Permissions restrictives ; le lanceur exige un volume chiffré. Host et session CSRF sur HTTP local. | Checkpoints durables ; exclusion avant lecture/publication ; purge des versions gérées. | Montage AES-256 et migration B3 vérifiés. Pas de comptes individuels. |
 | Miroir SQLite et exports JSON/JSONL B3 | Même répertoire privé ; instantané cohérent vérifié et publication atomique. | Lecture seule si catalogue principal invalide ; restauration explicite avec réapplication des droits. | Testé sur fixtures B3 ; même hôte. Sauvegarde externe B3 non démontrée. |
 | PostgreSQL et MongoDB B2 | TLS et rôles lecteur/écrivain ; textes courants et archivés AES-GCM. | Dumps des bases, y compris révisions ; purge des versions et exclusion du réimport. | Révisions, dates, chiffrement et effacement testés sur fixture. Métadonnées non entièrement chiffrées au repos. |
 | Registres de suppressions et rectifications | Identifiants minimaux ; corrections B2 chiffrées avec clé séparée. | Registres à conserver et réappliquer avant exposition d’une restauration. | Rectification/effacement et restauration B3/B2 testés sur un article de test, avec réapplication des décisions actuelles. |
@@ -37,7 +37,7 @@ Les textes SQLite/JSON sont lisibles par le processus après montage du volume. 
 
 Le script B2 prend un verrou commun à l’ingestion, capture les deux bases et les registres, puis chiffre l’archive. La recette `Preuves/Collecte_TASS/restore.json` restaure 21 681 articles par moteur dans `osint_restore_test` et réapplique quatre suppressions, sans remplacer les bases actives. Le contrôle ultérieur Droits_B3_B2.json du bloc 3 vérifie une restauration depuis la sauvegarde antérieure à une correction, puis à une suppression, sur un identifiant de test. PostgreSQL et MongoDB sont vérifiés dans la base isolée. Les clés doivent être conservées séparément ; les index sont reconstruits depuis les autorités restaurées.
 
-Pour B3, suspendre les écritures, obtenir un instantané SQLite cohérent par l’API backup, conserver les exports nécessaires, la configuration non secrète et les registres de droits, puis tester restauration et reprise. Une copie brute de la base avec WAL actif peut être incohérente. Le miroir vérifié B3, le refus des écritures en secours et la restauration explicite avec droits sont testés dans Tests_cloture_final.log et Verification_HTTP.json du bloc 3. Le montage chiffré physique reste à activer par son propriétaire. Le miroir local ne protège pas de la perte du Mac.
+Pour B3, suspendre les écritures, obtenir un instantané SQLite cohérent par l’API backup, conserver les exports nécessaires, la configuration non secrète et les registres de droits, puis tester restauration et reprise. Une copie brute de la base avec WAL actif peut être incohérente. Le miroir vérifié B3, le refus des écritures en secours et la restauration explicite avec droits sont testés dans Tests_cloture_final.log et Verification_HTTP.json du bloc 3. Le volume AES-256 et la migration physique sont vérifiés dans Volume_chiffre.json du bloc 3. Le miroir local ne protège pas de la perte du Mac.
 
 Après effacement, purger documents courants, révisions et exports gérés, garder l’exclusion minimale puis vérifier recollecte, réimport et restauration. Copies externes, annotations et usages du modèle restent dans la procédure transversale. Les essais utilisent un jeu de test isolé ; ils ne correspondent pas au traitement d’une demande d’une personne concernée.
 

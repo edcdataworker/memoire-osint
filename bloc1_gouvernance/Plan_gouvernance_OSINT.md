@@ -4,7 +4,7 @@ Page 1 du PDF
 Mémoire OSINT
 Cellule de veille documentaire fictive
 
-Edouard Cappaert · Bloc 1 · Version 1.3 · 4 octobre 2026
+Edouard Cappaert · Bloc 1 · Version 1.4 · 4 octobre 2026
 
 Ce plan encadre l’Observatoire TASS local : collecte d’articles, consultation, exports et exploitation des résultats NER. Il relie les décisions de la cellule de veille aux contrôles disponibles dans les blocs techniques.
 
@@ -45,7 +45,7 @@ Le périmètre couvre le corpus historique, la collecte réseau TASS du bloc 3, 
 | Corpus historique | 21 742 articles bruts ; 21 676 nettoyés après 66 rejets. Les 1 889 identifiants sélectionnés concordent avec le notebook. Ces contrôles ne mesurent pas la qualité NER. |
 | Collecte et catalogue B3 | Rubriques, dates UTC, mots-clés et limite. La recette réelle ajoute cinq articles : catalogue et stockages B2 à 21 681 articles dans les preuves du 4 octobre [P5]. |
 | Modèle et restitution | Baseline locale de démonstration B4 : 39 511 mentions sur les 21 676 articles historiques. Les cinq nouveaux articles ne sont pas analysés dans cette recette. Qualité humaine indépendante non établie [P6]. |
-| Archives et confidentialité | Artefacts historiques incomplets, distincts de la baseline reconstruite. Documents B2 chiffrés. Volume AES-256 B3 préparé ; activation et migration non attestées ici. Anciennes clés retirées du notebook copié, révocation non attestée. |
+| Archives et confidentialité | Artefacts historiques incomplets, distincts de la baseline reconstruite. Documents B2 chiffrés. Volume AES-256 B3 activé ; migration et contrôles attestés dans Volume_chiffre.json. Anciennes clés retirées du notebook copié, révocation non attestée. |
 
 Les nombres ci-dessus décrivent les versions de recette, pas un compteur permanent. Les empreintes des preuves et du code consultés figurent dans Preuves/Harmonisation_bloc3.json. Les droits d’usage et l’analyse juridique restent à établir.
 
@@ -139,7 +139,7 @@ Cible organisationnelle : RV approuve nominativement les accès, TECH les liste 
 
 Configuration cible et vérification
 
-Contrôles disponibles : boucle locale, Host, origine, jeton CSRF, permissions restrictives et refus 403 testés [P5]. Le jeton n’authentifie pas une personne. Un volume macOS AES-256 dédié aux états, journaux, exports et secours B3 est préparé. Activation, migration et empreintes restent à vérifier après saisie personnelle du mot de passe dans Terminal. Le lanceur exige le volume monté, sans remplacement en clair. Cela ne chiffre ni tout le Mac ni les copies externes.
+Contrôles disponibles : boucle locale, Host, origine, jeton CSRF, permissions restrictives et refus 403 testés [P5]. Le jeton n’authentifie pas une personne. Le volume macOS AES-256 dédié aux états, journaux, exports et secours B3 est activé. La migration physique, les comptes et les empreintes sont vérifiés dans Volume_chiffre.json ; le mot de passe reste personnel. Le lanceur exige le volume monté, sans remplacement en clair. Cela ne chiffre ni tout le Mac ni les copies externes.
 
 Le chiffrement des documents B2 ne protège pas les copies B3. Avant accès distant ou partagé : authentification, autorisations, TLS avec certificats vérifiés et MFA d’administration si disponible. Secrets hors code, rotation des clés historiques et révocation des accès restent requis [P4].
 
@@ -231,7 +231,7 @@ Choix interne : scores 1 à 3, surveillance ; 4 à 7, traitement planifié ; 8 �
 | R09 | Interface ou support inaccessible | Exclusion d’un utilisateur ou d’un membre du jury | 2 × 3 = 6 |
 | R10 | Changement TASS du droit ou de la finalité | Collecte inadaptée ou extension non évaluée | 2 × 4 = 8 |
 
-R01, R05 et R06 s’appuient sur les défauts historiques. B3 ajoute copies locales, versions, exports et secours. Le volume chiffré préparé ne clôt pas le risque sans activation attestée. Cotations estimées, sans incident réel affirmé. Revoir après toute évolution de source, CGU, utilisateur, corpus, modèle ou finalité [P4, P5].
+R01, R05 et R06 s’appuient sur les défauts historiques. B3 ajoute copies locales, versions, exports et secours. L’activation du volume B3 est attestée ; les autres mesures de R01 restent à contrôler. Cotations estimées, sans incident réel affirmé. Revoir après toute évolution de source, CGU, utilisateur, corpus, modèle ou finalité [P4, P5].
 
 Un prestataire ou une assurance ne transfère pas la responsabilité réglementaire de l’organisme. DIR peut accepter un risque résiduel compatible avec le droit, en documentant motif, durée et révision. Le référent conseille et contrôle cette décision.
 
@@ -242,7 +242,7 @@ Les stratégies couvrent les dix risques. Certains mécanismes disposent de preu
 
 | ID | Stratégie | Mesures et pilote | Échéance | Preuve et cible résiduelle |
 | --- | --- | --- | --- | --- |
-| R01 | Réduire | Rotation clés, Host/CSRF et permissions ; activer et contrôler le volume AES-256 B3 préparé. TECH | Avant appel ou accès distant | Preuve expurgée de rotation et tests ; cible 1 × 4 = 4 |
+| R01 | Réduire | Rotation clés, Host/CSRF et permissions ; maintenir le volume AES-256 B3 et contrôler son montage et ses permissions. TECH | Avant appel ou accès distant | Preuve expurgée de rotation et tests ; cible 1 × 4 = 4 |
 | R02 | Éviter puis réduire | Qualifier CGU, droits, base et périmètre ; respecter exclusions réseau. DIR/RPD | Avant nouvel usage ou diffusion | Analyse et décision motivées ; cible 1 × 4 = 4 |
 | R03 | Éviter puis réduire | Suspendre envois non encadrés, vérifier S01 et transferts, minimiser le texte. RV/TECH | Avant chaque prestataire | Contrat et cartographie des accès ; cible 1 × 4 = 4 |
 | R04 | Réduire | Relecture humaine stratifiée, erreurs par label, limites visibles et validation des notes. AN/RV | Avant entraînement et note | Fiche Q02 et protocole Q03 ; cible 2 × 3 = 6 |
@@ -304,7 +304,7 @@ RPD consulte mensuellement CNIL, EUR-Lex, Légifrance, Commission, ANSSI, ISO et
 
 7 Conclusion et état de cette version
 
-La V1.3 intègre le mini-site et les protections B3/B2 en conservant les limites : droits d’usage, analyses juridiques, notice, validation humaine, activation du volume B3, purge par échéance hors journaux, copies externes et sauvegarde hors poste. Aucune conformité globale ni répétition orale attestée.
+La V1.4 intègre le mini-site et les protections B3/B2 en conservant les limites : droits d’usage, analyses juridiques, notice, validation humaine, purge par échéance hors journaux, copies externes et sauvegarde hors poste. Aucune conformité globale ni répétition orale attestée.
 
 Repères : OSINT : analyse de sources ouvertes. NER : extraction d’entités nommées. AIPD : analyse d’impact sur la protection des données. DPO : délégué à la protection des données. RTO : délai cible de reprise. RPO : perte de travail maximale visée.
 
@@ -332,7 +332,7 @@ Cinq articles ajoutés dans la recette B3
 
 À compléter
 
-Droits d’usage, analyses juridiques, validation humaine, activation vérifiée du volume B3, copies externes et contrôle complet d’accessibilité restent à établir.
+Droits d’usage, analyses juridiques, validation humaine, copies externes et contrôle complet d’accessibilité restent à établir.
 
 Source unique TASS. Les mentions décrivent un corpus éditorial ; leurs fréquences ne prouvent pas l’activité réelle des acteurs. [P4]
 
@@ -421,7 +421,7 @@ Page 16 du PDF
 
 Périmètre. Collecte locale bornée, catalogue versionné, exports gérés et secours B3. B2 reçoit les publications validées et les décisions de droits ; les modèles B4 sont conservés. Les copies déjà sorties du périmètre nécessitent une coordination.
 
-Protection. Volume macOS AES-256 préparé et lanceur sans remplacement en clair. Activation et migration restent à constater après saisie personnelle du mot de passe dans Terminal. Comparaison d’empreintes et de comptes avant retrait de l’ancien état. Aucun chiffrement global du Mac ni effacement physique garanti du SSD affirmé.
+Protection. Volume macOS AES-256 activé et lanceur sans remplacement en clair. Migration vérifiée : 69 fichiers du collecteur et 19 historiques contrôlés par empreinte ; 21 681 articles conservés lors du transfert. Mot de passe saisi personnellement dans Terminal. Aucun chiffrement global du Mac ni effacement physique garanti du SSD affirmé.
 
 Droits. Accès, rectification normalisée et suppression persistante. Purge des anciennes versions, tâches, exports et secours. La recollecte et la restauration ne peuvent rétablir automatiquement un texte invalidé. Propagation SQL/Mongo/index et restauration B2 testées sur un identifiant fictif [P8].
 
@@ -431,7 +431,7 @@ Incident I01. Alertes de lenteur, permissions et intégrité reliées à la proc
 
 Continuité. Consultation et export depuis une copie vérifiée, écritures bloquées. Restauration avec registres de droits avant remise en service. Même Mac et même volume ; perte du poste non couverte. La base légale, les droits d’usage, les copies externes et la conservation des corpus restent à qualifier.
 
-P8 Preuves/Extension_collecte_TASS.json et B3 Preuves/Collecte_TASS : Version_finale.json, Droits_B3_B2.json, Verification_HTTP.json, Incident_simule.json et Volume_chiffre.json. Les preuves distinguent implémentation, tests, activation personnelle et préparation orale. Aucune conformité globale ou validation du jury n’est déclarée.
+P8 Preuves/Extension_collecte_TASS.json et B3 Preuves/Collecte_TASS : Version_finale.json, Droits_B3_B2.json, Verification_HTTP.json, Incident_simule.json et Volume_chiffre.json. Les preuves distinguent implémentation, tests, activation physique vérifiée et préparation orale. Aucune conformité globale ou validation du jury n’est déclarée.
 
 # Liens des références
 

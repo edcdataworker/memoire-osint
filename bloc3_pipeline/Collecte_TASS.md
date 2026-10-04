@@ -15,7 +15,7 @@ SQLite conserve catalogue, versions et checkpoints. JSON tableau alimente B2, JS
 
 L’image sparse APFS AES-256 est dans le dossier personnel Application Support/MemoireOSINT. macOS gère le mot de passe. Image, états et pointeur sont exclus de GitHub. Catalogue, audits, exports gérés, droits et secours sont dans ce volume après migration. Les corpus originaux et stockages des autres blocs ont leur propre politique. Ce volume ne protège pas automatiquement toutes les copies du mémoire.
 
-État de preuve : préparation implémentée ; activation et migration physiques en attente de la saisie personnelle. Preuves/Collecte_TASS/Volume_chiffre.json fait foi. Le test de migration simule un montage chiffré et ne démontre pas le chiffrement du Mac. Aucun effacement physique garanti du SSD n’est revendiqué.
+État de preuve : volume APFS AES-256 activé et migration physique vérifiée le 4 octobre 2026. Les comptes de 21 681 articles au transfert, 69 fichiers du collecteur et 19 historiques ont été contrôlés. Preuves/Collecte_TASS/Volume_chiffre.json fait foi. Le test unitaire simule un montage ; la preuve physique est distincte. La protection concerne les états B3 migrés et ne démontre pas le chiffrement intégral du Mac. Aucun effacement physique garanti du SSD n’est revendiqué.
 
 ```sh
 python3 -m pipeline collect-ui --state /Volumes/MemoireOSINT/B3 --require-encrypted --open

@@ -1,11 +1,75 @@
 {
-  "at": "2026-10-04T18:30:14.084220+00:00",
-  "status": "pending_personal_password_entry",
-  "encrypted_volume": false,
-  "physical_migration_verified": false,
-  "implemented": "AES-256 APFS image preparation, strict launcher and verified offline migration",
-  "unit_migration": "Tests_cloture_final.log; encrypted-mount detection mocked in fixture test",
-  "current_plaintext_state_preserved": true,
-  "personal_action": "Choose and confirm password in native Terminal, then unlock image. Never send password in chat.",
-  "forensic_ssd_erasure_guaranteed": false
+  "at": "2026-10-04T19:19:49.026566+00:00",
+  "status": "activated_and_physically_verified",
+  "encryption": "AES-256",
+  "filesystem": "APFS",
+  "encrypted_volume": true,
+  "physical_migration_verified": true,
+  "migration_report": {
+    "encrypted_volume": true,
+    "copied_files_verified": 69,
+    "counts": {
+      "heads": 21681,
+      "revisions": 21681,
+      "jobs": 6,
+      "tasks": 28
+    },
+    "source_removed": true,
+    "forensic_ssd_erasure_guaranteed": false,
+    "legacy_state": {
+      "migrated": true,
+      "files_verified": 19,
+      "legacy_path_is_link": true
+    }
+  },
+  "post_migration": {
+    "catalog": {
+      "integrity": "ok",
+      "counts": {
+        "heads": 21681,
+        "revisions": 21681,
+        "jobs": 6,
+        "tasks": 28
+      }
+    },
+    "legacy": {
+      "integrity": "ok",
+      "counts": {
+        "articles": 43346,
+        "runs": 2
+      }
+    }
+  },
+  "mirror_hash_verified": true,
+  "security": {
+    "permissions_safe": true,
+    "contained": false,
+    "encrypted_volume": true,
+    "encryption_required": true
+  },
+  "current_plaintext_state_preserved": false,
+  "legacy_path_is_encrypted_link": true,
+  "password": "entered personally in native Terminal, never read or recorded by assistant",
+  "scope": "Managed B3 collection state and historical pipeline state only; external copies and other blocks separate",
+  "unit_migration": "Mocked fixture test remains distinct from physical activation",
+  "forensic_ssd_erasure_guaranteed": false,
+  "live_service": {
+    "articles": 21701,
+    "backend": "primary",
+    "read_only": false,
+    "security": {
+      "permissions_safe": true,
+      "contained": false,
+      "encrypted_volume": true,
+      "encryption_required": true
+    },
+    "mirror_at": "2026-10-04T19:20:15.961945+00:00"
+  },
+  "activity_after_migration": {
+    "catalog_increase": 20,
+    "latest_job_status": "complete",
+    "latest_job_created": "2026-10-04T19:19:56.974290+00:00",
+    "latest_job_tasks": 20,
+    "scope": "Additional collection after service reopened; migration baseline remains 21681"
+  }
 }

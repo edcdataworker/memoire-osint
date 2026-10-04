@@ -1,6 +1,6 @@
 {
   "release": "b3-tass-20261004-21ac2d7e7d05",
-  "at": "2026-10-04T19:06:59.969612+00:00",
+  "at": "2026-10-04T19:28:37.205071+00:00",
   "runtime_tree_sha256": "21ac2d7e7d059f5e0d1df0c2b2e7817210119061b51c0cd14191cda2cdc4a922",
   "code_files_sha256": {
     "pipeline/__init__.py": "e6627eea550ecfe7a37bfd67cf8944d7660b0b01eea3796457f96f1a1952021a",
@@ -51,6 +51,6 @@
     "scripts/backup_restore.py": "a6b189924fde5865c03cf06c9d32418e94e66650d605e11048adf534e9781c66"
   },
   "scope": "Current local collector, rights and continuity; B4 models unchanged",
-  "activation": "pending personal password, see Volume_chiffre.json",
+  "activation": "activated and physical migration verified, see Volume_chiffre.json",
   "oral": "prepared, no observed personal rehearsal"
 }

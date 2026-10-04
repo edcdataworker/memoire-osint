@@ -110,7 +110,7 @@ Preuves : Tests_collecte_final.log, Tests_cloture.log et Frontend_tests.log. Les
 
 ### Protection au repos
 
-Le lanceur exige le volume macOS chiffré AES-256 et ne crée aucun état en clair si le volume est fermé. État observé : préparation disponible ; saisie personnelle du mot de passe et migration à terminer.
+Le lanceur exige le volume macOS chiffré AES-256 et ne crée aucun état en clair si le volume est fermé. État observé : volume activé et migration vérifiée.
 
 ### Traçabilité et coordination
 

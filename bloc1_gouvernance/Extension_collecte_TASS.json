@@ -1,8 +1,8 @@
 {
   "release": "b3-tass-20261004-21ac2d7e7d05",
-  "plan_version": "1.3",
+  "plan_version": "1.4",
   "plan_pages": 16,
-  "plan_sha256": "817c632d2a7e3a5df954f2bfce53aecf4fcddc39ea81b18593e32aa7dd28ee01",
+  "plan_sha256": "2d462994a480f900faa6ec4f08caabc62e6b62eb4c783793a56d4acc1723c187",
   "scope": "Direct TASS collection, minimization, retention, rights and incident dependencies only",
   "criteria_global_audit": false,
   "proofs": [
@@ -12,6 +12,6 @@
     "03_Bloc_3_Pipelines/Preuves/Collecte_TASS/Volume_chiffre.json",
     "03_Bloc_3_Pipelines/Preuves/Collecte_TASS/Version_finale.json"
   ],
-  "personal_password": "pending",
+  "personal_password": "entered personally in native Terminal",
   "oral_rehearsal_observed": false
 }

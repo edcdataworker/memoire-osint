@@ -22,7 +22,7 @@ Lire les médianes exactes dans Benchmark_collecteur.json : 100, 1 000 et 2 000 
 
 ## 3:25 à 4:25 : droits et sécurité
 
-« Une correction remplace le texte normalisé et son hash, retire l’ancienne version et prévaut sur une recollecte. Une suppression purge catalogue, tâches, versions, exports gérés et secours. La restauration réapplique les décisions avant de servir les données. » Montrer Droits_B3_B2.json, sur un ID fictif : SQL/Mongo/index et restauration. Audits sans textes ni coordonnées. Un compte partagé ne distingue pas les personnes. Chiffrement AES-256 préparé ; annoncer son activation uniquement selon Volume_chiffre.json.
+« Une correction remplace le texte normalisé et son hash, retire l’ancienne version et prévaut sur une recollecte. Une suppression purge catalogue, tâches, versions, exports gérés et secours. La restauration réapplique les décisions avant de servir les données. » Montrer Droits_B3_B2.json, sur un ID fictif : SQL/Mongo/index et restauration. Audits sans textes ni coordonnées. Un compte partagé ne distingue pas les personnes. Chiffrement AES-256 activé, migration physique et service vérifiés dans Volume_chiffre.json.
 
 ## 4:25 à 5:00 : limites et résultat
 

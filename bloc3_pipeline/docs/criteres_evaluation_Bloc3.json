@@ -318,8 +318,8 @@
       "verification/Livrables_final.json",
       "verification/Version_finale.json"
     ],
-    "ecart": "Le mot de passe doit être saisi personnellement dans Terminal.",
-    "prochaine_action": "Finaliser l’activation du volume puis répéter les commandes."
+    "ecart": "La reproduction sur un second poste n’a pas été observée ; les procédures publiques sur fixtures sont fournies.",
+    "prochaine_action": "Répéter oralement les commandes de collecte, droits et restauration."
   },
   {
     "id": "B3-4.5",
@@ -490,16 +490,16 @@
     "critere_exact": "6.2 - Le pipeline de données intègre des mécanismes appropriés pour assurer la sécurité des données, tels que le cryptage des données, la gestion sécurisée des clés, la limitation de l'accès aux données, etc.",
     "critere_normalise": "6.2 - Le pipeline de données intègre des mécanismes appropriés pour assurer la sécurité des données, tels que le cryptage des données, la gestion sécurisée des clés, la limitation de l'accès aux données, etc.",
     "oral": false,
-    "statut": "implémenté",
-    "existant": "Volume AES-256 préparé, lanceur sans remplacement en clair, contrôle de permissions, HTTPS TASS et protection Host/CSRF.",
+    "statut": "testé",
+    "existant": "Volume APFS AES-256 activé, migration physique de 69 fichiers B3 et 19 historiques vérifiée ; 21 681 articles conservés au transfert, secours intègre, permissions sûres, lanceur strict et HTTP local protégé.",
     "preuves": [
       "verification/Volume_chiffre.json",
       "verification/Verification_HTTP.json",
       "verification/Tests_cloture_final.log",
       "verification/Version_finale.json"
     ],
-    "ecart": "Activation et migration physiques en attente de la saisie personnelle du mot de passe. Le test de migration utilise un montage chiffré simulé.",
-    "prochaine_action": "Saisir le mot de passe dans Terminal et vérifier le rapport réel de migration."
+    "ecart": "Protection limitée aux états B3 migrés. Copies externes et autres blocs restent séparés ; aucun effacement physique garanti du SSD.",
+    "prochaine_action": "Maintenir les contrôles de montage, permissions et intégrité ; conserver le mot de passe hors code et dépôt."
   },
   {
     "id": "B3-6.3",
