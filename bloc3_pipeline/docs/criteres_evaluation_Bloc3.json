@@ -315,15 +315,16 @@
     "critere_normalise": "4.4 - Indicateur relatif à la présence et à la qualité de la documentation technique. Le candidat a-t-il fourni une documentation technique qui explique le fonctionnement du pipeline, la manière de le déployer, de le faire fonctionner, et éventuellement de le dépanner ?",
     "oral": false,
     "statut": "testé",
-    "existant": "README, mode d’emploi, plan PDF et guide oral actualisés. Arrêt/relance du serveur et reconnexion observés ; une correction conserve les exports inchangés à l’identique et répare un JSONL incohérent.",
+    "existant": "README, Collecte_TASS.md, plan PDF et guide oral actualisés ; cycle physique arrêt, démontage, déverrouillage natif et relance exécuté. Démarrage strict refusé volume fermé, aucun état en clair créé.",
     "preuves": [
       "verification/Cycle_volume_chiffre.json",
       "verification/Relance_exports_inchanges.json",
       "verification/Livrables_final.json",
-      "verification/Version_finale.json"
+      "verification/Version_finale.json",
+      "verification/Docker_cycle.json"
     ],
-    "ecart": "Cycle de démontage/déverrouillage encore ouvert : Docker conserve des fichiers B4 ouverts sur le volume. Reproduction sur second poste non observée.",
-    "prochaine_action": "Après autorisation d’arrêter Docker, exécuter le cycle complet puis saisir personnellement le mot de passe natif."
+    "ecart": "Cycle observé sur ce Mac ; reproduction sur un second poste non observée.",
+    "prochaine_action": "Reprendre le déroulé vérifié de verrouillage et relance pour l’oral."
   },
   {
     "id": "B3-4.5",
@@ -495,17 +496,18 @@
     "critere_normalise": "6.2 - Le pipeline de données intègre des mécanismes appropriés pour assurer la sécurité des données, tels que le cryptage des données, la gestion sécurisée des clés, la limitation de l'accès aux données, etc.",
     "oral": false,
     "statut": "testé",
-    "existant": "Volume APFS AES-256 activé et migration physique vérifiée. Après relance du serveur : 21 701 articles, tables et exports identiques, principal/secours intègres et permissions sûres. Aucun mot de passe lu ou enregistré.",
+    "existant": "Volume APFS AES-256 activé et migration vérifiée ; cycle physique complet testé. Les 21 701 articles, tables et exports conservent leurs empreintes après relance. Intégrité principal/secours, permissions et statut HTTP vérifiés ; mot de passe saisi uniquement dans Terminal.",
     "preuves": [
       "verification/Cycle_volume_chiffre.json",
       "verification/Relance_exports_inchanges.json",
       "verification/Volume_chiffre.json",
       "verification/Verification_HTTP.json",
       "verification/Tests_cloture_final.log",
-      "verification/Version_finale.json"
+      "verification/Version_finale.json",
+      "verification/Docker_cycle.json"
     ],
-    "ecart": "Cycle complet volume fermé encore à observer : démontage refusé par Docker. Protection des états B3, pas du Mac entier ni des copies externes.",
-    "prochaine_action": "Libérer les fichiers ouverts par Docker avec accord de l’utilisateur, puis vérifier démontage, refus fermé, déverrouillage et relance."
+    "ecart": "Protection des états B3 migrés, pas du Mac entier ni des copies externes. Aucun test de perte du poste.",
+    "prochaine_action": "Présenter le refus de démarrage volume fermé et les empreintes avant/après."
   },
   {
     "id": "B3-6.3",

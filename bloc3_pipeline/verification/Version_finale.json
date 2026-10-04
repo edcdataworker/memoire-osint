@@ -1,6 +1,6 @@
 {
   "release": "b3-tass-20261004-6522c9924557",
-  "at": "2026-10-04T20:31:43.965180+00:00",
+  "at": "2026-10-04T20:47:04.840687+00:00",
   "runtime_tree_sha256": "6522c99245579dc77d9b6f6abb6ed4da53fb1ead3190b1cefea378ba49003f35",
   "code_files_sha256": {
     "pipeline/__init__.py": "e6627eea550ecfe7a37bfd67cf8944d7660b0b01eea3796457f96f1a1952021a",
@@ -57,5 +57,5 @@
   "benchmark_commit": "301877267d334488fbe3623c27d9e0ef3cddb153",
   "benchmark_runtime_tree_sha256": "986f79d51b9dc114262f55c1bc54b4b617c842b7c57e783173912af3a5a71e39",
   "benchmark_note": "Measured indexed collector; unchanged-export restart correction tested separately. Exact benchmark runtime preserved in its own commit.",
-  "full_encrypted_cycle_complete": false
+  "full_encrypted_cycle_complete": true
 }

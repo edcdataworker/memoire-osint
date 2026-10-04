@@ -110,7 +110,7 @@ Preuves : Tests_collecte_final.log, Tests_cloture_final.log et Frontend_tests.lo
 
 ### Protection au repos
 
-Le lanceur exige le volume macOS chiffré AES-256 et ne crée aucun état en clair si le volume est fermé. État observé : volume activé et migration vérifiée. Arrêt et relance observés, mais démontage refusé : Docker garde des fichiers B4 ouverts sur le volume. Le cycle complet reste à vérifier (Cycle_volume_chiffre.json).
+Le lanceur exige le volume macOS chiffré AES-256 et ne crée aucun état en clair si le volume est fermé. État observé : volume activé, migration et cycle arrêt, démontage, déverrouillage personnel et relance vérifiés. Les 21 701 articles, tables et exports sont conservés par empreinte. Démarrage strict refusé lorsque le volume est fermé (Cycle_volume_chiffre.json).
 
 ### Traçabilité et coordination
 

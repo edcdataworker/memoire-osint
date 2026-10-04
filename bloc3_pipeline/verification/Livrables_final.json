@@ -1,9 +1,9 @@
 {
   "release": "b3-tass-20261004-6522c9924557",
-  "at": "2026-10-04T20:31:43.965180+00:00",
+  "at": "2026-10-04T20:47:04.840687+00:00",
   "mandatory_artifacts": {
-    "Code_OSINT_Bloc3.zip": "fab6a87f6cc4b1c88b9bda6b61374913862f85b22d6bc2c3bd21e28af3844a7d",
-    "Plan_pipeline_OSINT.pdf": "ab9cb6c23b6dc3e5ee673e393872fd49c2a0a91c325eb0439bea664ffed84820",
+    "Code_OSINT_Bloc3.zip": "425b0bd2255870396e19ba0cc41dfb5834a0502be40960064a6ad9676936827b",
+    "Plan_pipeline_OSINT.pdf": "e23d5d3f085ea685fa05ed66d97bb7593e0e1f44b9c09b9af425bf5b1e5e12bc",
     "Demonstration_locale_pipeline.mp4": "f41579e8670400ded88c965725a4243d57cb89d3d5f261db7fcbc8e08a50b719"
   },
   "pdf_pages": 10,
@@ -19,11 +19,10 @@
   "network_real_articles": 20,
   "responsive_states": 147,
   "encrypted_activation_complete": true,
-  "encrypted_cycle_complete": false,
+  "encrypted_cycle_complete": true,
   "benchmark_encrypted_runs": 18,
   "remaining_personal_actions": [
-    "observed oral rehearsal",
-    "authorization to close Docker holding encrypted volume, then native unlock for full cycle"
+    "observed oral rehearsal"
   ],
   "other_limits": [
     "same-host read continuity only",

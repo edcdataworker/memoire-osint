@@ -12,12 +12,14 @@ La durée comprend création du job, vérification initiale, découverte, télé
 
 Poste partagé, caches non neutralisés, pas de réseau ni de mesure isolée du chiffrement. La série exploratoire avant index est incomplète et reste identifiée comme telle. L’absence générale de ralentissement significatif n’est pas garantie. Limite de 2 000 candidats par collecte.
 
-## Cycle physique restant
+## Cycle physique observé
 
-Arrêt sans tâche active et checkpoint WAL exécutés. Docker refuse le démontage normal car il conserve des fichiers B4 ouverts sur le volume. Serveur B3 remis en service ; cycle complet et refus volume fermé encore à observer. Aucun démontage forcé ni arrêt des autres conteneurs.
+Arrêt sans tâche active, checkpoint WAL, démontage normal, API indisponible, lancement strict refusé, aucune création en clair, déverrouillage natif personnel et relance. Les six tables, exports gérés et pointeur courant conservent leurs empreintes. Principal et secours sont intègres ; HTTP revient sur le principal avec 21 701 articles. Le mot de passe n’a été ni lu ni enregistré.
 
 ## Critères et limites
 
-Les critères B3-1.1 et B3-1.4 disposent des nouvelles mesures. Le complément de preuve B3-4.4/B3-6.2 sur le cycle complet reste ouvert. Leur statut « testé » décrit ces scénarios ; la décision de conformité reste celle du jury. Les huit critères oraux restent « prévu ». Le cycle protège les états B3, sans démontrer le chiffrement du Mac entier ni une récupération après perte du poste.
+Les critères B3-1.1, B3-1.4, B3-4.4 et B3-6.2 disposent des nouvelles preuves localisées. Leur statut « testé » décrit ces scénarios ; la décision de conformité reste celle du jury. Les huit critères oraux restent « prévu ». Le cycle protège les états B3, sans démontrer le chiffrement du Mac entier ni une récupération après perte du poste.
 
 Preuves : verification/Benchmark_chiffre.json, Benchmark_chiffre_avant_index.json, Cycle_volume_chiffre.json et Version_finale.json.
+
+Docker a été arrêté temporairement avec l’autorisation de l’utilisateur, puis redémarré. Les 40 conteneurs précédemment actifs sont remis en service et tous ceux auparavant sains retrouvent cet état. Le contrôle porte sur leurs statuts, sans audit fonctionnel des autres applications. Preuve : Docker_cycle.json. Aucun démontage forcé.

@@ -99,4 +99,6 @@ Procédure de cycle, état réel dans Cycle_volume_chiffre.json :
 4. Ouvrir Lancer_Observatoire_TASS.command et saisir personnellement le mot de passe au prompt natif Terminal. La session HTTP est renouvelée après reconnexion.
 5. Vérifier statut principal, AES-256, permissions, intégrité principal/secours et comptes/empreintes des tables et exports.
 
-Cycle complet non achevé : le démontage normal a été refusé par Docker, qui conserve des fichiers B4 ouverts. Le serveur B3 a été remis en service. Aucun démontage forcé ou arrêt des autres conteneurs n’a été effectué.
+Cycle complet exécuté, avec 21 701 articles et empreintes conservés.
+
+Docker a été arrêté temporairement avec l’autorisation de l’utilisateur, puis redémarré. Les 40 conteneurs précédemment actifs sont remis en service et tous ceux auparavant sains retrouvent cet état. Le contrôle porte sur leurs statuts, sans audit fonctionnel des autres applications. Preuve : Docker_cycle.json. Aucun démontage forcé.

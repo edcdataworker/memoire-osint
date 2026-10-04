@@ -1,0 +1,13 @@
+{
+  "started_at": "2026-10-04T20:42:10.420800+00:00",
+  "finished_at": "2026-10-04T20:44:22.182237+00:00",
+  "authorization": "Explicit user authorization for temporary Docker Desktop interruption",
+  "previously_running_count": 40,
+  "all_previously_running_restored": true,
+  "previously_healthy_count": 33,
+  "all_previously_healthy_recovered": true,
+  "manual_container_restarts": 0,
+  "normal_stop_and_start": true,
+  "forced_unmount": false,
+  "limits": "Running and health status verified; no new functional audit of unrelated services"
+}

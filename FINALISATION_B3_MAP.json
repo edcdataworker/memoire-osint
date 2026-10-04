@@ -33,8 +33,8 @@
     {
       "source": "03_Bloc_3_Pipelines/Preuves/Collecte_TASS/Cycle_volume_chiffre.json",
       "published": "bloc3_pipeline/verification/Cycle_volume_chiffre.json",
-      "source_sha256": "de55896345ee1c268d78576bcab8c4cd44893ed48f8225570bdae7184d0dd21e",
-      "published_sha256": "de55896345ee1c268d78576bcab8c4cd44893ed48f8225570bdae7184d0dd21e",
+      "source_sha256": "809b744c0356fde47b5b9789dd5782764fd9396cdcd04d546ce0104109875f72",
+      "published_sha256": "809b744c0356fde47b5b9789dd5782764fd9396cdcd04d546ce0104109875f72",
       "account_and_paths_redacted": true
     },
     {
@@ -96,8 +96,8 @@
     {
       "source": "03_Bloc_3_Pipelines/Preuves/Collecte_TASS/Version_finale.json",
       "published": "bloc3_pipeline/verification/Version_finale.json",
-      "source_sha256": "283b10106293441f5b636b6c355dc50b15b2c5000e21372eef5e653acc142bb0",
-      "published_sha256": "283b10106293441f5b636b6c355dc50b15b2c5000e21372eef5e653acc142bb0",
+      "source_sha256": "83effc86f0ef1c17c92eb4536bd9bba1dc087373aa701c1e9b3ee93f2477c2d1",
+      "published_sha256": "83effc86f0ef1c17c92eb4536bd9bba1dc087373aa701c1e9b3ee93f2477c2d1",
       "account_and_paths_redacted": true
     },
     {
@@ -187,8 +187,8 @@
     {
       "source": "03_Bloc_3_Pipelines/Preuves/Collecte_TASS/Archive_finale.json",
       "published": "bloc3_pipeline/verification/Archive_finale.json",
-      "source_sha256": "e7dfc1cd694b0e1f79c87e4bcc1786772c924bf3bd795cc7b060aa9df8224c1e",
-      "published_sha256": "e7dfc1cd694b0e1f79c87e4bcc1786772c924bf3bd795cc7b060aa9df8224c1e",
+      "source_sha256": "84d7bcc5089092709ffc594c87d5576ca58a0a0a6465c3b9c6b6e52124ba3e6f",
+      "published_sha256": "84d7bcc5089092709ffc594c87d5576ca58a0a0a6465c3b9c6b6e52124ba3e6f",
       "account_and_paths_redacted": true
     },
     {
@@ -211,6 +211,13 @@
       "source_sha256": "a63a6e83afada13a076734f7018176b18370f9c360bea6099f160d0ad7317daf",
       "published_sha256": "a63a6e83afada13a076734f7018176b18370f9c360bea6099f160d0ad7317daf",
       "account_and_paths_redacted": false
+    },
+    {
+      "source": "03_Bloc_3_Pipelines/Preuves/Collecte_TASS/Docker_cycle.json",
+      "published": "bloc3_pipeline/verification/Docker_cycle.json",
+      "source_sha256": "a0f8d471d4de001b685625e2e0e06f8fa4f8da672e35fed9bc3b69c81874ec5b",
+      "published_sha256": "a0f8d471d4de001b685625e2e0e06f8fa4f8da672e35fed9bc3b69c81874ec5b",
+      "account_and_paths_redacted": true
     }
   ],
   "source_code_sha256": {

@@ -45,6 +45,8 @@ Benchmark_chiffre.json contient 18 mesures sur APFS AES-256, trois répétitions
 
 Date, durée observée et observateur : à renseigner. Clarté, choix techniques, réponses, écoute, regard/posture, respect du jury, supports et temps : à observer. Actions d’amélioration : à renseigner. Ne pas compléter fictivement cette fiche.
 
-## Cycle de verrouillage restant
+## Verrouillage et relance effectivement observés
 
-L’arrêt et la relance du service ont été observés. Le démontage normal est refusé car Docker garde des fichiers B4 ouverts sur le volume. Le cycle complet reste à vérifier ; aucune fermeture forcée ni interruption des autres conteneurs n’a été effectuée.
+Cycle_volume_chiffre.json atteste arrêt sans collecte active, démontage normal, refus du démarrage strict, absence d’état de remplacement en clair, puis déverrouillage personnel et relance. Les comptes, empreintes des tables et exports ainsi que l’intégrité du principal et du secours sont identiques. Le mot de passe n’est jamais dans le code ou les preuves. Cette observation technique ne constitue pas une répétition orale.
+
+Docker a été arrêté temporairement avec l’autorisation de l’utilisateur, puis redémarré. Les 40 conteneurs précédemment actifs sont remis en service et tous ceux auparavant sains retrouvent cet état. Le contrôle porte sur leurs statuts, sans audit fonctionnel des autres applications. Preuve : Docker_cycle.json. Aucun démontage forcé.
