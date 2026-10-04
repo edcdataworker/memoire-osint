@@ -1,0 +1,556 @@
+[
+  {
+    "id": "B3-1.1",
+    "bloc": 3,
+    "source": "Bloc 3!A6",
+    "critere_exact": "1.1 - Indicateur relatif au temps nécessaire pour que le pipeline traite un ensemble de données spécifique. Cet indicateur peut être quantifié en termes de temps (par exemple, minutes, secondes) ou de taux (par exemple, lignes de données traitées par seconde).",
+    "critere_normalise": "1.1 - Indicateur relatif au temps nécessaire pour que le pipeline traite un ensemble de données spécifique. Cet indicateur peut être quantifié en termes de temps (par exemple, minutes, secondes) ou de taux (par exemple, lignes de données traitées par seconde).",
+    "oral": false,
+    "statut": "testé",
+    "existant": "Neuf mesures bout en bout sur 100, 1 000 et 2 000 articles fictifs de tailles variées ; durées par étape, débit, volumes et dispersion.",
+    "preuves": [
+      "verification/Benchmark_collecteur.json",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Poste partagé, trois passages par taille ; performances du volume chiffré non mesurées.",
+    "prochaine_action": "Calibrer les seuils sur le poste et la charge d’exploitation."
+  },
+  {
+    "id": "B3-1.2",
+    "bloc": 3,
+    "source": "Bloc 3!A7",
+    "critere_exact": "1.2 - Indicateur relatif à la manière dont le pipeline gère les erreurs. Par exemple, le pipeline peut-il continuer à fonctionner en cas d'erreur dans une partie spécifique du flux de données ? Le pipeline dispose-t-il de mécanismes pour signaler les erreurs ? Les erreurs sont-elles enregistrées pour un examen futur ?",
+    "critere_normalise": "1.2 - Indicateur relatif à la manière dont le pipeline gère les erreurs. Par exemple, le pipeline peut-il continuer à fonctionner en cas d'erreur dans une partie spécifique du flux de données ? Le pipeline dispose-t-il de mécanismes pour signaler les erreurs ? Les erreurs sont-elles enregistrées pour un examen futur ?",
+    "oral": false,
+    "statut": "testé",
+    "existant": "Erreurs réseau bornées, rejet isolé, blocage qualité, journalisation et maintien de la dernière publication valide.",
+    "preuves": [
+      "verification/Tests_collecte_final.log",
+      "verification/Tests_pipeline_final.log",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Une erreur permanente demande une correction ; aucune alerte externe.",
+    "prochaine_action": "Expliquer rejet isolable et panne bloquante."
+  },
+  {
+    "id": "B3-1.3",
+    "bloc": 3,
+    "source": "Bloc 3!A8",
+    "critere_exact": "1.3 - Indicateur relatif à la précision des données traitées par le pipeline. Par exemple, les données sont-elles correctement transformées selon les spécifications ? Les résultats du pipeline sont-ils tels qu'attendus ?",
+    "critere_normalise": "1.3 - Indicateur relatif à la précision des données traitées par le pipeline. Par exemple, les données sont-elles correctement transformées selon les spécifications ? Les résultats du pipeline sont-ils tels qu'attendus ?",
+    "oral": false,
+    "statut": "testé",
+    "existant": "Contrat JSON/JSONL, normalisation, date UTC, ID, URL et hash vérifiés ; 20 extractions TASS bornées.",
+    "preuves": [
+      "verification/Tests_collecte_final.log",
+      "verification/Tests_pipeline_final.log",
+      "verification/Reseau_final.json",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Exactitude technique du texte, sans vérification factuelle de TASS.",
+    "prochaine_action": "Montrer le hash du texte et ses offsets Unicode."
+  },
+  {
+    "id": "B3-1.4",
+    "bloc": 3,
+    "source": "Bloc 3!A9",
+    "critere_exact": "1.4 - Indicateur relatif à la capacité du pipeline à gérer des variations dans les volumes de données, les formats de données ou les sources de données. Le pipeline peut-il s'adapter à des volumes de données plus importants sans ralentissement significatif ? Le pipeline peut-il traiter des formats de données variés ?",
+    "critere_normalise": "1.4 - Indicateur relatif à la capacité du pipeline à gérer des variations dans les volumes de données, les formats de données ou les sources de données. Le pipeline peut-il s'adapter à des volumes de données plus importants sans ralentissement significatif ? Le pipeline peut-il traiter des formats de données variés ?",
+    "oral": false,
+    "statut": "testé",
+    "existant": "100, 1 000 et 2 000 articles de trois tailles ; JSON, JSONL et source HTML séparés en modules.",
+    "preuves": [
+      "verification/Benchmark_collecteur.json",
+      "verification/Tests_pipeline_final.log",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Le débit diminue avec le volume ; absence de ralentissement significatif non établie. Le collecteur reste borné à 2 000 candidats.",
+    "prochaine_action": "Expliquer les limites de débit et de pagination sans extrapoler."
+  },
+  {
+    "id": "B3-1.5",
+    "bloc": 3,
+    "source": "Bloc 3!A10",
+    "critere_exact": "1.5 - Indicateur relatif à la redondance du pipeline. Y a-t-il des mesures de redondance en place pour s'assurer que le pipeline continue de fonctionner en cas de défaillance d'un de ses composants ?",
+    "critere_normalise": "1.5 - Indicateur relatif à la redondance du pipeline. Y a-t-il des mesures de redondance en place pour s'assurer que le pipeline continue de fonctionner en cas de défaillance d'un de ses composants ?",
+    "oral": false,
+    "statut": "testé",
+    "existant": "Copie SQLite vérifiée après publication ; basculement en lecture, exports disponibles et écritures interdites ; restauration explicite.",
+    "preuves": [
+      "verification/Verification_HTTP.json",
+      "verification/Tests_cloture_final.log",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Même Mac et même volume ; panne du poste ou du volume non couverte.",
+    "prochaine_action": "Montrer le mode de secours et sa date."
+  },
+  {
+    "id": "B3-2.1",
+    "bloc": 3,
+    "source": "Bloc 3!A11",
+    "critere_exact": "2.1 - Indicateur relatif à l'automatisation de la collecte des données. Le pipeline est-il programmé pour collecter les données à des moments spécifiques ou répond-il à certains déclencheurs pour collecter les données ?",
+    "critere_normalise": "2.1 - Indicateur relatif à l'automatisation de la collecte des données. Le pipeline est-il programmé pour collecter les données à des moments spécifiques ou répond-il à certains déclencheurs pour collecter les données ?",
+    "oral": false,
+    "statut": "testé",
+    "existant": "Déclencheur UI produit un job durable ; ordonnanceur historique également rejoué par les tests.",
+    "preuves": [
+      "verification/Verification_HTTP.json",
+      "verification/Tests_pipeline_final.log",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Collecte réseau déclenchée manuellement ; aucun service système périodique installé.",
+    "prochaine_action": "Montrer déclencheur, paramètres et UUID."
+  },
+  {
+    "id": "B3-2.2",
+    "bloc": 3,
+    "source": "Bloc 3!A12",
+    "critere_exact": "2.2 - Indicateur relatif à l'automatisation du traitement des données. Le pipeline est-il capable de traiter automatiquement les données une fois collectées, sans intervention manuelle ?",
+    "critere_normalise": "2.2 - Indicateur relatif à l'automatisation du traitement des données. Le pipeline est-il capable de traiter automatiquement les données une fois collectées, sans intervention manuelle ?",
+    "oral": false,
+    "statut": "testé",
+    "existant": "Découverte, extraction, normalisation, contrôle, transaction et export sans action intermédiaire.",
+    "preuves": [
+      "verification/Tests_collecte_final.log",
+      "verification/Verification_HTTP.json",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Intervention nécessaire pour changer périmètre ou corriger la source.",
+    "prochaine_action": "Suivre le parcours d’un article dans le schéma."
+  },
+  {
+    "id": "B3-2.3",
+    "bloc": 3,
+    "source": "Bloc 3!A13",
+    "critere_exact": "2.3 - Indicateur relatif à l'automatisation de la mise à jour des données. Le pipeline est-il capable de mettre à jour automatiquement les données dans les bases de données ou autres systèmes de stockage de données ?",
+    "critere_normalise": "2.3 - Indicateur relatif à l'automatisation de la mise à jour des données. Le pipeline est-il capable de mettre à jour automatiquement les données dans les bases de données ou autres systèmes de stockage de données ?",
+    "oral": false,
+    "statut": "testé",
+    "existant": "Publication automatique après qualité ; rejeu idempotent ; import B2 explicite et décisions de droits persistantes.",
+    "preuves": [
+      "verification/Tests_collecte_final.log",
+      "verification/Droits_B3_B2.json",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Import B2 lancé par l’opérateur après validation ; écritures bloquées en secours.",
+    "prochaine_action": "Montrer nouveau, modifié et inchangé."
+  },
+  {
+    "id": "B3-2.4",
+    "bloc": 3,
+    "source": "Bloc 3!A14",
+    "critere_exact": "2.4 - Indicateur relatif à l'automatisation de la surveillance des performances du pipeline et à la mise en place d'alertes en cas d'erreurs ou de problèmes. Le système a-t-il des mécanismes pour surveiller automatiquement les performances du pipeline et envoyer des alertes en cas de problèmes ?",
+    "critere_normalise": "2.4 - Indicateur relatif à l'automatisation de la surveillance des performances du pipeline et à la mise en place d'alertes en cas d'erreurs ou de problèmes. Le système a-t-il des mécanismes pour surveiller automatiquement les performances du pipeline et envoyer des alertes en cas de problèmes ?",
+    "oral": false,
+    "statut": "testé",
+    "existant": "Superviseur, événements par étape, seuil de lenteur configurable, permissions contrôlées toutes les cinq secondes et intégrité du catalogue.",
+    "preuves": [
+      "verification/Tests_collecte_final.log",
+      "verification/Tests_cloture_final.log",
+      "verification/Verification_HTTP.json",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Alertes locales ; seuil choisi sans SLA validé.",
+    "prochaine_action": "Expliquer les trois alertes et leur procédure de traitement."
+  },
+  {
+    "id": "B3-2.5",
+    "bloc": 3,
+    "source": "Bloc 3!A15",
+    "critere_exact": "2.5 - Indicateur relatif à l'automatisation de la récupération après erreur. En cas d'échec ou d'erreur, le pipeline est-il capable de reprendre automatiquement là où il s'est arrêté, sans intervention manuelle ?\n",
+    "critere_normalise": "2.5 - Indicateur relatif à l'automatisation de la récupération après erreur. En cas d'échec ou d'erreur, le pipeline est-il capable de reprendre automatiquement là où il s'est arrêté, sans intervention manuelle ?",
+    "oral": false,
+    "statut": "testé",
+    "existant": "Destruction réelle d’un worker et reprise automatique aux checkpoints durables ; pause volontaire et reprise UI distinctes.",
+    "preuves": [
+      "verification/Tests_collecte_final.log",
+      "verification/Tests_pipeline_final.log",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Le superviseur doit fonctionner ; une pause volontaire nécessite Reprendre.",
+    "prochaine_action": "Distinguer reprise autonome et restauration administrateur."
+  },
+  {
+    "id": "B3-3.1",
+    "bloc": 3,
+    "source": "Bloc 3!A16",
+    "critere_exact": "3.1 - Indicateur relatif à la présence d'outils de suivi des performances dans le pipeline. Le candidat a-t-il intégré des outils de monitoring qui peuvent fournir des informations en temps réel sur le fonctionnement du pipeline ?",
+    "critere_normalise": "3.1 - Indicateur relatif à la présence d'outils de suivi des performances dans le pipeline. Le candidat a-t-il intégré des outils de monitoring qui peuvent fournir des informations en temps réel sur le fonctionnement du pipeline ?",
+    "oral": false,
+    "statut": "testé",
+    "existant": "Suivi HTTP actualisé chaque seconde ; compteurs, étape, événements et secours visibles pendant la démonstration.",
+    "preuves": [
+      "verification/Verification_HTTP.json",
+      "verification/Video_cloture.json",
+      "verification/Cloture_suivi.png",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Suivi local sur le poste ; aucune exploitation distante démontrée.",
+    "prochaine_action": "Montrer la vidéo actuelle."
+  },
+  {
+    "id": "B3-3.2",
+    "bloc": 3,
+    "source": "Bloc 3!A17",
+    "critere_exact": "3.2 - Indicateur relatif à la variété des métriques de performance suivies. Les outils de monitoring suivent-ils une gamme suffisamment large de métriques pour donner une image complète des performances du pipeline (temps de traitement, volume de données traitées, erreurs, latence, etc.) ?\n",
+    "critere_normalise": "3.2 - Indicateur relatif à la variété des métriques de performance suivies. Les outils de monitoring suivent-ils une gamme suffisamment large de métriques pour donner une image complète des performances du pipeline (temps de traitement, volume de données traitées, erreurs, latence, etc.) ?",
+    "oral": false,
+    "statut": "testé",
+    "existant": "Découverts, téléchargés, validés, rejets, nouveautés, modifications, durée, débit, tentatives, fraîcheur, backend et sécurité.",
+    "preuves": [
+      "verification/Benchmark_collecteur.json",
+      "verification/Verification_HTTP.json",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Débit UI calculé sur work_s ; benchmark bout en bout séparé.",
+    "prochaine_action": "Préciser unités et périmètre de chaque durée."
+  },
+  {
+    "id": "B3-3.3",
+    "bloc": 3,
+    "source": "Bloc 3!A18",
+    "critere_exact": "3.3 - Indicateur relatif à la facilité d'accès aux informations de suivi des performances. Les informations de performance sont-elles présentées de manière claire et facilement accessible pour les parties prenantes ?",
+    "critere_normalise": "3.3 - Indicateur relatif à la facilité d'accès aux informations de suivi des performances. Les informations de performance sont-elles présentées de manière claire et facilement accessible pour les parties prenantes ?",
+    "oral": false,
+    "statut": "testé",
+    "existant": "Trois vues locales, incident en français et journaux lisibles ; 147 états responsive, dialogue et agrandissement CSS.",
+    "preuves": [
+      "verification/Responsive_final.json",
+      "verification/Cloture_mobile.png",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Chrome macOS seulement ; pas d’étude utilisateur ni comptes multiutilisateurs.",
+    "prochaine_action": "Recueillir un retour métier si ouverture à d’autres analystes."
+  },
+  {
+    "id": "B3-3.4",
+    "bloc": 3,
+    "source": "Bloc 3!A19",
+    "critere_exact": "3.4 - Indicateur relatif à la capacité des outils de monitoring à signaler proactivement les problèmes. Les outils de monitoring sont-ils configurés pour alerter en cas de dégradation des performances ou d'erreurs ?",
+    "critere_normalise": "3.4 - Indicateur relatif à la capacité des outils de monitoring à signaler proactivement les problèmes. Les outils de monitoring sont-ils configurés pour alerter en cas de dégradation des performances ou d'erreurs ?",
+    "oral": false,
+    "statut": "testé",
+    "existant": "Franchissement SLOW_ARTICLE, permissions trop larges confinées et perte d’intégrité signalée ; récupération affichée.",
+    "preuves": [
+      "verification/Tests_cloture_final.log",
+      "verification/Incident_simule.json",
+      "verification/Verification_HTTP.json",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Les seuils sont configurables ; aucune notification réglementaire automatique.",
+    "prochaine_action": "Montrer incident, confinement puis état restauré."
+  },
+  {
+    "id": "B3-3.5",
+    "bloc": 3,
+    "source": "Bloc 3!A20",
+    "critere_exact": "3.5 - Indicateur relatif à la capacité des outils de monitoring à s'adapter à l'évolution des besoins. Les outils de monitoring peuvent-ils être facilement modifiés ou étendus pour suivre de nouvelles métriques si nécessaire ?",
+    "critere_normalise": "3.5 - Indicateur relatif à la capacité des outils de monitoring à s'adapter à l'évolution des besoins. Les outils de monitoring peuvent-ils être facilement modifiés ou étendus pour suivre de nouvelles métriques si nécessaire ?",
+    "oral": false,
+    "statut": "testé",
+    "existant": "Instrumentation stage_duration pour découverte, téléchargement et publication ; seuil slow_article_seconds exposé en CLI.",
+    "preuves": [
+      "verification/Benchmark_collecteur.json",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "L’ajout de nouvelles métriques demeure une modification de code.",
+    "prochaine_action": "Lire le mode d’emploi pour l’ajout d’une métrique."
+  },
+  {
+    "id": "B3-4.1",
+    "bloc": 3,
+    "source": "Bloc 3!A21",
+    "critere_exact": "4.1 - Indicateur relatif à l'organisation du code. Le code du candidat est-il bien structuré, divisé en fonctions et modules clairs, avec une séparation appropriée des préoccupations ?",
+    "critere_normalise": "4.1 - Indicateur relatif à l'organisation du code. Le code du candidat est-il bien structuré, divisé en fonctions et modules clairs, avec une séparation appropriée des préoccupations ?",
+    "oral": false,
+    "statut": "testé",
+    "existant": "Modules source, store, worker, service, rights, security, resilience et volume séparés ; pipeline fichier conservé.",
+    "preuves": [
+      "verification/Lint_final.log",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Bibliothèque standard POSIX ; volume natif macOS seulement.",
+    "prochaine_action": "Présenter responsabilités et points d’entrée."
+  },
+  {
+    "id": "B3-4.2",
+    "bloc": 3,
+    "source": "Bloc 3!A22",
+    "critere_exact": "4.2 - Indicateur relatif à la présence et à la qualité des commentaires dans le code. Le code du candidat est-il accompagné de commentaires expliquant le fonctionnement des fonctions clés et des sections de code complexes ?",
+    "critere_normalise": "4.2 - Indicateur relatif à la présence et à la qualité des commentaires dans le code. Le code du candidat est-il accompagné de commentaires expliquant le fonctionnement des fonctions clés et des sections de code complexes ?",
+    "oral": false,
+    "statut": "testé",
+    "existant": "Commentaires des transactions, registre prioritaire, purge, copie cohérente et restauration avant exposition.",
+    "preuves": [
+      "verification/Lint_final.log",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Commentaires techniques relus, sans revue humaine indépendante observée.",
+    "prochaine_action": "Relire les mécanismes à défendre avant l’oral."
+  },
+  {
+    "id": "B3-4.3",
+    "bloc": 3,
+    "source": "Bloc 3!A23",
+    "critere_exact": "4.3 - Indicateur relatif à la facilité de lecture et de compréhension du code. Le code est-il écrit de manière claire et compréhensible, en utilisant des noms de variables et de fonctions significatifs ?",
+    "critere_normalise": "4.3 - Indicateur relatif à la facilité de lecture et de compréhension du code. Le code est-il écrit de manière claire et compréhensible, en utilisant des noms de variables et de fonctions significatifs ?",
+    "oral": false,
+    "statut": "testé",
+    "existant": "Noms de champs OSINT, commandes explicites, interface en français et erreurs localisées.",
+    "preuves": [
+      "verification/Lint_final.log",
+      "verification/Responsive_final.json",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Certains identifiants internes restent en anglais.",
+    "prochaine_action": "Expliquer ces identifiants dans le guide oral."
+  },
+  {
+    "id": "B3-4.4",
+    "bloc": 3,
+    "source": "Bloc 3!A24",
+    "critere_exact": "4.4 - Indicateur relatif à la présence et à la qualité de la documentation technique. Le candidat a-t-il fourni une documentation technique qui explique le fonctionnement du pipeline, la manière de le déployer, de le faire fonctionner, et éventuellement de le dépanner ?",
+    "critere_normalise": "4.4 - Indicateur relatif à la présence et à la qualité de la documentation technique. Le candidat a-t-il fourni une documentation technique qui explique le fonctionnement du pipeline, la manière de le déployer, de le faire fonctionner, et éventuellement de le dépanner ?",
+    "oral": false,
+    "statut": "testé",
+    "existant": "README, Collecte_TASS.md, plan PDF et guide oral actualisés ; CLI, migration, droits, restauration et limites documentés.",
+    "preuves": [
+      "verification/Livrables_final.json",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Le mot de passe doit être saisi personnellement dans Terminal.",
+    "prochaine_action": "Finaliser l’activation du volume puis répéter les commandes."
+  },
+  {
+    "id": "B3-4.5",
+    "bloc": 3,
+    "source": "Bloc 3!A25",
+    "critere_exact": "4.5 - Indicateur relatif à la conformité du code aux normes de codage et aux meilleures pratiques. Le code suit-il les conventions de style et les meilleures pratiques pour le langage de programmation utilisé ?",
+    "critere_normalise": "4.5 - Indicateur relatif à la conformité du code aux normes de codage et aux meilleures pratiques. Le code suit-il les conventions de style et les meilleures pratiques pour le langage de programmation utilisé ?",
+    "oral": false,
+    "statut": "testé",
+    "existant": "Ruff et suites Python/JavaScript ; CI GitHub de la version publiée suivie séparément.",
+    "preuves": [
+      "verification/Lint_final.log",
+      "verification/Tests_cloture_final.log",
+      "verification/Frontend_tests.log",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Contrôles proportionnés ; absence de preuve d’une norme de développement exhaustive.",
+    "prochaine_action": "Consulter Publication_GitHub.json pour le résultat de CI."
+  },
+  {
+    "id": "B3-5.1",
+    "bloc": 3,
+    "source": "Bloc 3!A26",
+    "critere_exact": "5.1 - Indicateur relatif à la capacité du candidat à présenter son travail de manière claire et concise. Le candidat organise-t-il ses idées de manière logique, utilise-t-il un langage clair et compréhensible, et fournit-il suffisamment de détails pour que le public puisse comprendre son travail ?\n",
+    "critere_normalise": "5.1 - Indicateur relatif à la capacité du candidat à présenter son travail de manière claire et concise. Le candidat organise-t-il ses idées de manière logique, utilise-t-il un langage clair et compréhensible, et fournit-il suffisamment de détails pour que le public puisse comprendre son travail ?",
+    "oral": true,
+    "statut": "prévu",
+    "existant": "Déroulé de cinq minutes, supports et réponses préparés dans Preparation_orale_Bloc3.md.",
+    "preuves": [
+      "verification/Video_cloture.json",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Aucune répétition personnelle ni prestation devant le jury observée.",
+    "prochaine_action": "Effectuer une répétition chronométrée et consigner les observations de ce critère."
+  },
+  {
+    "id": "B3-5.2",
+    "bloc": 3,
+    "source": "Bloc 3!A27",
+    "critere_exact": "5.2 - Indicateur relatif à la capacité du candidat à expliquer les raisons de ses choix techniques et opérationnels. Le candidat est-il capable d'expliquer pourquoi il a choisi une certaine technologie, une certaine structure pour le pipeline, ou une certaine méthode pour automatiser les flux de données ?",
+    "critere_normalise": "5.2 - Indicateur relatif à la capacité du candidat à expliquer les raisons de ses choix techniques et opérationnels. Le candidat est-il capable d'expliquer pourquoi il a choisi une certaine technologie, une certaine structure pour le pipeline, ou une certaine méthode pour automatiser les flux de données ?",
+    "oral": true,
+    "statut": "prévu",
+    "existant": "Déroulé de cinq minutes, supports et réponses préparés dans Preparation_orale_Bloc3.md.",
+    "preuves": [
+      "verification/Video_cloture.json",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Aucune répétition personnelle ni prestation devant le jury observée.",
+    "prochaine_action": "Effectuer une répétition chronométrée et consigner les observations de ce critère."
+  },
+  {
+    "id": "B3-5.3",
+    "bloc": 3,
+    "source": "Bloc 3!A28",
+    "critere_exact": "5.3 - Indicateur relatif à la capacité du candidat à répondre efficacement aux questions. Lorsqu'il est interrogé sur son travail, le candidat est-il capable de fournir des réponses claires, précises et convaincantes ?",
+    "critere_normalise": "5.3 - Indicateur relatif à la capacité du candidat à répondre efficacement aux questions. Lorsqu'il est interrogé sur son travail, le candidat est-il capable de fournir des réponses claires, précises et convaincantes ?",
+    "oral": true,
+    "statut": "prévu",
+    "existant": "Déroulé de cinq minutes, supports et réponses préparés dans Preparation_orale_Bloc3.md.",
+    "preuves": [
+      "verification/Video_cloture.json",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Aucune répétition personnelle ni prestation devant le jury observée.",
+    "prochaine_action": "Effectuer une répétition chronométrée et consigner les observations de ce critère."
+  },
+  {
+    "id": "B3-5.4",
+    "bloc": 3,
+    "source": "Bloc 3!A29",
+    "critere_exact": "5.4 - Indicateur relatif à la capacité du candidat à écouter attentivement les questions et les commentaires. Le candidat montre-t-il qu'il comprend les questions posées et qu'il est capable de répondre de manière pertinente ?",
+    "critere_normalise": "5.4 - Indicateur relatif à la capacité du candidat à écouter attentivement les questions et les commentaires. Le candidat montre-t-il qu'il comprend les questions posées et qu'il est capable de répondre de manière pertinente ?",
+    "oral": true,
+    "statut": "prévu",
+    "existant": "Déroulé de cinq minutes, supports et réponses préparés dans Preparation_orale_Bloc3.md.",
+    "preuves": [
+      "verification/Video_cloture.json",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Aucune répétition personnelle ni prestation devant le jury observée.",
+    "prochaine_action": "Effectuer une répétition chronométrée et consigner les observations de ce critère."
+  },
+  {
+    "id": "B3-5.5",
+    "bloc": 3,
+    "source": "Bloc 3!A30",
+    "critere_exact": "5.5 - Indicateur relatif à l'utilisation efficace de la communication non verbale. Le candidat utilise-t-il un contact visuel approprié, des gestes expressifs et une posture ouverte et engageante pendant sa présentation ?",
+    "critere_normalise": "5.5 - Indicateur relatif à l'utilisation efficace de la communication non verbale. Le candidat utilise-t-il un contact visuel approprié, des gestes expressifs et une posture ouverte et engageante pendant sa présentation ?",
+    "oral": true,
+    "statut": "prévu",
+    "existant": "Déroulé de cinq minutes, supports et réponses préparés dans Preparation_orale_Bloc3.md.",
+    "preuves": [
+      "verification/Video_cloture.json",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Aucune répétition personnelle ni prestation devant le jury observée.",
+    "prochaine_action": "Effectuer une répétition chronométrée et consigner les observations de ce critère."
+  },
+  {
+    "id": "B3-5.6",
+    "bloc": 3,
+    "source": "Bloc 3!A31",
+    "critere_exact": "5.6 - Le candidat interagit de manière respectueuse et professionnelle avec le jury, en faisant preuve d'écoute et en respectant les opinions des autres.",
+    "critere_normalise": "5.6 - Le candidat interagit de manière respectueuse et professionnelle avec le jury, en faisant preuve d'écoute et en respectant les opinions des autres.",
+    "oral": true,
+    "statut": "prévu",
+    "existant": "Déroulé de cinq minutes, supports et réponses préparés dans Preparation_orale_Bloc3.md.",
+    "preuves": [
+      "verification/Video_cloture.json",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Aucune répétition personnelle ni prestation devant le jury observée.",
+    "prochaine_action": "Effectuer une répétition chronométrée et consigner les observations de ce critère."
+  },
+  {
+    "id": "B3-5.7",
+    "bloc": 3,
+    "source": "Bloc 3!A32",
+    "critere_exact": "5.7 - Le candidat utilise efficacement des supports visuels pour aider à expliquer la solution d'IA. Ces supports sont clairs, bien organisés et ajoutent de la valeur à la présentation.",
+    "critere_normalise": "5.7 - Le candidat utilise efficacement des supports visuels pour aider à expliquer la solution d'IA. Ces supports sont clairs, bien organisés et ajoutent de la valeur à la présentation.",
+    "oral": true,
+    "statut": "prévu",
+    "existant": "Déroulé de cinq minutes, supports et réponses préparés dans Preparation_orale_Bloc3.md.",
+    "preuves": [
+      "verification/Video_cloture.json",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Aucune répétition personnelle ni prestation devant le jury observée.",
+    "prochaine_action": "Effectuer une répétition chronométrée et consigner les observations de ce critère."
+  },
+  {
+    "id": "B3-5.8",
+    "bloc": 3,
+    "source": "Bloc 3!A33",
+    "critere_exact": "5.8 - Le candidat respecte le temps imparti pour la présentation, couvrant tous les points importants sans se précipiter ou dépasser le temps alloué.",
+    "critere_normalise": "5.8 - Le candidat respecte le temps imparti pour la présentation, couvrant tous les points importants sans se précipiter ou dépasser le temps alloué.",
+    "oral": true,
+    "statut": "prévu",
+    "existant": "Déroulé de cinq minutes, supports et réponses préparés dans Preparation_orale_Bloc3.md.",
+    "preuves": [
+      "verification/Video_cloture.json",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Aucune répétition personnelle ni prestation devant le jury observée.",
+    "prochaine_action": "Effectuer une répétition chronométrée et consigner les observations de ce critère."
+  },
+  {
+    "id": "B3-6.1",
+    "bloc": 3,
+    "source": "Bloc 3!A34",
+    "critere_exact": "6.1 - Le pipeline de données n'utilise que les données personnelles nécessaires à l'objectif prévu et évite de collecter des données personnelles superflues.",
+    "critere_normalise": "6.1 - Le pipeline de données n'utilise que les données personnelles nécessaires à l'objectif prévu et évite de collecter des données personnelles superflues.",
+    "oral": false,
+    "statut": "testé",
+    "existant": "Champs utiles au texte/NER sélectionnés ; aucun contact de demandeur, texte ni mot-clé libre dans les audits ; conservation de six mois.",
+    "preuves": [
+      "verification/Tests_cloture_final.log",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Les textes publics peuvent contenir des personnes ; finalité, base légale et conservation du corpus restent à qualifier par le responsable.",
+    "prochaine_action": "Appliquer la gouvernance B1 à toute exploitation effective."
+  },
+  {
+    "id": "B3-6.2",
+    "bloc": 3,
+    "source": "Bloc 3!A35",
+    "critere_exact": "6.2 - Le pipeline de données intègre des mécanismes appropriés pour assurer la sécurité des données, tels que le cryptage des données, la gestion sécurisée des clés, la limitation de l'accès aux données, etc.",
+    "critere_normalise": "6.2 - Le pipeline de données intègre des mécanismes appropriés pour assurer la sécurité des données, tels que le cryptage des données, la gestion sécurisée des clés, la limitation de l'accès aux données, etc.",
+    "oral": false,
+    "statut": "implémenté",
+    "existant": "Volume AES-256 préparé, lanceur sans remplacement en clair, contrôle de permissions, HTTPS TASS et protection Host/CSRF.",
+    "preuves": [
+      "verification/Volume_chiffre.json",
+      "verification/Verification_HTTP.json",
+      "verification/Tests_cloture_final.log",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Activation et migration physiques en attente de la saisie personnelle du mot de passe. Le test de migration utilise un montage chiffré simulé.",
+    "prochaine_action": "Saisir le mot de passe dans Terminal et vérifier le rapport réel de migration."
+  },
+  {
+    "id": "B3-6.3",
+    "bloc": 3,
+    "source": "Bloc 3!A36",
+    "critere_exact": "6.3 - Le pipeline de données prévoit des mécanismes pour gérer les consentements des personnes concernées (si nécessaire) et pour répondre à leurs demandes d'exercer leurs droits en vertu du RGPD (accès, rectification, suppression, etc.).",
+    "critere_normalise": "6.3 - Le pipeline de données prévoit des mécanismes pour gérer les consentements des personnes concernées (si nécessaire) et pour répondre à leurs demandes d'exercer leurs droits en vertu du RGPD (accès, rectification, suppression, etc.).",
+    "oral": false,
+    "statut": "testé",
+    "existant": "Accès, rectification et suppression ; purge des anciennes versions, WAL, exports, copie et recollecte ; propagation B2 et réapplication en restauration.",
+    "preuves": [
+      "verification/Droits_B3_B2.json",
+      "verification/Tests_cloture_final.log",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Consentement/base légale à qualifier selon B1. Sources historiques, annotations, modèles et copies déjà sorties du périmètre nécessitent une coordination humaine.",
+    "prochaine_action": "Qualifier la demande et traiter les dépendances externes au collecteur."
+  },
+  {
+    "id": "B3-6.4",
+    "bloc": 3,
+    "source": "Bloc 3!A37",
+    "critere_exact": "6.4 - Le pipeline de données permet une traçabilité complète des traitements de données, y compris l'origine des données, les traitements effectués, les personnes ayant accès aux données, etc.",
+    "critere_normalise": "6.4 - Le pipeline de données permet une traçabilité complète des traitements de données, y compris l'origine des données, les traitements effectués, les personnes ayant accès aux données, etc.",
+    "oral": false,
+    "statut": "testé",
+    "existant": "Source/ID/date/hash/révision/job liés ; consultation, export et droits journalisés avec compte système, date, résultat et référence opaque.",
+    "preuves": [
+      "verification/Verification_HTTP.json",
+      "verification/Tests_cloture_final.log",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Le compte du serveur ne distingue pas plusieurs personnes partageant la même session ; accès direct aux fichiers non audité.",
+    "prochaine_action": "Conserver une session personnelle ou prévoir des comptes nominatifs avant ouverture multiutilisateur."
+  },
+  {
+    "id": "B3-6.5",
+    "bloc": 3,
+    "source": "Bloc 3!A38",
+    "critere_exact": "6.5 - Le pipeline de données intègre des mécanismes pour détecter, signaler et gérer les violations de données, conformément aux exigences du RGPD.",
+    "critere_normalise": "6.5 - Le pipeline de données intègre des mécanismes pour détecter, signaler et gérer les violations de données, conformément aux exigences du RGPD.",
+    "oral": false,
+    "statut": "testé",
+    "existant": "Exercice fictif : permissions et intégrité détectées, confinement, qualification documentée puis récupération et clôture technique.",
+    "preuves": [
+      "verification/Incident_simule.json",
+      "verification/Verification_HTTP.json",
+      "verification/Tests_cloture_final.log",
+      "verification/Version_finale.json"
+    ],
+    "ecart": "Exercice technique et dossier préparé ; appréciation du risque et décision réelle de notification relèvent du responsable.",
+    "prochaine_action": "Répéter personnellement la procédure B1 et ne pas assimiler toute alerte à une violation."
+  }
+]

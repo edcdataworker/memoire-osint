@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-04T18:30:14.084220+00:00",
+  "status": "pending_personal_password_entry",
+  "encrypted_volume": false,
+  "physical_migration_verified": false,
+  "implemented": "AES-256 APFS image preparation, strict launcher and verified offline migration",
+  "unit_migration": "Tests_cloture_final.log; encrypted-mount detection mocked in fixture test",
+  "current_plaintext_state_preserved": true,
+  "personal_action": "Choose and confirm password in native Terminal, then unlock image. Never send password in chat.",
+  "forensic_ssd_erasure_guaranteed": false
+}

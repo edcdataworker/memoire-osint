@@ -6,6 +6,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import html
 import json
 import ssl
+from datetime import datetime, timedelta, timezone
 from urllib.parse import parse_qs, urlparse
 
 from .storage import INDEX, decrypt, es, mongo, pg, secret, tombstones
@@ -91,6 +92,41 @@ class Handler(BaseHTTPRequestHandler):
         try:
             if url.path == "/api/status":
                 return self.send(200, metrics())
+            if url.path == "/api/articles":
+                query = parse_qs(url.query)
+                try:
+                    start = datetime.strptime(
+                        query.get("start", [""])[0], "%Y-%m-%d"
+                    ).replace(tzinfo=timezone.utc)
+                    end = datetime.strptime(
+                        query.get("end", [""])[0], "%Y-%m-%d"
+                    ).replace(tzinfo=timezone.utc) + timedelta(days=1)
+                    if start >= end:
+                        raise ValueError()
+                except ValueError:
+                    return self.send(400, {"error": "Invalid UTC date interval"})
+                denied = tombstones()
+                with pg("reader") as sql:
+                    rows = sql.execute(
+                        "SELECT article_id,published_at,content_sha256 FROM articles WHERE synthetic=false AND published_at>=%s AND published_at<%s ORDER BY published_at DESC LIMIT 1000",
+                        (start, end),
+                    ).fetchall()
+                return self.send(
+                    200,
+                    {
+                        "timezone": "UTC",
+                        "limit": 1000,
+                        "articles": [
+                            {
+                                "id": row[0],
+                                "published_at": row[1].isoformat(),
+                                "content_sha256": row[2],
+                            }
+                            for row in rows
+                            if row[0] not in denied
+                        ],
+                    },
+                )
             if url.path in ("/api/article", "/article"):
                 key = parse_qs(url.query).get("id", [""])[0]
                 if not key or not all(c.isalnum() or c in "-_" for c in key):

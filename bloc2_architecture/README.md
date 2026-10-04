@@ -1,6 +1,8 @@
 # Architecture commune du mémoire OSINT
 
-Bloc 2, version locale du 4 octobre 2026. Plateforme pédagogique pour une cellule de veille fictive. Elle stocke 21 676 articles TASS nettoyés, prépare les interfaces des blocs 3 et 4 et distingue systématiquement les données réelles des essais synthétiques.
+Version 1.1 du 4 octobre 2026. L’Observatoire B3 collecte par rubrique et dates UTC, publie un export figé puis importe dans B2. Le raccordement testé conserve 21 676 articles initiaux et ajoute 5 articles, soit 21 681 articles. Voir [la cartographie des copies et la reprise](docs/Collecte_stockages_securite.md).
+
+Bloc 2, version locale du 4 octobre 2026. Plateforme pédagogique pour une cellule de veille fictive. Elle stocke le corpus TASS enrichi, relie la collecte B3 et la restitution B4 et distingue systématiquement les données réelles des essais synthétiques.
 
 ## Livrables
 
@@ -8,13 +10,14 @@ Bloc 2, version locale du 4 octobre 2026. Plateforme pédagogique pour une cellu
 2. `docker-compose.yml`, `app/`, `sql/`, `mongo/`, `scripts/`, `tests/` : code exécutable.
 3. `Preuves/` : résultats des contrôles, mesures, captures et manifeste des versions.
 4. `Demonstration_locale_OSINT.mp4` : enregistrement du fonctionnement local, avec une panne simulée. Ce fichier ne prouve pas un hébergement de production externe.
-5. `Correspondance_criteres_Bloc2.csv` et `Preparation_orale_Bloc2.md` : correspondance des 28 critères et trame de cinq minutes.
+5. `Demonstration_raccordement_Observatoire.mp4` : import réel depuis le suivi B3, état final des stockages et limites. Journal : `Preuves/Raccordement_Observatoire.json`.
+6. `Correspondance_criteres_Bloc2.csv` et `Preparation_orale_Bloc2.md` : correspondance des 28 critères et trame de cinq minutes.
 
 ## Stockages et autorité
 
 PostgreSQL fait autorité pour les identifiants, sources, dates, empreintes, exécutions et suppressions. MongoDB conserve les documents chiffrés, avec un identifiant partagé et un validateur JSON. Une écriture MongoDB précède la transaction SQL et le point de reprise ; un lot interrompu se rejoue par remplacement et upsert. Une divergence doit être réconciliée avant indexation. Il n’existe pas de transaction distribuée entre les deux moteurs.
 
-Elasticsearch est un index dérivé, reconstructible depuis les identifiants SQL validés et les documents MongoDB. À ce stade il contient dates, identifiants, empreintes et texte chiffré. Les agrégations NER et la recherche par entités seront raccordées au bloc 4, après récupération ou entraînement du modèle. Aucune entité ni métrique de modèle n’est inventée.
+Elasticsearch est un index dérivé, reconstructible depuis les identifiants SQL validés et les documents MongoDB. À ce stade il contient dates, identifiants, empreintes et texte chiffré. L’index NER B4 distinct conserve 39 511 mentions sur le corpus initial. Les cinq articles ajoutés ne sont pas analysés dans la recette du raccordement. Les volumes techniques ne prouvent pas la qualité des prédictions.
 
 Le service HTTPS consulte SQL et MongoDB. En cas d’indisponibilité d’un de ces services, il peut lire un article depuis le dernier index Elasticsearch, avec l’état `degraded_index_snapshot`. Ce mode peut être moins frais ; il ne permet pas l’ingestion. Il ne protège pas contre une panne de Docker, de l’application ou du Mac.
 
@@ -98,7 +101,9 @@ Installer les dépendances utilitaires dans un environnement Python local : `pyt
 .venv/bin/python scripts/backup_restore.py restore-test .backups/FICHIER.enc
 ```
 
-La sauvegarde prend un verrou partagé avec l’ingestion. Les mutations administratives directes doivent être suspendues pendant cette fenêtre. Elle contient les deux bases et le registre de suppressions, chiffrés par AES-256-GCM. La restauration de contrôle cible uniquement `osint_restore_test`, réapplique aussi les suppressions plus récentes et vérifie les comptes. Elle ne remplace pas les bases de travail et ne rétablit pas automatiquement le service après perte de l’hôte. L’index doit être reconstruit depuis les autorités restaurées. La copie hors machine et l’automatisation quotidienne restent à mettre en place avant exploitation réelle.
+La sauvegarde prend un verrou partagé avec l’ingestion. Les mutations administratives directes doivent être suspendues pendant cette fenêtre. Elle contient les deux bases, leurs révisions et les registres de suppressions et de rectifications, chiffrés par AES-256-GCM. La restauration de contrôle cible uniquement `osint_restore_test`, réapplique aussi les suppressions plus récentes et vérifie les comptes. Elle ne remplace pas les bases de travail et ne rétablit pas automatiquement le service après perte de l’hôte. L’index doit être reconstruit depuis les autorités restaurées. La recette `Preuves/Collecte_TASS/restore.json` couvre les 21 681 articles et les suppressions. La recette de clôture B3 Droits_B3_B2.json vérifie aussi la réapplication d’une rectification puis d’une suppression après restauration, sur un identifiant fictif isolé. SQLite B3, ses exports et checkpoints ne sont pas inclus dans la sauvegarde B2. La copie hors machine et l’automatisation quotidienne restent à mettre en place avant exploitation réelle.
+
+Les révisions sont conservées dans `article_revisions` et `document_revisions`. Un article inchangé ne crée pas d’archive supplémentaire. L’API HTTPS authentifiée `/api/articles?start=YYYY-MM-DD&end=YYYY-MM-DD` sélectionne les dates de publication inclusives UTC ; elle retourne au plus 1 000 métadonnées, sans pagination. La migration additive `sql/02_revisions.sql` s’applique sans supprimer les volumes.
 
 Pour un droit portant sur un article identifié :
 
@@ -106,7 +111,7 @@ Pour un droit portant sur un article identifié :
 docker compose run --rm -T ops python -m osint.cli erase IDENTIFIANT
 ```
 
-L’API permet l’accès au document par identifiant après authentification. La suppression enregistre un identifiant dans le registre local, puis retire le document de MongoDB, Elasticsearch et PostgreSQL. Le registre empêche une réapparition à l’ingestion et masque le document dans le mode de lecture dégradé. Si une étape échoue, le registre reste actif et l’opération se rejoue. Les demandes réelles nécessitent identification et qualification selon le bloc 1. Les exports, annotations et modèles des prochains blocs devront être ajoutés à la procédure. Les fichiers sources historiques conservés hors de cette architecture ne sont pas purgés par cette commande.
+L’API permet l’accès au document par identifiant après authentification. La suppression enregistre un identifiant dans le registre local, puis retire le document courant et ses révisions de MongoDB et PostgreSQL, ainsi que sa copie Elasticsearch. Le registre empêche une réapparition à l’ingestion et masque le document dans le mode de lecture dégradé. Si une étape échoue, le registre reste actif et l’opération se rejoue. Les demandes réelles nécessitent identification et qualification selon le bloc 1. Le collecteur synchronise les exclusions et purge les versions et exports gérés. Les copies téléchargées hors du périmètre, les annotations et le modèle restent à traiter dans la procédure coordonnée. Les fichiers sources historiques conservés hors de cette architecture ne sont pas purgés par cette commande.
 
 Durées et objectifs proposés par le bloc 1 : corpus et modèles jusqu’à 12 mois après soutenance, journaux 6 mois, sauvegardes 30 jours, RTO 8 heures ouvrées et RPO 24 heures. Ce sont des choix à valider, pas des obligations générales ni des garanties déjà mesurées. Le script de sauvegarde seul n’exécute pas un calendrier de purge.
 

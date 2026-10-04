@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-04T18:33:33.705804+00:00",
+  "article_id": "rights-fixture-182ef3c6c4f345fe86a8628f8ed5f6ca",
+  "data": "fictional fixture",
+  "real_articles_deleted": 0,
+  "rectification_sql_mongo_index": true,
+  "encrypted_correction_ledger": true,
+  "old_versions_purged": true,
+  "original_reimport_keeps_correction": true,
+  "b2_restore_reapplies_correction": true,
+  "erasure_sql_mongo_index": true,
+  "reimport_blocked": true,
+  "b2_restore_reapplies_erasure": true
+}

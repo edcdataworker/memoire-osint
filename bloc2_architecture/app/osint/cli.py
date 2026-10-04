@@ -10,7 +10,18 @@ import uuid
 
 import requests
 from .ingest import ingest
-from .storage import CA, INDEX, es, mongo, pg, secret, tombstones
+from .storage import (
+    CA,
+    INDEX,
+    encrypt,
+    es,
+    mongo,
+    pg,
+    private_json,
+    rectifications,
+    secret,
+    tombstones,
+)
 
 
 def status():
@@ -156,9 +167,11 @@ def erase_locked(article_id):
     # Durable local suppression ledger is consulted even when SQL is down.
     # No raw personal text is stored in the ledger. Backups must reapply this ledger.
     denied = tombstones() | {article_id}
-    tmp = Path("/state/erasures.tmp")
-    tmp.write_text(json.dumps(sorted(denied)))
-    tmp.replace("/state/erasures.json")
+    private_json("/state/erasures.json", sorted(denied))
+    corrections = rectifications()
+    if article_id in corrections:
+        corrections.pop(article_id)
+        private_json("/state/rectifications.json", corrections)
     with pg() as sql:
         if not sql.execute("SELECT pg_try_advisory_lock(420026)").fetchone()[0]:
             raise RuntimeError("Retry erasure after ingestion")
@@ -168,6 +181,7 @@ def erase_locked(article_id):
         )
         sql.commit()
         mongo().documents.delete_one({"_id": article_id})
+        mongo().document_revisions.delete_many({"article_id": article_id})
         r = requests.delete(
             f"https://elasticsearch:9200/{INDEX}/_doc/{article_id}?refresh=true",
             auth=("osint_writer", secret("writer")),
@@ -176,13 +190,92 @@ def erase_locked(article_id):
         )
         if r.status_code not in (200, 404):
             r.raise_for_status()
+        sql.execute("DELETE FROM article_revisions WHERE article_id=%s", (article_id,))
         sql.execute("DELETE FROM articles WHERE article_id=%s", (article_id,))
         sql.execute(
             "UPDATE erasures SET status='complete' WHERE article_id=%s", (article_id,)
         )
+    invalidate_mentions(article_id)
     print(
         json.dumps(
             {"erased": article_id, "ledger": "persisted", "backup_replay": "required"}
+        )
+    )
+
+
+def invalidate_mentions(article_id):
+    response = requests.post(
+        "https://elasticsearch:9200/osint-entities-v1/_delete_by_query?conflicts=proceed&refresh=true",
+        auth=("osint_writer", secret("writer")),
+        verify=CA,
+        timeout=20,
+        json={"query": {"term": {"id": article_id}}},
+    )
+    if response.status_code != 404:
+        response.raise_for_status()
+
+
+def rectify(path, request_ref):
+    """Durable encrypted correction, then idempotent replay and stale-version purge."""
+    import re
+
+    if not re.fullmatch(r"[A-Za-z0-9_.:-]{1,80}", request_ref):
+        raise ValueError("Opaque request reference required")
+    rows = json.loads(Path(path).read_text())
+    if not isinstance(rows, list) or len(rows) != 1:
+        raise ValueError("Exactly one normalized corrected article required")
+    row = rows[0]
+    key = str(row["id"])
+    if key in tombstones():
+        raise ValueError("Erased article cannot be rectified")
+    with Path("/state/erasures.lock").open("a") as gate:
+        fcntl.flock(gate, fcntl.LOCK_EX)
+        with pg() as sql:
+            if not sql.execute("SELECT pg_try_advisory_lock(420026)").fetchone()[0]:
+                raise RuntimeError("Retry after ingestion")
+            if not sql.execute(
+                "SELECT 1 FROM articles WHERE article_id=%s", (key,)
+            ).fetchone():
+                raise ValueError("Article absent")
+            ciphertext, checksum = encrypt(row, key)
+            values = rectifications()
+            values[key] = {
+                "ciphertext": ciphertext,
+                "sha256": checksum,
+                "request_ref": request_ref,
+            }
+            private_json("/state/rectifications.json", values)
+        # Ingest acquires its own SQL advisory lock and consults the decision just stored.
+        ingest(path)
+        invalidate_mentions(key)
+        doc = mongo().documents.find_one({"_id": key})
+        es(
+            "PUT",
+            INDEX + "/_doc/" + key + "?refresh=true",
+            {
+                "article_id": key,
+                "published_at": doc["published_at"]
+                .replace(tzinfo=timezone.utc)
+                .isoformat(),
+                **{
+                    k: doc[k]
+                    for k in (
+                        "ciphertext",
+                        "content_sha256",
+                        "schema_version",
+                        "synthetic",
+                    )
+                },
+            },
+        )
+    print(
+        json.dumps(
+            {
+                "rectified": key,
+                "request_ref": request_ref,
+                "old_versions_purged": True,
+                "stale_mentions_removed": True,
+            }
         )
     )
 
@@ -199,6 +292,9 @@ def main():
         sub.add_parser(name)
     e = sub.add_parser("erase")
     e.add_argument("id")
+    correction = sub.add_parser("rectify")
+    correction.add_argument("--file", required=True)
+    correction.add_argument("--request-ref", required=True)
     args = parser.parse_args()
     if args.cmd == "ingest":
         ingest(args.file, args.synthetic, args.fail_after, args.resume)
@@ -210,6 +306,8 @@ def main():
         index_corpus()
     elif args.cmd == "erase":
         erase(args.id)
+    elif args.cmd == "rectify":
+        rectify(args.file, args.request_ref)
 
 
 if __name__ == "__main__":

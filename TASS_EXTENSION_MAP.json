@@ -1,0 +1,329 @@
+{
+  "date": "2026-10-04",
+  "scope": "Local PRD extension source copies, no corpus, secrets or model; SOURCE_MAP.json retains original archive provenance",
+  "files": [
+    {
+      "path": "bloc2_architecture/scripts/verify_continuity.py",
+      "source": "02_Bloc_2_Architecture/scripts/verify_continuity.py",
+      "sha256": "29efcd9b0d68fecaa8bb962244ba2e114f609413eba462198153da4619b61932"
+    },
+    {
+      "path": "bloc2_architecture/scripts/benchmark.py",
+      "source": "02_Bloc_2_Architecture/scripts/benchmark.py",
+      "sha256": "0e677f0a40489c1e147af02d20ac349d68e13e65d24ad3bf6f91b7b4bbc36fcf"
+    },
+    {
+      "path": "bloc2_architecture/scripts/mongo-entrypoint.sh",
+      "source": "02_Bloc_2_Architecture/scripts/mongo-entrypoint.sh",
+      "sha256": "f25f1cea820d2e0dbfd42058c0af94562da932ee18e735047f575eeb25b01d71"
+    },
+    {
+      "path": "bloc2_architecture/scripts/postgres-entrypoint.sh",
+      "source": "02_Bloc_2_Architecture/scripts/postgres-entrypoint.sh",
+      "sha256": "6af5f29486f4e3318cee47e14044c8a208c3e0a730e07be30ddaa0c9a8482723"
+    },
+    {
+      "path": "bloc2_architecture/scripts/setup.py",
+      "source": "02_Bloc_2_Architecture/scripts/setup.py",
+      "sha256": "54b7b19573671acb0da3a85be34550ed2f93d9a25a3b47d926d97263502ac3e1"
+    },
+    {
+      "path": "bloc2_architecture/scripts/backup_restore.py",
+      "source": "02_Bloc_2_Architecture/scripts/backup_restore.py",
+      "sha256": "cd2ab14b6a357fbd5b0df798c3b3d7f1c751398fed4b4d44b700fd3a26098cf3"
+    },
+    {
+      "path": "bloc2_architecture/scripts/verify_lifecycle.py",
+      "source": "02_Bloc_2_Architecture/scripts/verify_lifecycle.py",
+      "sha256": "d05415f7b6eb3fd2ac32b80b9f8a2cc8ee873a09e23b60cf912534a76610864f"
+    },
+    {
+      "path": "bloc2_architecture/sql/02_revisions.sql",
+      "source": "02_Bloc_2_Architecture/sql/02_revisions.sql",
+      "sha256": "3c8d4b549fc714ae3a93f55aeb5cbc2d05638729a87b23329dcf67db8f4620f3"
+    },
+    {
+      "path": "bloc2_architecture/sql/pg_hba.conf",
+      "source": "02_Bloc_2_Architecture/sql/pg_hba.conf",
+      "sha256": "f023f31450811a01255c65b108cfc19f6d6da317e337d3d47479536a5fd788d1"
+    },
+    {
+      "path": "bloc2_architecture/sql/00_roles.sh",
+      "source": "02_Bloc_2_Architecture/sql/00_roles.sh",
+      "sha256": "21d330981e5fce0dcf0def8f894cc9736d65d4ccfe169c29e20af8862d253fc6"
+    },
+    {
+      "path": "bloc2_architecture/sql/01_schema.sql",
+      "source": "02_Bloc_2_Architecture/sql/01_schema.sql",
+      "sha256": "ee49c6506f1386263bb0ed26c38f5a9eeff478007dcb1c9f0acd7b60f6c27b57"
+    },
+    {
+      "path": "bloc2_architecture/mongo/init.js",
+      "source": "02_Bloc_2_Architecture/mongo/init.js",
+      "sha256": "31923a29f9e4fa9cb1da6441109c8a09964cbda6a88deb04499d04d0055497d5"
+    },
+    {
+      "path": "bloc2_architecture/tests/integration.py",
+      "source": "02_Bloc_2_Architecture/tests/integration.py",
+      "sha256": "b3ba51d7907fad43375481052ee51827a6e73cf06516e5be0e7f158f3202baf7"
+    },
+    {
+      "path": "bloc2_architecture/tests/collection.py",
+      "source": "02_Bloc_2_Architecture/tests/collection.py",
+      "sha256": "13a9ee8c0532167c1bffbd0b9492c8d456b0ba3af2ed9fdd843408e3ebf70b92"
+    },
+    {
+      "path": "bloc2_architecture/tests/collection_contract.py",
+      "source": "02_Bloc_2_Architecture/tests/collection_contract.py",
+      "sha256": "6d124eb83e697f82c89ea6df5d382160dfa5a04c97770b959c20315f5e35661b"
+    },
+    {
+      "path": "bloc2_architecture/app/requirements.txt",
+      "source": "02_Bloc_2_Architecture/app/requirements.txt",
+      "sha256": "be10514606f820dc676b6e4281a72cff82ba66a76ccdc02c160e7b3ea8b285be"
+    },
+    {
+      "path": "bloc2_architecture/app/Dockerfile",
+      "source": "02_Bloc_2_Architecture/app/Dockerfile",
+      "sha256": "42297174ba141373fa27afa94db54eb7a6cb436e7a136c9f21a1a6cdd0229137"
+    },
+    {
+      "path": "bloc2_architecture/app/osint/ingest.py",
+      "source": "02_Bloc_2_Architecture/app/osint/ingest.py",
+      "sha256": "2d1f372785e3d6b2446ff207d4f2499ae68f8e1c88e16e51c0ef297ec02a5fa7"
+    },
+    {
+      "path": "bloc2_architecture/app/osint/__init__.py",
+      "source": "02_Bloc_2_Architecture/app/osint/__init__.py",
+      "sha256": "76fed3b4029b7bb64a05b420b28ee6c21e05e8f10d19f15de24439570f0f07b6"
+    },
+    {
+      "path": "bloc2_architecture/app/osint/api.py",
+      "source": "02_Bloc_2_Architecture/app/osint/api.py",
+      "sha256": "f841b7d40ec110bdb337790bdc90c76e7ccf87bfe287d04b7955be85ad25fd34"
+    },
+    {
+      "path": "bloc2_architecture/app/osint/cli.py",
+      "source": "02_Bloc_2_Architecture/app/osint/cli.py",
+      "sha256": "bcf4b3e1e24ff781f1dfdb3ac4717b88b3cb4d24d96183932dd9a646d9452662"
+    },
+    {
+      "path": "bloc2_architecture/app/osint/storage.py",
+      "source": "02_Bloc_2_Architecture/app/osint/storage.py",
+      "sha256": "d782dc61bdecbdd4f77a8e582e0596cf9ddec9722168153cd2f9a050a135a113"
+    },
+    {
+      "path": "bloc2_architecture/README.md",
+      "source": "02_Bloc_2_Architecture/README.md",
+      "sha256": "8f3f404f3f46329e118d3489898fa52e71d2d33d71b82769303e52a1e2b23f87"
+    },
+    {
+      "path": "bloc2_architecture/docker-compose.yml",
+      "source": "02_Bloc_2_Architecture/docker-compose.yml",
+      "sha256": "c8afe2fc9a122c4f2553193b8d402c48c66c21ea0646ad8c5f7f22f556f864df"
+    },
+    {
+      "path": "bloc2_architecture/.gitignore",
+      "source": "02_Bloc_2_Architecture/.gitignore",
+      "sha256": "b007a71c2fc2bf3a7a77a4c1b4a0f14dd340ba17cc438776305f03c358ffea24"
+    },
+    {
+      "path": "bloc2_architecture/.env.example",
+      "source": "02_Bloc_2_Architecture/.env.example",
+      "sha256": "f02247b3a4fdc4e386bb403e273d60687700e16aa66b4f1d467c20cb884c1555"
+    },
+    {
+      "path": "bloc2_architecture/requirements-dev.txt",
+      "source": "02_Bloc_2_Architecture/requirements-dev.txt",
+      "sha256": "975b42cfddce281253679c9140291bbab62c9299b1f508b8e2a712ea2dec3bda"
+    },
+    {
+      "path": "bloc3_pipeline/tests/integration.py",
+      "source": "03_Bloc_3_Pipelines/tests/integration.py",
+      "sha256": "0862753664eda73317d4399dd310a2a1d829afcc73218d758e7b2a13c29750a0"
+    },
+    {
+      "path": "bloc3_pipeline/tests/collection.py",
+      "source": "03_Bloc_3_Pipelines/tests/collection.py",
+      "sha256": "331fbd68989b3c7df342e95b27d07088e717e6d2cf9b72afc539c1f958f58020"
+    },
+    {
+      "path": "bloc3_pipeline/tests/fixtures/articles_synthetiques.json",
+      "source": "03_Bloc_3_Pipelines/tests/fixtures/articles_synthetiques.json",
+      "sha256": "cbdc88656c7f969b51e52d63452bc282b4afde82b7ae97e9f0b92ec3889bad8f"
+    },
+    {
+      "path": "bloc3_pipeline/config/portable.json",
+      "source": "03_Bloc_3_Pipelines/config/portable.json",
+      "sha256": "2242e89ecca6f9686a42e5d99cd574578c146384fdb42d6c91af602236039aad"
+    },
+    {
+      "path": "bloc3_pipeline/config/docker.json",
+      "source": "03_Bloc_3_Pipelines/config/docker.json",
+      "sha256": "f9a340954bfcf8e35442bf9e01e968939c8cb5e38f221e7ea3785fce923ff593"
+    },
+    {
+      "path": "bloc3_pipeline/scripts/benchmark.py",
+      "source": "03_Bloc_3_Pipelines/scripts/benchmark.py",
+      "sha256": "94ebccb7ae2b8da0e6d55c99c33c0adfea93833487788851f4b6e8811c4d86e3"
+    },
+    {
+      "path": "bloc3_pipeline/scripts/build_plan.py",
+      "source": "03_Bloc_3_Pipelines/scripts/build_plan.py",
+      "sha256": "30568e9a6ffd721a50da56901b4ab5120341832d7e6c0a2f68b9eef25271c1a3"
+    },
+    {
+      "path": "bloc3_pipeline/scripts/capture_demo.py",
+      "source": "03_Bloc_3_Pipelines/scripts/capture_demo.py",
+      "sha256": "65c103beef72133fb1f352aedf39ad662f3d36c99d7fe215fdb220e084936d0e"
+    },
+    {
+      "path": "bloc3_pipeline/scripts/build_criteria.py",
+      "source": "03_Bloc_3_Pipelines/scripts/build_criteria.py",
+      "sha256": "40d3ddadfd78b6a983ea7e4e4e0fb89f3e97b1111c8c42fa3e94cdfd8f6e5ae3"
+    },
+    {
+      "path": "bloc3_pipeline/scripts/verify_collection_ui.cjs",
+      "source": "03_Bloc_3_Pipelines/scripts/verify_collection_ui.cjs",
+      "sha256": "bc979e1f758cd933638b4d592d7bfb761f97b007060e4bad73a013563d86de9d"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/worker.py",
+      "source": "03_Bloc_3_Pipelines/pipeline/worker.py",
+      "sha256": "a9d70451dc4a197c773dcd3944c195ed45b9b4f3e0ff48f2443384d42f6e3ccf"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/monitor.py",
+      "source": "03_Bloc_3_Pipelines/pipeline/monitor.py",
+      "sha256": "e9a842f33878dede901417a7ea87c3bb27bf91e1ff01580ff61eaadd477c8d2d"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/__init__.py",
+      "source": "03_Bloc_3_Pipelines/pipeline/__init__.py",
+      "sha256": "e6627eea550ecfe7a37bfd67cf8944d7660b0b01eea3796457f96f1a1952021a"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/common.py",
+      "source": "03_Bloc_3_Pipelines/pipeline/common.py",
+      "sha256": "c2779912811bffb50592c73b9e635f7c97c2585c291ac6fa4b3d7f2ab9525215"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/rights.py",
+      "source": "03_Bloc_3_Pipelines/pipeline/rights.py",
+      "sha256": "dd30b467df3b662fa48e6e69ac42912e5bebb2947032c5a4586dde26b18670fe"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/transform.py",
+      "source": "03_Bloc_3_Pipelines/pipeline/transform.py",
+      "sha256": "cb1b4969bacb05e75c26474e3a7b4367fd2eb3a7bf29cf6f9e9665b4654446ac"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/scheduler.py",
+      "source": "03_Bloc_3_Pipelines/pipeline/scheduler.py",
+      "sha256": "135103ad4d0f305a9907de083fb9168b1640d9eb9796ac74497271236076479c"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/source.py",
+      "source": "03_Bloc_3_Pipelines/pipeline/source.py",
+      "sha256": "43723463d1a40f3b683f75b8e71c59880489164382225bc33b0863ad951f6947"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/__main__.py",
+      "source": "03_Bloc_3_Pipelines/pipeline/__main__.py",
+      "sha256": "f1a1d4c28ac6b4d969ebee50744b8ddeb027a79e2e8516ee134f1aa04bd09da2"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/state.py",
+      "source": "03_Bloc_3_Pipelines/pipeline/state.py",
+      "sha256": "138a3f01cf3cb63c56d49a50d8c9fe34eed50b0324725cf8bb47176ea2056f22"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/publish.py",
+      "source": "03_Bloc_3_Pipelines/pipeline/publish.py",
+      "sha256": "0570a80e0019a85581f2bddbf7d67b53a0e40f7c74b8546caeab8b5bc509d2ce"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/collection/worker.py",
+      "source": "03_Bloc_3_Pipelines/pipeline/collection/worker.py",
+      "sha256": "5294a465d47ce670fed6bc7db12f72f2ec8993562a2fbfda0a1132f4ac71c825"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/collection/store.py",
+      "source": "03_Bloc_3_Pipelines/pipeline/collection/store.py",
+      "sha256": "f92b13a8f4a9fd97508b112be1df8f0c80c16194849e7b744eea2045e814b7a5"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/collection/service.py",
+      "source": "03_Bloc_3_Pipelines/pipeline/collection/service.py",
+      "sha256": "b9f6f74857789bad05e59dbe4ec7907342ef80c8a615ee240be07c67f8d6f474"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/collection/__init__.py",
+      "source": "03_Bloc_3_Pipelines/pipeline/collection/__init__.py",
+      "sha256": "59f0962850e6615718a924bc3f280e3024e15aeec0fe71f1e4220fb1a285e983"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/collection/source.py",
+      "source": "03_Bloc_3_Pipelines/pipeline/collection/source.py",
+      "sha256": "93568d14d32112138368550574f252ef7c3bd0a5d9a65e41a7ecebbd1d731016"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/collection/static/index.html",
+      "source": "03_Bloc_3_Pipelines/pipeline/collection/static/index.html",
+      "sha256": "6fa5fc436a63f2065f343df424bb8d7467e8aef57fe900eaf77961e2fc1db7e3"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/collection/static/style.css",
+      "source": "03_Bloc_3_Pipelines/pipeline/collection/static/style.css",
+      "sha256": "db99ba39914c42e92ac6f40f3f41544ff1379b5ff7a0f3ec3c89cfdaa49b6ef2"
+    },
+    {
+      "path": "bloc3_pipeline/README.md",
+      "source": "03_Bloc_3_Pipelines/README.md",
+      "sha256": "097fe885f6a6dc67576a567b597d1fa4ce2b3768f674a0f20da4a5e128838c87"
+    },
+    {
+      "path": "bloc3_pipeline/Lancer_Observatoire_TASS.command",
+      "source": "03_Bloc_3_Pipelines/Lancer_Observatoire_TASS.command",
+      "sha256": "a39fb86f75d24114577a6af5dbf6f59c15a39782c668663b70e2b9295b15bdc9"
+    },
+    {
+      "path": "bloc3_pipeline/pyproject.toml",
+      "source": "03_Bloc_3_Pipelines/pyproject.toml",
+      "sha256": "53b306125e7c4dd0466156948cd8b105f71a3c4c171a9697672478eefd3a3adf"
+    },
+    {
+      "path": "bloc3_pipeline/Dockerfile",
+      "source": "03_Bloc_3_Pipelines/Dockerfile",
+      "sha256": "5bb3330c75a7b77cdc2eea4fa93d69cfd35e9b66be9ee31c29bc055c73cd1808"
+    },
+    {
+      "path": "bloc3_pipeline/docker-compose.yml",
+      "source": "03_Bloc_3_Pipelines/docker-compose.yml",
+      "sha256": "153273d8c95f0b5f189875e20cb72dfa9927a0e06ce94503cfe851c01cc0a4c8"
+    },
+    {
+      "path": "bloc3_pipeline/.gitignore",
+      "source": "03_Bloc_3_Pipelines/.gitignore",
+      "sha256": "5da2d421fbac91973d6eb53c9e3248eed632bed9546616c2b93107771e7761c6"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/collection/static/app.js",
+      "source": "03_Bloc_3_Pipelines/pipeline/collection/static/app.js",
+      "sha256": "e03aceebaed652bd8b1c1a5d626a709810738f1a150fd124f98e3e4471b68fc1"
+    },
+    {
+      "path": "bloc3_pipeline/tests/frontend_recovery.cjs",
+      "source": "03_Bloc_3_Pipelines/tests/frontend_recovery.cjs",
+      "sha256": "04d8abb3df125495b2d38d09c56af8b20d42a20cce47ef40479bc378acc50dd4"
+    },
+    {
+      "path": "bloc3_pipeline/Collecte_TASS.md",
+      "source": "03_Bloc_3_Pipelines/Collecte_TASS.md",
+      "sha256": "4ae956aab7030f95765a19121cb80b447124526b014bb7aeea30dbcca73d1afb"
+    }
+  ],
+  "updated_at": "2026-10-04T16:38:05.519825+00:00",
+  "historical_snapshot": true,
+  "superseded_by": "FINALISATION_B3_MAP.json"
+}

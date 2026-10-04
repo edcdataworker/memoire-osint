@@ -1,0 +1,19 @@
+{
+  "mirror_backend": true,
+  "mirror_read_only": true,
+  "mirror_date": "2026-10-04T18:32:00.283882+00:00",
+  "security_incident_visible": true,
+  "start_blocked": true,
+  "resume_blocked": true,
+  "ingest-b2_blocked": true,
+  "fallback_export_five": true,
+  "csrf_blocked": true,
+  "host_blocked": true,
+  "article_readable": true,
+  "fallback_access_audited": true,
+  "offline_restored": true,
+  "fixture": "five fictional articles, real worker and HTTP service",
+  "job_id": "be463352-e0bb-4a3f-8321-27bcb89ed49e",
+  "rights_restore_tests": "Tests_cloture_final.log",
+  "oral_rehearsal_observed": false
+}

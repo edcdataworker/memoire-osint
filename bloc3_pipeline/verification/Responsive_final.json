@@ -1,0 +1,2319 @@
+{
+  "fixture": true,
+  "matrix": [
+    {
+      "width": 320,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 320,
+          "height": 900
+        },
+        "checked": 3,
+        "issues": []
+      }
+    },
+    {
+      "width": 320,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 320,
+          "height": 900
+        },
+        "checked": 1,
+        "issues": []
+      }
+    },
+    {
+      "width": 320,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 320,
+          "height": 900
+        },
+        "checked": 3,
+        "issues": []
+      }
+    },
+    {
+      "width": 320,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 320,
+          "height": 900
+        },
+        "checked": 2,
+        "issues": []
+      }
+    },
+    {
+      "width": 320,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 320,
+          "height": 900
+        },
+        "checked": 4,
+        "issues": []
+      }
+    },
+    {
+      "width": 320,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 320,
+          "height": 900
+        },
+        "checked": 6,
+        "issues": []
+      }
+    },
+    {
+      "width": 320,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "article_dialog",
+      "audit": {
+        "viewport": {
+          "width": 320,
+          "height": 900
+        },
+        "checked": 1,
+        "issues": []
+      }
+    },
+    {
+      "width": 390,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "checked": 3,
+        "issues": []
+      }
+    },
+    {
+      "width": 390,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "checked": 1,
+        "issues": []
+      }
+    },
+    {
+      "width": 390,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "checked": 3,
+        "issues": []
+      }
+    },
+    {
+      "width": 390,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "checked": 2,
+        "issues": []
+      }
+    },
+    {
+      "width": 390,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "checked": 4,
+        "issues": []
+      }
+    },
+    {
+      "width": 390,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "checked": 7,
+        "issues": []
+      }
+    },
+    {
+      "width": 390,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "article_dialog",
+      "audit": {
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "checked": 1,
+        "issues": []
+      }
+    },
+    {
+      "width": 560,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 560,
+          "height": 900
+        },
+        "checked": 4,
+        "issues": []
+      }
+    },
+    {
+      "width": 560,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 560,
+          "height": 900
+        },
+        "checked": 1,
+        "issues": []
+      }
+    },
+    {
+      "width": 560,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 560,
+          "height": 900
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 560,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 560,
+          "height": 900
+        },
+        "checked": 2,
+        "issues": []
+      }
+    },
+    {
+      "width": 560,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 560,
+          "height": 900
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 560,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 560,
+          "height": 900
+        },
+        "checked": 7,
+        "issues": []
+      }
+    },
+    {
+      "width": 560,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "article_dialog",
+      "audit": {
+        "viewport": {
+          "width": 560,
+          "height": 900
+        },
+        "checked": 1,
+        "issues": []
+      }
+    },
+    {
+      "width": 649,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 649,
+          "height": 900
+        },
+        "checked": 4,
+        "issues": []
+      }
+    },
+    {
+      "width": 649,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 649,
+          "height": 900
+        },
+        "checked": 3,
+        "issues": []
+      }
+    },
+    {
+      "width": 649,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 649,
+          "height": 900
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 649,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 649,
+          "height": 900
+        },
+        "checked": 2,
+        "issues": []
+      }
+    },
+    {
+      "width": 649,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 649,
+          "height": 900
+        },
+        "checked": 6,
+        "issues": []
+      }
+    },
+    {
+      "width": 649,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 649,
+          "height": 900
+        },
+        "checked": 7,
+        "issues": []
+      }
+    },
+    {
+      "width": 649,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "article_dialog",
+      "audit": {
+        "viewport": {
+          "width": 649,
+          "height": 900
+        },
+        "checked": 1,
+        "issues": []
+      }
+    },
+    {
+      "width": 650,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 650,
+          "height": 900
+        },
+        "checked": 4,
+        "issues": []
+      }
+    },
+    {
+      "width": 650,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 650,
+          "height": 900
+        },
+        "checked": 3,
+        "issues": []
+      }
+    },
+    {
+      "width": 650,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 650,
+          "height": 900
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 650,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 650,
+          "height": 900
+        },
+        "checked": 2,
+        "issues": []
+      }
+    },
+    {
+      "width": 650,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 650,
+          "height": 900
+        },
+        "checked": 6,
+        "issues": []
+      }
+    },
+    {
+      "width": 650,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 650,
+          "height": 900
+        },
+        "checked": 7,
+        "issues": []
+      }
+    },
+    {
+      "width": 650,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "article_dialog",
+      "audit": {
+        "viewport": {
+          "width": 650,
+          "height": 900
+        },
+        "checked": 1,
+        "issues": []
+      }
+    },
+    {
+      "width": 651,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 651,
+          "height": 900
+        },
+        "checked": 4,
+        "issues": []
+      }
+    },
+    {
+      "width": 651,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 651,
+          "height": 900
+        },
+        "checked": 4,
+        "issues": []
+      }
+    },
+    {
+      "width": 651,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 651,
+          "height": 900
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 651,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 651,
+          "height": 900
+        },
+        "checked": 2,
+        "issues": []
+      }
+    },
+    {
+      "width": 651,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 651,
+          "height": 900
+        },
+        "checked": 7,
+        "issues": []
+      }
+    },
+    {
+      "width": 651,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 651,
+          "height": 900
+        },
+        "checked": 8,
+        "issues": []
+      }
+    },
+    {
+      "width": 651,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "article_dialog",
+      "audit": {
+        "viewport": {
+          "width": 651,
+          "height": 900
+        },
+        "checked": 1,
+        "issues": []
+      }
+    },
+    {
+      "width": 700,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 700,
+          "height": 900
+        },
+        "checked": 4,
+        "issues": []
+      }
+    },
+    {
+      "width": 700,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 700,
+          "height": 900
+        },
+        "checked": 4,
+        "issues": []
+      }
+    },
+    {
+      "width": 700,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 700,
+          "height": 900
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 700,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 700,
+          "height": 900
+        },
+        "checked": 2,
+        "issues": []
+      }
+    },
+    {
+      "width": 700,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 700,
+          "height": 900
+        },
+        "checked": 7,
+        "issues": []
+      }
+    },
+    {
+      "width": 700,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 700,
+          "height": 900
+        },
+        "checked": 8,
+        "issues": []
+      }
+    },
+    {
+      "width": 700,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "article_dialog",
+      "audit": {
+        "viewport": {
+          "width": 700,
+          "height": 900
+        },
+        "checked": 1,
+        "issues": []
+      }
+    },
+    {
+      "width": 775,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 775,
+          "height": 900
+        },
+        "checked": 4,
+        "issues": []
+      }
+    },
+    {
+      "width": 775,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 775,
+          "height": 900
+        },
+        "checked": 4,
+        "issues": []
+      }
+    },
+    {
+      "width": 775,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 775,
+          "height": 900
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 775,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 775,
+          "height": 900
+        },
+        "checked": 2,
+        "issues": []
+      }
+    },
+    {
+      "width": 775,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 775,
+          "height": 900
+        },
+        "checked": 7,
+        "issues": []
+      }
+    },
+    {
+      "width": 775,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 775,
+          "height": 900
+        },
+        "checked": 8,
+        "issues": []
+      }
+    },
+    {
+      "width": 775,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "article_dialog",
+      "audit": {
+        "viewport": {
+          "width": 775,
+          "height": 900
+        },
+        "checked": 1,
+        "issues": []
+      }
+    },
+    {
+      "width": 849,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 849,
+          "height": 900
+        },
+        "checked": 4,
+        "issues": []
+      }
+    },
+    {
+      "width": 849,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 849,
+          "height": 900
+        },
+        "checked": 4,
+        "issues": []
+      }
+    },
+    {
+      "width": 849,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 849,
+          "height": 900
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 849,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 849,
+          "height": 900
+        },
+        "checked": 2,
+        "issues": []
+      }
+    },
+    {
+      "width": 849,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 849,
+          "height": 900
+        },
+        "checked": 7,
+        "issues": []
+      }
+    },
+    {
+      "width": 849,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 849,
+          "height": 900
+        },
+        "checked": 8,
+        "issues": []
+      }
+    },
+    {
+      "width": 849,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "article_dialog",
+      "audit": {
+        "viewport": {
+          "width": 849,
+          "height": 900
+        },
+        "checked": 1,
+        "issues": []
+      }
+    },
+    {
+      "width": 850,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 850,
+          "height": 900
+        },
+        "checked": 4,
+        "issues": []
+      }
+    },
+    {
+      "width": 850,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 850,
+          "height": 900
+        },
+        "checked": 4,
+        "issues": []
+      }
+    },
+    {
+      "width": 850,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 850,
+          "height": 900
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 850,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 850,
+          "height": 900
+        },
+        "checked": 2,
+        "issues": []
+      }
+    },
+    {
+      "width": 850,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 850,
+          "height": 900
+        },
+        "checked": 7,
+        "issues": []
+      }
+    },
+    {
+      "width": 850,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 850,
+          "height": 900
+        },
+        "checked": 8,
+        "issues": []
+      }
+    },
+    {
+      "width": 850,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "article_dialog",
+      "audit": {
+        "viewport": {
+          "width": 850,
+          "height": 900
+        },
+        "checked": 1,
+        "issues": []
+      }
+    },
+    {
+      "width": 851,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 851,
+          "height": 900
+        },
+        "checked": 4,
+        "issues": []
+      }
+    },
+    {
+      "width": 851,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 851,
+          "height": 900
+        },
+        "checked": 7,
+        "issues": []
+      }
+    },
+    {
+      "width": 851,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 851,
+          "height": 900
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 851,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 851,
+          "height": 900
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 851,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 851,
+          "height": 900
+        },
+        "checked": 7,
+        "issues": []
+      }
+    },
+    {
+      "width": 851,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 851,
+          "height": 900
+        },
+        "checked": 11,
+        "issues": []
+      }
+    },
+    {
+      "width": 851,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "article_dialog",
+      "audit": {
+        "viewport": {
+          "width": 851,
+          "height": 900
+        },
+        "checked": 1,
+        "issues": []
+      }
+    },
+    {
+      "width": 1024,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1024,
+          "height": 900
+        },
+        "checked": 4,
+        "issues": []
+      }
+    },
+    {
+      "width": 1024,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1024,
+          "height": 900
+        },
+        "checked": 7,
+        "issues": []
+      }
+    },
+    {
+      "width": 1024,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1024,
+          "height": 900
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 1024,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1024,
+          "height": 900
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 1024,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1024,
+          "height": 900
+        },
+        "checked": 8,
+        "issues": []
+      }
+    },
+    {
+      "width": 1024,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1024,
+          "height": 900
+        },
+        "checked": 11,
+        "issues": []
+      }
+    },
+    {
+      "width": 1024,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "article_dialog",
+      "audit": {
+        "viewport": {
+          "width": 1024,
+          "height": 900
+        },
+        "checked": 1,
+        "issues": []
+      }
+    },
+    {
+      "width": 1149,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1149,
+          "height": 900
+        },
+        "checked": 4,
+        "issues": []
+      }
+    },
+    {
+      "width": 1149,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1149,
+          "height": 900
+        },
+        "checked": 7,
+        "issues": []
+      }
+    },
+    {
+      "width": 1149,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1149,
+          "height": 900
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 1149,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1149,
+          "height": 900
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 1149,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1149,
+          "height": 900
+        },
+        "checked": 9,
+        "issues": []
+      }
+    },
+    {
+      "width": 1149,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1149,
+          "height": 900
+        },
+        "checked": 11,
+        "issues": []
+      }
+    },
+    {
+      "width": 1149,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "article_dialog",
+      "audit": {
+        "viewport": {
+          "width": 1149,
+          "height": 900
+        },
+        "checked": 1,
+        "issues": []
+      }
+    },
+    {
+      "width": 1150,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1150,
+          "height": 900
+        },
+        "checked": 4,
+        "issues": []
+      }
+    },
+    {
+      "width": 1150,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1150,
+          "height": 900
+        },
+        "checked": 7,
+        "issues": []
+      }
+    },
+    {
+      "width": 1150,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1150,
+          "height": 900
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 1150,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1150,
+          "height": 900
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 1150,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1150,
+          "height": 900
+        },
+        "checked": 9,
+        "issues": []
+      }
+    },
+    {
+      "width": 1150,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1150,
+          "height": 900
+        },
+        "checked": 11,
+        "issues": []
+      }
+    },
+    {
+      "width": 1150,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "article_dialog",
+      "audit": {
+        "viewport": {
+          "width": 1150,
+          "height": 900
+        },
+        "checked": 1,
+        "issues": []
+      }
+    },
+    {
+      "width": 1151,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1151,
+          "height": 900
+        },
+        "checked": 4,
+        "issues": []
+      }
+    },
+    {
+      "width": 1151,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1151,
+          "height": 900
+        },
+        "checked": 7,
+        "issues": []
+      }
+    },
+    {
+      "width": 1151,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1151,
+          "height": 900
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 1151,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1151,
+          "height": 900
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 1151,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1151,
+          "height": 900
+        },
+        "checked": 6,
+        "issues": []
+      }
+    },
+    {
+      "width": 1151,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1151,
+          "height": 900
+        },
+        "checked": 11,
+        "issues": []
+      }
+    },
+    {
+      "width": 1151,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "article_dialog",
+      "audit": {
+        "viewport": {
+          "width": 1151,
+          "height": 900
+        },
+        "checked": 1,
+        "issues": []
+      }
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "checked": 4,
+        "issues": []
+      }
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "checked": 7,
+        "issues": []
+      }
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "checked": 9,
+        "issues": []
+      }
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "checked": 11,
+        "issues": []
+      }
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "article_dialog",
+      "audit": {
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "checked": 1,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "checked": 4,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "checked": 7,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "checked": 9,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "checked": 11,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "css_zoom": 1,
+      "view": "article_dialog",
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "checked": 1,
+        "issues": []
+      }
+    },
+    {
+      "width": 1280,
+      "height": 450,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1280,
+          "height": 450
+        },
+        "checked": 3,
+        "issues": []
+      }
+    },
+    {
+      "width": 1280,
+      "height": 450,
+      "css_zoom": 1,
+      "view": "collecte",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1280,
+          "height": 450
+        },
+        "checked": 6,
+        "issues": []
+      }
+    },
+    {
+      "width": 1280,
+      "height": 450,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1280,
+          "height": 450
+        },
+        "checked": 3,
+        "issues": []
+      }
+    },
+    {
+      "width": 1280,
+      "height": 450,
+      "css_zoom": 1,
+      "view": "suivi",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1280,
+          "height": 450
+        },
+        "checked": 3,
+        "issues": []
+      }
+    },
+    {
+      "width": 1280,
+      "height": 450,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1280,
+          "height": 450
+        },
+        "checked": 4,
+        "issues": []
+      }
+    },
+    {
+      "width": 1280,
+      "height": 450,
+      "css_zoom": 1,
+      "view": "corpus",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1280,
+          "height": 450
+        },
+        "checked": 8,
+        "issues": []
+      }
+    },
+    {
+      "width": 1280,
+      "height": 450,
+      "css_zoom": 1,
+      "view": "article_dialog",
+      "audit": {
+        "viewport": {
+          "width": 1280,
+          "height": 450
+        },
+        "checked": 1,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "css_zoom": 1.25,
+      "view": "collecte",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "checked": 4,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "css_zoom": 1.25,
+      "view": "collecte",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "checked": 7,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "css_zoom": 1.25,
+      "view": "suivi",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "css_zoom": 1.25,
+      "view": "suivi",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "css_zoom": 1.25,
+      "view": "corpus",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "checked": 7,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "css_zoom": 1.25,
+      "view": "corpus",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "checked": 11,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "css_zoom": 1.25,
+      "view": "article_dialog",
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "checked": 1,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "css_zoom": 1.5,
+      "view": "collecte",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "checked": 3,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "css_zoom": 1.5,
+      "view": "collecte",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "checked": 6,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "css_zoom": 1.5,
+      "view": "suivi",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "css_zoom": 1.5,
+      "view": "suivi",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "checked": 3,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "css_zoom": 1.5,
+      "view": "corpus",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "checked": 5,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "css_zoom": 1.5,
+      "view": "corpus",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "checked": 10,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "css_zoom": 1.5,
+      "view": "article_dialog",
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "checked": 1,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "css_zoom": 2,
+      "view": "collecte",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "checked": 3,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "css_zoom": 2,
+      "view": "collecte",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "checked": 4,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "css_zoom": 2,
+      "view": "suivi",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "checked": 3,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "css_zoom": 2,
+      "view": "suivi",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "checked": 3,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "css_zoom": 2,
+      "view": "corpus",
+      "position": "top",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "checked": 3,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "css_zoom": 2,
+      "view": "corpus",
+      "position": "bottom",
+      "horizontal": false,
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "checked": 7,
+        "issues": []
+      }
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "css_zoom": 2,
+      "view": "article_dialog",
+      "audit": {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "checked": 1,
+        "issues": []
+      }
+    }
+  ],
+  "focus": "{\"focus\":\"BODY\",\"outline\":\"none\"}",
+  "zoom_method": "CSS body zoom, not native browser zoom",
+  "browser": "Chrome on macOS",
+  "scanner_limit": "Visible button geometry heuristic; other browsers not tested"
+}

@@ -5,6 +5,7 @@ from functools import lru_cache
 import hashlib
 import json
 import os
+import tempfile
 from pathlib import Path
 
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
@@ -14,6 +15,26 @@ import requests
 
 CA = "/run/secrets/ca.crt"
 INDEX = "osint-articles-v1"
+
+
+def private_json(path, value):
+    """Persist rights decisions before changing any store, with a private atomic file."""
+    path = Path(path)
+    fd, temporary = tempfile.mkstemp(dir=path.parent, prefix=".rights-")
+    try:
+        with os.fdopen(fd, "w") as stream:
+            json.dump(value, stream, ensure_ascii=False)
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(temporary, path)
+        directory = os.open(path.parent, os.O_RDONLY)
+        try:
+            os.fsync(directory)
+        finally:
+            os.close(directory)
+    finally:
+        if os.path.exists(temporary):
+            os.unlink(temporary)
 
 
 @lru_cache(maxsize=16)
@@ -87,3 +108,9 @@ def tombstones():
     if not path.exists():
         return set()
     return set(json.loads(path.read_text()))
+
+
+def rectifications():
+    """Correction payloads are encrypted with the existing data key and ID AAD."""
+    path = Path("/state/rectifications.json")
+    return json.loads(path.read_text()) if path.exists() else {}

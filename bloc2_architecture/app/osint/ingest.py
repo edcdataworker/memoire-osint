@@ -8,14 +8,19 @@ from pathlib import Path
 import time
 import uuid
 
-from pymongo import ReplaceOne
-from .storage import encrypt, mongo, pg, tombstones
+from pymongo import ReplaceOne, UpdateOne
+from .storage import decrypt, encrypt, mongo, pg, rectifications, tombstones
 
 
 def records(path=None, count=0):
     if path:
         data = json.loads(Path(path).read_text())
+        corrected = rectifications()
         for item in data:
+            if str(item["id"]) in corrected:
+                item = decrypt(
+                    corrected[str(item["id"])]["ciphertext"], str(item["id"])
+                )
             yield {
                 "id": str(item["id"]),
                 "source_id": item.get("source_id", "tass"),
@@ -174,6 +179,25 @@ def publish_batch(sql, db, batch, run_id, denied):
             )
         )
     if documents:
+        expected = {row[0]: row[3] for row in rows}
+        archives = []
+        # Archive before replacement. Replay uses setOnInsert and retains the first ciphertext.
+        for old in db.documents.find({"_id": {"$in": list(expected)}}):
+            if not old["synthetic"] and old["content_sha256"] != expected[old["_id"]]:
+                key = old["_id"]
+                archive = {
+                    **old,
+                    "_id": key + ":" + old["content_sha256"],
+                    "article_id": key,
+                }
+                archives.append(
+                    UpdateOne(
+                        {"_id": archive["_id"]}, {"$setOnInsert": archive}, upsert=True
+                    )
+                )
+        if archives:
+            db.document_revisions.bulk_write(archives, ordered=False)
+            db.document_revisions.create_index("article_id")
         db.documents.bulk_write(documents, ordered=False)
         # A staging COPY makes high-volume loading efficient, without disabling constraints.
         sql.execute(
@@ -182,7 +206,17 @@ def publish_batch(sql, db, batch, run_id, denied):
         with sql.cursor().copy("COPY ingest_batch FROM STDIN") as copy:
             for row in rows:
                 copy.write_row(row)
+        sql.execute("""INSERT INTO article_revisions
+                    (article_id,content_sha256,source_id,published_at,schema_version,run_id)
+                    SELECT a.article_id,a.content_sha256,a.source_id,a.published_at,a.schema_version,a.run_id
+                    FROM articles a JOIN ingest_batch b USING(article_id)
+                    WHERE a.synthetic=false AND a.content_sha256<>b.content_sha256
+                    ON CONFLICT DO NOTHING""")
         sql.execute("""INSERT INTO articles SELECT * FROM ingest_batch
                     ON CONFLICT(article_id) DO UPDATE SET content_sha256=excluded.content_sha256,
                     published_at=excluded.published_at,run_id=excluded.run_id,
                     schema_version=excluded.schema_version,synthetic=excluded.synthetic""")
+        corrected_ids = set(rectifications()) & set(expected)
+        for key in corrected_ids:
+            db.document_revisions.delete_many({"article_id": key})
+            sql.execute("DELETE FROM article_revisions WHERE article_id=%s", (key,))

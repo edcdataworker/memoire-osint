@@ -23,6 +23,39 @@ def main():
     os.umask(0o077)
     parser = argparse.ArgumentParser(description="OSINT pipeline, local demonstrator")
     sub = parser.add_subparsers(dest="command", required=True)
+    local = sub.add_parser("collect-ui", help="Interface locale de collecte TASS")
+    local.add_argument("--state", default=".state-collection")
+    local.add_argument("--port", type=int, default=18743)
+    local.add_argument("--corpus")
+    local.add_argument("--open", action="store_true")
+    local.add_argument("--request-interval", type=float, default=0.7)
+    local.add_argument("--max-pages", type=int, default=250)
+    local.add_argument("--max-reject-rate", type=float, default=0.2)
+    local.add_argument("--slow-article-seconds", type=float, default=10)
+    local.add_argument("--require-encrypted", action="store_true")
+    for name in (
+        "collect-access",
+        "collect-rectify",
+        "collect-erase",
+        "collect-check-security",
+        "collect-restore",
+        "collect-migrate",
+    ):
+        command = sub.add_parser(name)
+        command.add_argument("--state", default=".state-collection")
+        if name in ("collect-access", "collect-rectify", "collect-erase"):
+            command.add_argument("article_id")
+            command.add_argument("--request-ref", required=True)
+        if name == "collect-rectify":
+            command.add_argument(
+                "--changes", required=True, help="JSON privé contenant titre et/ou texte"
+            )
+        if name == "collect-check-security":
+            command.add_argument("--require-encrypted", action="store_true")
+        if name in ("collect-rectify", "collect-erase"):
+            command.add_argument("--propagate-b2", action="store_true")
+        if name == "collect-migrate":
+            command.add_argument("--destination", required=True)
     for name in ("worker", "schedule"):
         command = sub.add_parser(name)
         command.add_argument("--config", required=True)
@@ -40,7 +73,66 @@ def main():
         if name == "erase":
             command.add_argument("--request-ref", required=True)
     args = parser.parse_args()
-    if args.command in ("worker", "schedule"):
+    if args.command == "collect-ui":
+        from .collection.service import default_config, serve
+
+        if (
+            not 0.2 <= args.request_interval <= 60
+            or not 1 <= args.max_pages <= 1000
+            or not 0 <= args.max_reject_rate <= 1
+            or args.slow_article_seconds <= 0
+        ):
+            parser.error("Cadence, limite de pagination ou seuil de rejet invalide")
+        config = default_config(args.state, args.corpus)
+        config.update(
+            request_interval=args.request_interval,
+            max_pages=args.max_pages,
+            max_reject_rate=args.max_reject_rate,
+            slow_article_seconds=args.slow_article_seconds,
+            require_encrypted=args.require_encrypted,
+        )
+        serve(config, args.port, args.open)
+    elif args.command.startswith("collect-"):
+        from .collection import resilience, rights, security
+        from .collection.service import default_config
+        from .common import lock
+
+        config = default_config(args.state)
+        saved = Path(args.state) / "config.json"
+        if saved.exists():
+            config.update(json.loads(saved.read_text()))
+        if args.command == "collect-access":
+            result = rights.access(args.state, args.article_id, args.request_ref)
+        elif args.command == "collect-check-security":
+            result = security.check(args.state, args.require_encrypted)
+        elif args.command == "collect-migrate":
+            from .collection.volume import migrate
+
+            result = migrate(args.state, args.destination)
+        else:
+            # No mutation or compaction can race an ingestion checkpoint. Restoration
+            # additionally requires the HTTP server to be stopped.
+            with lock(args.state, "collection-worker.lock"):
+                if args.command == "collect-restore":
+                    with lock(args.state, "collection-server.lock"):
+                        result = resilience.restore(args.state, config)
+                elif args.command == "collect-erase":
+                    result = rights.erase(args.state, config, args.article_id, args.request_ref)
+                else:
+                    changes = json.loads(Path(args.changes).read_text())
+                    result = rights.rectify(
+                        args.state, config, args.article_id, changes, args.request_ref
+                    )
+                if args.command in ("collect-rectify", "collect-erase") and args.propagate_b2:
+                    result["b2"] = rights.propagate_b2(
+                        args.state,
+                        config,
+                        args.article_id,
+                        args.request_ref,
+                        args.command == "collect-erase",
+                    )
+        print(json.dumps(result, ensure_ascii=False))
+    elif args.command in ("worker", "schedule"):
         path = Path(args.config).resolve()
         config = DEFAULTS | json.loads(path.read_text())
         if config["batch_size"] < 1 or not 0 <= config["max_reject_rate"] <= 1:

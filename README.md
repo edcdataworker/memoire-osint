@@ -1,5 +1,10 @@
 # Mémoire OSINT : gouvernance, architecture, pipeline et IA
 
+Extension locale TASS : [mode d’emploi](bloc3_pipeline/Collecte_TASS.md), [plan B3](bloc3_pipeline/Plan_pipeline_OSINT.pdf), [vidéo fictive actuelle](bloc3_pipeline/Demonstration_locale_pipeline.mp4) et [preuves expurgées](bloc3_pipeline/verification/). Préparer le volume AES-256 avec Preparer_volume_chiffre.command, saisir personnellement le mot de passe puis utiliser Lancer_Observatoire_TASS.command. Le lanceur refuse un remplacement en clair. Activation et migration physiques restent à constater. Droits, secours, reprise et monitoring sont testés. B4 conserve ses modèles. FINALISATION_B3_MAP.json identifie les sources et l’expurgation ; SOURCE_MAP.json conserve la provenance historique.
+
+La [gouvernance B1 actualisée](bloc1_gouvernance/Plan_gouvernance_OSINT.pdf) accompagne les dépendances directes de la collecte. Les 33 critères B3 sont suivis ; les huit critères de prestation orale restent prévus. Le dossier Drive lié ci-dessous conserve sa version précédente : cette livraison actualise GitHub et le dossier local uniquement.
+
+
 Projet transversal d’Edouard Cappaert pour une cellule de veille documentaire fictive. Un analyste et un responsable de veille explorent les mentions d’armes, d’unités et d’organisations militaires dans le corpus TASS afin de préparer des notes sourcées. Une mention constitue une information à vérifier dans son contexte.
 
 ## Les quatre blocs
@@ -59,4 +64,3 @@ Le workflow [verification.yml](.github/workflows/verification.yml) exécute les 
 Les travaux collectifs historiques conservent les crédits Edouard Cappaert, Jean-Christophe Dorn et Noah Segonds, ainsi que les références pédagogiques de Matthieu Larboullet. L’adaptation actuelle et les vérifications ont été assistées par Codex. Les anciens coauteurs ne sont pas présentés comme ayant validé cette nouvelle version.
 
 La mise à disposition du code ne crée pas de licence sur les cours, les textes TASS ou les ressources tierces. Aucune licence générale de réutilisation n’est ajoutée sans clarification des droits. Chaque dépendance conserve sa licence.
-

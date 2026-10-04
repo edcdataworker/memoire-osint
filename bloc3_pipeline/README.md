@@ -1,5 +1,9 @@
 # Pipeline OSINT TASS, Bloc 3
 
+Version actualisée : [Observatoire TASS local](Collecte_TASS.md), droits, monitoring et lecture de secours. Le PDF et la vidéo présentent cette version. Préparer Preparer_volume_chiffre.command, saisir le mot de passe personnellement dans Terminal, puis ouvrir Lancer_Observatoire_TASS.command. Le lanceur refuse un remplacement en clair. Volume_chiffre.json distingue préparation et activation effective.
+
+Les sections suivantes conservent le mode d’emploi du pipeline historique de fichiers et ses commandes. Pour le collecteur, suivre le mode d’emploi dédié.
+
 Version locale du 4 octobre 2026. Le pipeline collecte un fichier JSON ou JSONL autorisé, valide chaque article, retire les doublons exacts, conserve sa provenance et publie des données figées pour les blocs 2 et 4. Le code opérationnel utilise la bibliothèque standard Python 3.12 uniquement.
 
 ## Livrables et état réel
@@ -7,7 +11,7 @@ Version locale du 4 octobre 2026. Le pipeline collecte un fichier JSON ou JSONL 
 1. `Plan_pipeline_OSINT.pdf` et sa source `Plan_pipeline_OSINT.md` reprennent le plan Books : contexte, données, schéma, code, difficultés, résultats, utilisation et conclusion.
 2. `pipeline/`, `tests/`, `scripts/`, `config/` : code et configuration. `Code_OSINT_Bloc3.zip` est la copie portable sans corpus réel, base locale ni secret.
 3. `Preuves/Tests_pipeline.json` : 14 scénarios synthétiques, dont arrêt brutal au milieu d'une transaction et reprise autonome. `Preuves/Benchmark_pipeline.json` : volumes et durées réellement mesurés.
-4. `Demonstration_locale_pipeline.mp4` : enregistrement réel du navigateur, d'un incident synthétique puis du corpus TASS. Le ralentissement de démonstration est explicite. Il ne s'agit pas d'une exploitation externe en production.
+4. `Demonstration_locale_pipeline.mp4` : enregistrement du navigateur sur cinq articles fictifs, avec pause, reprise, panne du catalogue et restauration. Le ralentissement de démonstration est explicite. Il ne s'agit pas d'une exploitation externe en production.
 5. `Correspondance_criteres_Bloc3.json` : les 33 critères exacts, preuves et écarts. `Preparation_orale_Bloc3.md` : trame de cinq minutes à répéter par Edouard.
 
 Implémenté et testé : import, validation, nettoyage minimal, déduplication exacte, publication après qualité, persistance, planification bornée, reprise automatique, monitoring, alertes locales, effacement local et import d'un registre B2. Docker et Compose : construction et exécution locales vérifiées par le coordinateur, avec reprise au checkpoint 21 676 après correction de l’espace temporaire. Aucun job launchd/cron installé. Aucun envoi de notification à autrui.
@@ -43,7 +47,7 @@ Le mode `raw` normalise les espaces, retire les caractères de contrôle, ajuste
 | --- | --- |
 | `id` | Identifiant et type JSON originaux. La clé SQLite utilise sa représentation chaîne. |
 | `date` | Nombre epoch en secondes, valeur originale. `date_readable` est explicitement UTC. |
-| `title`, `text`, `url` | Titre facultatif, corps obligatoire, URL HTTPS sans identifiants. Aucun accès HTTP à la source. |
+| `title`, `text`, `url` | Titre facultatif, corps obligatoire, URL HTTPS sans identifiants. Pas de réseau dans le mode fichier ; le collecteur conserve une URL HTTPS TASS. |
 | `text_sha256` | SHA-256 des octets UTF-8 du seul texte final. Ce n'est pas `content_sha256` de B2, qui porte sur un objet JSON. |
 | `offset_unit` | `unicode_codepoint`. Les offsets Python/spaCy sont [start,end), relatifs à ce texte exact. |
 | `provenance` | Empreinte du fichier source, index de l'article base zéro, UUID d'exécution, version de nettoyage, hash du texte brut, indication de changement. |
@@ -91,9 +95,9 @@ python3 -m pipeline erase --state .state-portable b3-synthetic-001 --request-ref
 python3 -m pipeline check-security --state .state-portable
 ```
 
-Ces commandes sont réservées à l'opérateur local, après qualification de la demande. L'accès est journalisé par l'application. L'effacement purge les releases historiques, compacte SQLite et son WAL, et interdit la réintroduction à l'import. La rectification nécessite une source corrigée et une nouvelle version des traitements. Les sources historiques hors B3, les sauvegardes externes, annotations et modèles doivent être traités dans la procédure transversale ; ces commandes seules ne prouvent pas sa complétude.
+Ces commandes sont réservées à l'opérateur local, après qualification de la demande. L'accès est journalisé par l'application. L'effacement purge les releases historiques, compacte SQLite et son WAL, et interdit la réintroduction à l'import. Le mode fichier demande une source corrigée ; le collecteur dispose de collect-rectify et de son registre prioritaire. Les sources historiques hors B3, les sauvegardes externes, annotations et modèles doivent être traités dans la procédure transversale ; ces commandes seules ne prouvent pas sa complétude.
 
-Les répertoires d'état sont en 0700 et les fichiers créés par la CLI en 0600. Les logs ne conservent pas le texte des articles ni les lignes invalides. Le serveur écoute uniquement 127.0.0.1 et n'offre aucune commande de mutation. Aucune clé ni API payante n'est utilisée. SQLite et exports sont en clair sur le disque local : il faut un volume chiffré et une politique de sauvegarde avant exploitation réelle. Les permissions locales ne remplacent pas le chiffrement. Les ouvertures directes de fichiers par le propriétaire du Mac ne sont pas auditées par le code.
+Les répertoires d'état sont en 0700 et les fichiers créés par la CLI en 0600. Les logs ne conservent pas le texte des articles ni les lignes invalides. Le tableau historique écoute sur 127.0.0.1 sans mutation ; le collecteur protège ses commandes par Host et session CSRF. Aucune clé ni API payante n'est utilisée. Les anciens états restent en clair jusqu’à la migration physique vers le volume AES-256 préparé. La migration est vérifiée avant retrait de la source et le lanceur interdit un remplacement en clair. Voir Volume_chiffre.json pour l’activation effective. Les permissions locales ne remplacent pas le chiffrement. Les ouvertures directes de fichiers par le propriétaire du Mac ne sont pas auditées par le code.
 
 `check-security` détecte une ouverture excessive des permissions du dossier et la corrige, avec alerte locale. Un test réel de permissions 0755 reproduit ce scénario. Cette détection est un signal technique à qualifier par le responsable B1, pas la preuve d'une violation de données personnelles. La procédure B1 détermine le risque et les notifications réglementaires éventuelles ; aucun envoi automatique à des tiers n'est effectué.
 

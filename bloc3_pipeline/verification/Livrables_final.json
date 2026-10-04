@@ -1,0 +1,30 @@
+{
+  "release": "b3-tass-20261004-21ac2d7e7d05",
+  "at": "2026-10-04T18:39:14.747445+00:00",
+  "mandatory_artifacts": {
+    "Code_OSINT_Bloc3.zip": "f62d6b6d96266cb7f6525ded1821ad80e02ae2a9b8a075f30809644c1f822a72",
+    "Plan_pipeline_OSINT.pdf": "66b32b4f49c2edebed337d76c7c6fd03dde430019e7cb7a0d3a62cdffcd719e3",
+    "Demonstration_locale_pipeline.mp4": "f41579e8670400ded88c965725a4243d57cb89d3d5f261db7fcbc8e08a50b719"
+  },
+  "pdf_pages": 10,
+  "video_visual_review": true,
+  "criteria_count": 33,
+  "oral_criteria_prepared_not_observed": 8,
+  "b3_tests_passed": {
+    "collection": 11,
+    "closure": 15,
+    "historical_pipeline": 14,
+    "frontend": 4
+  },
+  "network_real_articles": 20,
+  "responsive_states": 147,
+  "encrypted_activation_complete": false,
+  "remaining_personal_actions": [
+    "password and physical migration",
+    "observed oral rehearsal"
+  ],
+  "other_limits": [
+    "same-host read continuity only",
+    "legal/use qualification and external copies coordinated under B1"
+  ]
+}

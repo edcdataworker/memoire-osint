@@ -52,7 +52,10 @@ services:
     mem_limit: 768m
     networks: [data_net]
   app:
-    networks: [data_net, front_net]
+    networks:
+      data_net:
+        aliases: [api]
+      front_net: {}
     <<: *app
     # The read service cannot obtain writer credentials or mutate the erasure ledger.
     secrets: [ca.crt, reader, data_key, api_password, api.crt, api.key]

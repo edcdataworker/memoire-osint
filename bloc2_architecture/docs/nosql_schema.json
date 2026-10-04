@@ -1,9 +1,53 @@
 {
   "collection": "documents",
   "authority": "text content, tied to the committed PostgreSQL identifier and checksum",
-  "required": ["_id", "published_at", "ciphertext", "content_sha256", "schema_version", "synthetic"],
-  "indexes": [{"_id": 1, "unique": true}, {"published_at": 1}, {"run_id": 1}],
-  "logical_plaintext_before_encryption": {"title": "article title", "text": "full article", "url": "source URL", "optional_fields": "retained inside the encrypted JSON"},
+  "required": [
+    "_id",
+    "published_at",
+    "ciphertext",
+    "content_sha256",
+    "schema_version",
+    "synthetic"
+  ],
+  "indexes": [
+    {
+      "_id": 1,
+      "unique": true
+    },
+    {
+      "published_at": 1
+    },
+    {
+      "run_id": 1
+    }
+  ],
+  "logical_plaintext_before_encryption": {
+    "title": "article title",
+    "text": "full article",
+    "url": "source URL",
+    "optional_fields": "retained inside the encrypted JSON"
+  },
   "encryption": "AES-256-GCM; random 96-bit nonce; article_id is authenticated associated data",
-  "migration": "Version 1 validated by MongoDB; changing versions requires an explicit validator migration"
+  "migration": "schema_version=1 retained; content revisions are distinct from schema migrations. SQL additive migration sql/02_revisions.sql.",
+  "revision_collection": {
+    "name": "document_revisions",
+    "key": "article_id:content_sha256",
+    "fields": [
+      "article_id",
+      "archived_at",
+      "ciphertext",
+      "content_sha256",
+      "published_at",
+      "schema_version",
+      "run_id",
+      "synthetic"
+    ],
+    "decryption_aad": "article_id original",
+    "indexes": [
+      {
+        "article_id": 1
+      }
+    ],
+    "publication": "Archive previous encrypted document only on a changed payload; replay replaces same key. Elasticsearch contains current version."
+  }
 }

@@ -1,18 +1,29 @@
 flowchart TB
     user[Analyste et responsable] -->|HTTPS + authentification| app[Application de lecture]
-    source[Corpus TASS nettoyé] --> ingest[Ingestion par lots + reprise]
-    ingest -->|TLS, texte AES-GCM| mongo[(MongoDB documents)]
-    ingest -->|TLS, commit + checkpoint| pg[(PostgreSQL métadonnées)]
+    user -->|HTTP, boucle locale, session CSRF| ui[Observatoire TASS B3]
+    ui --> worker[Worker de collecte séparé, reprise]
+    tass[Rubriques et pages TASS, HTTPS] --> worker
+    worker --> catalog[(SQLite B3, catalogue et révisions)]
+    catalog --> export[Export figé JSON / JSONL, contrat versionné]
+    source[Corpus TASS nettoyé, 21 676 articles] --> ingest[Ingestion B2 par lots + reprise]
+    export -->|Import local via service opérateur| ingest
+    ingest -->|TLS, texte AES-GCM| mongo[(MongoDB documents et document_revisions)]
+    ingest -->|TLS, commit + checkpoint| pg[(PostgreSQL articles, runs et article_revisions)]
     mongo --> index[Publication après contrôle des empreintes]
     pg --> index
     index -->|HTTPS| es[(Elasticsearch dérivé)]
     app -->|lecture normale| pg
     app -->|lecture normale| mongo
     app -.->|lecture dégradée signalée| es
-    es --> kibana[Kibana, raccordement NER au bloc 4]
+    es --> kibana[Kibana et index NER B4 distinct]
     pg --> backup[Sauvegarde coordonnée AES-GCM]
     mongo --> backup
     ledger[Registre de suppressions] --> app
     ledger --> ingest
+    ledger --> catalog
     ledger --> backup
     backup --> restore[Contrôle dans des bases distinctes]
+    catalog -.-> mirror[Instantané SQLite vérifié, lecture seule de secours]
+    catalog -.-> protection[Volume chiffré exigé par le lanceur, montage à vérifier]
+    corrections[Registre de rectifications chiffré B2] --> ingest
+    corrections --> backup

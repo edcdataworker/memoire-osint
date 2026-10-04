@@ -21,3 +21,11 @@ __pycache__/
 *.mp4
 *.zip
 
+
+**/.demo*/
+**/.bench/
+**/.collection-location.json
+*.sparseimage
+*.dmg
+**/rights.json
+**/rectifications.json

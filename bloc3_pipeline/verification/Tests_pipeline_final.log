@@ -1,0 +1,96 @@
+{"at": "2026-10-04T18:28:54.786684+00:00", "event": "read_failover", "actor": "local_system_account", "run_id": "18cee5a1-75d8-4e64-9b04-272685743a00"}
+{"at": "2026-10-04T18:28:57.395905+00:00", "event": "alert", "actor": "local_system_account", "code": "SECURITY_PERMISSIONS", "previous_mode": "0o755", "action": "chmod_0700", "qualification": "technical_incident_requires_human_review"}
+{"at": "2026-10-04T18:28:57.397063+00:00", "event": "rights_access", "actor": "local_system_account", "article_id": "test-3", "matches": 1}
+{"at": "2026-10-04T18:28:57.401436+00:00", "event": "published", "actor": "local_system_account", "run_id": "18cee5a1-75d8-4e64-9b04-272685743a00", "articles": 39}
+{"at": "2026-10-04T18:28:57.402731+00:00", "event": "rights_erased_local", "actor": "local_system_account", "article_id": "test-3", "request_ref": "SYNTHETIC-RIGHTS-001", "external_propagation": "requires_B2_B4_source_backups_coordination"}
+{"at": "2026-10-04T18:28:57.403116+00:00", "event": "rights_access", "actor": "local_system_account", "article_id": "test-3", "matches": 0}
+{"at": "2026-10-04T18:28:57.501976+00:00", "event": "rights_access", "actor": "local_system_account", "article_id": "test-4", "matches": 0}
+{
+  "at": "2026-10-04T18:28:57.558819+00:00",
+  "synthetic": true,
+  "tests": [
+    {
+      "test": "container_numeric_uid_without_passwd",
+      "passed": true
+    },
+    {
+      "test": "text_hash_unicode_offsets_provenance",
+      "passed": true,
+      "records": 40
+    },
+    {
+      "test": "idempotent_same_source",
+      "passed": true
+    },
+    {
+      "test": "duplicate_id_and_exact_text",
+      "passed": true,
+      "accepted": 2,
+      "duplicates": 2
+    },
+    {
+      "test": "invalid_rows_quality_blocks_publication",
+      "passed": true,
+      "previous_release_unchanged": true
+    },
+    {
+      "test": "isolated_errors_continue_with_explicit_threshold",
+      "passed": true
+    },
+    {
+      "test": "scheduled_sigkill_automatic_durable_resume",
+      "passed": true,
+      "resumed_checkpoints": [
+        0,
+        10
+      ],
+      "accepted": 40,
+      "attempts": 2,
+      "trigger": {
+        "at": "2026-10-04T18:28:54.620629+00:00",
+        "event": "scheduled_trigger",
+        "actor": "local_system_account",
+        "due_epoch": 1791138534.614356,
+        "trigger_epoch": 1791138534.6205928
+      }
+    },
+    {
+      "test": "publication_primary_unavailable_read_failover",
+      "passed": true,
+      "backend": "mirror"
+    },
+    {
+      "test": "sqlite_unavailable_automatic_retry",
+      "passed": true,
+      "lock_held_seconds": 2.5
+    },
+    {
+      "test": "proactive_slow_batch_alert",
+      "passed": true,
+      "test_threshold_seconds": 0
+    },
+    {
+      "test": "security_permission_incident_signal_and_containment",
+      "passed": true
+    },
+    {
+      "test": "access_erasure_and_no_resurrection",
+      "passed": true,
+      "external_propagation_tested": false
+    },
+    {
+      "test": "external_B2_tombstone_import_and_current_export_purge",
+      "passed": true
+    },
+    {
+      "test": "malformed_json_array_no_publication",
+      "passed": true
+    }
+  ],
+  "passed": 14,
+  "failed": 0,
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+    "sqlite": "3.53.1"
+  }
+}

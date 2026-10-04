@@ -1,0 +1,266 @@
+[
+  {
+    "id": "B3-1.1",
+    "bloc": 3,
+    "source": "Bloc 3!A6",
+    "critere_exact": "1.1 - Indicateur relatif au temps nécessaire pour que le pipeline traite un ensemble de données spécifique. Cet indicateur peut être quantifié en termes de temps (par exemple, minutes, secondes) ou de taux (par exemple, lignes de données traitées par seconde).",
+    "critere_normalise": "1.1 - Indicateur relatif au temps nécessaire pour que le pipeline traite un ensemble de données spécifique. Cet indicateur peut être quantifié en termes de temps (par exemple, minutes, secondes) ou de taux (par exemple, lignes de données traitées par seconde).",
+    "oral": false
+  },
+  {
+    "id": "B3-1.2",
+    "bloc": 3,
+    "source": "Bloc 3!A7",
+    "critere_exact": "1.2 - Indicateur relatif à la manière dont le pipeline gère les erreurs. Par exemple, le pipeline peut-il continuer à fonctionner en cas d'erreur dans une partie spécifique du flux de données ? Le pipeline dispose-t-il de mécanismes pour signaler les erreurs ? Les erreurs sont-elles enregistrées pour un examen futur ?",
+    "critere_normalise": "1.2 - Indicateur relatif à la manière dont le pipeline gère les erreurs. Par exemple, le pipeline peut-il continuer à fonctionner en cas d'erreur dans une partie spécifique du flux de données ? Le pipeline dispose-t-il de mécanismes pour signaler les erreurs ? Les erreurs sont-elles enregistrées pour un examen futur ?",
+    "oral": false
+  },
+  {
+    "id": "B3-1.3",
+    "bloc": 3,
+    "source": "Bloc 3!A8",
+    "critere_exact": "1.3 - Indicateur relatif à la précision des données traitées par le pipeline. Par exemple, les données sont-elles correctement transformées selon les spécifications ? Les résultats du pipeline sont-ils tels qu'attendus ?",
+    "critere_normalise": "1.3 - Indicateur relatif à la précision des données traitées par le pipeline. Par exemple, les données sont-elles correctement transformées selon les spécifications ? Les résultats du pipeline sont-ils tels qu'attendus ?",
+    "oral": false
+  },
+  {
+    "id": "B3-1.4",
+    "bloc": 3,
+    "source": "Bloc 3!A9",
+    "critere_exact": "1.4 - Indicateur relatif à la capacité du pipeline à gérer des variations dans les volumes de données, les formats de données ou les sources de données. Le pipeline peut-il s'adapter à des volumes de données plus importants sans ralentissement significatif ? Le pipeline peut-il traiter des formats de données variés ?",
+    "critere_normalise": "1.4 - Indicateur relatif à la capacité du pipeline à gérer des variations dans les volumes de données, les formats de données ou les sources de données. Le pipeline peut-il s'adapter à des volumes de données plus importants sans ralentissement significatif ? Le pipeline peut-il traiter des formats de données variés ?",
+    "oral": false
+  },
+  {
+    "id": "B3-1.5",
+    "bloc": 3,
+    "source": "Bloc 3!A10",
+    "critere_exact": "1.5 - Indicateur relatif à la redondance du pipeline. Y a-t-il des mesures de redondance en place pour s'assurer que le pipeline continue de fonctionner en cas de défaillance d'un de ses composants ?",
+    "critere_normalise": "1.5 - Indicateur relatif à la redondance du pipeline. Y a-t-il des mesures de redondance en place pour s'assurer que le pipeline continue de fonctionner en cas de défaillance d'un de ses composants ?",
+    "oral": false
+  },
+  {
+    "id": "B3-2.1",
+    "bloc": 3,
+    "source": "Bloc 3!A11",
+    "critere_exact": "2.1 - Indicateur relatif à l'automatisation de la collecte des données. Le pipeline est-il programmé pour collecter les données à des moments spécifiques ou répond-il à certains déclencheurs pour collecter les données ?",
+    "critere_normalise": "2.1 - Indicateur relatif à l'automatisation de la collecte des données. Le pipeline est-il programmé pour collecter les données à des moments spécifiques ou répond-il à certains déclencheurs pour collecter les données ?",
+    "oral": false
+  },
+  {
+    "id": "B3-2.2",
+    "bloc": 3,
+    "source": "Bloc 3!A12",
+    "critere_exact": "2.2 - Indicateur relatif à l'automatisation du traitement des données. Le pipeline est-il capable de traiter automatiquement les données une fois collectées, sans intervention manuelle ?",
+    "critere_normalise": "2.2 - Indicateur relatif à l'automatisation du traitement des données. Le pipeline est-il capable de traiter automatiquement les données une fois collectées, sans intervention manuelle ?",
+    "oral": false
+  },
+  {
+    "id": "B3-2.3",
+    "bloc": 3,
+    "source": "Bloc 3!A13",
+    "critere_exact": "2.3 - Indicateur relatif à l'automatisation de la mise à jour des données. Le pipeline est-il capable de mettre à jour automatiquement les données dans les bases de données ou autres systèmes de stockage de données ?",
+    "critere_normalise": "2.3 - Indicateur relatif à l'automatisation de la mise à jour des données. Le pipeline est-il capable de mettre à jour automatiquement les données dans les bases de données ou autres systèmes de stockage de données ?",
+    "oral": false
+  },
+  {
+    "id": "B3-2.4",
+    "bloc": 3,
+    "source": "Bloc 3!A14",
+    "critere_exact": "2.4 - Indicateur relatif à l'automatisation de la surveillance des performances du pipeline et à la mise en place d'alertes en cas d'erreurs ou de problèmes. Le système a-t-il des mécanismes pour surveiller automatiquement les performances du pipeline et envoyer des alertes en cas de problèmes ?",
+    "critere_normalise": "2.4 - Indicateur relatif à l'automatisation de la surveillance des performances du pipeline et à la mise en place d'alertes en cas d'erreurs ou de problèmes. Le système a-t-il des mécanismes pour surveiller automatiquement les performances du pipeline et envoyer des alertes en cas de problèmes ?",
+    "oral": false
+  },
+  {
+    "id": "B3-2.5",
+    "bloc": 3,
+    "source": "Bloc 3!A15",
+    "critere_exact": "2.5 - Indicateur relatif à l'automatisation de la récupération après erreur. En cas d'échec ou d'erreur, le pipeline est-il capable de reprendre automatiquement là où il s'est arrêté, sans intervention manuelle ?\n",
+    "critere_normalise": "2.5 - Indicateur relatif à l'automatisation de la récupération après erreur. En cas d'échec ou d'erreur, le pipeline est-il capable de reprendre automatiquement là où il s'est arrêté, sans intervention manuelle ?",
+    "oral": false
+  },
+  {
+    "id": "B3-3.1",
+    "bloc": 3,
+    "source": "Bloc 3!A16",
+    "critere_exact": "3.1 - Indicateur relatif à la présence d'outils de suivi des performances dans le pipeline. Le candidat a-t-il intégré des outils de monitoring qui peuvent fournir des informations en temps réel sur le fonctionnement du pipeline ?",
+    "critere_normalise": "3.1 - Indicateur relatif à la présence d'outils de suivi des performances dans le pipeline. Le candidat a-t-il intégré des outils de monitoring qui peuvent fournir des informations en temps réel sur le fonctionnement du pipeline ?",
+    "oral": false
+  },
+  {
+    "id": "B3-3.2",
+    "bloc": 3,
+    "source": "Bloc 3!A17",
+    "critere_exact": "3.2 - Indicateur relatif à la variété des métriques de performance suivies. Les outils de monitoring suivent-ils une gamme suffisamment large de métriques pour donner une image complète des performances du pipeline (temps de traitement, volume de données traitées, erreurs, latence, etc.) ?\n",
+    "critere_normalise": "3.2 - Indicateur relatif à la variété des métriques de performance suivies. Les outils de monitoring suivent-ils une gamme suffisamment large de métriques pour donner une image complète des performances du pipeline (temps de traitement, volume de données traitées, erreurs, latence, etc.) ?",
+    "oral": false
+  },
+  {
+    "id": "B3-3.3",
+    "bloc": 3,
+    "source": "Bloc 3!A18",
+    "critere_exact": "3.3 - Indicateur relatif à la facilité d'accès aux informations de suivi des performances. Les informations de performance sont-elles présentées de manière claire et facilement accessible pour les parties prenantes ?",
+    "critere_normalise": "3.3 - Indicateur relatif à la facilité d'accès aux informations de suivi des performances. Les informations de performance sont-elles présentées de manière claire et facilement accessible pour les parties prenantes ?",
+    "oral": false
+  },
+  {
+    "id": "B3-3.4",
+    "bloc": 3,
+    "source": "Bloc 3!A19",
+    "critere_exact": "3.4 - Indicateur relatif à la capacité des outils de monitoring à signaler proactivement les problèmes. Les outils de monitoring sont-ils configurés pour alerter en cas de dégradation des performances ou d'erreurs ?",
+    "critere_normalise": "3.4 - Indicateur relatif à la capacité des outils de monitoring à signaler proactivement les problèmes. Les outils de monitoring sont-ils configurés pour alerter en cas de dégradation des performances ou d'erreurs ?",
+    "oral": false
+  },
+  {
+    "id": "B3-3.5",
+    "bloc": 3,
+    "source": "Bloc 3!A20",
+    "critere_exact": "3.5 - Indicateur relatif à la capacité des outils de monitoring à s'adapter à l'évolution des besoins. Les outils de monitoring peuvent-ils être facilement modifiés ou étendus pour suivre de nouvelles métriques si nécessaire ?",
+    "critere_normalise": "3.5 - Indicateur relatif à la capacité des outils de monitoring à s'adapter à l'évolution des besoins. Les outils de monitoring peuvent-ils être facilement modifiés ou étendus pour suivre de nouvelles métriques si nécessaire ?",
+    "oral": false
+  },
+  {
+    "id": "B3-4.1",
+    "bloc": 3,
+    "source": "Bloc 3!A21",
+    "critere_exact": "4.1 - Indicateur relatif à l'organisation du code. Le code du candidat est-il bien structuré, divisé en fonctions et modules clairs, avec une séparation appropriée des préoccupations ?",
+    "critere_normalise": "4.1 - Indicateur relatif à l'organisation du code. Le code du candidat est-il bien structuré, divisé en fonctions et modules clairs, avec une séparation appropriée des préoccupations ?",
+    "oral": false
+  },
+  {
+    "id": "B3-4.2",
+    "bloc": 3,
+    "source": "Bloc 3!A22",
+    "critere_exact": "4.2 - Indicateur relatif à la présence et à la qualité des commentaires dans le code. Le code du candidat est-il accompagné de commentaires expliquant le fonctionnement des fonctions clés et des sections de code complexes ?",
+    "critere_normalise": "4.2 - Indicateur relatif à la présence et à la qualité des commentaires dans le code. Le code du candidat est-il accompagné de commentaires expliquant le fonctionnement des fonctions clés et des sections de code complexes ?",
+    "oral": false
+  },
+  {
+    "id": "B3-4.3",
+    "bloc": 3,
+    "source": "Bloc 3!A23",
+    "critere_exact": "4.3 - Indicateur relatif à la facilité de lecture et de compréhension du code. Le code est-il écrit de manière claire et compréhensible, en utilisant des noms de variables et de fonctions significatifs ?",
+    "critere_normalise": "4.3 - Indicateur relatif à la facilité de lecture et de compréhension du code. Le code est-il écrit de manière claire et compréhensible, en utilisant des noms de variables et de fonctions significatifs ?",
+    "oral": false
+  },
+  {
+    "id": "B3-4.4",
+    "bloc": 3,
+    "source": "Bloc 3!A24",
+    "critere_exact": "4.4 - Indicateur relatif à la présence et à la qualité de la documentation technique. Le candidat a-t-il fourni une documentation technique qui explique le fonctionnement du pipeline, la manière de le déployer, de le faire fonctionner, et éventuellement de le dépanner ?",
+    "critere_normalise": "4.4 - Indicateur relatif à la présence et à la qualité de la documentation technique. Le candidat a-t-il fourni une documentation technique qui explique le fonctionnement du pipeline, la manière de le déployer, de le faire fonctionner, et éventuellement de le dépanner ?",
+    "oral": false
+  },
+  {
+    "id": "B3-4.5",
+    "bloc": 3,
+    "source": "Bloc 3!A25",
+    "critere_exact": "4.5 - Indicateur relatif à la conformité du code aux normes de codage et aux meilleures pratiques. Le code suit-il les conventions de style et les meilleures pratiques pour le langage de programmation utilisé ?",
+    "critere_normalise": "4.5 - Indicateur relatif à la conformité du code aux normes de codage et aux meilleures pratiques. Le code suit-il les conventions de style et les meilleures pratiques pour le langage de programmation utilisé ?",
+    "oral": false
+  },
+  {
+    "id": "B3-5.1",
+    "bloc": 3,
+    "source": "Bloc 3!A26",
+    "critere_exact": "5.1 - Indicateur relatif à la capacité du candidat à présenter son travail de manière claire et concise. Le candidat organise-t-il ses idées de manière logique, utilise-t-il un langage clair et compréhensible, et fournit-il suffisamment de détails pour que le public puisse comprendre son travail ?\n",
+    "critere_normalise": "5.1 - Indicateur relatif à la capacité du candidat à présenter son travail de manière claire et concise. Le candidat organise-t-il ses idées de manière logique, utilise-t-il un langage clair et compréhensible, et fournit-il suffisamment de détails pour que le public puisse comprendre son travail ?",
+    "oral": true
+  },
+  {
+    "id": "B3-5.2",
+    "bloc": 3,
+    "source": "Bloc 3!A27",
+    "critere_exact": "5.2 - Indicateur relatif à la capacité du candidat à expliquer les raisons de ses choix techniques et opérationnels. Le candidat est-il capable d'expliquer pourquoi il a choisi une certaine technologie, une certaine structure pour le pipeline, ou une certaine méthode pour automatiser les flux de données ?",
+    "critere_normalise": "5.2 - Indicateur relatif à la capacité du candidat à expliquer les raisons de ses choix techniques et opérationnels. Le candidat est-il capable d'expliquer pourquoi il a choisi une certaine technologie, une certaine structure pour le pipeline, ou une certaine méthode pour automatiser les flux de données ?",
+    "oral": true
+  },
+  {
+    "id": "B3-5.3",
+    "bloc": 3,
+    "source": "Bloc 3!A28",
+    "critere_exact": "5.3 - Indicateur relatif à la capacité du candidat à répondre efficacement aux questions. Lorsqu'il est interrogé sur son travail, le candidat est-il capable de fournir des réponses claires, précises et convaincantes ?",
+    "critere_normalise": "5.3 - Indicateur relatif à la capacité du candidat à répondre efficacement aux questions. Lorsqu'il est interrogé sur son travail, le candidat est-il capable de fournir des réponses claires, précises et convaincantes ?",
+    "oral": true
+  },
+  {
+    "id": "B3-5.4",
+    "bloc": 3,
+    "source": "Bloc 3!A29",
+    "critere_exact": "5.4 - Indicateur relatif à la capacité du candidat à écouter attentivement les questions et les commentaires. Le candidat montre-t-il qu'il comprend les questions posées et qu'il est capable de répondre de manière pertinente ?",
+    "critere_normalise": "5.4 - Indicateur relatif à la capacité du candidat à écouter attentivement les questions et les commentaires. Le candidat montre-t-il qu'il comprend les questions posées et qu'il est capable de répondre de manière pertinente ?",
+    "oral": true
+  },
+  {
+    "id": "B3-5.5",
+    "bloc": 3,
+    "source": "Bloc 3!A30",
+    "critere_exact": "5.5 - Indicateur relatif à l'utilisation efficace de la communication non verbale. Le candidat utilise-t-il un contact visuel approprié, des gestes expressifs et une posture ouverte et engageante pendant sa présentation ?",
+    "critere_normalise": "5.5 - Indicateur relatif à l'utilisation efficace de la communication non verbale. Le candidat utilise-t-il un contact visuel approprié, des gestes expressifs et une posture ouverte et engageante pendant sa présentation ?",
+    "oral": true
+  },
+  {
+    "id": "B3-5.6",
+    "bloc": 3,
+    "source": "Bloc 3!A31",
+    "critere_exact": "5.6 - Le candidat interagit de manière respectueuse et professionnelle avec le jury, en faisant preuve d'écoute et en respectant les opinions des autres.",
+    "critere_normalise": "5.6 - Le candidat interagit de manière respectueuse et professionnelle avec le jury, en faisant preuve d'écoute et en respectant les opinions des autres.",
+    "oral": true
+  },
+  {
+    "id": "B3-5.7",
+    "bloc": 3,
+    "source": "Bloc 3!A32",
+    "critere_exact": "5.7 - Le candidat utilise efficacement des supports visuels pour aider à expliquer la solution d'IA. Ces supports sont clairs, bien organisés et ajoutent de la valeur à la présentation.",
+    "critere_normalise": "5.7 - Le candidat utilise efficacement des supports visuels pour aider à expliquer la solution d'IA. Ces supports sont clairs, bien organisés et ajoutent de la valeur à la présentation.",
+    "oral": true
+  },
+  {
+    "id": "B3-5.8",
+    "bloc": 3,
+    "source": "Bloc 3!A33",
+    "critere_exact": "5.8 - Le candidat respecte le temps imparti pour la présentation, couvrant tous les points importants sans se précipiter ou dépasser le temps alloué.",
+    "critere_normalise": "5.8 - Le candidat respecte le temps imparti pour la présentation, couvrant tous les points importants sans se précipiter ou dépasser le temps alloué.",
+    "oral": true
+  },
+  {
+    "id": "B3-6.1",
+    "bloc": 3,
+    "source": "Bloc 3!A34",
+    "critere_exact": "6.1 - Le pipeline de données n'utilise que les données personnelles nécessaires à l'objectif prévu et évite de collecter des données personnelles superflues.",
+    "critere_normalise": "6.1 - Le pipeline de données n'utilise que les données personnelles nécessaires à l'objectif prévu et évite de collecter des données personnelles superflues.",
+    "oral": false
+  },
+  {
+    "id": "B3-6.2",
+    "bloc": 3,
+    "source": "Bloc 3!A35",
+    "critere_exact": "6.2 - Le pipeline de données intègre des mécanismes appropriés pour assurer la sécurité des données, tels que le cryptage des données, la gestion sécurisée des clés, la limitation de l'accès aux données, etc.",
+    "critere_normalise": "6.2 - Le pipeline de données intègre des mécanismes appropriés pour assurer la sécurité des données, tels que le cryptage des données, la gestion sécurisée des clés, la limitation de l'accès aux données, etc.",
+    "oral": false
+  },
+  {
+    "id": "B3-6.3",
+    "bloc": 3,
+    "source": "Bloc 3!A36",
+    "critere_exact": "6.3 - Le pipeline de données prévoit des mécanismes pour gérer les consentements des personnes concernées (si nécessaire) et pour répondre à leurs demandes d'exercer leurs droits en vertu du RGPD (accès, rectification, suppression, etc.).",
+    "critere_normalise": "6.3 - Le pipeline de données prévoit des mécanismes pour gérer les consentements des personnes concernées (si nécessaire) et pour répondre à leurs demandes d'exercer leurs droits en vertu du RGPD (accès, rectification, suppression, etc.).",
+    "oral": false
+  },
+  {
+    "id": "B3-6.4",
+    "bloc": 3,
+    "source": "Bloc 3!A37",
+    "critere_exact": "6.4 - Le pipeline de données permet une traçabilité complète des traitements de données, y compris l'origine des données, les traitements effectués, les personnes ayant accès aux données, etc.",
+    "critere_normalise": "6.4 - Le pipeline de données permet une traçabilité complète des traitements de données, y compris l'origine des données, les traitements effectués, les personnes ayant accès aux données, etc.",
+    "oral": false
+  },
+  {
+    "id": "B3-6.5",
+    "bloc": 3,
+    "source": "Bloc 3!A38",
+    "critere_exact": "6.5 - Le pipeline de données intègre des mécanismes pour détecter, signaler et gérer les violations de données, conformément aux exigences du RGPD.",
+    "critere_normalise": "6.5 - Le pipeline de données intègre des mécanismes pour détecter, signaler et gérer les violations de données, conformément aux exigences du RGPD.",
+    "oral": false
+  }
+]

@@ -86,12 +86,20 @@ def integrity():
             ).fetchall()
         )
     docs = list(mongo().documents.find({"synthetic": False}))
-    assert len(source) == len(data) == len(docs) == 21676
+    assert len(source) == 21676
+    assert len(data) == len(docs) >= len(source)
     assert all(d["content_sha256"] == data[d["_id"]] for d in docs)
     by_id = {str(x["id"]): x for x in source}
+    assert set(by_id).issubset(data)
     for d in docs[::430]:
         plain = decrypt(d["ciphertext"], d["_id"])
-        assert plain == {k: by_id[d["_id"]][k] for k in ("title", "text", "url")}
+        if d["_id"] in by_id:
+            expected = {k: by_id[d["_id"]][k] for k in ("title", "text", "url")}
+            versions = [plain] + [
+                decrypt(v["ciphertext"], d["_id"])
+                for v in mongo().document_revisions.find({"article_id": d["_id"]})
+            ]
+            assert any({k: v[k] for k in expected} == expected for v in versions)
         assert "text" not in d and "title" not in d
 
 
@@ -111,9 +119,14 @@ for name, fn in [
     ("Mongo rejects plaintext TCP", no_plaintext_mongo),
     ("SQL enforces foreign key", foreign_key),
     ("Mongo validates required fields", mongo_schema),
-    ("21676 cross-store hashes and 51 decrypted samples", integrity),
+    (
+        "Historical corpus preserved, all cross-store hashes and decrypted samples",
+        integrity,
+    ),
     ("AES-GCM authenticates identifier", authenticated_encryption),
 ]:
     check(name, fn)
-Path("/evidence/integration.json").write_text(json.dumps(results, indent=2))
+Path("/evidence/Integration_collecte_TASS.json").write_text(
+    json.dumps(results, indent=2)
+)
 print(json.dumps(results))

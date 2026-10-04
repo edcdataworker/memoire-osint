@@ -1,0 +1,159 @@
+{
+  "at": "2026-10-04T18:36:27.757920+00:00",
+  "python": "3.12.14",
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "data": "synthetic HTML, approximately 1/10/50 KiB bodies",
+  "results": [
+    {
+      "articles": 100,
+      "repetition": 1,
+      "seconds": 0.705146,
+      "articles_per_second": 141.81,
+      "source_bytes": 2145064,
+      "stage_seconds": {
+        "discovery": 0.005562,
+        "download": 0.587985,
+        "publication": 0.087345
+      },
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "articles": 100,
+      "repetition": 2,
+      "seconds": 0.341795,
+      "articles_per_second": 292.57,
+      "source_bytes": 2145064,
+      "stage_seconds": {
+        "discovery": 0.00275,
+        "download": 0.23677,
+        "publication": 0.080678
+      },
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "articles": 100,
+      "repetition": 3,
+      "seconds": 0.419585,
+      "articles_per_second": 238.33,
+      "source_bytes": 2145064,
+      "stage_seconds": {
+        "discovery": 0.002977,
+        "download": 0.295351,
+        "publication": 0.097973
+      },
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "articles": 1000,
+      "repetition": 1,
+      "seconds": 7.922477,
+      "articles_per_second": 126.22,
+      "source_bytes": 21550266,
+      "stage_seconds": {
+        "discovery": 0.071841,
+        "download": 6.880694,
+        "publication": 0.788724
+      },
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "articles": 1000,
+      "repetition": 2,
+      "seconds": 7.460629,
+      "articles_per_second": 134.04,
+      "source_bytes": 21550266,
+      "stage_seconds": {
+        "discovery": 0.063766,
+        "download": 6.4375,
+        "publication": 0.795811
+      },
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "articles": 1000,
+      "repetition": 3,
+      "seconds": 7.417172,
+      "articles_per_second": 134.82,
+      "source_bytes": 21550266,
+      "stage_seconds": {
+        "discovery": 0.062844,
+        "download": 6.438772,
+        "publication": 0.775127
+      },
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "articles": 2000,
+      "repetition": 1,
+      "seconds": 17.967024,
+      "articles_per_second": 111.32,
+      "source_bytes": 43144746,
+      "stage_seconds": {
+        "discovery": 0.180889,
+        "download": 14.889742,
+        "publication": 2.511949
+      },
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "articles": 2000,
+      "repetition": 2,
+      "seconds": 17.266716,
+      "articles_per_second": 115.83,
+      "source_bytes": 43144746,
+      "stage_seconds": {
+        "discovery": 0.166558,
+        "download": 15.030843,
+        "publication": 1.698453
+      },
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    },
+    {
+      "articles": 2000,
+      "repetition": 3,
+      "seconds": 16.997412,
+      "articles_per_second": 117.66,
+      "source_bytes": 43144746,
+      "stage_seconds": {
+        "discovery": 0.182376,
+        "download": 14.830563,
+        "publication": 1.684124
+      },
+      "json_jsonl_equal": true,
+      "text_hashes_correct": true
+    }
+  ],
+  "summary": [
+    {
+      "articles": 100,
+      "median_s": 0.419585,
+      "min_s": 0.341795,
+      "max_s": 0.705146
+    },
+    {
+      "articles": 1000,
+      "median_s": 7.460629,
+      "min_s": 7.417172,
+      "max_s": 7.922477
+    },
+    {
+      "articles": 2000,
+      "median_s": 17.266716,
+      "min_s": 16.997412,
+      "max_s": 17.967024
+    }
+  ],
+  "limitations": [
+    "No network throughput claim; no production SLA.",
+    "Single shared Mac; nine measured runs.",
+    "Temporary fixture storage; encrypted-volume performance has not been measured."
+  ]
+}

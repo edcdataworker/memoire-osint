@@ -1,0 +1,16 @@
+flowchart LR
+  T[TASS : rubriques et articles] --> A[Découverte bornée et extraction]
+  H[JSON ou JSONL historique] --> Q[Validation et texte figé]
+  A --> Q
+  Q --> S[SQLite : tâches, versions et checkpoints]
+  R[Registres de droits prioritaires] --> S
+  S --> E[JSON et JSONL par dates]
+  E --> B2[B2 : SQL, Mongo et index]
+  E --> B4[B4 : inférence avec modèle conservé]
+  S --> C[Copie SQLite vérifiée]
+  C --> F[Secours : consultation et export]
+  F --> X[Écritures bloquées]
+  C --> O[Restauration hors serveur]
+  R --> O
+  A -. événements et durées .-> M[Suivi local]
+  S -. backend et sécurité .-> M

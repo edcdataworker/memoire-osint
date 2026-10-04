@@ -1,0 +1,205 @@
+{
+  "at": "2026-10-04T18:07:09.981693+00:00",
+  "type": "real network extraction, texts kept only in process memory",
+  "maximum_articles_per_section": 5,
+  "requested_end_day": "2026-10-03",
+  "coverage_complete": false,
+  "sections": [
+    {
+      "section": "defense",
+      "section_id": 4953,
+      "articles": [
+        {
+          "id": 2197173,
+          "url": "https://tass.com/defense/2197173",
+          "date": 1791041905,
+          "text_chars": 829,
+          "text_sha256": "2079880376cf1c886900c92d58afb285ea1ddab54a4009436ba6c1a3f066e386",
+          "seconds": 0.619
+        },
+        {
+          "id": 2197169,
+          "url": "https://tass.com/defense/2197169",
+          "date": 1791040759,
+          "text_chars": 1034,
+          "text_sha256": "7e9d2df8493bdb181987d8c7961122800b9b0218405af4cff0e557c7cb37f550",
+          "seconds": 0.656
+        },
+        {
+          "id": 2197167,
+          "url": "https://tass.com/defense/2197167",
+          "date": 1791040335,
+          "text_chars": 920,
+          "text_sha256": "39c714aceb717aa06d215423e00916e293d7183aa041b7e4b9ef996c2b048cf4",
+          "seconds": 0.726
+        },
+        {
+          "id": 2197157,
+          "url": "https://tass.com/defense/2197157",
+          "date": 1791038597,
+          "text_chars": 1157,
+          "text_sha256": "0b6ec2fcb684070f7126481ec37801f41986db3571955d41e707a356d154225c",
+          "seconds": 0.705
+        },
+        {
+          "id": 2197107,
+          "url": "https://tass.com/defense/2197107",
+          "date": 1791025696,
+          "text_chars": 2538,
+          "text_sha256": "dd17489ba9fc0970f060d59a77839218038fe7b268089b69d277ab7ca43b66a6",
+          "seconds": 0.571
+        }
+      ],
+      "seconds": 5.183,
+      "network_events": [],
+      "success": true
+    },
+    {
+      "section": "world",
+      "section_id": 4844,
+      "articles": [
+        {
+          "id": 2197229,
+          "url": "https://tass.com/world/2197229",
+          "date": 1791069957,
+          "text_chars": 1558,
+          "text_sha256": "b535dccfd4b7892eacc753e98d8c021e5ad7505d880ca4a8a4e158a3d43a3266",
+          "seconds": 0.366
+        },
+        {
+          "id": 2197227,
+          "url": "https://tass.com/world/2197227",
+          "date": 1791068354,
+          "text_chars": 1379,
+          "text_sha256": "35bb7fb1332c7b78a9acb398bae6c2d10c423649301468b0d79d6053c5e50072",
+          "seconds": 0.688
+        },
+        {
+          "id": 2197223,
+          "url": "https://tass.com/world/2197223",
+          "date": 1791065292,
+          "text_chars": 1303,
+          "text_sha256": "7c24de985d8d3cb39766ac60a13aef5dac9f16574b3260d0138a213f9152d765",
+          "seconds": 0.75
+        },
+        {
+          "id": 2197215,
+          "url": "https://tass.com/world/2197215",
+          "date": 1791059544,
+          "text_chars": 972,
+          "text_sha256": "634a9293a5505fbb6e454c3bd8646a32fafc390f9dd951428fb7664ef889b40e",
+          "seconds": 0.681
+        },
+        {
+          "id": 2197209,
+          "url": "https://tass.com/politics/2197209",
+          "date": 1791058200,
+          "text_chars": 1015,
+          "text_sha256": "905bf93cb15ea62168132a1f1fc6ce1025e227f7e26a1a8abeddff8b136ad123",
+          "seconds": 0.7
+        }
+      ],
+      "seconds": 6.518,
+      "network_events": [],
+      "success": true
+    },
+    {
+      "section": "politics",
+      "section_id": 4954,
+      "articles": [
+        {
+          "id": 2197225,
+          "url": "https://tass.com/politics/2197225",
+          "date": 1791066840,
+          "text_chars": 570,
+          "text_sha256": "d5a4e6213e5c35493bf07b886251e0bc73aeac287a52aa2ee74a6c713970ce16",
+          "seconds": 0.367
+        },
+        {
+          "id": 2197219,
+          "url": "https://tass.com/politics/2197219",
+          "date": 1791063160,
+          "text_chars": 4521,
+          "text_sha256": "4ff7921fb11d5c2fbeffc2e0e6991b2621aea1609695e06382291de908e32213",
+          "seconds": 0.637
+        },
+        {
+          "id": 2197217,
+          "url": "https://tass.com/politics/2197217",
+          "date": 1791060174,
+          "text_chars": 662,
+          "text_sha256": "615b30b759b367faccb944630075d2a78b3357beb1dabcbae00e7a751de7e3e4",
+          "seconds": 0.75
+        },
+        {
+          "id": 2197213,
+          "url": "https://tass.com/politics/2197213",
+          "date": 1791058500,
+          "text_chars": 652,
+          "text_sha256": "bea34fc04fcf1c56fd2abde0a9172023c157b4640ebad447400dcf20ce6ee129",
+          "seconds": 0.722
+        },
+        {
+          "id": 2197211,
+          "url": "https://tass.com/politics/2197211",
+          "date": 1791058381,
+          "text_chars": 715,
+          "text_sha256": "e46b10b4b260588b936553a65bcc10067438b498350ea21ee543ccd917d67100",
+          "seconds": 0.709
+        }
+      ],
+      "seconds": 6.812,
+      "network_events": [],
+      "success": true
+    },
+    {
+      "section": "economy",
+      "section_id": 4845,
+      "articles": [
+        {
+          "id": 2197221,
+          "url": "https://tass.com/economy/2197221",
+          "date": 1791064201,
+          "text_chars": 2052,
+          "text_sha256": "124070ab2f0d2e5847ce5790030438ab669c65caac09f44dd9fce8ae084151cd",
+          "seconds": 0.375
+        },
+        {
+          "id": 2197149,
+          "url": "https://tass.com/economy/2197149",
+          "date": 1791036623,
+          "text_chars": 1364,
+          "text_sha256": "a35b35f93a5ca4c072e3aa216c1267e808205f66b7ac16a43eb5369edd46bc0f",
+          "seconds": 0.765
+        },
+        {
+          "id": 2197113,
+          "url": "https://tass.com/economy/2197113",
+          "date": 1791025377,
+          "text_chars": 1517,
+          "text_sha256": "8b3c5d185b28e73d95b9d4df31133631bc0bd177f56a30e504b2ed0c5e43d9dc",
+          "seconds": 0.635
+        },
+        {
+          "id": 2197037,
+          "url": "https://tass.com/economy/2197037",
+          "date": 1790999850,
+          "text_chars": 1601,
+          "text_sha256": "7ae8aa6ca98e05d9316f5bc3cb1b6b3d9f35898175a499f494ed90d3bd018860",
+          "seconds": 0.785
+        },
+        {
+          "id": 2197023,
+          "url": "https://tass.com/economy/2197023",
+          "date": 1790988914,
+          "text_chars": 567,
+          "text_sha256": "80c3fe4e16eb5792485640279115b2fa02266551fcd0726bf79142c52d585ca3",
+          "seconds": 0.632
+        }
+      ],
+      "seconds": 6.354,
+      "network_events": [],
+      "success": true
+    }
+  ]
+}

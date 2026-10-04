@@ -12,12 +12,14 @@ import json
 from pathlib import Path
 import os
 import subprocess
+import shlex
 import time
 import zipfile
 
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
 ROOT = Path(__file__).resolve().parents[1]
+EVIDENCE = ROOT / "Preuves"
 
 
 def command(args, data=None):
@@ -103,11 +105,14 @@ def capture_backup():
     mg = mongo_command("mongodump", "--db osint --archive --gzip")
     state = ROOT / ".state/erasures.json"
     ledger = state.read_bytes() if state.exists() else b"[]"
+    corrections_path = ROOT / ".state/rectifications.json"
+    corrections = corrections_path.read_bytes() if corrections_path.exists() else b"{}"
     buffer = io.BytesIO()
     with zipfile.ZipFile(buffer, "w", zipfile.ZIP_STORED) as archive:
         archive.writestr("postgres.dump", pg)
         archive.writestr("mongo.archive.gz", mg)
         archive.writestr("erasures.json", ledger)
+        archive.writestr("rectifications.json", corrections)
     nonce = os.urandom(12)
     key = base64.b64decode((ROOT / ".secrets/backup_key").read_bytes())
     payload = (
@@ -125,10 +130,10 @@ def capture_backup():
         "bytes": len(payload),
         "encryption": "AES-256-GCM",
         "duration_s": round(time.perf_counter() - start, 3),
-        "scope": "PostgreSQL + MongoDB + erasure ledger; data encryption key stored separately",
+        "scope": "PostgreSQL + MongoDB + erasure and encrypted correction ledgers; data encryption key stored separately",
         "offsite_copy": False,
     }
-    (ROOT / "Preuves/backup.json").write_text(json.dumps(result, indent=2))
+    (EVIDENCE / "backup.json").write_text(json.dumps(result, indent=2))
     print(json.dumps(result))
     return target
 
@@ -187,9 +192,17 @@ def restore(path):
             archive.read("mongo.archive.gz"),
         )
         denied = set(json.loads(archive.read("erasures.json")))
+        corrections = (
+            json.loads(archive.read("rectifications.json"))
+            if "rectifications.json" in archive.namelist()
+            else {}
+        )
     ledger = ROOT / ".state/erasures.json"
     if ledger.exists():
         denied.update(json.loads(ledger.read_text()))
+    current_corrections = ROOT / ".state/rectifications.json"
+    if current_corrections.exists():
+        corrections.update(json.loads(current_corrections.read_text()))
     # Apply newer erasures before opening restored data to any reader.
     for key in sorted(denied):
         if not all(c.isalnum() or c in "-_" for c in key):
@@ -205,18 +218,85 @@ def restore(path):
                 "-d",
                 "osint_restore_test",
                 "-c",
-                f"DELETE FROM articles WHERE article_id='{key}'",
+                "DO $erase$ BEGIN IF to_regclass('article_revisions') IS NOT NULL THEN "
+                f"DELETE FROM article_revisions WHERE article_id='{key}'; "
+                f"END IF; DELETE FROM articles WHERE article_id='{key}'; END $erase$;",
             ]
         )
         mongo_command(
             "mongosh",
             "--quiet --eval "
-            + json.dumps(
-                'db.getSiblingDB("osint_restore_test").documents.deleteOne({_id:'
+            + shlex.quote(
+                'db.getSiblingDB("osint_restore_test").document_revisions.deleteMany({article_id:'
+                + json.dumps(key)
+                + '}); db.getSiblingDB("osint_restore_test").documents.deleteOne({_id:'
                 + json.dumps(key)
                 + "})"
             ),
         )
+    reapplied = 0
+    for identifier, correction in corrections.items():
+        if identifier in denied:
+            continue
+        if not all(c.isalnum() or c in "-_" for c in identifier):
+            raise ValueError("Invalid correction identifier")
+        encrypted = base64.b64decode(correction["ciphertext"])
+        data_key = base64.b64decode((ROOT / ".secrets/data_key").read_bytes())
+        row = json.loads(
+            AESGCM(data_key).decrypt(
+                encrypted[:12], encrypted[12:], identifier.encode()
+            )
+        )
+        body = {
+            k: v
+            for k, v in row.items()
+            if k not in ("id", "date", "date_readable", "source_id")
+        }
+        raw = json.dumps(body, ensure_ascii=False, separators=(",", ":")).encode()
+        checksum = hashlib.sha256(raw).hexdigest()
+        nonce = os.urandom(12)
+        ciphertext = base64.b64encode(
+            nonce + AESGCM(data_key).encrypt(nonce, raw, identifier.encode())
+        ).decode()
+        lines = (
+            command(
+                [
+                    "exec",
+                    "-T",
+                    "postgres",
+                    "psql",
+                    "-U",
+                    "postgres",
+                    "-d",
+                    "osint_restore_test",
+                    "-Atc",
+                    f"DELETE FROM article_revisions WHERE article_id='{identifier}'; UPDATE articles SET content_sha256='{checksum}' WHERE article_id='{identifier}' RETURNING run_id;",
+                ]
+            )
+            .decode()
+            .splitlines()
+        )
+        run_id = next(
+            (line for line in lines if len(line) == 36 and line.count("-") == 4), None
+        )
+        if not run_id:
+            continue
+        update = {
+            "ciphertext": ciphertext,
+            "content_sha256": checksum,
+            "run_id": run_id,
+        }
+        expression = (
+            'var d=db.getSiblingDB("osint_restore_test");d.document_revisions.deleteMany({article_id:'
+            + json.dumps(identifier)
+            + "});d.documents.updateOne({_id:"
+            + json.dumps(identifier)
+            + "},{$set:"
+            + json.dumps(update)
+            + "})"
+        )
+        mongo_command("mongosh", "--quiet --eval " + shlex.quote(expression))
+        reapplied += 1
     pg_count = int(
         command(
             [
@@ -250,10 +330,11 @@ def restore(path):
         "mongo_documents": mongo_count,
         "duration_s": round(time.perf_counter() - start, 3),
         "reapplied_erasures": len(denied),
+        "reapplied_rectifications": reapplied,
         "source_databases_replaced": False,
         "index_rebuild": "separate operation from restored authorities",
     }
-    (ROOT / "Preuves/restore.json").write_text(json.dumps(result, indent=2))
+    (EVIDENCE / "restore.json").write_text(json.dumps(result, indent=2))
     print(json.dumps(result))
 
 
@@ -261,5 +342,8 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser()
     p.add_argument("operation", choices=["backup", "restore-test"])
     p.add_argument("path", nargs="?")
+    p.add_argument("--evidence-dir", type=Path, default=EVIDENCE)
     a = p.parse_args()
+    EVIDENCE = a.evidence_dir
+    EVIDENCE.mkdir(parents=True, exist_ok=True)
     backup() if a.operation == "backup" else restore(a.path)

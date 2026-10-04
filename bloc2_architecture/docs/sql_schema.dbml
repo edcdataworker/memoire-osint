@@ -28,3 +28,17 @@ Table erasures {
   requested_at timestamptz [not null]
   status text [not null]
 }
+Table article_revisions {
+  article_id text [not null]
+  content_sha256 char(64) [not null]
+  source_id text [not null, ref: > sources.source_id]
+  published_at timestamptz [not null]
+  schema_version smallint [not null]
+  run_id uuid [not null, ref: > runs.run_id]
+  archived_at timestamptz [not null]
+  indexes {
+    (article_id, content_sha256) [pk]
+    published_at
+  }
+  Note: 'Archives sans clé étrangère vers articles : effacement coordonné et accès par période UTC.'
+}

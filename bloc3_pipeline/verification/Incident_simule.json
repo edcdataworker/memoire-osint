@@ -1,0 +1,24 @@
+{
+  "id": "I01-EXERCICE-20261004",
+  "at": "2026-10-04T18:30:14.084220+00:00",
+  "type": "explicit fictional technical exercise",
+  "real_violation_asserted": false,
+  "real_notification_sent": false,
+  "detection": {
+    "permissions": "Tests_cloture_final.log, chmod 0755 fixture detected",
+    "integrity": "Verification_HTTP.json, primary catalog unavailable",
+    "slow": "Tests_cloture_final.log, threshold crossed intentionally"
+  },
+  "containment": "chmod private; fallback read-only and refusal of start, resume and B2 import",
+  "qualification": {
+    "scope": "five fictional article fixtures and synthetic privacy marker",
+    "affected_real_people": 0,
+    "decision": "No real notification for a fictional drill; real risk assessment remains with DIR/RPD under B1 I01.",
+    "sources": [
+      "https://www.cnil.fr/fr/violations-de-donnees-personnelles-les-regles-suivre"
+    ]
+  },
+  "recovery": "server stopped, catalog restored, current rights reapplied before exposure",
+  "technical_closure": "Verification_HTTP.json and Tests_cloture_final.log",
+  "human_rehearsal_observed": false
+}
