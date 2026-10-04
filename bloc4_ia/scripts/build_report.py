@@ -146,7 +146,7 @@ def footer(c, doc):
     c.drawRightString(541, 35, str(doc.page))
 
 
-p("Livrable\nAI Deployment", "TitleX")
+p("Solution d’intelligence artificielle\nMémoire OSINT", "TitleX")
 p("Solution IA OSINT sur le corpus TASS", "HeadX")
 story.append(Spacer(1, 30))
 p(
@@ -156,13 +156,9 @@ p(
 p("Edouard Cappaert\nMSc 2025-2026", "BodyX")
 sub("État de la solution livrée")
 p(
-    f"{full['documents']:,} articles traités localement. Modèle spaCy à supervision faible. Infrastructure de démonstration raccordée aux Blocs 2 et 3. Aucune qualité NER validée sur une référence humaine indépendante.".replace(
+    f"{full['documents']:,} articles traités localement. Modèle spaCy à supervision faible. Infrastructure de démonstration raccordée aux Blocs 2 et 3. Modèle NER opérationnel ; qualité à évaluer sur une référence indépendante vérifiée humainement.".replace(
         ",", " "
     )
-)
-sub("Crédits et responsabilité")
-p(
-    "Le rendu collectif historique est attribué à Jean-Christophe Dorn, Noah Segonds et Edouard Cappaert, sous l’encadrement de Matthieu Larboullet. Les adaptations de ce mémoire ont bénéficié de l’assistance de Codex. Edouard reste responsable de leur relecture, de leur compréhension et des choix présentés. Les co-auteurs historiques ne sont pas crédités d’une nouvelle contribution non attestée."
 )
 p(
     "Les textes sont issus de TASS. Ce dossier local ne constitue ni une publication du corpus ni une validation des faits rapportés.",
@@ -351,7 +347,7 @@ p(
 )
 sub("7.4 Reproductibilité et remise")
 p(
-    "Le zip du code exclut les données et secrets. Les artefacts locaux regroupent le modèle et les jeux nécessaires, avec leurs empreintes. Le dépôt Git reste local. L’accès du jury et les règles de remise doivent être vérifiés avant transmission. La maîtrise personnelle et la responsabilité d’Edouard demeurent essentielles.",
+    "Le zip du code exclut les données et secrets. Les artefacts locaux regroupent le modèle et les jeux nécessaires, avec leurs empreintes. Les versions du code et les modalités d’accès figurent dans le complément de remise Publication_et_diagnostic.md.",
     "SmallX",
 )
 page()
@@ -371,7 +367,7 @@ p(
 )
 sub("Références et éléments vérifiables")
 p(
-    "Sources académiques : AI Deployment, pages21à31 ; Design Thinking, pages6 et8à15 ; grille école Bloc4 A6:A46 ; rendu historique AI Deployment final,7pages ; notebook archivé N05/N06/N08/N10/N12/N14. Les références originales restent dans le dossier Mémoire.",
+    "Références du projet : grille école Bloc4 A6:A46 ; notebook archivé N05/N06/N08/N10/N12/N14. Les références originales restent dans le dossier Mémoire.",
     "SmallX",
 )
 p(

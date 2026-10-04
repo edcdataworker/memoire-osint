@@ -1,4 +1,4 @@
-"""Generate the PDF and editable Markdown, preserving the Books document structure."""
+"""Generate the OSINT pipeline PDF and editable Markdown."""
 
 import json
 from pathlib import Path
@@ -144,24 +144,23 @@ def footer(canvas, doc):
     canvas.saveState()
     canvas.setFont("Helvetica", 8)
     canvas.setFillColor(G)
-    canvas.drawString(48, 27, "Data Pipelines for AI | Mémoire OSINT | Bloc 3")
+    canvas.drawString(48, 27, "Mémoire OSINT | Pipeline de données | Bloc 3")
     canvas.drawRightString(547, 27, str(doc.page))
     canvas.restoreState()
 
 
 flow.append(Spacer(1, 60))
-p("EUGENIA SCHOOL", "Sub")
+p("MÉMOIRE OSINT", "Sub")
 flow.append(Spacer(1, 28))
 p("Livrable", "TitleRed")
-p("Data Pipelines for AI", "Sub")
+p("Pipeline de données pour l’IA", "Sub")
 p("Pipeline du corpus TASS", "Sub")
 flow.append(Spacer(1, 20))
 table(
     ["Repère", "Version présentée"],
     [
         ["Sujet", "Collecte, qualité, publication et reprise automatique"],
-        ["Auteur", "Edouard Cappaert, adaptation préparée avec l’assistance de Codex"],
-        ["Enseignant / modèle", "Matthieu Larboullet ; rendu Books du 02/06/2026"],
+        ["Auteur", "Edouard Cappaert"],
         ["Code", "Dossier pipeline/ et archive Code_OSINT_Bloc3.zip"],
         ["Date", "04/10/2026"],
         ["Statut", "Prototype local exécuté ; aucune exploitation externe de production attestée"],
@@ -201,11 +200,11 @@ p(
     "Le mémoire construit une plateforme de veille OSINT pour une cellule fictive. Le Bloc 3 prépare des articles TASS fiables et traçables pour l’architecture du Bloc 2 et la reconnaissance d’entités du Bloc 4 : WEAPON, MIL_UNIT et MIL_ORG."
 )
 p(
-    "Comment automatiser un import qui tolère les erreurs isolables, protège la dernière publication valide et reprend après une panne sans perdre de données ni décaler les offsets ? La démarche ETL et le plan du rendu Books sont conservés, avec des champs et contrôles adaptés au texte journalistique."
+    "Comment automatiser un import qui tolère les erreurs isolables, protège la dernière publication valide et reprend après une panne sans perdre de données ni décaler les offsets ? La démarche ETL utilise des champs et contrôles adaptés au texte journalistique."
 )
 h("Source et transformations", 2)
 p(
-    "Le corpus brut retrouvé contient 21 742 articles. La provenance pédagogique locale et les empreintes sont documentées dans 00_Pilotage/Recuperation_artefacts.md. Le pipeline reproduit les 66 rejets sans texte et les 21 676 articles du corpus nettoyé reconstitué. Il ne lance aucun nouveau scraping."
+    "Le corpus brut retrouvé contient 21 742 articles. La provenance locale et les empreintes sont documentées dans 00_Pilotage/Recuperation_artefacts.md. Le pipeline reproduit les 66 rejets sans texte et les 21 676 articles du corpus nettoyé reconstitué. Il ne lance aucun nouveau scraping."
 )
 table(
     ["Champ", "Contrat"],
@@ -343,7 +342,7 @@ table(
             "Six titres vides avaient été rejetés par une validation trop stricte. Le contrat a été corrigé : le texte, nécessaire au NER, reste obligatoire.",
         ],
         [
-            "Publication Books avant qualité",
+            "Publication avant contrôle qualité",
             "L’ordre a été inversé dans cette adaptation : validation globale avant activation.",
         ],
         [
@@ -460,7 +459,7 @@ p(
 page("Conclusion, soutenance et sources")
 h("Résultat actuel", 2)
 p(
-    "Le prototype importe le corpus réel, conserve une filiation vérifiable et publie des textes stables après validation. Les scénarios de panne montrent une reprise autonome au dernier lot validé. Les alertes et la lecture sur un miroir sont observables. Le plan documentaire et la progression pédagogique de Books ont été conservés, avec un code réorganisé pour le besoin OSINT."
+    "Le prototype importe le corpus réel, conserve une filiation vérifiable et publie des textes stables après validation. Les scénarios de panne montrent une reprise autonome au dernier lot validé. Les alertes et la lecture sur un miroir sont observables. Le code est organisé pour le besoin OSINT."
 )
 h("Limites à défendre", 2)
 p(
@@ -478,12 +477,12 @@ table(
     ],
     [105, 375],
 )
-h("Sources et crédits", 2)
+h("Sources et références", 2)
 p(
-    "Grille remise : RNCP38777, Bloc 3!A6:A38 (33 critères). Consignes du directeur : plan pipeline, code et capture vidéo, 5 minutes de présentation et 15 minutes de questions. Cours Data Pipelines for AI de Matthieu Larboullet : p. 6 à 12, 17 à 21, 25 à 30. Modèle documentaire : livrable Books d’Edouard Cappaert, 02/06/2026, huit pages. Le cours AI Deployment p. 22 et la reconstitution N04 motivent le nettoyage minimal."
+    "Grille remise : RNCP38777, Bloc 3!A6:A38 (33 critères). Consignes du directeur : plan pipeline, code et capture vidéo, 5 minutes de présentation et 15 minutes de questions. La reconstitution N04 documente le nettoyage minimal."
 )
 p(
-    "Références techniques : sqlite.org/atomiccommit.html ; sqlite.org/wal.html ; docs.python.org/3/library/os.html, consultées le 04/10/2026. L’adaptation OSINT et ses documents ont été préparés avec l’assistance de Codex ; la relecture et la maîtrise personnelles d’Edouard restent à exercer. Aucun crédit historique n’est attribué à une contribution nouvelle sans preuve.",
+    "Références techniques : sqlite.org/atomiccommit.html ; sqlite.org/wal.html ; docs.python.org/3/library/os.html, consultées le 04/10/2026.",
     "SmallText",
 )
 SimpleDocTemplate(
