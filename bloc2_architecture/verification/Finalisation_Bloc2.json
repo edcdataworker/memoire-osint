@@ -1,0 +1,36 @@
+{
+  "updated_utc": "2026-10-04T19:49:47.953895+00:00",
+  "scope": "Bloc 2 documentary update; no load test repeated",
+  "volume": {
+    "at": "2026-10-04T19:19:49.026566+00:00",
+    "activated_and_physically_verified": true,
+    "encryption": "AES-256",
+    "migration_catalog_baseline": 21681,
+    "scope": "Managed collection state; other copies separate",
+    "source_sha256": "53f10ad6063811a0206de0fa79467786e65182441e3a534a10a87dfa8efe21c6"
+  },
+  "restoration": {
+    "at": "2026-10-04T19:02:32.550848+00:00",
+    "b2_restore_reapplies_correction": true,
+    "b2_restore_reapplies_erasure": true,
+    "real_articles_deleted": 0,
+    "source_sha256": "a5216d776e88501991597f341dfd79f0569bf7c053dc65b0575ebae1024451ac"
+  },
+  "configuration_review": {
+    "no_privileged": true,
+    "no_devices": true,
+    "no_host_network": true,
+    "read_service_read_only": true,
+    "read_service_tmpfs": true,
+    "memory_limits": true,
+    "cpu_limits_configured": false,
+    "cap_drop_configured": false,
+    "docker_socket_admin": true
+  },
+  "anssi_matrix_sha256": "6b6233a289c0fd1971560f6ee50b17fb64507870e2429b8cda324213c49ca1a0",
+  "limitations": [
+    "Selected controls, no exhaustive security audit or ISO certification",
+    "External copies and B2 metadata not entirely encrypted",
+    "No off-host backup or full host disaster recovery demonstrated"
+  ]
+}

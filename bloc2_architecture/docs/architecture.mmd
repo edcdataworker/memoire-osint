@@ -1,9 +1,9 @@
 flowchart TB
     user[Analyste et responsable] -->|HTTPS + authentification| app[Application de lecture]
-    user -->|HTTP, boucle locale, session CSRF| ui[Observatoire TASS B3]
+    user -->|HTTP, boucle locale, session CSRF| ui[Observatoire TASS, interface du programme développé dans le bloc 3]
     ui --> worker[Worker de collecte séparé, reprise]
     tass[Rubriques et pages TASS, HTTPS] --> worker
-    worker --> catalog[(SQLite B3, catalogue et révisions)]
+    worker --> catalog[(SQLite du programme développé dans le bloc 3, catalogue et révisions)]
     catalog --> export[Export figé JSON / JSONL, contrat versionné]
     source[Corpus TASS nettoyé, 21 676 articles] --> ingest[Ingestion B2 par lots + reprise]
     export -->|Import local via service opérateur| ingest
