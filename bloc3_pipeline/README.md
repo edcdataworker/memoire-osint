@@ -2,6 +2,14 @@
 
 Version actualisée : [Observatoire TASS local](Collecte_TASS.md), droits, monitoring et lecture de secours. Le PDF et la vidéo présentent cette version. Préparer Preparer_volume_chiffre.command, saisir le mot de passe personnellement dans Terminal, puis ouvrir Lancer_Observatoire_TASS.command. Le lanceur refuse un remplacement en clair. Volume_chiffre.json distingue préparation et activation effective.
 
+Pour essayer l’interface publique sans corpus réel ni mot de passe, lancer la source fictive :
+
+```sh
+python3 scripts/demo_collection_fixture.py .demo-publique 18743
+```
+
+Ouvrir `http://127.0.0.1:18743`, choisir Militaire et défense et le 26 novembre 2023 comme début et fin, puis lancer la collecte. Cinq articles fictifs sont générés localement. Aucune requête TASS n’est effectuée. Arrêter avec Ctrl+C. Ce mode est réservé aux fixtures ; le lanceur du corpus réel conserve son exigence de volume chiffré. Le code public ne contient ni mot de passe ni clé.
+
 Les sections suivantes conservent le mode d’emploi du pipeline historique de fichiers et ses commandes. Pour le collecteur, suivre le mode d’emploi dédié.
 
 Version locale du 4 octobre 2026. Le pipeline collecte un fichier JSON ou JSONL autorisé, valide chaque article, retire les doublons exacts, conserve sa provenance et publie des données figées pour les blocs 2 et 4. Le code opérationnel utilise la bibliothèque standard Python 3.12 uniquement.

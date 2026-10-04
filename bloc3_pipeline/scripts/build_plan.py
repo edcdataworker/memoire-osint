@@ -365,7 +365,7 @@ p(
 )
 h("Qualité et archives", 2)
 p(
-    "Le corpus historique est identifié par empreinte ; les textes normalisés conservent les IDs, dates et offsets. Les vérifications réseau sont bornées et séparées dans Rubriques_cloture.json. Une période vide ou une limite atteinte ne prouve pas l’absence d’autres publications. Les mentions extraites reflètent le corpus éditorial, pas un inventaire militaire réel."
+    "Le corpus historique est identifié par empreinte ; les textes normalisés conservent les IDs, dates et offsets. Les vérifications réseau sont bornées et séparées dans Reseau_final.json. Une période vide ou une limite atteinte ne prouve pas l’absence d’autres publications. Les mentions extraites reflètent le corpus éditorial, pas un inventaire militaire réel."
 )
 p(
     "Les tests de restauration utilisent une ancienne copie fictive et vérifient l’application des droits avant retour à la lecture. La continuité démontrée porte sur la lecture locale ; la collecte ne continue pas en cas de défaillance du stockage principal."

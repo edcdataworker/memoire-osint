@@ -7,6 +7,15 @@ La [gouvernance B1 actualisée](bloc1_gouvernance/Plan_gouvernance_OSINT.pdf) ac
 
 Projet transversal d’Edouard Cappaert pour une cellule de veille documentaire fictive. Un analyste et un responsable de veille explorent les mentions d’armes, d’unités et d’organisations militaires dans le corpus TASS afin de préparer des notes sourcées. Une mention constitue une information à vérifier dans son contexte.
 
+## Essayer l’Observatoire sans mot de passe
+
+```sh
+cd bloc3_pipeline
+python3 scripts/demo_collection_fixture.py .demo-publique 18743
+```
+
+Ouvrir `http://127.0.0.1:18743`. Choisir Militaire et défense et la journée du 26 novembre 2023 pour récupérer cinq articles fictifs sans accès au réseau TASS. Python 3.12 suffit, sans Docker ni dépendance. Ctrl+C arrête le serveur. Ce test public n’utilise aucune donnée réelle. Le mot de passe du volume protège les données privées du poste ; il ne conditionne ni l’accès au code ni cette démonstration.
+
 ## Les quatre blocs
 
 | Bloc | Contenu | Code |

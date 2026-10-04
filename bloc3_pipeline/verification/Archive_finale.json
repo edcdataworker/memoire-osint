@@ -1,0 +1,20 @@
+{
+  "archive_sha256": "691273a234a4c053005b2f31dda242c02fb44118f09a7b5c61474eb70e4849fd",
+  "source": "fresh temporary extraction, only public fixtures",
+  "collection": {
+    "returncode": 0,
+    "success": true
+  },
+  "closure": {
+    "returncode": 0,
+    "success": true
+  },
+  "pipeline": {
+    "returncode": 0,
+    "success": true
+  },
+  "frontend": {
+    "returncode": 0,
+    "success": true
+  }
+}

@@ -2,7 +2,7 @@
 
 Version 1.1 du 4 octobre 2026. L’Observatoire B3 collecte par rubrique et dates UTC, publie un export figé puis importe dans B2. Le raccordement testé conserve 21 676 articles initiaux et ajoute 5 articles, soit 21 681 articles. Voir [la cartographie des copies et la reprise](docs/Collecte_stockages_securite.md).
 
-Bloc 2, version locale du 4 octobre 2026. Plateforme pédagogique pour une cellule de veille fictive. Elle stocke le corpus TASS enrichi, relie la collecte B3 et la restitution B4 et distingue systématiquement les données réelles des essais synthétiques.
+Bloc 2, version locale du 4 octobre 2026. Plateforme pour la veille OSINT. Elle stocke le corpus TASS enrichi, relie la collecte B3 et la restitution B4 et distingue systématiquement les données réelles des essais synthétiques.
 
 ## Livrables
 
@@ -101,7 +101,7 @@ Installer les dépendances utilitaires dans un environnement Python local : `pyt
 .venv/bin/python scripts/backup_restore.py restore-test .backups/FICHIER.enc
 ```
 
-La sauvegarde prend un verrou partagé avec l’ingestion. Les mutations administratives directes doivent être suspendues pendant cette fenêtre. Elle contient les deux bases, leurs révisions et les registres de suppressions et de rectifications, chiffrés par AES-256-GCM. La restauration de contrôle cible uniquement `osint_restore_test`, réapplique aussi les suppressions plus récentes et vérifie les comptes. Elle ne remplace pas les bases de travail et ne rétablit pas automatiquement le service après perte de l’hôte. L’index doit être reconstruit depuis les autorités restaurées. La recette `Preuves/Collecte_TASS/restore.json` couvre les 21 681 articles et les suppressions. La recette de clôture B3 Droits_B3_B2.json vérifie aussi la réapplication d’une rectification puis d’une suppression après restauration, sur un identifiant fictif isolé. SQLite B3, ses exports et checkpoints ne sont pas inclus dans la sauvegarde B2. La copie hors machine et l’automatisation quotidienne restent à mettre en place avant exploitation réelle.
+La sauvegarde prend un verrou partagé avec l’ingestion. Les mutations administratives directes doivent être suspendues pendant cette fenêtre. Elle contient les deux bases, leurs révisions et les registres de suppressions et de rectifications, chiffrés par AES-256-GCM. La restauration de contrôle cible uniquement `osint_restore_test`, réapplique aussi les suppressions plus récentes et vérifie les comptes. Elle ne remplace pas les bases de travail et ne rétablit pas automatiquement le service après perte de l’hôte. L’index doit être reconstruit depuis les autorités restaurées. La recette `Preuves/Collecte_TASS/restore.json` couvre les 21 681 articles et les suppressions. La recette de clôture B3 Droits_B3_B2.json vérifie aussi la réapplication d’une rectification puis d’une suppression après restauration, sur un identifiant de test isolé. SQLite B3, ses exports et checkpoints ne sont pas inclus dans la sauvegarde B2. La copie hors machine et l’automatisation quotidienne restent à mettre en place avant exploitation réelle.
 
 Les révisions sont conservées dans `article_revisions` et `document_revisions`. Un article inchangé ne crée pas d’archive supplémentaire. L’API HTTPS authentifiée `/api/articles?start=YYYY-MM-DD&end=YYYY-MM-DD` sélectionne les dates de publication inclusives UTC ; elle retourne au plus 1 000 métadonnées, sans pagination. La migration additive `sql/02_revisions.sql` s’applique sans supprimer les volumes.
 

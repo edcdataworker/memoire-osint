@@ -2312,8 +2312,13 @@
       }
     }
   ],
-  "focus": "{\"focus\":\"BODY\",\"outline\":\"none\"}",
+  "focus": {
+    "tag": "BUTTON",
+    "label": "◎Suivi des opérations",
+    "outline": "solid"
+  },
   "zoom_method": "CSS body zoom, not native browser zoom",
   "browser": "Chrome on macOS",
-  "scanner_limit": "Visible button geometry heuristic; other browsers not tested"
+  "scanner_limit": "Visible button geometry heuristic; other browsers not tested",
+  "keyboard_evidence": "Keyboard_final.json"
 }

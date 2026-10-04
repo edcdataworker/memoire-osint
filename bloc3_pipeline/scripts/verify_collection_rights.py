@@ -86,6 +86,15 @@ print(json.dumps({'rights_fixture_verified':True}))
 """
             docker(["python", "-c", code, identifier, text, str(present)])
 
+        def seed_fictional_mention():
+            code = """from osint.storage import es
+import sys
+k=sys.argv[1]
+es('PUT','osint-entities-v1/_doc/'+k+'-mention?refresh=true',{'id':k})
+assert es('POST','osint-entities-v1/_count',{'query':{'term':{'id':k}}})['count']==1
+"""
+            docker(["python", "-c", code, identifier])
+
         try:
             docker(["ingest", "--file", "/rights/source.json"])
             spec = importlib.util.spec_from_file_location(
@@ -96,6 +105,7 @@ print(json.dumps({'rights_fixture_verified':True}))
             backup.EVIDENCE = evidence / "Restauration_B2"
             backup.EVIDENCE.mkdir(exist_ok=True)
             archive = backup.backup()
+            seed_fictional_mention()
             with (evidence / "Droits_B3_B2.log").open("a") as log, contextlib.redirect_stdout(log):
                 rights.rectify(
                     state, config, identifier, {"text": "Fictional corrected text. Ω"}, "FIX-001"
@@ -106,6 +116,7 @@ print(json.dumps({'rights_fixture_verified':True}))
             assert_b2("Fictional corrected text. Ω")
             report.update(
                 rectification_sql_mongo_index=True,
+                rectification_invalidates_indexed_mentions=True,
                 encrypted_correction_ledger=True,
                 old_versions_purged=True,
                 original_reimport_keeps_correction=True,
@@ -137,12 +148,17 @@ print(json.dumps({'restored_corrected_fixture':True}))
 """
             docker(["python", "-c", code, identifier])
             report["b2_restore_reapplies_correction"] = True
+            seed_fictional_mention()
             with (evidence / "Droits_B3_B2.log").open("a") as log, contextlib.redirect_stdout(log):
                 rights.erase(state, config, identifier, "FIX-002")
                 rights.propagate_b2(state, config, identifier, "FIX-002", True)
             docker(["ingest", "--file", "/rights/source.json"])
             assert_b2("", False)
-            report.update(erasure_sql_mongo_index=True, reimport_blocked=True)
+            report.update(
+                erasure_sql_mongo_index=True,
+                reimport_blocked=True,
+                erasure_invalidates_indexed_mentions=True,
+            )
             backup.restore(archive)
             code = """from osint.storage import pg
 import sys,json
@@ -153,6 +169,10 @@ print(json.dumps({'restored_erasure_fixture_absent':True}))
             docker(["python", "-c", code, identifier])
             report["b2_restore_reapplies_erasure"] = True
         finally:
+            private_log = state / "b2-rights.log"
+            if private_log.exists():
+                with (evidence / "Droits_B3_B2.log").open("a") as log:
+                    log.write(private_log.read_text())
             docker(["erase", identifier])
             if "archive" in locals():
                 archive.unlink(missing_ok=True)

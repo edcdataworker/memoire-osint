@@ -1,0 +1,12 @@
+{
+  "fixture": true,
+  "browser": "Chrome macOS, Playwright keyboard control",
+  "nav_tab_focus": {
+    "tag": "BUTTON",
+    "label": "◎Suivi des opérations",
+    "outline": "solid"
+  },
+  "modal_focus_trap": true,
+  "escape_closes_dialog": true,
+  "native_browser_zoom_tested": false
+}

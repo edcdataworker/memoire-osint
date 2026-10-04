@@ -1,0 +1,25 @@
+{
+  "scope": "Entity-index refresh for rights purge only, reader restricted",
+  "privileges": {
+    "reader": {
+      "osint-articles-v1": {
+        "maintenance": false,
+        "write": false
+      },
+      "osint-entities-v1": {
+        "maintenance": false,
+        "write": false
+      }
+    },
+    "writer": {
+      "osint-articles-v1": {
+        "maintenance": false,
+        "write": true
+      },
+      "osint-entities-v1": {
+        "maintenance": true,
+        "write": true
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "release": "b3-tass-20261004-21ac2d7e7d05",
-  "at": "2026-10-04T18:39:14.747445+00:00",
+  "at": "2026-10-04T19:04:46.098550+00:00",
   "runtime_tree_sha256": "21ac2d7e7d059f5e0d1df0c2b2e7817210119061b51c0cd14191cda2cdc4a922",
   "code_files_sha256": {
     "pipeline/__init__.py": "e6627eea550ecfe7a37bfd67cf8944d7660b0b01eea3796457f96f1a1952021a",
@@ -33,11 +33,11 @@
     "scripts/benchmark.py": "94ebccb7ae2b8da0e6d55c99c33c0adfea93833487788851f4b6e8811c4d86e3",
     "scripts/benchmark_collection.py": "edc64c0feb3f8e8b6d090ae7daa822a837fa7b26223ba08983898735b0d3bb28",
     "scripts/build_criteria.py": "b95916e8496a4924abc5918e01d8b53ae1faf7801474e2905f30ce8581d8637b",
-    "scripts/build_plan.py": "cd7580c18547f7a083312c38ad74eb05e557dcbf97e720d5e1433a7a15dfb452",
+    "scripts/build_plan.py": "3f453daa6f989fa2777600d2eeef3538d8bb93da60c86998e569b878e5d290a1",
     "scripts/capture_demo.py": "65c103beef72133fb1f352aedf39ad662f3d36c99d7fe215fdb220e084936d0e",
     "scripts/demo_collection_fixture.py": "25c40e1dcf638895c091a80f7e2b34c72e7b9bce5b0aece5e67ab15a5202333d",
     "scripts/verify_closure_ui.py": "38e515b82568188f30d5eb8cd786e9e47516be225863b9f3fde1a531d6826c81",
-    "scripts/verify_collection_rights.py": "63287b45657937b36b704dfc07aab9f0c122a6b62448f600d8a17f2f52ed5c22",
+    "scripts/verify_collection_rights.py": "1d761ff28917ef69b5d567c35b4f5f64ab14fca6d8307481e03e28863c890cc4",
     "scripts/verify_collection_ui.cjs": "bc979e1f758cd933638b4d592d7bfb761f97b007060e4bad73a013563d86de9d",
     "scripts/verify_responsive.py": "2a89e8bce1a2c81ffabc0a147dab2bb54c4c291c5a5ee3d4ea7e58d7eafcab67",
     "scripts/verify_tass_bounded.py": "48057d38bbc80e03f96b3add83a663be250589ab88e08ac8d6d205791f1a4228",
@@ -46,7 +46,7 @@
   },
   "b2_dependencies_sha256": {
     "app/osint/storage.py": "154df88a2da494941098d3b88112651c98abeb2fd32921676e43aadda84cd18d",
-    "app/osint/cli.py": "7fd34316a994511b4ba94a8f230aca4fe8db2177dda28e4cda9eda2bbfcb8fbd",
+    "app/osint/cli.py": "0088675a620085cee2aa664626120fda5b74bfed2d57a3f384b4d8b1592862c1",
     "app/osint/ingest.py": "3cca7b2849eff4d8bbda98e6da6a1e6456c54ed8515060e13eb375d9da58b2e6",
     "scripts/backup_restore.py": "a6b189924fde5865c03cf06c9d32418e94e66650d605e11048adf534e9781c66"
   },

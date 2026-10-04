@@ -53,10 +53,13 @@ def init_index():
             if role == "writer"
             else ["read", "view_index_metadata"]
         )
+        indices = [{"names": ["osint-*"], "privileges": privileges}]
+        if role == "writer":
+            indices.append({"names": ["osint-entities-v1"], "privileges": ["maintenance"]})
         es(
             "PUT",
             "_security/role/osint_" + role,
-            {"indices": [{"names": ["osint-*"], "privileges": privileges}]},
+            {"indices": indices},
             admin=True,
         )
         es(
@@ -192,10 +195,11 @@ def erase_locked(article_id):
             r.raise_for_status()
         sql.execute("DELETE FROM article_revisions WHERE article_id=%s", (article_id,))
         sql.execute("DELETE FROM articles WHERE article_id=%s", (article_id,))
+    invalidate_mentions(article_id)
+    with pg() as sql:
         sql.execute(
             "UPDATE erasures SET status='complete' WHERE article_id=%s", (article_id,)
         )
-    invalidate_mentions(article_id)
     print(
         json.dumps(
             {"erased": article_id, "ledger": "persisted", "backup_replay": "required"}
@@ -213,6 +217,9 @@ def invalidate_mentions(article_id):
     )
     if response.status_code != 404:
         response.raise_for_status()
+        result = response.json()
+        if result.get("timed_out") or result.get("failures") or result.get("version_conflicts"):
+            raise RuntimeError("Mention purge incomplete; retry rights propagation")
 
 
 def rectify(path, request_ref):
@@ -314,11 +321,21 @@ if __name__ == "__main__":
     try:
         main()
     except Exception as exc:
+        diagnostic = {}
+        if isinstance(exc, requests.HTTPError) and exc.response is not None:
+            diagnostic["http_status"] = exc.response.status_code
+            try:
+                error = exc.response.json().get("error", {})
+                if isinstance(error, dict):
+                    diagnostic["service_error_type"] = error.get("type")
+            except (ValueError, AttributeError):
+                pass
         print(
             json.dumps(
                 {
                     "error_type": type(exc).__name__,
                     "message": "Operation failed; preserve checkpoint and diagnose the service.",
+                    **diagnostic,
                 }
             ),
             file=sys.stderr,
