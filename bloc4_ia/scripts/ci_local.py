@@ -117,7 +117,9 @@ def main():
         atomic_json(pointer, deployed)
     git = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True)
     report = {
-        "environment": "local_loopback_demo",
+        "environment": "github_actions_ephemeral_demo"
+        if os.getenv("GITHUB_ACTIONS") == "true"
+        else "local_loopback_demo",
         "executed_at": utcnow(),
         "source_commit": git.stdout.strip() or None,
         "steps": steps,
@@ -125,7 +127,7 @@ def main():
         "smoke": smoke,
         "rollback_probe": rollback,
         "duration_seconds": round(time.perf_counter() - started, 3),
-        "cloud_ci_executed": False,
+        "cloud_ci_executed": os.getenv("GITHUB_ACTIONS") == "true",
         "production_model_promoted": False,
         "continuity": "Service is started and stopped for smoke; no uninterrupted public service claim",
     }
