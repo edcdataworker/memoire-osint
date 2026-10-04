@@ -1,0 +1,160 @@
+{
+  "date": "2026-10-05",
+  "scope": "Code courant, quatre rapports de remise et documentation expurgée",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "cf484b21713cc5e0b039d0a6d4b433baafd557ce7a4dfaf0588f3ead81625a94"
+    },
+    {
+      "path": "bloc1_gouvernance/Plan_gouvernance_OSINT.pdf",
+      "sha256": "17c29be3db7f3a7efe26e1d2719fd79c30e01f5f9b63d091a07b25580b0e4f94"
+    },
+    {
+      "path": "bloc2_architecture/Plan_infrastructure_OSINT.pdf",
+      "sha256": "84542d1604aa1a7371f3a7cd3dc6e39fbd457ec0ea8e0ebf1a42cb90ea53bc14"
+    },
+    {
+      "path": "bloc2_architecture/Preparation_orale_Bloc2.md",
+      "sha256": "b0259f7b4cf387c0dfdda658a95627e874e383211bf92dc96cfbc548abe51c3e"
+    },
+    {
+      "path": "bloc2_architecture/README.md",
+      "sha256": "f2b24eebe10e4eeac0d4a0ec4a18df016d8012003a1fcf7a70570491f1415f73"
+    },
+    {
+      "path": "bloc2_architecture/docs/Collecte_stockages_securite.md",
+      "sha256": "18c2b684cd2bc9e1cc06475fdfdffac0fccd50c779161b2eabda02afd066ce2e"
+    },
+    {
+      "path": "bloc2_architecture/scripts/render_execution_demo.py",
+      "sha256": "91aad93f83f6ed5e108925648edffe6e520a992404130533e7e1cc5c0cc7fb88"
+    },
+    {
+      "path": "bloc3_pipeline/Plan_pipeline_OSINT.pdf",
+      "sha256": "e3af2e4d42bfe382a68d590c72917f3f0a61d603554bcb5e2a807c0b5a15e544"
+    },
+    {
+      "path": "bloc4_ia/.gitignore",
+      "sha256": "9818bbbbc31ae3e9a60942a7db6299fcda7c03c5465b23e9c27c067dcd9987a7"
+    },
+    {
+      "path": "bloc4_ia/Correspondance_criteres_Bloc4.json",
+      "sha256": "b4ca02c90745e7cf25ca69d9e36cda5835a07010b05402d475d3c1e6247d0d95"
+    },
+    {
+      "path": "bloc4_ia/Guide_oral_Bloc4.md",
+      "sha256": "d20834d3a09ba5828a4b878096e28782ba0b14c289cb5c08508d313de715b931"
+    },
+    {
+      "path": "bloc4_ia/Lancer_revue_humaine.command",
+      "sha256": "e0605d2d0407a871891e604ac8cc1882f81cf55e508c0a3d2da95f18c368e7dc"
+    },
+    {
+      "path": "bloc4_ia/Note_analyse.md",
+      "sha256": "3050b81fe66302422efa1652e79a4fe35ca5a0590917a82725a8f55a24d8146a"
+    },
+    {
+      "path": "bloc4_ia/README.md",
+      "sha256": "cffca46d409376f1e729b1f809623ac4627d4d7a28ad8a65995132ee4bbb25e6"
+    },
+    {
+      "path": "bloc4_ia/REPRODUCTION.md",
+      "sha256": "11fb0f322ae425dfb939aacf9349f969e9f3901889cc85f4ce4ada50ab7a6a84"
+    },
+    {
+      "path": "bloc4_ia/Rapport_solution_IA_OSINT.pdf",
+      "sha256": "e5e343b0132a8b80656f4764ac33c09237d30cbf873be1c9531d99d47d0dd151"
+    },
+    {
+      "path": "bloc4_ia/docs/Annotation_et_protocole.md",
+      "sha256": "2f5197605f07fe7ef94c9aa03da10867d149854e1b7658675e85d87413d38375"
+    },
+    {
+      "path": "bloc4_ia/docs/Automatisation_et_exploitation.md",
+      "sha256": "f214c50cf3a215ccba55fd94c2df96fcaf657b7b6a8fc9037dfa322f0607ba41"
+    },
+    {
+      "path": "bloc4_ia/docs/Cahier_des_charges.md",
+      "sha256": "83b673db9d77a376066cec13cd6d576285584101671c059eedbba882e4641bbd"
+    },
+    {
+      "path": "bloc4_ia/docs/Diagnostic_IA_42_articles.md",
+      "sha256": "31ffde6fab2ab1547ba2cbfc02ff2b82ad3e17a64f6e2f595dd0402e9980dfcb"
+    },
+    {
+      "path": "bloc4_ia/docs/Diagnostic_annotations_IA_42_articles.json",
+      "sha256": "4ccb06d2e70d34fc62a043e260852b5f0e907333ed4d6fc5eecf63dc364e73e7"
+    },
+    {
+      "path": "bloc4_ia/docs/Diagnostic_et_revue_assistee.md",
+      "sha256": "c41081204f31458ae115ff715ed3e0733ba82668f3dc483629865f0061a4ef93"
+    },
+    {
+      "path": "bloc4_ia/docs/Integration_securite_gouvernance.md",
+      "sha256": "ee03d5f561edaeef175ba0423e9610089655eb64375294722220b2f10b025db3"
+    },
+    {
+      "path": "bloc4_ia/docs/Raccordement_manuel_nouveaux_articles.md",
+      "sha256": "0c0801f2149e9e0b325c02890ead98c9b2e9b4ef66590848a693dbcc6ff002de"
+    },
+    {
+      "path": "bloc4_ia/docs/Revue_humaine_42_articles.md",
+      "sha256": "abbb84f97975e8bf24b1cf86b455a9cfeb6e64f0f24cd7770f1fd519ccdc380e"
+    },
+    {
+      "path": "bloc4_ia/scripts/audit_splits.py",
+      "sha256": "9ffa8a70ba1b4b865db867b2155999e6d12d58db5f89b6914db3e6947dbe866d"
+    },
+    {
+      "path": "bloc4_ia/scripts/build_report.py",
+      "sha256": "17fe46d9c245e892971496f4930cf3454487ff4dda817232419f104795ff0894"
+    },
+    {
+      "path": "bloc4_ia/scripts/diagnostic_ia_elargi.py",
+      "sha256": "ee348408bbe8917e16617bd8137548cbfd0f892997952c1d519a038891a59c38"
+    },
+    {
+      "path": "bloc4_ia/scripts/verifier_nouveaux_articles.py",
+      "sha256": "8b59ce926209b55eed6b2588ef1f013bfb1ffede0f7624ebe26071e4cf318b1f"
+    },
+    {
+      "path": "bloc4_ia/src/osint_ner/human_review.py",
+      "sha256": "5a508ca0c2c7b13ed8f591b9f41d63dd78f13ca786d6a62e6e97a9c4e1d164f0"
+    },
+    {
+      "path": "bloc4_ia/src/osint_ner/metrics.py",
+      "sha256": "0d944ea1b8d9322e1218c0327ff2fd96e156a7373feeb0eb5f02150c9064a701"
+    },
+    {
+      "path": "bloc4_ia/src/osint_ner/model.py",
+      "sha256": "c763484954fe7a013300d4e7ef76acc28d81b4590a179edbeb9ed0868f7cd296"
+    },
+    {
+      "path": "bloc4_ia/src/osint_ner/static/human_review.html",
+      "sha256": "a920f806cbd6a7afd73199c9c8d52c8e73fe37502c9c5b7816827e3507f22300"
+    },
+    {
+      "path": "bloc4_ia/src/osint_ner/static/human_review.js",
+      "sha256": "dbe9452672793f2a9dee4b7479b94e088c85d217a54d75a8925ea2247d60cca9"
+    },
+    {
+      "path": "bloc4_ia/tests/test_human_review.py",
+      "sha256": "340e32864c3f98cbc262320fb10b91d7ab0c15621298d1e356f1a75381bf05be"
+    }
+  ],
+  "diagnostic_42_texts": "Surfaces d’erreur remplacées par SHA-256 et longueur dans la preuve publique",
+  "excluded": "Corpus réels, modèles sérialisés, états de revue, secrets et volumes",
+  "problems": [],
+  "local_checks": {
+    "python": "3.12",
+    "architecture": "ruff, compilation et Compose réussis",
+    "pipeline": {
+      "integration": 14,
+      "collection": 11,
+      "closure": 16,
+      "frontend": 4
+    },
+    "ia_tests": 40
+  }
+}

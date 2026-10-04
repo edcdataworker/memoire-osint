@@ -1,5 +1,6 @@
 .venv/
 .state/
+/.state
 .construction/
 __pycache__/
 *.egg-info/
@@ -11,5 +12,8 @@ build/
 .env*
 !.env.example
 Artefacts_locaux/
+/Artefacts_locaux
+/Preuves
 Revue_annotations_locale.html
+Revue_annotations_assistee_IA.html
 Preuves/*.webm

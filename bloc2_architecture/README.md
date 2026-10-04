@@ -1,8 +1,8 @@
 # Architecture commune du mémoire OSINT
 
-Version 1.2 du 4 octobre 2026. Le programme développé dans le bloc 3 (Observatoire) collecte par rubrique et dates UTC, publie un export figé puis importe dans B2. Le raccordement testé conserve 21 676 articles initiaux et ajoute 5 articles, soit 21 681 articles. Voir [la cartographie des copies et la reprise](docs/Collecte_stockages_securite.md).
+Version 1.2 du 4 octobre 2026. Le programme développé dans le bloc 3 (Observatoire) collecte par rubrique et dates UTC, publie un export figé puis importe dans Bloc 2. Le raccordement testé conserve 21 676 articles initiaux et ajoute 5 articles, soit 21 681 articles. Voir [la cartographie des copies et la reprise](docs/Collecte_stockages_securite.md).
 
-Bloc 2, version locale du 4 octobre 2026. Plateforme pour la veille OSINT. Elle stocke le corpus TASS enrichi, relie la collecte du programme développé dans le bloc 3 et la restitution B4 et distingue systématiquement les données réelles des essais synthétiques.
+Bloc 2, version locale du 4 octobre 2026. Plateforme pour la veille OSINT. Elle stocke le corpus TASS enrichi, relie la collecte du programme développé dans le bloc 3 et la restitution Bloc 4 et distingue systématiquement les données réelles des essais synthétiques.
 
 ## Livrables
 
@@ -17,7 +17,7 @@ Bloc 2, version locale du 4 octobre 2026. Plateforme pour la veille OSINT. Elle 
 
 PostgreSQL fait autorité pour les identifiants, sources, dates, empreintes, exécutions et suppressions. MongoDB conserve les documents chiffrés, avec un identifiant partagé et un validateur JSON. Une écriture MongoDB précède la transaction SQL et le point de reprise ; un lot interrompu se rejoue par remplacement et upsert. Une divergence doit être réconciliée avant indexation. Il n’existe pas de transaction distribuée entre les deux moteurs.
 
-Elasticsearch est un index dérivé, reconstructible depuis les identifiants SQL validés et les documents MongoDB. À ce stade il contient dates, identifiants, empreintes et texte chiffré. L’index NER B4 distinct conserve 39 511 mentions sur le corpus initial. Les cinq articles ajoutés ne sont pas analysés dans la recette du raccordement. Les volumes techniques ne prouvent pas la qualité des prédictions.
+Elasticsearch est un index dérivé, reconstructible depuis les identifiants SQL validés et les documents MongoDB. À ce stade il contient dates, identifiants, empreintes et texte chiffré. L’index NER Bloc 4 distinct conserve 39 511 mentions sur le corpus initial. Les cinq articles ajoutés ne sont pas analysés dans la recette du raccordement. Les volumes techniques ne prouvent pas la qualité des prédictions.
 
 Le service HTTPS consulte SQL et MongoDB. En cas d’indisponibilité d’un de ces services, il peut lire un article depuis le dernier index Elasticsearch, avec l’état `degraded_index_snapshot`. Ce mode peut être moins frais ; il ne permet pas l’ingestion. Il ne protège pas contre une panne de Docker, de l’application ou du Mac.
 
@@ -80,7 +80,9 @@ Les empreintes du code utilisé pendant les mesures et du code livré sont disti
 
 Pour vérifier la continuité sans enregistrement, exécuter `python3 scripts/verify_continuity.py` après le test de suppression. Ce script arrête et redémarre uniquement les bases du projet OSINT ; il conserve les volumes.
 
-La vidéo assemble deux captures réelles : le passage en lecture dégradée, puis un plan de l’article après rétablissement. Elle est muette et comporte une coupe ; elle ne représente pas une mesure chronométrée de basculement. Les temps de la vidéo et du journal d’actions ne sont pas interchangeables.
+La vidéo `Demonstration_locale_OSINT.mp4`, actualisée le 5 octobre 2026, montre l’exécution réelle du programme d’administration et du service de consultation : statut initial, import de trois articles fictifs, indexation, comparaison des identifiants et empreintes dans les trois moteurs, consultation, arrêt des deux bases, lecture depuis l’index et rétablissement. Les bases et volumes de démonstration sont séparés du corpus de travail.
+
+La vidéo est muette, avec des légendes et des coupes entre étapes. Elle conserve les durées des séquences enregistrées par captures successives de l’interface ; elle ne mesure pas la latence de basculement. La console affiche les sorties réelles des commandes Docker. Pour la capture uniquement, un relais HTTP lié à `127.0.0.1` transmet les pages du service HTTPS en vérifiant son autorité locale ; aucun secret n’est affiché. Ce relais temporaire ne fait pas partie de l’architecture livrée et ne démontre pas TLS entre navigateur et relais. Les contrôles et les empreintes de la version exécutée sont dans [le journal de la vidéo](verification/Video_execution_Bloc2.json).
 
 ## Reprise et erreurs
 
@@ -101,7 +103,7 @@ Installer les dépendances utilitaires dans un environnement Python local : `pyt
 .venv/bin/python scripts/backup_restore.py restore-test .backups/FICHIER.enc
 ```
 
-La sauvegarde prend un verrou partagé avec l’ingestion. Les mutations administratives directes doivent être suspendues pendant cette fenêtre. Elle contient les deux bases, leurs révisions et les registres de suppressions et de rectifications, chiffrés par AES-256-GCM. La restauration de contrôle cible uniquement `osint_restore_test`, réapplique aussi les suppressions plus récentes et vérifie les comptes. Elle ne remplace pas les bases de travail et ne rétablit pas automatiquement le service après perte de l’hôte. L’index doit être reconstruit depuis les autorités restaurées. La recette `Preuves/Collecte_TASS/restore.json` couvre les 21 681 articles et les suppressions. La recette de clôture du programme développé dans le bloc 3 Droits_B3_B2.json vérifie aussi la réapplication d’une rectification puis d’une suppression après restauration, sur un identifiant de test isolé (Preuves/Collecte_TASS/Droits_B3_B2.json). SQLite du programme développé dans le bloc 3, ses exports et checkpoints ne sont pas inclus dans la sauvegarde B2. La copie hors machine et l’automatisation quotidienne restent à mettre en place avant exploitation réelle.
+La sauvegarde prend un verrou partagé avec l’ingestion. Les mutations administratives directes doivent être suspendues pendant cette fenêtre. Elle contient les deux bases, leurs révisions et les registres de suppressions et de rectifications, chiffrés par AES-256-GCM. La restauration de contrôle cible uniquement `osint_restore_test`, réapplique aussi les suppressions plus récentes et vérifie les comptes. Elle ne remplace pas les bases de travail et ne rétablit pas automatiquement le service après perte de l’hôte. L’index doit être reconstruit depuis les autorités restaurées. La recette `Preuves/Collecte_TASS/restore.json` couvre les 21 681 articles et les suppressions. La recette de clôture du programme développé dans le bloc 3 Droits_B3_B2.json vérifie aussi la réapplication d’une rectification puis d’une suppression après restauration, sur un identifiant de test isolé (Preuves/Collecte_TASS/Droits_B3_B2.json). SQLite du programme développé dans le bloc 3, ses exports et checkpoints ne sont pas inclus dans la sauvegarde Bloc 2. La copie hors machine et l’automatisation quotidienne restent à mettre en place avant exploitation réelle.
 
 Les révisions sont conservées dans `article_revisions` et `document_revisions`. Un article inchangé ne crée pas d’archive supplémentaire. L’API HTTPS authentifiée `/api/articles?start=YYYY-MM-DD&end=YYYY-MM-DD` sélectionne les dates de publication inclusives UTC ; elle retourne au plus 1 000 métadonnées, sans pagination. La migration additive `sql/02_revisions.sql` s’applique sans supprimer les volumes.
 
@@ -133,6 +135,6 @@ Références techniques consultées le 4 octobre 2026 : [Compose et dépendances
 
 ## Correspondance avec les recommandations ANSSI
 
-Le [rapprochement B2-3.2](docs/Correspondance_ANSSI_Bloc2.md) localise les recommandations, configurations, preuves et écarts. Le volume chiffré du programme développé dans le bloc 3 et la restauration des rectifications/effacements sont vérifiés dans les preuves jointes. La vidéo de raccordement conserve son état antérieur au chiffrement. Les métadonnées B2 et les copies externes ne bénéficient pas automatiquement de la protection du volume.
+Le [rapprochement Bloc 2-3.2](docs/Correspondance_ANSSI_Bloc2.md) localise les recommandations, configurations, preuves et écarts. Le volume chiffré du programme développé dans le bloc 3 et la restauration des rectifications/effacements sont vérifiés dans les preuves jointes. La vidéo de raccordement conserve son état antérieur au chiffrement. Les métadonnées Bloc 2 et les copies externes ne bénéficient pas automatiquement de la protection du volume.
 
 Le [rapport d’infrastructure V1.2](Plan_infrastructure_OSINT.pdf) et la [correspondance des critères](Correspondance_criteres_Bloc2.csv) accompagnent cette version du code. Les preuves publiques expurgées sont dans [verification/Finalisation_Bloc2.json](verification/Finalisation_Bloc2.json).

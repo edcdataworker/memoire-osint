@@ -1,6 +1,6 @@
 # Collecte TASS, stockages et protection des copies
 
-Version 1.4 du 4 octobre 2026. Cette fiche décrit le périmètre commun au programme développé dans le bloc 3 et à B2. Les résultats cités sont des essais locaux, avec données réelles ou fixtures explicitement distinguées.
+Version 1.5 du 4 octobre 2026. Cette fiche décrit le périmètre commun au programme développé dans le bloc 3 et à B2. Les résultats cités sont des essais locaux, avec données réelles ou fixtures explicitement distinguées.
 
 ## Parcours et autorités
 
@@ -8,7 +8,7 @@ Navigateur local → service du programme développé dans le bloc 3 → worker 
 
 SQLite du programme développé dans le bloc 3 conserve jobs, checkpoints, catalogue, versions et événements. PostgreSQL fait autorité pour les métadonnées publiées et les identifiants validés ; MongoDB conserve les textes chiffrés correspondants. Elasticsearch est dérivé. L’état d’un job de collecte et l’UUID d’une ingestion B2 sont deux identifiants différents, rapprochés par la provenance et le journal d’import. Il n’existe pas de transaction distribuée entre SQLite, SQL et MongoDB.
 
-Le raccordement enregistré dans `Preuves/Contrat_collecte_TASS.json` vérifie cinq nouveaux articles et 21 681 articles dans chaque stockage. Les 39 511 mentions NER sont conservées dans un index B4 distinct et concernent le corpus initial. Les cinq nouveaux textes n’ont pas d’inférence dans cette recette.
+Le raccordement enregistré dans `Preuves/Contrat_collecte_TASS.json` vérifie cinq nouveaux articles et 21 681 articles dans chaque stockage. Cette première recette conserve les 39 511 mentions du corpus initial, sans inférence des cinq nouveaux textes. Un contrôle manuel complémentaire a ensuite analysé ces cinq articles avec le modèle existant : neuf mentions ont été indexées et relues avec le compte lecteur, pour un total de 39 520. Le rejeu ne crée aucun doublon. Voir [la preuve B4](../../04_Bloc_4_IA/Preuves/Raccordement_manuel_5_articles.json) et [le protocole](../../04_Bloc_4_IA/docs/Raccordement_manuel_nouveaux_articles.md).
 
 ## Révisions et contrat
 
@@ -28,7 +28,7 @@ L’API B2 authentifiée `/api/articles?start=YYYY-MM-DD&end=YYYY-MM-DD` appliqu
 | Miroir SQLite et exports JSON/JSONL du programme développé dans le bloc 3 | Même répertoire privé ; instantané cohérent vérifié et publication atomique. | Lecture seule si catalogue principal invalide ; restauration explicite avec réapplication des droits. | Testé sur fixtures du programme développé dans le bloc 3 ; même hôte. Sauvegarde externe du programme développé dans le bloc 3 non démontrée. |
 | PostgreSQL et MongoDB B2 | TLS et rôles lecteur/écrivain ; textes courants et archivés AES-GCM. | Dumps des bases, y compris révisions ; purge des versions et exclusion du réimport. | Révisions, dates, chiffrement et effacement testés sur fixture. Métadonnées non entièrement chiffrées au repos. |
 | Registres de suppressions et rectifications | Identifiants minimaux ; corrections B2 chiffrées avec clé séparée. | Registres à conserver et réappliquer avant exposition d’une restauration. | Rectification/effacement et restauration du programme développé dans le bloc 3 et de B2 testés sur un article de test, avec réapplication des décisions actuelles. |
-| Elasticsearch et index NER | Accès authentifié ; index articles reconstructible depuis SQL/Mongo. | Suppressions à propager ; reconstruire l’index après restauration. | Index courant et NER distincts ; aucune analyse des cinq nouveaux articles attestée. |
+| Elasticsearch et index NER | Accès authentifié ; index articles reconstructible depuis SQL/Mongo. | Suppressions à propager ; reconstruire l’index après restauration. | Index courant et NER distincts ; analyse manuelle des cinq nouveaux articles attestée séparément dans B4, sans déclenchement automatique. |
 | Exports téléchargés ailleurs, sources, annotations et modèle | Protection dépendant du lieu et de l’usage ; inventaire nécessaire. | Procédure coordonnée de conservation et de droits du bloc 1. | Pas de purge distante automatique ni de désapprentissage démontré. |
 
 Les textes SQLite/JSON sont lisibles par le processus après montage du volume. Le chiffrement B2 ne protège pas les copies du programme développé dans le bloc 3. Les permissions ne constituent pas un chiffrement ; le jeton CSRF ne constitue pas une authentification personnelle. La capture de raccordement utilise l’état local existant sans chiffrement du volume (`encrypted_volume=false`, `encryption_required=false`). Elle démontre l’import ; l’activation physique ultérieure est attestée séparément dans Preuves/Collecte_TASS/Volume_chiffre.json.

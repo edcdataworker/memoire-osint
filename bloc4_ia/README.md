@@ -1,10 +1,12 @@
 # Bloc 4 : solution IA OSINT
 
-Version locale de démonstration, 4 octobre 2026. Extraction spaCy des labels WEAPON, MIL_UNIT et MIL_ORG dans les articles TASS. Les prédictions ne sont pas validées sur une référence humaine indépendante. Les scores qualité restent indisponibles.
+Remise du 5 octobre 2026 : le [guide de reproduction](REPRODUCTION.md) ouvre le développement et le déploiement de cette version commune. Le tag `remise-2026-10-05` et le manifeste Drive identifient les sources remises.
+
+Version locale de démonstration, 4 octobre 2026. Extraction spaCy des labels WEAPON, MIL_UNIT et MIL_ORG dans les articles TASS. Préannotation par règles lexicales et contrôle complémentaire par IA. Le diagnostic élargi sur 42 articles mesure un F1 de 32,73 % contre une référence générée par IA ; son protocole et ses limites sont décrits dans `docs/Diagnostic_IA_42_articles.md`.
 
 ## Livrables
 
-1. `Rapport_solution_IA_OSINT.pdf` : plan historique conservé, pipeline, modèle, dashboards, métriques et note d’analyse.
+1. `Rapport_solution_IA_OSINT.pdf` : pipeline, modèle, dashboards, métriques et note d’analyse.
 2. `Presentation_Bloc4.pptx` et `Guide_oral_Bloc4.md` : support de cinq minutes et questions du jury.
 3. `src/osint_ner/` : code de développement, contrats, annotation, apprentissage, évaluation, inférence, monitoring, registre et interface.
 4. `scripts/ci_local.py`, `.github/workflows/tests.yml`, `config/` : code de déploiement local et workflow cloud préparé.
@@ -23,7 +25,7 @@ python3 -m venv .venv
 .venv/bin/python -m pip check
 ```
 
-Le fichier de verrou a été vérifié sur macOS ARM64. Les wheels disponibles et versions système peuvent différer sur d’autres plateformes. Les articles et modèles locaux sont sous `.state/`, exclus du dépôt. Les récupérer via les artefacts locaux autorisés ou les reconstruire ci-dessous.
+Le fichier de verrou a été vérifié sur macOS ARM64. Les wheels disponibles et versions système peuvent différer sur d’autres plateformes. Les articles et modèles locaux sont sous `.state/`, exclus du dépôt. Sur le poste de démonstration, ce chemin et les copies B4 inventoriées pointent vers le volume chiffré `/Volumes/MemoireOSINT/B4/Copies/`. Monter ce volume avant l’utilisation et conserver les liens : un volume absent doit provoquer un échec, sans recréer une copie en clair. Voir `Preuves/Protection_copies_B4.json`.
 
 ## Exécution reproductible
 
@@ -36,17 +38,17 @@ export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1
 .venv/bin/python -m osint_ner.cli export-es --input .state/inference.jsonl --output .state/es-mentions.ndjson --exclusions ../02_Bloc_2_Architecture/.state/erasures.json
 ```
 
-Le nom de run doit être neuf. Adapter le chemin du registre réel d’exclusion, vérifier sa présence et sa forme, puis toujours l’appliquer à l’inférence ET à l’export en exploitation. Le corpus B3 JSONL est accepté sans renettoyage. Le mapping distinct est dans `config/elasticsearch-entities-mapping.json`. L’import dans Elasticsearch TLS relève du raccordement B2/B3/B4, sans toucher l’index des articles.
+Le nom de run doit être neuf. Adapter le chemin du registre réel d’exclusion, vérifier sa présence et sa forme, puis toujours l’appliquer à l’inférence ET à l’export en exploitation. Le corpus B3 JSONL est accepté sans renettoyage. Le mapping distinct est dans `config/elasticsearch-entities-mapping.json`. L’import dans Elasticsearch TLS relève du raccordement entre les Blocs 2, 3 et 4, sans toucher l’index des articles.
 
-## Revue et évaluation
+## Contrôle par IA et évaluation
 
-Ouvrir `Revue_annotations_locale.html`. Lire chaque article complet, corriger les propositions, renseigner le relecteur puis attester les articles effectivement relus. Exporter `human-reviewed.jsonl` et le placer dans `.state/data/`. Les 18 exemples sont réservés au test et ne doivent pas intégrer train/dev. Le document `docs/Annotation_et_protocole.md` définit les règles et biais.
+Le diagnostic exploratoire courant porte sur 42 articles du test figé, contre une référence proposée par Codex. Son F1 micro vaut 32,73 % ; il ne mesure pas une qualité validée par une personne. Voir [le protocole et les résultats](docs/Diagnostic_IA_42_articles.md), [la preuve publique expurgée](docs/Diagnostic_annotations_IA_42_articles.json) et [la revue humaine](docs/Revue_humaine_42_articles.md). Ces articles ne doivent pas intégrer train/dev. La commande ci-dessous concerne une référence réellement relue et attestée ; aucune attestation humaine n’est créée par la publication du code.
 
 ```sh
 .venv/bin/python -m osint_ner.cli evaluate --run .state/runs/baseline --reference .state/data/human-reviewed.jsonl --manifest .state/data/split_manifest.jsonl --output Preuves/quality_human_sample.json
 ```
 
-Cette commande refuse une référence sans provenance de revue. Une performance sur un petit échantillon assisté ne constitue pas une validation de production.
+Cette commande contrôle la provenance de revue et l’indépendance du test. Les résultats restent attachés au protocole et à la version de référence utilisés.
 
 ## Interface, automatisation et livraison
 
@@ -57,7 +59,7 @@ Cette commande refuse une référence sans provenance de revue. Une performance 
 .venv/bin/python scripts/ci_local.py
 ```
 
-L’interface écoute sur http://127.0.0.1:8764. La chaîne CI/CD locale livre un wheel identifié et contrôle le service sur 8765. Le workflow GitHub est préparé, sans preuve d’exécution distante. L’ordonnanceur normal exige des labels revus ; le mode démo mesure le mécanisme sans promouvoir un modèle non validé.
+L’interface écoute sur http://127.0.0.1:8764. La chaîne CI/CD locale livre un wheel identifié et contrôle le service sur 8765. Le [workflow commun](../.github/workflows/verification.yml) contrôle l’architecture, le pipeline et l’IA, construit le wheel et vérifie un service éphémère sur données synthétiques. Consulter l’exécution correspondant au commit de remise dans GitHub Actions ; la présence du workflow ne prouve pas son succès. Le fichier `.github/workflows/tests.yml` de ce dossier est un autre workflow, conservé pour la version locale ; sa présence ne constitue pas la preuve du run commun. L’ordonnanceur normal exige des labels revus ; le mode démo mesure le mécanisme sans promouvoir un modèle non validé.
 
 ## Tests et limites
 
@@ -75,7 +77,7 @@ Le rendu de cours historique reste attribué à Jean-Christophe Dorn, Noah Segon
 
 ## Références
 
-Cours AI Deployment, pages 21 à 31 ; Design Thinking, pages 6 et 8 à 15 ; grille Bloc 4 A6:A46. Documentation technique consultée le 4 octobre 2026 : https://spacy.io/usage/training et https://spacy.io/api/entityrecognizer. Les dépendances logicielles conservent leurs licences respectives. Le code local est consultable dans Git, sans dépôt distant nouvellement publié.
+Cours AI Deployment, pages 21 à 31 ; Design Thinking, pages 6 et 8 à 15 ; grille Bloc 4 A6:A46. Documentation technique consultée le 4 octobre 2026 : https://spacy.io/usage/training et https://spacy.io/api/entityrecognizer. Les dépendances logicielles conservent leurs licences respectives. Le code courant est publié dans le dépôt GitHub transversal ; les textes, états de revue et modèles réels restent locaux.
 
 ## Artefacts locaux fournis et démarrage court
 
@@ -90,4 +92,21 @@ unzip Artefacts_locaux/Jeux_reproductibles_OSINT.zip -d .state/data
 
 Ce parcours affiche cinq articles réels avec le modèle livré. L’inférence complète de cette exécution reste dans `.state/inference-full.jsonl` ; pour reconstruire la totalité, fournir le corpus B3 autorisé et appliquer le registre d’exclusion courant. La vidéo et les captures finales utilisent les 21 676 sorties complètes, pas le petit fixture portable.
 
-Le code de la solution a été vérifié par 32 tests et une chaîne locale au commit `5d571ee`. Les modifications documentaires ultérieures ne modifient pas les modules applicatifs. Les identités précises figurent dans `Preuves/Versions.json`. La vidéo finale décrit une capture réelle de l’interface locale ; ses caractéristiques sont vérifiées avec ffprobe et consignées dans `Preuves/Video_metadata.json`.
+La version de remise comporte 40 tests Python, notamment pour la revue d’annotations et la provenance du test indépendant. Le commit public et les empreintes des archives identifient le code courant. Ces tests utilisent des fixtures et ne valident pas les annotations réelles. La vidéo finale décrit une capture réelle de l’interface locale ; ses caractéristiques sont vérifiées avec ffprobe et consignées dans `Preuves/Video_metadata.json`.
+
+## Complément de finalisation
+
+Le code public est disponible sur [GitHub](https://github.com/edcdataworker/memoire-osint). Le workflow commun y contrôle les Blocs 2, 3 et 4 et livre un service IA éphémère sur données synthétiques dans son runner. L’archive `Code_OSINT_GitHub.zip` conserve cette organisation commune. Le tag de remise et le manifeste Drive rattachent les archives à cette version publique.
+
+Un [diagnostic initial et une revue assistée](docs/Diagnostic_et_revue_assistee.md) complètent les préannotations : 18 articles, 104 mentions proposées par Codex, F1 diagnostic de 44,93 %. Cette évaluation exploratoire mesure l’accord avec les propositions IA. `Revue_annotations_assistee_IA.html` permet de corriger les frontières, labels et décisions de périmètre. Le modèle reste identique.
+
+Un [raccordement manuel sur cinq nouveaux articles](docs/Raccordement_manuel_nouveaux_articles.md) a été exécuté le 4 octobre 2026 : inférence en 1,476 seconde avec le modèle existant, neuf mentions indexées et relues avec le compte lecteur. L’index local contient désormais 39 520 mentions. Le rejeu conserve ce total. Ce complément démontre le parcours de nouvelles données ; il ne déclenche aucun réentraînement et ne mesure pas la qualité NER.
+
+Le [diagnostic élargi](docs/Diagnostic_IA_42_articles.md) conserve les 18 articles initiaux et ajoute 24 articles du test figé, sélectionnés par longueur sans consulter les prédictions. Il porte sur 42 articles et 254 mentions proposées par IA : précision 71,05 %, rappel 21,26 %, F1 32,73 %. Le changement de score provient de la référence élargie ; les poids du modèle sont identiques. Ce résultat exploratoire confirme les omissions, surtout sur les textes longs. Les révisions locales et la migration du stockage ne sont pas attribuées au run GitHub antérieur.
+
+## Revue humaine des 42 articles
+
+Le [parcours de revue](docs/Revue_humaine_42_articles.md) permet de corriger les propositions, enregistrer les décisions sur le volume chiffré, puis calculer la qualité sur le test figé. Les prédictions sont masquées pendant la lecture. Aucun article réel n’est attesté par les tests automatiques ; la revue personnelle reste à effectuer. Démarrer le lanceur Lancer_revue_humaine.command depuis le dossier B4.
+
+
+Codex a examiné les 42 textes de test et corrigé les propositions comme IA. La méthode est décrite dans [le guide de revue](docs/Revue_humaine_42_articles.md). L’attestation et les décisions détaillées sont dans le dossier chiffré privé, fichier `Codex_prelecture_attestation_42.json`, empreinte 2f889f6130008464c181fb4e72ae134e4f9dc7be9da717a2d3292109d87f9d79. Elles ne constituent pas une validation humaine. La remise comporte 0/42 attestations humaines ; aucune métrique humaine n’est calculée. Le [parcours local](Lancer_revue_humaine.command) attend ta lecture personnelle pour attester chaque article.

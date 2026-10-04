@@ -17,13 +17,24 @@
     "source_exacte": "Bloc 4!A7",
     "critere_exact": "1.2 - La qualité des prédictions ou des décisions faites par l'IA est mesurée en utilisant des métriques de performance appropriées pour le type de tâche (précision, rappel, AUC pour la classification; MAE, RMSE pour la régression; BLEU pour la traduction automatique, etc.).",
     "statut": "Implémenté",
-    "existant": "Scorer exact global/par label, références protégées, métriques nulles.",
+    "existant": "Diagnostic exploratoire contre référence IA : F1 32,73 %. Codex a relu les 42 textes et corrigé les brouillons comme IA. Aucune attestation ni métrique de qualité humaine ; modèle inchangé.",
     "preuves": [
       "src/osint_ner/metrics.py",
-      "Preuves/quality_gate.json"
+      "Preuves/Diagnostic_annotations_IA.json",
+      "docs/Diagnostic_et_revue_assistee.md",
+      "Preuves/quality_gate.json",
+      "Preuves/Diagnostic_annotations_IA_42_articles.json",
+      "docs/Diagnostic_IA_42_articles.md",
+      "Preuves/split_audit_42_articles.json",
+      "scripts/diagnostic_ia_elargi.py",
+      "docs/Revue_humaine_42_articles.md",
+      "src/osint_ner/human_review.py",
+      "tests/test_human_review.py",
+      "Preuves/Revue_humaine/Verification_interface.json",
+      "Preuves/Revue_humaine.json"
     ],
-    "ecart": "Qualité actuelle non mesurée faute de référence humaine indépendante.",
-    "prochaine_action": "Retrouver les annotations historiques ou réaliser revue documentée, élargir le test."
+    "ecart": "Les 42 annotations proposées par Codex ne sont pas validées par une personne ; aucune estimation indépendante de qualité.",
+    "prochaine_action": "Relire personnellement les 42 textes et attester les décisions avant de calculer les métriques humaines."
   },
   {
     "id": "B4-1.3",
@@ -69,10 +80,13 @@
     "source_exacte": "Bloc 4!A11",
     "critere_exact": "2.1 - La solution d'IA doit être compatible avec l'infrastructure de données existante. Les points à vérifier pourraient inclure la compatibilité des formats de données, l'adéquation avec les protocoles de communication existants, la capacité à interagir avec les bases de données existantes, etc.",
     "statut": "Testé",
-    "existant": "Contrats B3, modèle, export index distinct, import TLS et readback transversal.",
+    "existant": "Contrats B3, modèle, export index distinct, import TLS et lecture transversale. Raccordement manuel de cinq nouveaux articles : neuf mentions relues, rejeu sans doublon.",
     "preuves": [
       "../00_Pilotage/Integration_transversale/Preuves/Controle_B3_B2_B4_complet.json",
-      "config/elasticsearch-entities-mapping.json"
+      "config/elasticsearch-entities-mapping.json",
+      "Preuves/Raccordement_manuel_5_articles.json",
+      "docs/Raccordement_manuel_nouveaux_articles.md",
+      "scripts/verifier_nouveaux_articles.py"
     ],
     "ecart": "Démonstration locale, modèle expérimental.",
     "prochaine_action": "Conserver les versions concordantes et vérifier les accès avant remise."
@@ -95,11 +109,15 @@
     "source_exacte": "Bloc 4!A13",
     "critere_exact": "2.3 - La solution d'IA doit comporter des mécanismes appropriés pour la gestion des erreurs. Il peut s'agir de la détection d'erreurs, de la reprise après erreur, de la journalisation des erreurs pour faciliter le débogage, de l'envoi d'alertes en cas d'erreur, etc.",
     "statut": "Testé",
-    "existant": "Exceptions explicites, codes sortie, alertes locales, artefacts immuables, contrôle des corruptions.",
+    "existant": "Exceptions explicites, codes sortie, alertes locales, artefacts immuables, contrôle des corruptions. Revue : erreurs de saisie explicites, incomplet refusé, brouillon retirant attestation.",
     "preuves": [
       "Preuves/ci_tests.xml",
       "src/osint_ner/automation.py",
-      "Preuves/quality_gate.json"
+      "Preuves/quality_gate.json",
+      "docs/Revue_humaine_42_articles.md",
+      "src/osint_ner/human_review.py",
+      "tests/test_human_review.py",
+      "Preuves/Revue_humaine/Verification_interface.json"
     ],
     "ecart": "Alertes par fichiers, pas d’astreinte ni envoi externe.",
     "prochaine_action": "Brancher supervision opérationnelle autorisée et tester prise en charge."
@@ -109,12 +127,16 @@
     "source_exacte": "Bloc 4!A14",
     "critere_exact": "2.4 - La solution d'IA doit être facile à maintenir et à mettre à jour. Les aspects à évaluer pourraient inclure la modularité du code, l'utilisation de versions de code contrôlées, la facilité d'ajout de nouvelles fonctionnalités ou d'amélioration des performances, la présence de tests automatisés, etc.",
     "statut": "Testé",
-    "existant": "Modules ciblés, Git, dépendances gelées, tests et wheel déployé.",
+    "existant": "Modules ciblés, Git, dépendances gelées, tests et wheel déployé. Parcours de revue modulaire, données privées et 40 tests locaux réussis.",
     "preuves": [
       "README.md",
-      "Preuves/ci_local.json"
+      "Preuves/ci_local.json",
+      "docs/Revue_humaine_42_articles.md",
+      "src/osint_ner/human_review.py",
+      "tests/test_human_review.py",
+      "Preuves/Revue_humaine/Verification_interface.json"
     ],
-    "ecart": "Maintenabilité observée localement, accès distant jury non publié.",
+    "ecart": "Installation sur poste de remise et accès jury à vérifier ; dépôt publié et run GitHub attestés, dernières révisions locales distinctes.",
     "prochaine_action": "Vérifier installation sur poste de remise et accès au code."
   },
   {
@@ -122,13 +144,14 @@
     "source_exacte": "Bloc 4!A15",
     "critere_exact": "2.5 - La solution d'IA doit respecter les normes de sécurité en vigueur. Cela comprend la protection des données sensibles, l'utilisation de protocoles de communication sécurisés, la résistance aux attaques courantes (injection SQL, attaques par déni de service, etc.), la conformité aux réglementations comme le RGPD et l'accessibilité aux personnes en situation de handicap.",
     "statut": "Implémenté",
-    "existant": "Lecture locale, CSP, contrôles entrée/Host/routes, TLS B2, accessibilité responsive testée.",
+    "existant": "Lecture locale, CSP, contrôles entrée/Host/routes, TLS B2, accessibilité responsive testée. Copies B4 inventoriées migrées sur le volume chiffré, empreintes et lecture HTTP contrôlées.",
     "preuves": [
       "docs/Integration_securite_gouvernance.md",
       "Preuves/browser_accessibility.json",
-      "Preuves/ci_tests.xml"
+      "Preuves/ci_tests.xml",
+      "Preuves/Protection_copies_B4.json"
     ],
-    "ecart": "Conformité juridique, chiffrement poste et tests handicap réels non attestés.",
+    "ecart": "Cadre juridique et tests avec utilisateurs à confirmer ; profils navigateur et copies externes hors migration.",
     "prochaine_action": "Valider cadre de traitement, tester lecteur d’écran et exposition cible."
   },
   {
@@ -176,11 +199,17 @@
     "source_exacte": "Bloc 4!A19",
     "critere_exact": "3.4 - Le système d'automatisation détecte et gère la dérive du modèle. La dérive du modèle se produit lorsque le comportement du modèle change avec le temps en raison de changements dans les données sous-jacentes. Les indicateurs de ceci peuvent inclure des mécanismes de surveillance du modèle, des alertes en cas de dérive significative, des mesures correctives automatiques, etc.",
     "statut": "Implémenté",
-    "existant": "Divergence de distribution, métrique qualité séparée, alerte et gel de promotion implémentés.",
+    "existant": "Divergence de distribution, métrique qualité séparée, alerte et gel de promotion implémentés. Parcours de revue du test préparé, sans données réelles attestées.",
     "preuves": [
       "Preuves/monitor_current.json",
       "Preuves/monitor_synthetic_shift.json",
-      "Preuves/ci_tests.xml"
+      "Preuves/ci_tests.xml",
+      "Preuves/Diagnostic_annotations_IA_42_articles.json",
+      "docs/Diagnostic_IA_42_articles.md",
+      "docs/Revue_humaine_42_articles.md",
+      "src/osint_ner/human_review.py",
+      "tests/test_human_review.py",
+      "Preuves/Revue_humaine/Verification_interface.json"
     ],
     "ecart": "Qualité réelle non observable sans labels ; seuils exploratoires, réaction intégrée partielle.",
     "prochaine_action": "Constituer référence revue, calibrer seuils et relier le gel au pilote de production."
@@ -204,26 +233,32 @@
     "source_exacte": "Bloc 4!A21",
     "critere_exact": "4.1 - Le candidat a mis en place un pipeline d'intégration et de déploiement continu pour la solution d'IA. Cela peut être vérifié en examinant le code, la configuration du pipeline, et les outils ou services utilisés.",
     "statut": "Testé",
-    "existant": "Build, tests, wheel, installation, démarrage et santé en chaîne locale.",
+    "existant": "Build, tests, wheel, installation, démarrage et santé en chaîne locale. Workflow GitHub public déclenché par push, 3 jobs réussis ; 14 tests B3, 32 tests IA et livraison synthétique éphémère.",
     "preuves": [
       "scripts/ci_local.py",
-      "Preuves/ci_local.json"
+      "Preuves/ci_local.json",
+      "Preuves/GitHub_workflow_final.json",
+      "Preuves/GitHub_CI_report.json",
+      "Code_OSINT_GitHub.zip"
     ],
-    "ecart": "Workflow GitHub préparé seulement, aucune production distante.",
-    "prochaine_action": "Exécuter sur environnement cible si publication explicitement autorisée."
+    "ecart": "Qualité humaine et service public permanent non établis. Les essais cloud concernent le runner de démonstration.",
+    "prochaine_action": "Conserver commit et URL du run réussi ; documenter toute évolution de la version remise."
   },
   {
     "id": "B4-4.2",
     "source_exacte": "Bloc 4!A22",
     "critere_exact": "4.2 - Le pipeline fonctionne correctement, sans erreurs ou défaillances. Cela peut être vérifié par des tests automatisés, des rapports de build, des logs d'erreur, etc.",
     "statut": "Testé",
-    "existant": "Chaîne finale réussie avec codes retour, logs et tests.",
+    "existant": "Chaîne finale réussie avec codes retour, logs et tests. Workflow GitHub public déclenché par push, 3 jobs réussis ; 14 tests B3, 32 tests IA et livraison synthétique éphémère.",
     "preuves": [
       "Preuves/ci_local.json",
-      "Preuves/ci_tests.xml"
+      "Preuves/ci_tests.xml",
+      "Preuves/GitHub_workflow_final.json",
+      "Preuves/GitHub_CI_report.json",
+      "Code_OSINT_GitHub.zip"
     ],
-    "ecart": "Des incidents de développement sont documentés ; portée locale.",
-    "prochaine_action": "Conserver les preuves de la version effectivement remise."
+    "ecart": "Qualité humaine et service public permanent non établis. Les essais cloud concernent le runner de démonstration.",
+    "prochaine_action": "Conserver commit et URL du run réussi ; documenter toute évolution de la version remise."
   },
   {
     "id": "B4-4.3",
@@ -244,40 +279,49 @@
     "source_exacte": "Bloc 4!A24",
     "critere_exact": "4.4 - Le pipeline est entièrement automatisé, sans nécessiter d'interventions manuelles pour la build, les tests, ou le déploiement. Cela peut être vérifié par la configuration du pipeline et l'absence d'étapes manuelles.",
     "statut": "Testé",
-    "existant": "Commande unique automatise build, tests et déploiement de démonstration sans étape intermédiaire.",
+    "existant": "Commande unique automatise build, tests et déploiement de démonstration sans étape intermédiaire. Workflow GitHub public déclenché par push, 3 jobs réussis ; 14 tests B3, 32 tests IA et livraison synthétique éphémère.",
     "preuves": [
       "scripts/ci_local.py",
-      "Preuves/ci_local.json"
+      "Preuves/ci_local.json",
+      "Preuves/GitHub_workflow_final.json",
+      "Preuves/GitHub_CI_report.json",
+      "Code_OSINT_GitHub.zip"
     ],
-    "ecart": "Déclenchement manuel de la commande, cloud non exécuté ; promotion qualité volontairement verrouillée.",
-    "prochaine_action": "Raccorder un trigger CI au dépôt cible avec autorisation."
+    "ecart": "Qualité humaine et service public permanent non établis. Les essais cloud concernent le runner de démonstration.",
+    "prochaine_action": "Conserver commit et URL du run réussi ; documenter toute évolution de la version remise."
   },
   {
     "id": "B4-4.5",
     "source_exacte": "Bloc 4!A25",
     "critere_exact": "4.5 - Le pipeline inclut une gestion des versions appropriée pour la solution d'IA. Cela peut être vérifié par l'utilisation de contrôles de version, l'étiquetage des versions, l'enregistrement des modifications, etc.",
     "statut": "Testé",
-    "existant": "Git, commits, version paquet, hashes wheels/modèle/données et registre.",
+    "existant": "Git, commits, version paquet, hashes wheels/modèle/données et registre. Workflow GitHub public déclenché par push, 3 jobs réussis ; 14 tests B3, 32 tests IA et livraison synthétique éphémère.",
     "preuves": [
       "Preuves/ci_local.json",
-      "Preuves/Versions.json"
+      "Preuves/Versions.json",
+      "Preuves/GitHub_workflow_final.json",
+      "Preuves/GitHub_CI_report.json",
+      "Code_OSINT_GitHub.zip"
     ],
-    "ecart": "Dépôt local, accès jury externe à vérifier.",
-    "prochaine_action": "Vérifier bundle et accès du jury avant remise."
+    "ecart": "Qualité humaine et service public permanent non établis. Les essais cloud concernent le runner de démonstration.",
+    "prochaine_action": "Conserver commit et URL du run réussi ; documenter toute évolution de la version remise."
   },
   {
     "id": "B4-4.6",
     "source_exacte": "Bloc 4!A26",
     "critere_exact": "4.6 - Le pipeline respecte les meilleures pratiques de sécurité, y compris l'utilisation de secrets pour les identifiants, le chiffrement des données sensibles, le respect des principes du moindre privilège, etc.",
     "statut": "Implémenté",
-    "existant": "Secrets absents code, données hors Git, permissions lecture workflow, TLS côté B2.",
+    "existant": "Secrets absents code, données hors Git, permissions lecture workflow, TLS côté B2. Workflow public : permission contents:read, actions identifiées par SHA et fixtures synthétiques sans secret. Migration privée B4 exécutée et vérifiée sur image AES-256 ; sources de données et archives inventoriées protégées.",
     "preuves": [
       "docs/Integration_securite_gouvernance.md",
       ".github/workflows/tests.yml",
-      ".gitignore"
+      ".gitignore",
+      "Code_OSINT_GitHub.zip",
+      "Preuves/GitHub_workflow_final.json",
+      "Preuves/Protection_copies_B4.json"
     ],
-    "ecart": "Disque/poste non attesté chiffré et audit dépendances non exhaustif.",
-    "prochaine_action": "Vérifier chiffrement stockage et scanner dépendances sur environnement cible."
+    "ecart": "FileVault désactivé ; protection des copies inventoriées seulement, profils navigateur et copies externes hors périmètre. Audit dépendances non exhaustif.",
+    "prochaine_action": "Conserver le volume et les liens, gérer les copies externes et scanner les dépendances avant exposition."
   },
   {
     "id": "B4-5.1",
@@ -313,7 +357,8 @@
     "existant": "Mesures techniques locales et raccordement TLS adaptés au prototype.",
     "preuves": [
       "Preuves/ci_tests.xml",
-      "docs/Integration_securite_gouvernance.md"
+      "docs/Integration_securite_gouvernance.md",
+      "Preuves/Protection_copies_B4.json"
     ],
     "ecart": "Pas d’exposition Internet/MFA applicative ni certification sécurité.",
     "prochaine_action": "Durcir accès et stockage avant toute exposition."
@@ -339,7 +384,9 @@
     "existant": "Biais de source et de supervision explicités, erreurs concrètes présentées, passage source conservé.",
     "preuves": [
       "docs/Annotation_et_protocole.md",
-      "Note_analyse.md"
+      "Note_analyse.md",
+      "Preuves/Diagnostic_annotations_IA_42_articles.json",
+      "docs/Diagnostic_IA_42_articles.md"
     ],
     "ecart": "Équité et justesse non évaluées sur référence humaine stratifiée.",
     "prochaine_action": "Mesurer erreurs par label/période et faire revue humaine des usages."
@@ -389,11 +436,15 @@
     "source_exacte": "Bloc 4!A35",
     "critere_exact": "6.4 - Il existe une documentation complète du code qui explique comment utiliser la solution d'IA, y compris comment installer et configurer le code, comment utiliser les différentes fonctionnalités, etc.",
     "statut": "Implémenté",
-    "existant": "README, protocole, exploitation, sécurité et commandes de reconstruction.",
+    "existant": "README, protocole, exploitation, sécurité et commandes de reconstruction. Guide de revue et lanceur local, reprise de progression et évaluation complète.",
     "preuves": [
       "README.md",
       "docs/",
-      "Artefacts_locaux/"
+      "Artefacts_locaux/",
+      "docs/Revue_humaine_42_articles.md",
+      "src/osint_ner/human_review.py",
+      "tests/test_human_review.py",
+      "Preuves/Revue_humaine/Verification_interface.json"
     ],
     "ecart": "Installation sur autre poste et accès jury non testés.",
     "prochaine_action": "Tester le bundle sur environnement de remise."
@@ -416,11 +467,15 @@
     "source_exacte": "Bloc 4!A37",
     "critere_exact": "6.6 - Le code comprend une gestion appropriée des erreurs et des exceptions. Il ne doit pas échouer silencieusement en cas d'erreur, mais plutôt signaler l'erreur de manière appropriée.",
     "statut": "Testé",
-    "existant": "Exceptions et codes non nuls, erreur du scheduler remontée.",
+    "existant": "Exceptions et codes non nuls, erreur du scheduler remontée. Revue : erreurs de saisie explicites, incomplet refusé, brouillon retirant attestation.",
     "preuves": [
       "Preuves/ci_tests.xml",
       "src/osint_ner/cli.py",
-      "src/osint_ner/automation.py"
+      "src/osint_ner/automation.py",
+      "docs/Revue_humaine_42_articles.md",
+      "src/osint_ner/human_review.py",
+      "tests/test_human_review.py",
+      "Preuves/Revue_humaine/Verification_interface.json"
     ],
     "ecart": "Verrou abandonné après SIGKILL nécessite procédure opérateur.",
     "prochaine_action": "Documenter/tester reprise après arrêt brutal si automatisation permanente."
@@ -430,25 +485,33 @@
     "source_exacte": "Bloc 4!A38",
     "critere_exact": "6.7 - Le code est accompagné de tests unitaires, d'intégration ou fonctionnels appropriés, garantissant que le code fonctionne comme prévu.",
     "statut": "Testé",
-    "existant": "Tests contrats, Unicode, métriques fixtures, HTTP, exclusions, cycle spaCy et scheduler.",
+    "existant": "Tests contrats, Unicode, métriques fixtures, HTTP, exclusions, cycle spaCy et scheduler. Workflow GitHub public déclenché par push, 3 jobs réussis ; 14 tests B3, 32 tests IA et livraison synthétique éphémère. Nouvelle suite locale : 40 tests réussis, dont provenance de revue, reprise et contrôles HTTP.",
     "preuves": [
       "Preuves/ci_tests.xml",
-      "tests/test_pipeline.py"
+      "tests/test_pipeline.py",
+      "Preuves/GitHub_workflow_final.json",
+      "Preuves/GitHub_CI_report.json",
+      "Code_OSINT_GitHub.zip",
+      "docs/Revue_humaine_42_articles.md",
+      "src/osint_ner/human_review.py",
+      "tests/test_human_review.py",
+      "Preuves/Revue_humaine/Verification_interface.json"
     ],
-    "ecart": "Exactitude NER et environnement cloud non couverts.",
-    "prochaine_action": "Compléter référence humaine et essais d’usage."
+    "ecart": "Qualité humaine et service public permanent non établis. Les essais cloud concernent le runner de démonstration.",
+    "prochaine_action": "Conserver commit et URL du run réussi ; documenter toute évolution de la version remise."
   },
   {
     "id": "B4-6.8",
     "source_exacte": "Bloc 4!A39",
     "critere_exact": "6.8 - Le code est hébergé sur un système de versioning comme Git, et l'utilisation de ce système est appropriée, avec des commit messages clairs et informatifs.",
     "statut": "Implémenté",
-    "existant": "Dépôt Git local, commits explicites, code exportable et crédits.",
+    "existant": "Dépôt Git local, dépôt public identifié, commits et crédits ; code de développement et déploiement livré dans les archives locales.",
     "preuves": [
       "Preuves/Versions.json",
-      "Code_OSINT_Bloc4.zip"
+      "Code_OSINT_Bloc4.zip",
+      "Preuves/GitHub_workflow_final.json"
     ],
-    "ecart": "Pas de nouveau dépôt distant publié ni accès jury vérifié.",
+    "ecart": "Dernières révisions locales non publiées dans cette opération ; accès et versions transmis au jury à vérifier.",
     "prochaine_action": "Mettre le code à disposition par canal autorisé et vérifier accès."
   },
   {

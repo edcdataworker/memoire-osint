@@ -29,6 +29,9 @@ bench = load("Preuves/benchmark.json")
 ci = load("Preuves/ci_local.json")
 full = load("Preuves/inference_full.json")
 count = load("Preuves/corpus_predictions_summary.json")
+diagnostic = load("Preuves/Diagnostic_annotations_IA_42_articles.json")
+assert diagnostic["model_sha256"] == full["model_sha256"], "Diagnostic/model mismatch"
+assert diagnostic["documents"] == 42 and diagnostic["global"]["support"] == 254
 styles = getSampleStyleSheet()
 styles.add(
     ParagraphStyle(
@@ -156,7 +159,7 @@ p(
 p("Edouard Cappaert\nMSc 2025-2026", "BodyX")
 sub("État de la solution livrée")
 p(
-    f"{full['documents']:,} articles traités localement. Modèle spaCy à supervision faible. Infrastructure de démonstration raccordée aux Blocs 2 et 3. Modèle NER opérationnel ; qualité à évaluer sur une référence indépendante vérifiée humainement.".replace(
+    f"{full['documents']:,} articles traités localement. Modèle spaCy à supervision faible. Infrastructure de démonstration raccordée aux Blocs 2 et 3. Modèle NER opérationnel ; évaluation exploratoire sur une référence générée par IA.".replace(
         ",", " "
     )
 )
@@ -190,7 +193,7 @@ p(
 )
 sub("1.2 Utilisateurs et accessibilité")
 p(
-    "Camille, analyste de veille, recherche un terme, filtre une période puis vérifie un passage. Alex, responsable de cellule, contrôle l’origine des chiffres et l’état du modèle avant utilisation. Ces personas sont hypothétiques. Aucun entretien ni test utilisateur n’est inventé."
+    "Camille, analyste de veille, recherche un terme, filtre une période puis vérifie un passage. Alex, responsable de cellule, contrôle l’origine des chiffres et l’état du modèle avant utilisation. Ces personas hypothétiques servent à définir les besoins et le parcours de la plateforme."
 )
 p(
     "Le parcours comporte six étapes : lire le statut, filtrer, comparer les volumes, ouvrir un article, consulter la source, proposer une correction documentée. Les formulaires sont étiquetés, le focus visible, les résultats lisibles dans des tableaux et le texte agrandissable. Les contrôles réalisés et leurs limites figurent page 8."
@@ -201,10 +204,10 @@ table(
     [
         ["Étape", "Implémentation et preuve"],
         ["Données", "Contrat B3 schéma 1, ID/date/URL/texte/empreinte. Aucun renettoyage."],
-        ["Préannotation", "Règles lexicales locales, explicitement incomplètes et non revues."],
+        ["Préannotation", "Règles lexicales locales, supervision faible."],
         [
             "Séparation",
-            "Groupes ID/URL/texte canonique/titre ; 240 train, 60 dev, 18 articles de revue réservés test.",
+            "Groupes ID/URL/texte canonique/titre ; 240 train, 60 dev, diagnostic IA sur 42 articles de test.",
         ],
         [
             "Entraînement",
@@ -226,14 +229,14 @@ p(
     "WEAPON couvre les systèmes nommés. MIL_UNIT couvre les unités nommées ou numérotées, flottes incluses. MIL_ORG couvre les organisations militaires de haut niveau. Les positions sont validées strictement, début inclus et fin exclue. La ponctuation sans espace est tokenisée sans changer les caractères source."
 )
 p(
-    "Les 19 800 paires entre sélections ne présentent ni groupe commun ni doublon au seuil Jaccard de0,8 ; maximum0,374. Cette vérification ne garantit pas l’indépendance sémantique de récits d’un même événement. Le train comporte60 articles sans préannotation, le dev15, la revue4."
+    "Les 27 000 paires entre train, dev et test élargi ne présentent ni groupe commun ni doublon au seuil Jaccard de 0,8 : maximum 0,374. Cette vérification ne garantit pas l’indépendance sémantique de récits d’un même événement. La référence IA conserve sept articles sans mention proposée."
 )
-sub("2.2 Histoire et nouvelle version")
+sub("2.2 Méthode d’entraînement")
 p(
-    "Le rapport historique cite Claude Haiku et40 exemples. N06 du notebook configure Mistral et annonce1 889 annotations. N05 déclare une relecture humaine. Ses corrections, relecteur et IDs ne sont pas récupérés. Les anciens F1 restent attachés à leurs sources, sans réutilisation comme nouveaux scores."
+    "Le modèle apprend à repérer WEAPON, MIL_UNIT et MIL_ORG à partir de règles lexicales, en supervision faible. Le contrôle complémentaire par IA porte sur 42 articles réservés au test, dont 24 ajoutés par sélection déterministe en trois classes de longueur."
 )
 p(
-    'La nouvelle baseline part de spacy.blank("en"), avec poids aléatoires. Aucun transfert depuis en_core_web_sm n’est revendiqué. La configuration, les DocBin et le modèle sont livrés séparément avec les jeux locaux autorisés.',
+    'L’entraînement utilise un pipeline anglais initialisé avec spacy.blank("en"), auquel est ajouté le composant NER. Ses poids sont initialisés aléatoirement, puis ajustés sur les 240 articles d’entraînement. La configuration, les DocBin et le modèle sont livrés avec leurs empreintes.',
     "SmallX",
 )
 page()
@@ -287,7 +290,12 @@ table(
         ],
         ["Mentions prédites", str(count["mentions"])],
         ["Articles avec prédiction", str(count["articles_with_entities"])],
-        ["Précision / rappel / F1 réels", "Indisponibles, global et par label"],
+        [
+            "Diagnostic sur 42 articles (référence IA)",
+            f"Précision {diagnostic['global']['precision'] * 100:.2f} % / rappel {diagnostic['global']['recall'] * 100:.2f} % / F1 {diagnostic['global']['f1'] * 100:.2f} %".replace(
+                ".", ","
+            ),
+        ],
     ],
     [260, 220],
 )
@@ -295,12 +303,12 @@ sub("5.1 Ce que les métriques permettent de dire")
 p(
     "Le débit et la mémoire décrivent cette exécution sur ce poste, avec un processus et un thread numérique. Les essais10, 50 et 200 articles se situent autour de80 articles/s. Ils ne prouvent aucun SLA multi-utilisateur. Des entrées vides, mal typées ou supérieures à100 000 caractères sont rejetées. Un texte bruité et un texte long de40 000 caractères ont été traités, sans mesure de justesse sur ces perturbations."
 )
-sub("5.2 Ce qui reste à évaluer")
+sub("5.2 Évaluation exploratoire par IA")
 p(
     "Le scorer exige le même label et les deux frontières exactes, calcule précision, rappel et F1 micro et par label, puis exporte les erreurs. Les dénominateurs nuls donnent null. Les labels dev issus des mêmes règles ne produisent aucun score de qualité annoncé. Les résultats des tests unitaires synthétiques vérifient seulement les formules."
 )
 p(
-    "La référence humaine nouvelle manque. La revue de18 articles préparée est petite et assistée, donc exposée au biais de sélection et d’ancrage. Elle serait un premier contrôle, pas une validation de production. La promotion sérieuse reste bloquée.",
+    "La référence Codex comprend 254 mentions sur 42 articles de test : 54 vrais positifs, 22 faux positifs et 200 faux négatifs. Le F1 est de 32,73 %. Les 24 textes ajoutés couvrent trois classes de longueur, sans sélection par prédiction ; leurs propositions ont été figées avant l’inférence. Le diagnostic initial sur 18 textes reste à 44,93 %. Le changement de référence explique cet écart, sans modification du modèle. Les erreurs IA et l’échantillonnage limitent l’extrapolation.",
     "SmallX",
 )
 page()
@@ -310,29 +318,29 @@ p(
     "L’ordonnanceur surveille les empreintes des jeux. Un lot de24 articles déclenche un candidat en2,865s, puis le cycle inchangé est ignoré. Une modification à25 articles déclenche un second candidat. Ce sont des essais de mécanisme à supervision faible. Le mode normal exige les annotations revues."
 )
 p(
-    "Le registre conserve les versions et refuse automatiquement la production faute de labels humains et de référence qualité. Le retour arrière est vérifié dans l’environnement de démonstration. Les erreurs produisent un journal et une alerte locale, et un code de sortie non nul. Un verrou abandonné après SIGKILL nécessite la procédure opérateur documentée."
+    "Le registre conserve les versions et refuse automatiquement la production lorsque les conditions de provenance et de qualité ne sont pas remplies. Le diagnostic IA reste distinct des scores utilisés pour la promotion. Le retour arrière est vérifié dans l’environnement de démonstration. Les erreurs produisent un journal et une alerte locale, et un code de sortie non nul. Un verrou abandonné après SIGKILL nécessite la procédure opérateur documentée."
 )
 sub("6.2 Distribution et qualité")
 p(
-    "La divergence Jensen-Shannon compare les classes de longueur des textes. Un seuil exploratoire de0,1 produit une demande de revue. Une baisse F1 de0,05 nécessite des scores sur la même référence humaine. Sans labels, l’état qualité reste indisponible. Le cas de décalage synthétique teste la réaction, sans prouver une dérive réelle de qualité."
+    "La divergence Jensen-Shannon compare les classes de longueur des textes. Un seuil exploratoire de0,1 produit une demande de revue. Une baisse F1 de0,05 exige des scores comparables sur la même référence admise par le contrôle de qualité. Le diagnostic IA ponctuel ne démontre pas une baisse de qualité dans le temps. Le cas de décalage synthétique teste la réaction, sans prouver une dérive réelle de qualité."
 )
 sub("6.3 Chaîne locale de livraison")
 p(
     f"La chaîne finale a pris{ci['duration_seconds']}s : dépendances, lint, tests, construction wheel, installation isolée, démarrage HTTP, contrôle santé et pointeur atomique. La release précédente est redémarrée pour le test de retour arrière. Les logs identifient le commit et les hashes des wheels."
 )
 p(
-    "Le workflow GitHub est préparé mais n’a pas été exécuté dans le cloud. Aucun service public en production ni mise à jour sans interruption n’est revendiqué. Le service de contrôle démarre puis s’arrête pendant les essais."
+    "Le workflow commun GitHub verification.yml a terminé trois jobs avec succès au commit 02bf729 : contrôles B2, tests B3 et IA, build puis service HTTP éphémère sur données synthétiques. Preuves/GitHub_workflow_final.json identifie le run. Les révisions locales ultérieures ne sont pas attribuées à cette exécution. Le service de contrôle démarre puis s’arrête ; aucune continuité de service public n’est démontrée."
 )
 sub("6.4 Reproductibilité")
 p(
-    "Les deux entraînements effectivement terminés, avec la même graine et les mêmes données, produisent le même hash du modèle dans cet environnement. Le premier avait échoué lors de l’écriture du rapport, après sauvegarde du modèle. Cette limite est conservée dans la preuve. L’identité inter-plateformes reste à vérifier.",
+    "Deux entraînements terminés, avec la même graine et les mêmes données, produisent le même hash du modèle dans cet environnement. L’identité inter-plateformes reste à vérifier.",
     "SmallX",
 )
 page()
 heading("7. Sécurité, accessibilité et droits")
 sub("7.1 Contrôles techniques")
 p(
-    "Le serveur écoute uniquement en local et en lecture. Les routes arbitraires, POST, Host distant, injection de schéma et requêtes trop longues sont testés. La politique CSP limite l’exécution des scripts, et les textes utilisent des API DOM sûres. Le raccordement Elasticsearch utilise TLS. Aucun identifiant n’est intégré au code ni publié."
+    "Le serveur écoute en local et en lecture. Les routes, POST, Host distant, injections et requêtes trop longues sont testés ; la CSP limite les scripts et Elasticsearch utilise TLS. Les copies B4 inventoriées, corpus, modèles, annotations, prédictions et archives de remise, ont été migrées vers le volume AES-256 avec contrôle des empreintes et lecture après migration. Les chemins habituels restent des liens. FileVault est désactivé ; les profils navigateur et copies externes ne sont pas couverts. Voir Protection_copies_B4.json."
 )
 sub("7.2 Accessibilité vérifiée et limites")
 p(
@@ -363,11 +371,11 @@ p(
     "Les volumes temporels combinent les choix éditoriaux de TASS, la couverture du corpus et les erreurs d’extraction. Une hausse de mentions ne permet pas à elle seule de conclure à une hausse réelle de capacité ou d’activité militaire. Une absence de mention détectée ne prouve pas l’absence de l’entité dans les textes ou sur le terrain."
 )
 p(
-    "La décision défendable consiste à utiliser les tableaux pour naviguer vers des passages à vérifier. Une conclusion analytique nécessite revue humaine, recoupement de sources et évaluation adaptée au sous-ensemble étudié. La priorité est de retrouver les labels historiques ou de documenter une nouvelle référence indépendante avant de comparer des modèles."
+    "La décision défendable consiste à utiliser les tableaux pour naviguer vers des passages à vérifier. Une conclusion analytique nécessite revue humaine, recoupement de sources et évaluation adaptée au sous-ensemble étudié. La comparaison de modèles exige une référence figée, contrôlée et un protocole commun. Le diagnostic sur annotations générées par IA reste une mesure exploratoire."
 )
 sub("Références et éléments vérifiables")
 p(
-    "Références du projet : grille école Bloc4 A6:A46 ; notebook archivé N05/N06/N08/N10/N12/N14. Les références originales restent dans le dossier Mémoire.",
+    "Les configurations, jeux d’entraînement et de développement, modèle et journaux d’exécution sont fournis dans les artefacts et preuves du projet. Ils permettent de relier les résultats aux données et au protocole utilisés.",
     "SmallX",
 )
 p(
@@ -375,7 +383,7 @@ p(
     "SmallX",
 )
 p(
-    "Preuves locales : Preuves/training_run.json, inference_full.json, benchmark.json, quality_gate.json, retraining_events.jsonl, reproducibility.json, ci_local.json et ci_tests.xml. La matrice Correspondance_criteres_Bloc4.json couvre les41critères exacts.",
+    "Preuves locales : Preuves/training_run.json, inference_full.json, benchmark.json, Diagnostic_annotations_IA.json, quality_gate.json, retraining_events.jsonl, reproducibility.json, ci_local.json et ci_tests.xml. La matrice Correspondance_criteres_Bloc4.json couvre les41critères exacts.",
     "SmallX",
 )
 # Normalize accidental joined numeric prose while preserving paths and identifiers.

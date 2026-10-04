@@ -1,0 +1,5644 @@
+{
+  "global": {
+    "tp": 54,
+    "fp": 22,
+    "fn": 200,
+    "support": 254,
+    "precision": 0.7105263157894737,
+    "recall": 0.2125984251968504,
+    "f1": 0.32727272727272727
+  },
+  "per_label": {
+    "WEAPON": {
+      "tp": 26,
+      "fp": 18,
+      "fn": 113,
+      "support": 139,
+      "precision": 0.5909090909090909,
+      "recall": 0.18705035971223022,
+      "f1": 0.28415300546448086
+    },
+    "MIL_UNIT": {
+      "tp": 11,
+      "fp": 1,
+      "fn": 22,
+      "support": 33,
+      "precision": 0.9166666666666666,
+      "recall": 0.3333333333333333,
+      "f1": 0.4888888888888889
+    },
+    "MIL_ORG": {
+      "tp": 17,
+      "fp": 3,
+      "fn": 65,
+      "support": 82,
+      "precision": 0.85,
+      "recall": 0.2073170731707317,
+      "f1": 0.3333333333333333
+    }
+  },
+  "errors": [
+    {
+      "id": 1457869,
+      "type": "false_negative",
+      "start": 167,
+      "end": 190,
+      "label": "MIL_UNIT",
+      "text_sha256": "9832ff469b6021ce25ae58f72860441100eb74b93a0998625e16a16d5539f1d2",
+      "text_length": 23
+    },
+    {
+      "id": 1457869,
+      "type": "false_negative",
+      "start": 586,
+      "end": 631,
+      "label": "MIL_ORG",
+      "text_sha256": "e35095bd0954d5d810b8185adacee90f63b2e4b94ce4fdb191df3d86e11250f7",
+      "text_length": 45
+    },
+    {
+      "id": 1621041,
+      "type": "false_negative",
+      "start": 68,
+      "end": 74,
+      "label": "WEAPON",
+      "text_sha256": "e49b669824c1d8a70ece584b716201e1d358efeede187340a2334ea9082c6da3",
+      "text_length": 6
+    },
+    {
+      "id": 1621041,
+      "type": "false_negative",
+      "start": 79,
+      "end": 85,
+      "label": "WEAPON",
+      "text_sha256": "4bb89897c70768782f527161f1725ec50b19aa825cf4d40906546f301ce90863",
+      "text_length": 6
+    },
+    {
+      "id": 1621041,
+      "type": "false_negative",
+      "start": 316,
+      "end": 325,
+      "label": "WEAPON",
+      "text_sha256": "827bba9779df086cf4c756a47f889bd90c316e04109450544262b933d8ee0cdf",
+      "text_length": 9
+    },
+    {
+      "id": 1621041,
+      "type": "false_negative",
+      "start": 362,
+      "end": 372,
+      "label": "WEAPON",
+      "text_sha256": "6328a326401d1acea65bbaede7050a247c2fa5e54351776fed08314b660eb6f4",
+      "text_length": 10
+    },
+    {
+      "id": 1621041,
+      "type": "false_negative",
+      "start": 418,
+      "end": 424,
+      "label": "WEAPON",
+      "text_sha256": "e49b669824c1d8a70ece584b716201e1d358efeede187340a2334ea9082c6da3",
+      "text_length": 6
+    },
+    {
+      "id": 1621041,
+      "type": "false_negative",
+      "start": 429,
+      "end": 435,
+      "label": "WEAPON",
+      "text_sha256": "4bb89897c70768782f527161f1725ec50b19aa825cf4d40906546f301ce90863",
+      "text_length": 6
+    },
+    {
+      "id": 1621041,
+      "type": "false_negative",
+      "start": 537,
+      "end": 550,
+      "label": "WEAPON",
+      "text_sha256": "e7af4ead555f6214f27a7d1b46eb8e7c62dfc35f8a264ef0ec4ed252ce794157",
+      "text_length": 13
+    },
+    {
+      "id": 1621041,
+      "type": "false_negative",
+      "start": 564,
+      "end": 577,
+      "label": "WEAPON",
+      "text_sha256": "6478debcd930e587b8ebe4fac1c0f0c70c210a29ba40853eb697618d1ee95ccc",
+      "text_length": 13
+    },
+    {
+      "id": 1621041,
+      "type": "false_negative",
+      "start": 592,
+      "end": 605,
+      "label": "WEAPON",
+      "text_sha256": "f3b91cb7cc0ccf5478377b8085aac4a3625e887bf3c6ae1de53ee9daa68170e8",
+      "text_length": 13
+    },
+    {
+      "id": 1621041,
+      "type": "false_negative",
+      "start": 623,
+      "end": 639,
+      "label": "WEAPON",
+      "text_sha256": "8b44928015decec9089952cf733f888c5e9dc5dc263d56e3905063e178c56ca9",
+      "text_length": 16
+    },
+    {
+      "id": 1621041,
+      "type": "false_negative",
+      "start": 834,
+      "end": 849,
+      "label": "WEAPON",
+      "text_sha256": "76f555acd37906439d797afab444ca23fbcb0f712b59d12c0e9b06da982c1c65",
+      "text_length": 15
+    },
+    {
+      "id": 1621041,
+      "type": "false_negative",
+      "start": 1023,
+      "end": 1034,
+      "label": "WEAPON",
+      "text_sha256": "60de9f11112cffd3868b0f9b445bafd84ec12e1a17d81d857dfdc7b24458e93a",
+      "text_length": 11
+    },
+    {
+      "id": 1746719,
+      "type": "false_negative",
+      "start": 29,
+      "end": 57,
+      "label": "MIL_ORG",
+      "text_sha256": "7757fb5088df5bd3f453fbecb06780588eb27ad256743427c4dd28b7104e2268",
+      "text_length": 28
+    },
+    {
+      "id": 1248529,
+      "type": "false_negative",
+      "start": 208,
+      "end": 224,
+      "label": "MIL_ORG",
+      "text_sha256": "491595b17e5f167bca95cbfee2eb6f5fc7aea1d84fc79630f055c87767243bb5",
+      "text_length": 16
+    },
+    {
+      "id": 1248529,
+      "type": "false_negative",
+      "start": 446,
+      "end": 462,
+      "label": "MIL_ORG",
+      "text_sha256": "491595b17e5f167bca95cbfee2eb6f5fc7aea1d84fc79630f055c87767243bb5",
+      "text_length": 16
+    },
+    {
+      "id": 1248529,
+      "type": "false_negative",
+      "start": 606,
+      "end": 639,
+      "label": "MIL_UNIT",
+      "text_sha256": "87a409f13a75d0e8af24e8e65f5889e7fda66a3e0fbbe9bb20894b51ea7446e6",
+      "text_length": 33
+    },
+    {
+      "id": 1248529,
+      "type": "false_negative",
+      "start": 674,
+      "end": 690,
+      "label": "MIL_ORG",
+      "text_sha256": "491595b17e5f167bca95cbfee2eb6f5fc7aea1d84fc79630f055c87767243bb5",
+      "text_length": 16
+    },
+    {
+      "id": 1248529,
+      "type": "false_negative",
+      "start": 1190,
+      "end": 1217,
+      "label": "MIL_ORG",
+      "text_sha256": "bd6212f983e1e940384dfe805d80ed9531e131baa2eef05c1814b03335a6feda",
+      "text_length": 27
+    },
+    {
+      "id": 1627073,
+      "type": "false_positive",
+      "start": 350,
+      "end": 355,
+      "label": "WEAPON",
+      "text_sha256": "8e3a70608195a3cf1d145071d9d29fe9d13e21ff917a7cd7ba74c7ef77302069",
+      "text_length": 5
+    },
+    {
+      "id": 1627073,
+      "type": "false_negative",
+      "start": 350,
+      "end": 356,
+      "label": "WEAPON",
+      "text_sha256": "078bd725edc9568bca4dca12937b61732babcf389a8f19bd00dc08e8b91279af",
+      "text_length": 6
+    },
+    {
+      "id": 1627073,
+      "type": "false_negative",
+      "start": 381,
+      "end": 389,
+      "label": "WEAPON",
+      "text_sha256": "dcf66caf6dfc3e62b2abe023e5fa33a06542f3eee0a280a3334165e4cd8e4d76",
+      "text_length": 8
+    },
+    {
+      "id": 1627073,
+      "type": "false_negative",
+      "start": 790,
+      "end": 795,
+      "label": "WEAPON",
+      "text_sha256": "9b813d15c4d15057dd8d274d83625809a02d1441a93df1c0f406072e32b19714",
+      "text_length": 5
+    },
+    {
+      "id": 1042755,
+      "type": "false_negative",
+      "start": 28,
+      "end": 45,
+      "label": "MIL_ORG",
+      "text_sha256": "bb127ba3423531ef6eda24f2fee05e33dd198fd12674e2ccbe4687b597f82d5c",
+      "text_length": 17
+    },
+    {
+      "id": 1042755,
+      "type": "false_negative",
+      "start": 235,
+      "end": 251,
+      "label": "MIL_ORG",
+      "text_sha256": "491595b17e5f167bca95cbfee2eb6f5fc7aea1d84fc79630f055c87767243bb5",
+      "text_length": 16
+    },
+    {
+      "id": 1042755,
+      "type": "false_negative",
+      "start": 635,
+      "end": 642,
+      "label": "WEAPON",
+      "text_sha256": "fb4d192871ad47f7f19ba15835b93886f95ef4a99c3b30a344c2964341249363",
+      "text_length": 7
+    },
+    {
+      "id": 1042755,
+      "type": "false_negative",
+      "start": 675,
+      "end": 688,
+      "label": "WEAPON",
+      "text_sha256": "b01d3032e0180e17703e8963547fb4a004482bcc2da74c0633c43df8f9dc8807",
+      "text_length": 13
+    },
+    {
+      "id": 1042755,
+      "type": "false_negative",
+      "start": 808,
+      "end": 825,
+      "label": "MIL_ORG",
+      "text_sha256": "805bcce12169cbfbc25b7fabee7e4e7cfb941ffdc8161812a7cf5a91a597ba45",
+      "text_length": 17
+    },
+    {
+      "id": 1042755,
+      "type": "false_negative",
+      "start": 1102,
+      "end": 1115,
+      "label": "WEAPON",
+      "text_sha256": "b01d3032e0180e17703e8963547fb4a004482bcc2da74c0633c43df8f9dc8807",
+      "text_length": 13
+    },
+    {
+      "id": 1042755,
+      "type": "false_negative",
+      "start": 1144,
+      "end": 1156,
+      "label": "MIL_ORG",
+      "text_sha256": "280cc7994bbda43d2d16414aac6dd84f4bb01703f5a9704fe7aa5ebd87676ea8",
+      "text_length": 12
+    },
+    {
+      "id": 1042755,
+      "type": "false_negative",
+      "start": 1199,
+      "end": 1211,
+      "label": "WEAPON",
+      "text_sha256": "aeb8ec72382916390eea3d234963111e891211573c81f7641defe29f90161896",
+      "text_length": 12
+    },
+    {
+      "id": 1042755,
+      "type": "false_negative",
+      "start": 1390,
+      "end": 1415,
+      "label": "MIL_ORG",
+      "text_sha256": "6f7a55617128e871e7e2de97a5ffdc610b6d823b3b6550a9b671279dd3b72c87",
+      "text_length": 25
+    },
+    {
+      "id": 1042755,
+      "type": "false_negative",
+      "start": 1484,
+      "end": 1499,
+      "label": "MIL_ORG",
+      "text_sha256": "f9cab41e7a84bb3ab12c15823b7758a300a7a14c362f37562c78fcb641eb683c",
+      "text_length": 15
+    },
+    {
+      "id": 1936261,
+      "type": "false_negative",
+      "start": 56,
+      "end": 72,
+      "label": "MIL_UNIT",
+      "text_sha256": "cf97bcb46139ffc002acd7e546cb47be27dbf2c5f768864c2ad0a4141c923141",
+      "text_length": 16
+    },
+    {
+      "id": 1936261,
+      "type": "false_negative",
+      "start": 109,
+      "end": 115,
+      "label": "WEAPON",
+      "text_sha256": "f464c796b580547da69eaad6bf359aca15a71d21cbeec80a516e878d33688b6c",
+      "text_length": 6
+    },
+    {
+      "id": 1936261,
+      "type": "false_negative",
+      "start": 265,
+      "end": 271,
+      "label": "WEAPON",
+      "text_sha256": "f464c796b580547da69eaad6bf359aca15a71d21cbeec80a516e878d33688b6c",
+      "text_length": 6
+    },
+    {
+      "id": 1427999,
+      "type": "false_negative",
+      "start": 197,
+      "end": 217,
+      "label": "MIL_ORG",
+      "text_sha256": "302aacc0d1145149ef5b6809607f6300e33faa0f81c170627b3eaaad2a98d033",
+      "text_length": 20
+    },
+    {
+      "id": 1427999,
+      "type": "false_negative",
+      "start": 409,
+      "end": 425,
+      "label": "MIL_ORG",
+      "text_sha256": "5ca3a57a784200d861e42fcfb47c336b250b3596acbd84274e14728fd4503359",
+      "text_length": 16
+    },
+    {
+      "id": 1802423,
+      "type": "false_negative",
+      "start": 29,
+      "end": 46,
+      "label": "MIL_UNIT",
+      "text_sha256": "234b8e21b6cf99dc0d0c02819d23a4211c4da6278f14ef3cc7a6c0c6851c92f0",
+      "text_length": 17
+    },
+    {
+      "id": 1802423,
+      "type": "false_negative",
+      "start": 313,
+      "end": 336,
+      "label": "MIL_UNIT",
+      "text_sha256": "8d0ff5435678d6226175912a066c075c6756e591ccd2812f60a53ca659d9c275",
+      "text_length": 23
+    },
+    {
+      "id": 1802423,
+      "type": "false_negative",
+      "start": 345,
+      "end": 365,
+      "label": "MIL_UNIT",
+      "text_sha256": "f1274895f2c478e0fbd6be431f0c273e6ad918956210fda7899948900e48c9d4",
+      "text_length": 20
+    },
+    {
+      "id": 1802423,
+      "type": "false_negative",
+      "start": 452,
+      "end": 464,
+      "label": "MIL_UNIT",
+      "text_sha256": "d1cf1bb9e1eb28f9171f670e70bb31973cd13ae660654bb154eaa42ae9c11162",
+      "text_length": 12
+    },
+    {
+      "id": 1802423,
+      "type": "false_negative",
+      "start": 472,
+      "end": 496,
+      "label": "MIL_ORG",
+      "text_sha256": "d274e1d038033fb4bc50901629e888e9361cf83151c41679a207b850c0918b18",
+      "text_length": 24
+    },
+    {
+      "id": 1070736,
+      "type": "false_positive",
+      "start": 463,
+      "end": 468,
+      "label": "WEAPON",
+      "text_sha256": "8e3a70608195a3cf1d145071d9d29fe9d13e21ff917a7cd7ba74c7ef77302069",
+      "text_length": 5
+    },
+    {
+      "id": 1070736,
+      "type": "false_negative",
+      "start": 98,
+      "end": 111,
+      "label": "MIL_ORG",
+      "text_sha256": "9a20e5a642c738aea458e3cb28488df384d060a61c9d930cbb719caf1c8ce0c8",
+      "text_length": 13
+    },
+    {
+      "id": 1070736,
+      "type": "false_negative",
+      "start": 160,
+      "end": 176,
+      "label": "MIL_ORG",
+      "text_sha256": "491595b17e5f167bca95cbfee2eb6f5fc7aea1d84fc79630f055c87767243bb5",
+      "text_length": 16
+    },
+    {
+      "id": 1070736,
+      "type": "false_negative",
+      "start": 242,
+      "end": 253,
+      "label": "WEAPON",
+      "text_sha256": "b00d2bee1e0888317f0edb3fdbe99f0b6b9a5dc7a24779b2417f4ea44b4061b2",
+      "text_length": 11
+    },
+    {
+      "id": 1070736,
+      "type": "false_negative",
+      "start": 259,
+      "end": 278,
+      "label": "WEAPON",
+      "text_sha256": "dacf255ce6ff3dcfc066e3449f50deb239ce540479dd846e349a91fb58c283b0",
+      "text_length": 19
+    },
+    {
+      "id": 1070736,
+      "type": "false_negative",
+      "start": 292,
+      "end": 300,
+      "label": "WEAPON",
+      "text_sha256": "003d27121ac2164e33f94ac894b8c4444189ee3e80998d631bac5c6a87200294",
+      "text_length": 8
+    },
+    {
+      "id": 1070736,
+      "type": "false_negative",
+      "start": 318,
+      "end": 332,
+      "label": "WEAPON",
+      "text_sha256": "55de848226141f37af1a684ed818023f313f6872940fded97871d4f2cf1e89b9",
+      "text_length": 14
+    },
+    {
+      "id": 1070736,
+      "type": "false_negative",
+      "start": 337,
+      "end": 343,
+      "label": "WEAPON",
+      "text_sha256": "2c71be33bb43a1102fcc259a5cfcd4ec11126c530ea6b119214ca294bfa6f423",
+      "text_length": 6
+    },
+    {
+      "id": 1070736,
+      "type": "false_negative",
+      "start": 463,
+      "end": 469,
+      "label": "WEAPON",
+      "text_sha256": "078bd725edc9568bca4dca12937b61732babcf389a8f19bd00dc08e8b91279af",
+      "text_length": 6
+    },
+    {
+      "id": 1070736,
+      "type": "false_negative",
+      "start": 501,
+      "end": 510,
+      "label": "WEAPON",
+      "text_sha256": "8d5ee832398a7c4e99b2edd6ad0a56bf3a87760fe96457190f6bd4b30dd07681",
+      "text_length": 9
+    },
+    {
+      "id": 1070736,
+      "type": "false_negative",
+      "start": 515,
+      "end": 521,
+      "label": "WEAPON",
+      "text_sha256": "02bf7e51b20dce24347181ace3ca42ca8d945cce2073e10ab2fb8a28ed9b5251",
+      "text_length": 6
+    },
+    {
+      "id": 1070736,
+      "type": "false_negative",
+      "start": 649,
+      "end": 668,
+      "label": "WEAPON",
+      "text_sha256": "dacf255ce6ff3dcfc066e3449f50deb239ce540479dd846e349a91fb58c283b0",
+      "text_length": 19
+    },
+    {
+      "id": 1970201,
+      "type": "false_negative",
+      "start": 172,
+      "end": 188,
+      "label": "MIL_ORG",
+      "text_sha256": "491595b17e5f167bca95cbfee2eb6f5fc7aea1d84fc79630f055c87767243bb5",
+      "text_length": 16
+    },
+    {
+      "id": 1970201,
+      "type": "false_negative",
+      "start": 439,
+      "end": 487,
+      "label": "MIL_ORG",
+      "text_sha256": "8964766d73f447b3c9419f306c16e374a51c49baebb176dd690cbf36f1990f81",
+      "text_length": 48
+    },
+    {
+      "id": 1970201,
+      "type": "false_negative",
+      "start": 547,
+      "end": 550,
+      "label": "WEAPON",
+      "text_sha256": "dc0b418800018f83663825ecec534426e4839036f31d64c33e7dd2d9988e44ac",
+      "text_length": 3
+    },
+    {
+      "id": 1197711,
+      "type": "false_negative",
+      "start": 111,
+      "end": 116,
+      "label": "WEAPON",
+      "text_sha256": "39509385e012f96aece3403fba371659c5cd81ca140dde1fdfd3eb89fed37e5c",
+      "text_length": 5
+    },
+    {
+      "id": 1197711,
+      "type": "false_negative",
+      "start": 149,
+      "end": 174,
+      "label": "MIL_ORG",
+      "text_sha256": "00b4e2fa3d2d9d3a25857231fca8c02b0313494608b21bf7040183cd1befefa4",
+      "text_length": 25
+    },
+    {
+      "id": 1197711,
+      "type": "false_negative",
+      "start": 228,
+      "end": 267,
+      "label": "MIL_ORG",
+      "text_sha256": "63687e0a04da142297a09cbbda5fbdec5642e984f9f3700e2d6346b60e8bbad6",
+      "text_length": 39
+    },
+    {
+      "id": 1197711,
+      "type": "false_negative",
+      "start": 789,
+      "end": 799,
+      "label": "WEAPON",
+      "text_sha256": "620573bed5734bf629fe2b9df0f7ceede87b055c282c0a9f5e9060879342c520",
+      "text_length": 10
+    },
+    {
+      "id": 1197711,
+      "type": "false_negative",
+      "start": 838,
+      "end": 863,
+      "label": "MIL_ORG",
+      "text_sha256": "00b4e2fa3d2d9d3a25857231fca8c02b0313494608b21bf7040183cd1befefa4",
+      "text_length": 25
+    },
+    {
+      "id": 1197711,
+      "type": "false_negative",
+      "start": 870,
+      "end": 901,
+      "label": "MIL_ORG",
+      "text_sha256": "7cdf616caaa0933c581a15b46d1c4f4c1a996766f342e2294ca9bbb974c44c53",
+      "text_length": 31
+    },
+    {
+      "id": 1057825,
+      "type": "false_negative",
+      "start": 631,
+      "end": 643,
+      "label": "MIL_ORG",
+      "text_sha256": "373bc707a4132b8e0517bdca23da0c6fccede8e601aa6d945166bf1fcfa6f502",
+      "text_length": 12
+    },
+    {
+      "id": 1057825,
+      "type": "false_negative",
+      "start": 1203,
+      "end": 1211,
+      "label": "WEAPON",
+      "text_sha256": "5e4c08027cf29e6a3dd74d148609c7667ca9a73a3d4c97475e8a66eaa79ac86b",
+      "text_length": 8
+    },
+    {
+      "id": 1057825,
+      "type": "false_negative",
+      "start": 1213,
+      "end": 1221,
+      "label": "WEAPON",
+      "text_sha256": "52af13fb23ff650f204d7b499ea9ede0690d6cf909f4be6f4f6768ec331997ed",
+      "text_length": 8
+    },
+    {
+      "id": 1057825,
+      "type": "false_negative",
+      "start": 1223,
+      "end": 1229,
+      "label": "WEAPON",
+      "text_sha256": "5ace5f8f860d2f9eee53e0d685a79c176abc24b46c4f6090d6adca450eb473a3",
+      "text_length": 6
+    },
+    {
+      "id": 1714499,
+      "type": "false_positive",
+      "start": 206,
+      "end": 214,
+      "label": "WEAPON",
+      "text_sha256": "16ce173795bbbbc58d5993d3726fc865ba20d13cc16bf043311cc8c920215ae1",
+      "text_length": 8
+    },
+    {
+      "id": 1714499,
+      "type": "false_negative",
+      "start": 206,
+      "end": 214,
+      "label": "MIL_ORG",
+      "text_sha256": "16ce173795bbbbc58d5993d3726fc865ba20d13cc16bf043311cc8c920215ae1",
+      "text_length": 8
+    },
+    {
+      "id": 1243265,
+      "type": "false_negative",
+      "start": 1298,
+      "end": 1335,
+      "label": "MIL_UNIT",
+      "text_sha256": "8327c831da5aafbb2eea78731b4c6536eea947389732ff643721e17eac90bffc",
+      "text_length": 37
+    },
+    {
+      "id": 1243265,
+      "type": "false_negative",
+      "start": 1348,
+      "end": 1373,
+      "label": "MIL_UNIT",
+      "text_sha256": "4dee73b597fc9cf3c13c02e6fd04188e94563e28dd35787266fecf690ce2fc07",
+      "text_length": 25
+    },
+    {
+      "id": 1067653,
+      "type": "false_negative",
+      "start": 24,
+      "end": 41,
+      "label": "MIL_ORG",
+      "text_sha256": "c5c0c9b9457b041f864eb4bb1c82bf944ab9772d1e724cd9699eb73912b7afaf",
+      "text_length": 17
+    },
+    {
+      "id": 1067653,
+      "type": "false_negative",
+      "start": 78,
+      "end": 86,
+      "label": "WEAPON",
+      "text_sha256": "c74ba60411c8f98916b93a9c25a6d5d78def647d5a9f8963a21242bdba374252",
+      "text_length": 8
+    },
+    {
+      "id": 1067653,
+      "type": "false_negative",
+      "start": 305,
+      "end": 313,
+      "label": "WEAPON",
+      "text_sha256": "c74ba60411c8f98916b93a9c25a6d5d78def647d5a9f8963a21242bdba374252",
+      "text_length": 8
+    },
+    {
+      "id": 1006759,
+      "type": "false_negative",
+      "start": 32,
+      "end": 45,
+      "label": "MIL_ORG",
+      "text_sha256": "9a20e5a642c738aea458e3cb28488df384d060a61c9d930cbb719caf1c8ce0c8",
+      "text_length": 13
+    },
+    {
+      "id": 1006759,
+      "type": "false_negative",
+      "start": 157,
+      "end": 169,
+      "label": "MIL_ORG",
+      "text_sha256": "a2726682323c60ccb0e03c3ff8cdc53be3065de65c1f40b59243123e494e14ef",
+      "text_length": 12
+    },
+    {
+      "id": 1647503,
+      "type": "false_negative",
+      "start": 83,
+      "end": 97,
+      "label": "MIL_ORG",
+      "text_sha256": "2ce94ed284e97cd925aff04173e85ec4025585cf4f855d732cdb7c3c9146fd54",
+      "text_length": 14
+    },
+    {
+      "id": 1647503,
+      "type": "false_negative",
+      "start": 145,
+      "end": 161,
+      "label": "MIL_ORG",
+      "text_sha256": "491595b17e5f167bca95cbfee2eb6f5fc7aea1d84fc79630f055c87767243bb5",
+      "text_length": 16
+    },
+    {
+      "id": 1647503,
+      "type": "false_negative",
+      "start": 235,
+      "end": 268,
+      "label": "MIL_UNIT",
+      "text_sha256": "f246761753cd2bb4ab1f6d2f905bc134cc0eb92d140c7bf7e62c58b9cb548f17",
+      "text_length": 33
+    },
+    {
+      "id": 1663405,
+      "type": "false_negative",
+      "start": 52,
+      "end": 76,
+      "label": "WEAPON",
+      "text_sha256": "8f4a0889eed7d072fe38f3ce490f8b8009579b454013058fce33cc59af377e28",
+      "text_length": 24
+    },
+    {
+      "id": 1663405,
+      "type": "false_negative",
+      "start": 287,
+      "end": 311,
+      "label": "WEAPON",
+      "text_sha256": "8f4a0889eed7d072fe38f3ce490f8b8009579b454013058fce33cc59af377e28",
+      "text_length": 24
+    },
+    {
+      "id": 1663405,
+      "type": "false_negative",
+      "start": 357,
+      "end": 364,
+      "label": "WEAPON",
+      "text_sha256": "4fcaa47a9a89b22af30771033bb563f3b9c2dfade0ce51f5ca4e70ddf00f082a",
+      "text_length": 7
+    },
+    {
+      "id": 1036353,
+      "type": "false_positive",
+      "start": 78,
+      "end": 87,
+      "label": "MIL_UNIT",
+      "text_sha256": "bff8dbcc177c5d698e41fa2db07e70be04d3cb014144b877b9138447cccc60f0",
+      "text_length": 9
+    },
+    {
+      "id": 1036353,
+      "type": "false_negative",
+      "start": 301,
+      "end": 327,
+      "label": "MIL_UNIT",
+      "text_sha256": "3f9ecc4ab754c493191dd3e0b494a66b0499da6e514addfc8d1d96473086da89",
+      "text_length": 26
+    },
+    {
+      "id": 1036353,
+      "type": "false_negative",
+      "start": 404,
+      "end": 430,
+      "label": "MIL_ORG",
+      "text_sha256": "830ffa8fec69d33f872f931a70f2cc44734b481e68e7c71000fbf85b8fb64b24",
+      "text_length": 26
+    },
+    {
+      "id": 1702235,
+      "type": "false_negative",
+      "start": 266,
+      "end": 289,
+      "label": "MIL_UNIT",
+      "text_sha256": "2eb36b04c058ac51cb9320c6da5c517ad65ac7b3eb0486f246ae3ce3217e25d9",
+      "text_length": 23
+    },
+    {
+      "id": 1702235,
+      "type": "false_negative",
+      "start": 379,
+      "end": 413,
+      "label": "MIL_UNIT",
+      "text_sha256": "3434dff8775960eeb9eb1633b4c80b64a128a8459fde5086930765c07eef43e9",
+      "text_length": 34
+    },
+    {
+      "id": 1702235,
+      "type": "false_negative",
+      "start": 422,
+      "end": 446,
+      "label": "MIL_UNIT",
+      "text_sha256": "ec2b82dec2fc4b65798878b6dd9fbd24aba59156f9e93499f61df8ad4c25f015",
+      "text_length": 24
+    },
+    {
+      "id": 1702235,
+      "type": "false_negative",
+      "start": 645,
+      "end": 649,
+      "label": "WEAPON",
+      "text_sha256": "7131e0a44401e93fe7e8dbd87419dc6601242794ed3fa2762bd0fb850fba9fde",
+      "text_length": 4
+    },
+    {
+      "id": 1122361,
+      "type": "false_negative",
+      "start": 52,
+      "end": 71,
+      "label": "MIL_UNIT",
+      "text_sha256": "ecbcd9f8f92dd6588828798094faa346a0d7d8286b443e9f8a125fd1f0b761de",
+      "text_length": 19
+    },
+    {
+      "id": 1122361,
+      "type": "false_negative",
+      "start": 170,
+      "end": 195,
+      "label": "MIL_UNIT",
+      "text_sha256": "4dee73b597fc9cf3c13c02e6fd04188e94563e28dd35787266fecf690ce2fc07",
+      "text_length": 25
+    },
+    {
+      "id": 1122361,
+      "type": "false_negative",
+      "start": 1106,
+      "end": 1110,
+      "label": "WEAPON",
+      "text_sha256": "a31c141e62e548e1d8f97172d6c8a790757801cd2095893e6de28a987114c33b",
+      "text_length": 4
+    },
+    {
+      "id": 1122361,
+      "type": "false_negative",
+      "start": 1295,
+      "end": 1314,
+      "label": "MIL_UNIT",
+      "text_sha256": "ecbcd9f8f92dd6588828798094faa346a0d7d8286b443e9f8a125fd1f0b761de",
+      "text_length": 19
+    },
+    {
+      "id": 1122361,
+      "type": "false_negative",
+      "start": 1516,
+      "end": 1523,
+      "label": "WEAPON",
+      "text_sha256": "9d166dd4f0c9f64c8537dd375ad74167a4071e7786893b2a252e1a1638a0edca",
+      "text_length": 7
+    },
+    {
+      "id": 1122361,
+      "type": "false_negative",
+      "start": 1552,
+      "end": 1556,
+      "label": "WEAPON",
+      "text_sha256": "d1c586520ecbbf94b3aa7de4ae575f7d028d5532a57f81b41bfc602df93d9eab",
+      "text_length": 4
+    },
+    {
+      "id": 1122361,
+      "type": "false_negative",
+      "start": 1589,
+      "end": 1597,
+      "label": "WEAPON",
+      "text_sha256": "b6cd14b71dca542d1ee242aa5a88a4a3929fd2b305bec0ce8e22d7b63a7435cd",
+      "text_length": 8
+    },
+    {
+      "id": 1122361,
+      "type": "false_negative",
+      "start": 1602,
+      "end": 1610,
+      "label": "WEAPON",
+      "text_sha256": "9c3f254dab5a574389cc3857cd1d2cc088afe8a2b768d3ef6e29649e639350f6",
+      "text_length": 8
+    },
+    {
+      "id": 1226971,
+      "type": "false_positive",
+      "start": 1321,
+      "end": 1327,
+      "label": "WEAPON",
+      "text_sha256": "bbf5ec6691e28d0f06f1620d06d8b383f887108d2b8d4500e75244b28555d944",
+      "text_length": 6
+    },
+    {
+      "id": 1226971,
+      "type": "false_negative",
+      "start": 35,
+      "end": 47,
+      "label": "WEAPON",
+      "text_sha256": "2a7eb95e35ae097ee7039d1e92199f254f6b5155c040f0f9e2073b5f3c9a8fbe",
+      "text_length": 12
+    },
+    {
+      "id": 1226971,
+      "type": "false_negative",
+      "start": 48,
+      "end": 53,
+      "label": "WEAPON",
+      "text_sha256": "a0f51467cf80266810feab008e5dc80162f562099ad9fa492251c1fccc6a12ca",
+      "text_length": 5
+    },
+    {
+      "id": 1226971,
+      "type": "false_negative",
+      "start": 367,
+      "end": 374,
+      "label": "WEAPON",
+      "text_sha256": "5f078e7dcff34efc9fae1589460b8620c7794d0dafe2d06042d57a8999da04bc",
+      "text_length": 7
+    },
+    {
+      "id": 1226971,
+      "type": "false_negative",
+      "start": 389,
+      "end": 394,
+      "label": "WEAPON",
+      "text_sha256": "a0f51467cf80266810feab008e5dc80162f562099ad9fa492251c1fccc6a12ca",
+      "text_length": 5
+    },
+    {
+      "id": 1226971,
+      "type": "false_negative",
+      "start": 829,
+      "end": 849,
+      "label": "MIL_UNIT",
+      "text_sha256": "e762c7608bd37b785d3bfca8f4f59af2ef6b73567ab21c528693fbb4dd919a65",
+      "text_length": 20
+    },
+    {
+      "id": 1226971,
+      "type": "false_negative",
+      "start": 1142,
+      "end": 1147,
+      "label": "WEAPON",
+      "text_sha256": "a0f51467cf80266810feab008e5dc80162f562099ad9fa492251c1fccc6a12ca",
+      "text_length": 5
+    },
+    {
+      "id": 1226971,
+      "type": "false_negative",
+      "start": 1229,
+      "end": 1241,
+      "label": "MIL_ORG",
+      "text_sha256": "a2726682323c60ccb0e03c3ff8cdc53be3065de65c1f40b59243123e494e14ef",
+      "text_length": 12
+    },
+    {
+      "id": 1226971,
+      "type": "false_negative",
+      "start": 1321,
+      "end": 1330,
+      "label": "WEAPON",
+      "text_sha256": "c0a5bd90ac26fd5619b7044a6389b6b1f444cfffc44a0f750c2cd75f7e8f0b9f",
+      "text_length": 9
+    },
+    {
+      "id": 1068385,
+      "type": "false_negative",
+      "start": 76,
+      "end": 92,
+      "label": "WEAPON",
+      "text_sha256": "f5f8a40b10f7701ca276178769f4aada706a68a4d9e6bd9cc9c66e0a403ced5a",
+      "text_length": 16
+    },
+    {
+      "id": 1068385,
+      "type": "false_negative",
+      "start": 535,
+      "end": 540,
+      "label": "WEAPON",
+      "text_sha256": "909dc0adb9f70d8f6444d19812ba4c8cb59003ea9e8468c4cf2248c5910a9b17",
+      "text_length": 5
+    },
+    {
+      "id": 1068385,
+      "type": "false_negative",
+      "start": 599,
+      "end": 604,
+      "label": "WEAPON",
+      "text_sha256": "909dc0adb9f70d8f6444d19812ba4c8cb59003ea9e8468c4cf2248c5910a9b17",
+      "text_length": 5
+    },
+    {
+      "id": 1068385,
+      "type": "false_negative",
+      "start": 1029,
+      "end": 1051,
+      "label": "MIL_UNIT",
+      "text_sha256": "3cc9da367905dd891760557bc5210cb2c394eb8d7c2336847f24bbc9fde9f4ac",
+      "text_length": 22
+    },
+    {
+      "id": 1068385,
+      "type": "false_negative",
+      "start": 1109,
+      "end": 1125,
+      "label": "WEAPON",
+      "text_sha256": "f5f8a40b10f7701ca276178769f4aada706a68a4d9e6bd9cc9c66e0a403ced5a",
+      "text_length": 16
+    },
+    {
+      "id": 999996,
+      "type": "false_negative",
+      "start": 188,
+      "end": 194,
+      "label": "WEAPON",
+      "text_sha256": "e702fc42c1b1d6f20fd7a7da2ef30647201f00cfe8810af16e4d3c5b98c2f352",
+      "text_length": 6
+    },
+    {
+      "id": 999996,
+      "type": "false_negative",
+      "start": 312,
+      "end": 318,
+      "label": "WEAPON",
+      "text_sha256": "e702fc42c1b1d6f20fd7a7da2ef30647201f00cfe8810af16e4d3c5b98c2f352",
+      "text_length": 6
+    },
+    {
+      "id": 999996,
+      "type": "false_negative",
+      "start": 726,
+      "end": 729,
+      "label": "WEAPON",
+      "text_sha256": "631c2bc052fa56da53199e411b72d8d68b137d272ed31f1ac6e3fa466b273dea",
+      "text_length": 3
+    },
+    {
+      "id": 999996,
+      "type": "false_negative",
+      "start": 1044,
+      "end": 1056,
+      "label": "WEAPON",
+      "text_sha256": "b2a1588750b13676c13e4c1407a5f79cf5e92c9feb92c142e99b9da418ad0734",
+      "text_length": 12
+    },
+    {
+      "id": 1113983,
+      "type": "false_negative",
+      "start": 40,
+      "end": 49,
+      "label": "WEAPON",
+      "text_sha256": "6e611b9ccb800b58a1c3f20ba0cf8360b5f440a9935f62a06e8d037b0bcd5833",
+      "text_length": 9
+    },
+    {
+      "id": 1113983,
+      "type": "false_negative",
+      "start": 408,
+      "end": 415,
+      "label": "WEAPON",
+      "text_sha256": "6ede1c5be3b0e0a5c61f124ce4e7e9c84815f6e51d2180bba684f663a4759930",
+      "text_length": 7
+    },
+    {
+      "id": 1113983,
+      "type": "false_negative",
+      "start": 952,
+      "end": 979,
+      "label": "MIL_ORG",
+      "text_sha256": "46dfbc8bd680ce01daac4e3025b7074230d46870f9c9d009827f7bec5666decc",
+      "text_length": 27
+    },
+    {
+      "id": 1113983,
+      "type": "false_negative",
+      "start": 1133,
+      "end": 1142,
+      "label": "WEAPON",
+      "text_sha256": "6e611b9ccb800b58a1c3f20ba0cf8360b5f440a9935f62a06e8d037b0bcd5833",
+      "text_length": 9
+    },
+    {
+      "id": 936322,
+      "type": "false_positive",
+      "start": 82,
+      "end": 86,
+      "label": "WEAPON",
+      "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+      "text_length": 4
+    },
+    {
+      "id": 936322,
+      "type": "false_positive",
+      "start": 666,
+      "end": 670,
+      "label": "WEAPON",
+      "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+      "text_length": 4
+    },
+    {
+      "id": 936322,
+      "type": "false_positive",
+      "start": 1579,
+      "end": 1583,
+      "label": "WEAPON",
+      "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+      "text_length": 4
+    },
+    {
+      "id": 936322,
+      "type": "false_negative",
+      "start": 82,
+      "end": 86,
+      "label": "MIL_ORG",
+      "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+      "text_length": 4
+    },
+    {
+      "id": 936322,
+      "type": "false_negative",
+      "start": 666,
+      "end": 670,
+      "label": "MIL_ORG",
+      "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+      "text_length": 4
+    },
+    {
+      "id": 936322,
+      "type": "false_negative",
+      "start": 1579,
+      "end": 1583,
+      "label": "MIL_ORG",
+      "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+      "text_length": 4
+    },
+    {
+      "id": 936322,
+      "type": "false_negative",
+      "start": 1803,
+      "end": 1823,
+      "label": "MIL_ORG",
+      "text_sha256": "80b284fad01d5f0c9b4f0c522e70bcdcb4846af9a376a3753817dee080116ffa",
+      "text_length": 20
+    },
+    {
+      "id": 936322,
+      "type": "false_negative",
+      "start": 1861,
+      "end": 1882,
+      "label": "WEAPON",
+      "text_sha256": "15c1f02f0a0b37799ca7d29a29775b681676ac5a667c11e961fe6640515b53d5",
+      "text_length": 21
+    },
+    {
+      "id": 936322,
+      "type": "false_negative",
+      "start": 1925,
+      "end": 1930,
+      "label": "WEAPON",
+      "text_sha256": "53a75faddf576afd80818a98fa38ffa78ba960355cb8c5703956b7259b80ad1f",
+      "text_length": 5
+    },
+    {
+      "id": 936322,
+      "type": "false_negative",
+      "start": 2033,
+      "end": 2042,
+      "label": "WEAPON",
+      "text_sha256": "89160fcc0fd8ba88a57258625637fb5afe70c3c5c6cc0d7a207875f399fae2fa",
+      "text_length": 9
+    },
+    {
+      "id": 1493879,
+      "type": "false_positive",
+      "start": 1290,
+      "end": 1297,
+      "label": "WEAPON",
+      "text_sha256": "3e1806d0ffb83868067be0b59c04b369d365d4465bfeb368e351faccc78230e6",
+      "text_length": 7
+    },
+    {
+      "id": 1493879,
+      "type": "false_negative",
+      "start": 31,
+      "end": 70,
+      "label": "MIL_ORG",
+      "text_sha256": "d047fbd66558c30641df133fa7a4e8761654262281fbce86964a48e1322861ec",
+      "text_length": 39
+    },
+    {
+      "id": 1493879,
+      "type": "false_negative",
+      "start": 72,
+      "end": 76,
+      "label": "MIL_ORG",
+      "text_sha256": "cf63aa16c4c6137f050847790b046366659af9614ec08f092b2bb67c59da6d11",
+      "text_length": 4
+    },
+    {
+      "id": 1493879,
+      "type": "false_negative",
+      "start": 209,
+      "end": 225,
+      "label": "MIL_ORG",
+      "text_sha256": "411549c64ac5ec55e83e6a0ee08584ce83c238ca2186ca36c278f281642c73c6",
+      "text_length": 16
+    },
+    {
+      "id": 1493879,
+      "type": "false_negative",
+      "start": 355,
+      "end": 359,
+      "label": "MIL_ORG",
+      "text_sha256": "cf63aa16c4c6137f050847790b046366659af9614ec08f092b2bb67c59da6d11",
+      "text_length": 4
+    },
+    {
+      "id": 1493879,
+      "type": "false_negative",
+      "start": 415,
+      "end": 447,
+      "label": "MIL_UNIT",
+      "text_sha256": "e5f4fc10119e1f28643bb7c77a39f128c0b1fa56758612176b97dcc113796be7",
+      "text_length": 32
+    },
+    {
+      "id": 1493879,
+      "type": "false_negative",
+      "start": 515,
+      "end": 519,
+      "label": "MIL_ORG",
+      "text_sha256": "cf63aa16c4c6137f050847790b046366659af9614ec08f092b2bb67c59da6d11",
+      "text_length": 4
+    },
+    {
+      "id": 1493879,
+      "type": "false_negative",
+      "start": 1079,
+      "end": 1083,
+      "label": "MIL_ORG",
+      "text_sha256": "cf63aa16c4c6137f050847790b046366659af9614ec08f092b2bb67c59da6d11",
+      "text_length": 4
+    },
+    {
+      "id": 1595959,
+      "type": "false_negative",
+      "start": 1809,
+      "end": 1823,
+      "label": "MIL_ORG",
+      "text_sha256": "2ce94ed284e97cd925aff04173e85ec4025585cf4f855d732cdb7c3c9146fd54",
+      "text_length": 14
+    },
+    {
+      "id": 1393795,
+      "type": "false_negative",
+      "start": 208,
+      "end": 232,
+      "label": "MIL_ORG",
+      "text_sha256": "1dbaf35c26799526d269b1e53a40fc12edd3bfb9d4fe8669cb9bd0c1e31bc706",
+      "text_length": 24
+    },
+    {
+      "id": 1393795,
+      "type": "false_negative",
+      "start": 822,
+      "end": 846,
+      "label": "MIL_ORG",
+      "text_sha256": "1dbaf35c26799526d269b1e53a40fc12edd3bfb9d4fe8669cb9bd0c1e31bc706",
+      "text_length": 24
+    },
+    {
+      "id": 1393795,
+      "type": "false_negative",
+      "start": 1879,
+      "end": 1922,
+      "label": "MIL_ORG",
+      "text_sha256": "65354c92fdea4f49b8cee4e4318b33f67c97fce2df81491ceef70975f97fe113",
+      "text_length": 43
+    },
+    {
+      "id": 1393795,
+      "type": "false_negative",
+      "start": 2461,
+      "end": 2485,
+      "label": "MIL_ORG",
+      "text_sha256": "1dbaf35c26799526d269b1e53a40fc12edd3bfb9d4fe8669cb9bd0c1e31bc706",
+      "text_length": 24
+    },
+    {
+      "id": 1498067,
+      "type": "false_positive",
+      "start": 4100,
+      "end": 4104,
+      "label": "WEAPON",
+      "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+      "text_length": 4
+    },
+    {
+      "id": 1498067,
+      "type": "false_negative",
+      "start": 364,
+      "end": 391,
+      "label": "MIL_ORG",
+      "text_sha256": "e09ddf0d76cb0f6bb45ef68d2d6dd1243038cbb2db3f7b8f493ab16c7730afb6",
+      "text_length": 27
+    },
+    {
+      "id": 1498067,
+      "type": "false_negative",
+      "start": 1010,
+      "end": 1037,
+      "label": "MIL_ORG",
+      "text_sha256": "e09ddf0d76cb0f6bb45ef68d2d6dd1243038cbb2db3f7b8f493ab16c7730afb6",
+      "text_length": 27
+    },
+    {
+      "id": 1498067,
+      "type": "false_negative",
+      "start": 2912,
+      "end": 2936,
+      "label": "MIL_ORG",
+      "text_sha256": "624bcaa07b66c21b286fa7c2dcead4c9a8ce77fc8dc54693a1383908b7ab7ecb",
+      "text_length": 24
+    },
+    {
+      "id": 1498067,
+      "type": "false_negative",
+      "start": 4100,
+      "end": 4104,
+      "label": "MIL_ORG",
+      "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+      "text_length": 4
+    },
+    {
+      "id": 1527837,
+      "type": "false_positive",
+      "start": 1538,
+      "end": 1562,
+      "label": "MIL_ORG",
+      "text_sha256": "84d1295f2d51bbaea609a43b8f4c351ad6475631bc432a031c5cf47dc8c365be",
+      "text_length": 24
+    },
+    {
+      "id": 1527837,
+      "type": "false_positive",
+      "start": 2926,
+      "end": 2930,
+      "label": "WEAPON",
+      "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+      "text_length": 4
+    },
+    {
+      "id": 1527837,
+      "type": "false_negative",
+      "start": 706,
+      "end": 710,
+      "label": "WEAPON",
+      "text_sha256": "58092070d37d07605d327f5333bec6ea75655ec03d1bf8f317390703f3b3581a",
+      "text_length": 4
+    },
+    {
+      "id": 1527837,
+      "type": "false_negative",
+      "start": 810,
+      "end": 814,
+      "label": "WEAPON",
+      "text_sha256": "11e86878f2bdf169a0d2895acd7f5ff6111790e181fec57d20624186ee39326c",
+      "text_length": 4
+    },
+    {
+      "id": 1527837,
+      "type": "false_negative",
+      "start": 816,
+      "end": 831,
+      "label": "WEAPON",
+      "text_sha256": "2361b0e3d49b7e13e497e8b4597400aaae7a73ea6b6525674041099f7e5f75e7",
+      "text_length": 15
+    },
+    {
+      "id": 1527837,
+      "type": "false_negative",
+      "start": 992,
+      "end": 999,
+      "label": "WEAPON",
+      "text_sha256": "c07e078766991485d4f68703c4c6d8222a6b2c33f4c1d53e61b21f8bab49869c",
+      "text_length": 7
+    },
+    {
+      "id": 1527837,
+      "type": "false_negative",
+      "start": 1150,
+      "end": 1156,
+      "label": "WEAPON",
+      "text_sha256": "56f7c995cc743ac83c32ba7c76b6b3e3ed36546c8677f9c9e82ae94257fea9b7",
+      "text_length": 6
+    },
+    {
+      "id": 1527837,
+      "type": "false_negative",
+      "start": 1193,
+      "end": 1200,
+      "label": "WEAPON",
+      "text_sha256": "f12d451d3b27cb4585c7426a54a3ee9489f05250aa00768ead2f8091e2280c3d",
+      "text_length": 7
+    },
+    {
+      "id": 1527837,
+      "type": "false_negative",
+      "start": 1229,
+      "end": 1233,
+      "label": "WEAPON",
+      "text_sha256": "11e86878f2bdf169a0d2895acd7f5ff6111790e181fec57d20624186ee39326c",
+      "text_length": 4
+    },
+    {
+      "id": 1527837,
+      "type": "false_negative",
+      "start": 1417,
+      "end": 1424,
+      "label": "WEAPON",
+      "text_sha256": "d473bd02b5c30f9b3bd69f0d2f4d11201a14c65090f022015077b76d52042cf5",
+      "text_length": 7
+    },
+    {
+      "id": 1527837,
+      "type": "false_negative",
+      "start": 1776,
+      "end": 1789,
+      "label": "MIL_ORG",
+      "text_sha256": "099e79ae61a5bb84c738c7c7666f4797d66676a6592ebb5fb1ea53ec11621a56",
+      "text_length": 13
+    },
+    {
+      "id": 1527837,
+      "type": "false_negative",
+      "start": 2729,
+      "end": 2750,
+      "label": "MIL_UNIT",
+      "text_sha256": "89fa98a26f33403ef66bdeb5af365de4ae6c33b0d560b41963f2517aa711ba65",
+      "text_length": 21
+    },
+    {
+      "id": 1527837,
+      "type": "false_negative",
+      "start": 2926,
+      "end": 2930,
+      "label": "MIL_ORG",
+      "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+      "text_length": 4
+    },
+    {
+      "id": 1527837,
+      "type": "false_negative",
+      "start": 2955,
+      "end": 2959,
+      "label": "WEAPON",
+      "text_sha256": "8652979242c09277f2134d04d5d3471c254cc61eb6e77794e1d1affb51e6c4e6",
+      "text_length": 4
+    },
+    {
+      "id": 1527837,
+      "type": "false_negative",
+      "start": 3023,
+      "end": 3028,
+      "label": "WEAPON",
+      "text_sha256": "bbfb83af92de3d6cb4c53e815c8f2dba97f225016406a6c77b64c1b08206c2dd",
+      "text_length": 5
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 164,
+      "end": 172,
+      "label": "WEAPON",
+      "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+      "text_length": 8
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 235,
+      "end": 243,
+      "label": "WEAPON",
+      "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+      "text_length": 8
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 365,
+      "end": 390,
+      "label": "MIL_ORG",
+      "text_sha256": "6f7a55617128e871e7e2de97a5ffdc610b6d823b3b6550a9b671279dd3b72c87",
+      "text_length": 25
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 535,
+      "end": 547,
+      "label": "WEAPON",
+      "text_sha256": "15f7e199fc11fc0f3b990bc8e2edc5d11b3ce8df25856f0ef66b713e08dbc949",
+      "text_length": 12
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 549,
+      "end": 554,
+      "label": "WEAPON",
+      "text_sha256": "ac2d2952f6626773ae80d30581a8359fd5eddb8be5a52f76fe6f5db50c17eb15",
+      "text_length": 5
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 809,
+      "end": 822,
+      "label": "WEAPON",
+      "text_sha256": "5a4f62190bea74c41dbe78d02c291fe8e8a9e525f0ca826f645dd1a5cdfabcea",
+      "text_length": 13
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 926,
+      "end": 934,
+      "label": "WEAPON",
+      "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+      "text_length": 8
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 949,
+      "end": 962,
+      "label": "WEAPON",
+      "text_sha256": "43aa35af5ecfb98809ea81d063d21c10e2ade29c8ddfda4d894e88f228b6f7b9",
+      "text_length": 13
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 1207,
+      "end": 1219,
+      "label": "MIL_ORG",
+      "text_sha256": "a2726682323c60ccb0e03c3ff8cdc53be3065de65c1f40b59243123e494e14ef",
+      "text_length": 12
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 1364,
+      "end": 1372,
+      "label": "WEAPON",
+      "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+      "text_length": 8
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 2346,
+      "end": 2357,
+      "label": "WEAPON",
+      "text_sha256": "bd4dcbdf86fb4bab809fa823372e94893896f3bd9ae8ad17f74f35a16783a098",
+      "text_length": 11
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 2359,
+      "end": 2364,
+      "label": "WEAPON",
+      "text_sha256": "351d666fc7ed5f582c6d176b38ddf5355ad0dfe7bae85b535340edec88913155",
+      "text_length": 5
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 2382,
+      "end": 2390,
+      "label": "WEAPON",
+      "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+      "text_length": 8
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 2407,
+      "end": 2419,
+      "label": "MIL_ORG",
+      "text_sha256": "a2726682323c60ccb0e03c3ff8cdc53be3065de65c1f40b59243123e494e14ef",
+      "text_length": 12
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 2644,
+      "end": 2652,
+      "label": "WEAPON",
+      "text_sha256": "6b4a756bdd2e6614204ddfed3127a7b502c8b9c549a4a9e15694ef83b47606a2",
+      "text_length": 8
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 2792,
+      "end": 2800,
+      "label": "WEAPON",
+      "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+      "text_length": 8
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 2805,
+      "end": 2815,
+      "label": "WEAPON",
+      "text_sha256": "becf86a6fc8198a9c258e8347f0f329cd1288d210d7c6499f732466bc0073572",
+      "text_length": 10
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 3102,
+      "end": 3110,
+      "label": "WEAPON",
+      "text_sha256": "c67cf26cad70fe785d4b5e55a4d689712365cae5f11fbb70ca9a260fd7cfe93f",
+      "text_length": 8
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 3167,
+      "end": 3192,
+      "label": "MIL_ORG",
+      "text_sha256": "6f7a55617128e871e7e2de97a5ffdc610b6d823b3b6550a9b671279dd3b72c87",
+      "text_length": 25
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 3194,
+      "end": 3202,
+      "label": "WEAPON",
+      "text_sha256": "c67cf26cad70fe785d4b5e55a4d689712365cae5f11fbb70ca9a260fd7cfe93f",
+      "text_length": 8
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 3338,
+      "end": 3363,
+      "label": "MIL_ORG",
+      "text_sha256": "6f7a55617128e871e7e2de97a5ffdc610b6d823b3b6550a9b671279dd3b72c87",
+      "text_length": 25
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 3382,
+      "end": 3390,
+      "label": "WEAPON",
+      "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+      "text_length": 8
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 3579,
+      "end": 3587,
+      "label": "WEAPON",
+      "text_sha256": "c67cf26cad70fe785d4b5e55a4d689712365cae5f11fbb70ca9a260fd7cfe93f",
+      "text_length": 8
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 3666,
+      "end": 3674,
+      "label": "WEAPON",
+      "text_sha256": "c67cf26cad70fe785d4b5e55a4d689712365cae5f11fbb70ca9a260fd7cfe93f",
+      "text_length": 8
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 3728,
+      "end": 3736,
+      "label": "WEAPON",
+      "text_sha256": "6b4a756bdd2e6614204ddfed3127a7b502c8b9c549a4a9e15694ef83b47606a2",
+      "text_length": 8
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 3816,
+      "end": 3824,
+      "label": "WEAPON",
+      "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+      "text_length": 8
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 3939,
+      "end": 3947,
+      "label": "WEAPON",
+      "text_sha256": "c67cf26cad70fe785d4b5e55a4d689712365cae5f11fbb70ca9a260fd7cfe93f",
+      "text_length": 8
+    },
+    {
+      "id": 1055135,
+      "type": "false_negative",
+      "start": 4263,
+      "end": 4271,
+      "label": "WEAPON",
+      "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+      "text_length": 8
+    },
+    {
+      "id": 1913641,
+      "type": "false_positive",
+      "start": 471,
+      "end": 494,
+      "label": "MIL_ORG",
+      "text_sha256": "cc1e724f51e4927ab1c2259aff4b05ab1fe52c550bc31f26530dce03cc50ee59",
+      "text_length": 23
+    },
+    {
+      "id": 1913641,
+      "type": "false_positive",
+      "start": 1919,
+      "end": 1925,
+      "label": "WEAPON",
+      "text_sha256": "850de537a105a30eadfe624d1a3a520c45055430855e90c05807bec95a2ef2b7",
+      "text_length": 6
+    },
+    {
+      "id": 1913641,
+      "type": "false_positive",
+      "start": 3016,
+      "end": 3021,
+      "label": "WEAPON",
+      "text_sha256": "cec9aeaac6919bd76c6b5333e4776ebc12a756b47636e4a8f94972a24f0e8958",
+      "text_length": 5
+    },
+    {
+      "id": 1913641,
+      "type": "false_negative",
+      "start": 174,
+      "end": 180,
+      "label": "WEAPON",
+      "text_sha256": "3dfc3e32ae5afd9bf2ed682596a8e23461a3f8d5a306d59ff62b849367c8472c",
+      "text_length": 6
+    },
+    {
+      "id": 1913641,
+      "type": "false_negative",
+      "start": 357,
+      "end": 381,
+      "label": "MIL_UNIT",
+      "text_sha256": "f81387d6f111d4a8105de839098a23eda51dca2ed75ff909d0d2ce45a93cc142",
+      "text_length": 24
+    },
+    {
+      "id": 1913641,
+      "type": "false_negative",
+      "start": 1246,
+      "end": 1252,
+      "label": "WEAPON",
+      "text_sha256": "3dfc3e32ae5afd9bf2ed682596a8e23461a3f8d5a306d59ff62b849367c8472c",
+      "text_length": 6
+    },
+    {
+      "id": 1913641,
+      "type": "false_negative",
+      "start": 1667,
+      "end": 1678,
+      "label": "WEAPON",
+      "text_sha256": "e6330f48827d6e535709cd224e4cd3f51aae9c74a1d55fcc9bfa8213120f9271",
+      "text_length": 11
+    },
+    {
+      "id": 1913641,
+      "type": "false_negative",
+      "start": 1758,
+      "end": 1769,
+      "label": "WEAPON",
+      "text_sha256": "e6330f48827d6e535709cd224e4cd3f51aae9c74a1d55fcc9bfa8213120f9271",
+      "text_length": 11
+    },
+    {
+      "id": 1913641,
+      "type": "false_negative",
+      "start": 1919,
+      "end": 1927,
+      "label": "WEAPON",
+      "text_sha256": "71c993cb4811829d77c0c3d58129f694718d7cd409a538427919b44dab7d4aa5",
+      "text_length": 8
+    },
+    {
+      "id": 1913641,
+      "type": "false_negative",
+      "start": 2160,
+      "end": 2168,
+      "label": "WEAPON",
+      "text_sha256": "55b773f554452c0ba2adb1fa150d2b92bf8eeab305936d461e4da797cd784b6c",
+      "text_length": 8
+    },
+    {
+      "id": 1913641,
+      "type": "false_negative",
+      "start": 2284,
+      "end": 2292,
+      "label": "WEAPON",
+      "text_sha256": "55b773f554452c0ba2adb1fa150d2b92bf8eeab305936d461e4da797cd784b6c",
+      "text_length": 8
+    },
+    {
+      "id": 1913641,
+      "type": "false_negative",
+      "start": 2603,
+      "end": 2611,
+      "label": "WEAPON",
+      "text_sha256": "55b773f554452c0ba2adb1fa150d2b92bf8eeab305936d461e4da797cd784b6c",
+      "text_length": 8
+    },
+    {
+      "id": 1913641,
+      "type": "false_negative",
+      "start": 3016,
+      "end": 3028,
+      "label": "WEAPON",
+      "text_sha256": "63ca782cd237cd90805af194676d55ff7c37b0a7bd4c9a600f83bb9d9e644c54",
+      "text_length": 12
+    },
+    {
+      "id": 1913641,
+      "type": "false_negative",
+      "start": 3077,
+      "end": 3080,
+      "label": "WEAPON",
+      "text_sha256": "e7121e9ff0bcbe21dbf73a10d4ab7a7f4ddaff759c00c8309fd64cbbc85a7995",
+      "text_length": 3
+    },
+    {
+      "id": 1913641,
+      "type": "false_negative",
+      "start": 3183,
+      "end": 3191,
+      "label": "WEAPON",
+      "text_sha256": "b2c5afb4cc075588e9bba7b0b5d1442b5f61a190e9d523070d6007bcf2818d1b",
+      "text_length": 8
+    },
+    {
+      "id": 1913641,
+      "type": "false_negative",
+      "start": 3205,
+      "end": 3211,
+      "label": "WEAPON",
+      "text_sha256": "10943a718d321dad0a93f30e24c54537633bfd35834723cc6cc90109aa93fb91",
+      "text_length": 6
+    },
+    {
+      "id": 1913641,
+      "type": "false_negative",
+      "start": 3224,
+      "end": 3231,
+      "label": "WEAPON",
+      "text_sha256": "bd959c095a26c099ca95532e6dce312227d58c5f782ba4290fcaa3d144a77405",
+      "text_length": 7
+    },
+    {
+      "id": 1494323,
+      "type": "false_positive",
+      "start": 0,
+      "end": 7,
+      "label": "WEAPON",
+      "text_sha256": "3626c9cda5037e7bffe7c6776f98839c544cbbbeffa0fab259ed7d09570d0b24",
+      "text_length": 7
+    },
+    {
+      "id": 1494323,
+      "type": "false_positive",
+      "start": 228,
+      "end": 232,
+      "label": "WEAPON",
+      "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+      "text_length": 4
+    },
+    {
+      "id": 1494323,
+      "type": "false_positive",
+      "start": 298,
+      "end": 322,
+      "label": "MIL_ORG",
+      "text_sha256": "84d1295f2d51bbaea609a43b8f4c351ad6475631bc432a031c5cf47dc8c365be",
+      "text_length": 24
+    },
+    {
+      "id": 1494323,
+      "type": "false_positive",
+      "start": 1756,
+      "end": 1760,
+      "label": "WEAPON",
+      "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+      "text_length": 4
+    },
+    {
+      "id": 1494323,
+      "type": "false_positive",
+      "start": 1878,
+      "end": 1882,
+      "label": "WEAPON",
+      "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+      "text_length": 4
+    },
+    {
+      "id": 1494323,
+      "type": "false_positive",
+      "start": 2960,
+      "end": 2964,
+      "label": "WEAPON",
+      "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+      "text_length": 4
+    },
+    {
+      "id": 1494323,
+      "type": "false_positive",
+      "start": 3267,
+      "end": 3271,
+      "label": "WEAPON",
+      "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+      "text_length": 4
+    },
+    {
+      "id": 1494323,
+      "type": "false_negative",
+      "start": 228,
+      "end": 232,
+      "label": "MIL_ORG",
+      "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+      "text_length": 4
+    },
+    {
+      "id": 1494323,
+      "type": "false_negative",
+      "start": 1756,
+      "end": 1760,
+      "label": "MIL_ORG",
+      "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+      "text_length": 4
+    },
+    {
+      "id": 1494323,
+      "type": "false_negative",
+      "start": 1878,
+      "end": 1882,
+      "label": "MIL_ORG",
+      "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+      "text_length": 4
+    },
+    {
+      "id": 1494323,
+      "type": "false_negative",
+      "start": 2960,
+      "end": 2964,
+      "label": "MIL_ORG",
+      "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+      "text_length": 4
+    },
+    {
+      "id": 1494323,
+      "type": "false_negative",
+      "start": 3267,
+      "end": 3271,
+      "label": "MIL_ORG",
+      "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+      "text_length": 4
+    },
+    {
+      "id": 1494323,
+      "type": "false_negative",
+      "start": 3501,
+      "end": 3506,
+      "label": "MIL_ORG",
+      "text_sha256": "dbf4b0800d8d29b2107f4c48a324dad9f0c66608b785a69c09ad1fbc500533c4",
+      "text_length": 5
+    }
+  ],
+  "documents": 42,
+  "definition": "Exact spans and labels, micro global; undefined denominators are null",
+  "at_utc": "2026-10-04T20:44:37.239952+00:00",
+  "status": "exploratory_agreement_with_ai_reference",
+  "model_sha256": "f35d2e57acb16d96b802c1b578b3c9e780ea53114dcd28c7cb8d65b54fc5f918",
+  "model_version": "weak-efc7c759e0-s42-e6",
+  "reference_sha256": "6fe79af66d4d7b63f71daba317b18c64d08f1827fb1724d016d2b5e484751f57",
+  "reference_frozen_at_utc": "2026-10-04T20:44:36.231917+00:00",
+  "reference_provenance": "Codex (IA): 18 initial drafts retained and 24 new full-text proposals prepared before new inference.",
+  "initial_reference_sha256": "01e933bd4b3f457a905e79870ff9ab5073cdf6468470ef71857347ac5325cf2f",
+  "selection": {
+    "selection_method": "24 previously unused test articles; eight per length stratum; SHA-256 ranking with fixed seed; no model predictions or weak labels consulted for selection or new proposals.",
+    "strata": {
+      "court": "1..1199 Unicode codepoints",
+      "moyen": "1200..2499",
+      "long": "2500..4500"
+    },
+    "source_sha256": "fa664dcb9c1e816b6bd8a6e84980586adace8711fd7f498487d5136db2e9a79d",
+    "split_manifest_sha256": "7cf09d2ed7817586b70586e86caa4f66397405af03393c14286be785777c2992",
+    "selection_sha256": "af8df23276823ecbe7f4c8455f3c7fd4fdcf4ec9a9d257ba3381e1ed3506ee41",
+    "ids": [
+      1006759,
+      1647503,
+      1887515,
+      1663405,
+      1142513,
+      1214737,
+      1036353,
+      1702235,
+      1122361,
+      1226971,
+      1068385,
+      999996,
+      1113983,
+      1612969,
+      936322,
+      1493879,
+      1067906,
+      1595959,
+      1393795,
+      1498067,
+      1527837,
+      1055135,
+      1913641,
+      1494323
+    ],
+    "documents": 24,
+    "initial_documents": 18,
+    "total_reference_documents": 42,
+    "train_dev_overlap": 0,
+    "old_sample_overlap": 0,
+    "population": {
+      "court": 1612,
+      "moyen": 1429,
+      "long": 198
+    },
+    "exclusions_sha256": "1b161d19dd1cb7c9e5dee052d8bed87f856841de5bf61e29a3a607a9dd6156ca",
+    "scope": "Stratified diagnostic, not an estimate weighted to full-corpus prevalence; articles over 4500 codepoints excluded."
+  },
+  "initial_18": {
+    "global": {
+      "tp": 31,
+      "fp": 3,
+      "fn": 73,
+      "support": 104,
+      "precision": 0.9117647058823529,
+      "recall": 0.2980769230769231,
+      "f1": 0.4492753623188406
+    },
+    "per_label": {
+      "WEAPON": {
+        "tp": 17,
+        "fp": 3,
+        "fn": 38,
+        "support": 55,
+        "precision": 0.85,
+        "recall": 0.3090909090909091,
+        "f1": 0.4533333333333333
+      },
+      "MIL_UNIT": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 9,
+        "support": 13,
+        "precision": 1.0,
+        "recall": 0.3076923076923077,
+        "f1": 0.47058823529411764
+      },
+      "MIL_ORG": {
+        "tp": 10,
+        "fp": 0,
+        "fn": 26,
+        "support": 36,
+        "precision": 1.0,
+        "recall": 0.2777777777777778,
+        "f1": 0.43478260869565216
+      }
+    },
+    "errors": [
+      {
+        "id": 1457869,
+        "type": "false_negative",
+        "start": 167,
+        "end": 190,
+        "label": "MIL_UNIT",
+        "text_sha256": "9832ff469b6021ce25ae58f72860441100eb74b93a0998625e16a16d5539f1d2",
+        "text_length": 23
+      },
+      {
+        "id": 1457869,
+        "type": "false_negative",
+        "start": 586,
+        "end": 631,
+        "label": "MIL_ORG",
+        "text_sha256": "e35095bd0954d5d810b8185adacee90f63b2e4b94ce4fdb191df3d86e11250f7",
+        "text_length": 45
+      },
+      {
+        "id": 1621041,
+        "type": "false_negative",
+        "start": 68,
+        "end": 74,
+        "label": "WEAPON",
+        "text_sha256": "e49b669824c1d8a70ece584b716201e1d358efeede187340a2334ea9082c6da3",
+        "text_length": 6
+      },
+      {
+        "id": 1621041,
+        "type": "false_negative",
+        "start": 79,
+        "end": 85,
+        "label": "WEAPON",
+        "text_sha256": "4bb89897c70768782f527161f1725ec50b19aa825cf4d40906546f301ce90863",
+        "text_length": 6
+      },
+      {
+        "id": 1621041,
+        "type": "false_negative",
+        "start": 316,
+        "end": 325,
+        "label": "WEAPON",
+        "text_sha256": "827bba9779df086cf4c756a47f889bd90c316e04109450544262b933d8ee0cdf",
+        "text_length": 9
+      },
+      {
+        "id": 1621041,
+        "type": "false_negative",
+        "start": 362,
+        "end": 372,
+        "label": "WEAPON",
+        "text_sha256": "6328a326401d1acea65bbaede7050a247c2fa5e54351776fed08314b660eb6f4",
+        "text_length": 10
+      },
+      {
+        "id": 1621041,
+        "type": "false_negative",
+        "start": 418,
+        "end": 424,
+        "label": "WEAPON",
+        "text_sha256": "e49b669824c1d8a70ece584b716201e1d358efeede187340a2334ea9082c6da3",
+        "text_length": 6
+      },
+      {
+        "id": 1621041,
+        "type": "false_negative",
+        "start": 429,
+        "end": 435,
+        "label": "WEAPON",
+        "text_sha256": "4bb89897c70768782f527161f1725ec50b19aa825cf4d40906546f301ce90863",
+        "text_length": 6
+      },
+      {
+        "id": 1621041,
+        "type": "false_negative",
+        "start": 537,
+        "end": 550,
+        "label": "WEAPON",
+        "text_sha256": "e7af4ead555f6214f27a7d1b46eb8e7c62dfc35f8a264ef0ec4ed252ce794157",
+        "text_length": 13
+      },
+      {
+        "id": 1621041,
+        "type": "false_negative",
+        "start": 564,
+        "end": 577,
+        "label": "WEAPON",
+        "text_sha256": "6478debcd930e587b8ebe4fac1c0f0c70c210a29ba40853eb697618d1ee95ccc",
+        "text_length": 13
+      },
+      {
+        "id": 1621041,
+        "type": "false_negative",
+        "start": 592,
+        "end": 605,
+        "label": "WEAPON",
+        "text_sha256": "f3b91cb7cc0ccf5478377b8085aac4a3625e887bf3c6ae1de53ee9daa68170e8",
+        "text_length": 13
+      },
+      {
+        "id": 1621041,
+        "type": "false_negative",
+        "start": 623,
+        "end": 639,
+        "label": "WEAPON",
+        "text_sha256": "8b44928015decec9089952cf733f888c5e9dc5dc263d56e3905063e178c56ca9",
+        "text_length": 16
+      },
+      {
+        "id": 1621041,
+        "type": "false_negative",
+        "start": 834,
+        "end": 849,
+        "label": "WEAPON",
+        "text_sha256": "76f555acd37906439d797afab444ca23fbcb0f712b59d12c0e9b06da982c1c65",
+        "text_length": 15
+      },
+      {
+        "id": 1621041,
+        "type": "false_negative",
+        "start": 1023,
+        "end": 1034,
+        "label": "WEAPON",
+        "text_sha256": "60de9f11112cffd3868b0f9b445bafd84ec12e1a17d81d857dfdc7b24458e93a",
+        "text_length": 11
+      },
+      {
+        "id": 1746719,
+        "type": "false_negative",
+        "start": 29,
+        "end": 57,
+        "label": "MIL_ORG",
+        "text_sha256": "7757fb5088df5bd3f453fbecb06780588eb27ad256743427c4dd28b7104e2268",
+        "text_length": 28
+      },
+      {
+        "id": 1248529,
+        "type": "false_negative",
+        "start": 208,
+        "end": 224,
+        "label": "MIL_ORG",
+        "text_sha256": "491595b17e5f167bca95cbfee2eb6f5fc7aea1d84fc79630f055c87767243bb5",
+        "text_length": 16
+      },
+      {
+        "id": 1248529,
+        "type": "false_negative",
+        "start": 446,
+        "end": 462,
+        "label": "MIL_ORG",
+        "text_sha256": "491595b17e5f167bca95cbfee2eb6f5fc7aea1d84fc79630f055c87767243bb5",
+        "text_length": 16
+      },
+      {
+        "id": 1248529,
+        "type": "false_negative",
+        "start": 606,
+        "end": 639,
+        "label": "MIL_UNIT",
+        "text_sha256": "87a409f13a75d0e8af24e8e65f5889e7fda66a3e0fbbe9bb20894b51ea7446e6",
+        "text_length": 33
+      },
+      {
+        "id": 1248529,
+        "type": "false_negative",
+        "start": 674,
+        "end": 690,
+        "label": "MIL_ORG",
+        "text_sha256": "491595b17e5f167bca95cbfee2eb6f5fc7aea1d84fc79630f055c87767243bb5",
+        "text_length": 16
+      },
+      {
+        "id": 1248529,
+        "type": "false_negative",
+        "start": 1190,
+        "end": 1217,
+        "label": "MIL_ORG",
+        "text_sha256": "bd6212f983e1e940384dfe805d80ed9531e131baa2eef05c1814b03335a6feda",
+        "text_length": 27
+      },
+      {
+        "id": 1627073,
+        "type": "false_positive",
+        "start": 350,
+        "end": 355,
+        "label": "WEAPON",
+        "text_sha256": "8e3a70608195a3cf1d145071d9d29fe9d13e21ff917a7cd7ba74c7ef77302069",
+        "text_length": 5
+      },
+      {
+        "id": 1627073,
+        "type": "false_negative",
+        "start": 350,
+        "end": 356,
+        "label": "WEAPON",
+        "text_sha256": "078bd725edc9568bca4dca12937b61732babcf389a8f19bd00dc08e8b91279af",
+        "text_length": 6
+      },
+      {
+        "id": 1627073,
+        "type": "false_negative",
+        "start": 381,
+        "end": 389,
+        "label": "WEAPON",
+        "text_sha256": "dcf66caf6dfc3e62b2abe023e5fa33a06542f3eee0a280a3334165e4cd8e4d76",
+        "text_length": 8
+      },
+      {
+        "id": 1627073,
+        "type": "false_negative",
+        "start": 790,
+        "end": 795,
+        "label": "WEAPON",
+        "text_sha256": "9b813d15c4d15057dd8d274d83625809a02d1441a93df1c0f406072e32b19714",
+        "text_length": 5
+      },
+      {
+        "id": 1042755,
+        "type": "false_negative",
+        "start": 28,
+        "end": 45,
+        "label": "MIL_ORG",
+        "text_sha256": "bb127ba3423531ef6eda24f2fee05e33dd198fd12674e2ccbe4687b597f82d5c",
+        "text_length": 17
+      },
+      {
+        "id": 1042755,
+        "type": "false_negative",
+        "start": 235,
+        "end": 251,
+        "label": "MIL_ORG",
+        "text_sha256": "491595b17e5f167bca95cbfee2eb6f5fc7aea1d84fc79630f055c87767243bb5",
+        "text_length": 16
+      },
+      {
+        "id": 1042755,
+        "type": "false_negative",
+        "start": 635,
+        "end": 642,
+        "label": "WEAPON",
+        "text_sha256": "fb4d192871ad47f7f19ba15835b93886f95ef4a99c3b30a344c2964341249363",
+        "text_length": 7
+      },
+      {
+        "id": 1042755,
+        "type": "false_negative",
+        "start": 675,
+        "end": 688,
+        "label": "WEAPON",
+        "text_sha256": "b01d3032e0180e17703e8963547fb4a004482bcc2da74c0633c43df8f9dc8807",
+        "text_length": 13
+      },
+      {
+        "id": 1042755,
+        "type": "false_negative",
+        "start": 808,
+        "end": 825,
+        "label": "MIL_ORG",
+        "text_sha256": "805bcce12169cbfbc25b7fabee7e4e7cfb941ffdc8161812a7cf5a91a597ba45",
+        "text_length": 17
+      },
+      {
+        "id": 1042755,
+        "type": "false_negative",
+        "start": 1102,
+        "end": 1115,
+        "label": "WEAPON",
+        "text_sha256": "b01d3032e0180e17703e8963547fb4a004482bcc2da74c0633c43df8f9dc8807",
+        "text_length": 13
+      },
+      {
+        "id": 1042755,
+        "type": "false_negative",
+        "start": 1144,
+        "end": 1156,
+        "label": "MIL_ORG",
+        "text_sha256": "280cc7994bbda43d2d16414aac6dd84f4bb01703f5a9704fe7aa5ebd87676ea8",
+        "text_length": 12
+      },
+      {
+        "id": 1042755,
+        "type": "false_negative",
+        "start": 1199,
+        "end": 1211,
+        "label": "WEAPON",
+        "text_sha256": "aeb8ec72382916390eea3d234963111e891211573c81f7641defe29f90161896",
+        "text_length": 12
+      },
+      {
+        "id": 1042755,
+        "type": "false_negative",
+        "start": 1390,
+        "end": 1415,
+        "label": "MIL_ORG",
+        "text_sha256": "6f7a55617128e871e7e2de97a5ffdc610b6d823b3b6550a9b671279dd3b72c87",
+        "text_length": 25
+      },
+      {
+        "id": 1042755,
+        "type": "false_negative",
+        "start": 1484,
+        "end": 1499,
+        "label": "MIL_ORG",
+        "text_sha256": "f9cab41e7a84bb3ab12c15823b7758a300a7a14c362f37562c78fcb641eb683c",
+        "text_length": 15
+      },
+      {
+        "id": 1936261,
+        "type": "false_negative",
+        "start": 56,
+        "end": 72,
+        "label": "MIL_UNIT",
+        "text_sha256": "cf97bcb46139ffc002acd7e546cb47be27dbf2c5f768864c2ad0a4141c923141",
+        "text_length": 16
+      },
+      {
+        "id": 1936261,
+        "type": "false_negative",
+        "start": 109,
+        "end": 115,
+        "label": "WEAPON",
+        "text_sha256": "f464c796b580547da69eaad6bf359aca15a71d21cbeec80a516e878d33688b6c",
+        "text_length": 6
+      },
+      {
+        "id": 1936261,
+        "type": "false_negative",
+        "start": 265,
+        "end": 271,
+        "label": "WEAPON",
+        "text_sha256": "f464c796b580547da69eaad6bf359aca15a71d21cbeec80a516e878d33688b6c",
+        "text_length": 6
+      },
+      {
+        "id": 1427999,
+        "type": "false_negative",
+        "start": 197,
+        "end": 217,
+        "label": "MIL_ORG",
+        "text_sha256": "302aacc0d1145149ef5b6809607f6300e33faa0f81c170627b3eaaad2a98d033",
+        "text_length": 20
+      },
+      {
+        "id": 1427999,
+        "type": "false_negative",
+        "start": 409,
+        "end": 425,
+        "label": "MIL_ORG",
+        "text_sha256": "5ca3a57a784200d861e42fcfb47c336b250b3596acbd84274e14728fd4503359",
+        "text_length": 16
+      },
+      {
+        "id": 1802423,
+        "type": "false_negative",
+        "start": 29,
+        "end": 46,
+        "label": "MIL_UNIT",
+        "text_sha256": "234b8e21b6cf99dc0d0c02819d23a4211c4da6278f14ef3cc7a6c0c6851c92f0",
+        "text_length": 17
+      },
+      {
+        "id": 1802423,
+        "type": "false_negative",
+        "start": 313,
+        "end": 336,
+        "label": "MIL_UNIT",
+        "text_sha256": "8d0ff5435678d6226175912a066c075c6756e591ccd2812f60a53ca659d9c275",
+        "text_length": 23
+      },
+      {
+        "id": 1802423,
+        "type": "false_negative",
+        "start": 345,
+        "end": 365,
+        "label": "MIL_UNIT",
+        "text_sha256": "f1274895f2c478e0fbd6be431f0c273e6ad918956210fda7899948900e48c9d4",
+        "text_length": 20
+      },
+      {
+        "id": 1802423,
+        "type": "false_negative",
+        "start": 452,
+        "end": 464,
+        "label": "MIL_UNIT",
+        "text_sha256": "d1cf1bb9e1eb28f9171f670e70bb31973cd13ae660654bb154eaa42ae9c11162",
+        "text_length": 12
+      },
+      {
+        "id": 1802423,
+        "type": "false_negative",
+        "start": 472,
+        "end": 496,
+        "label": "MIL_ORG",
+        "text_sha256": "d274e1d038033fb4bc50901629e888e9361cf83151c41679a207b850c0918b18",
+        "text_length": 24
+      },
+      {
+        "id": 1070736,
+        "type": "false_positive",
+        "start": 463,
+        "end": 468,
+        "label": "WEAPON",
+        "text_sha256": "8e3a70608195a3cf1d145071d9d29fe9d13e21ff917a7cd7ba74c7ef77302069",
+        "text_length": 5
+      },
+      {
+        "id": 1070736,
+        "type": "false_negative",
+        "start": 98,
+        "end": 111,
+        "label": "MIL_ORG",
+        "text_sha256": "9a20e5a642c738aea458e3cb28488df384d060a61c9d930cbb719caf1c8ce0c8",
+        "text_length": 13
+      },
+      {
+        "id": 1070736,
+        "type": "false_negative",
+        "start": 160,
+        "end": 176,
+        "label": "MIL_ORG",
+        "text_sha256": "491595b17e5f167bca95cbfee2eb6f5fc7aea1d84fc79630f055c87767243bb5",
+        "text_length": 16
+      },
+      {
+        "id": 1070736,
+        "type": "false_negative",
+        "start": 242,
+        "end": 253,
+        "label": "WEAPON",
+        "text_sha256": "b00d2bee1e0888317f0edb3fdbe99f0b6b9a5dc7a24779b2417f4ea44b4061b2",
+        "text_length": 11
+      },
+      {
+        "id": 1070736,
+        "type": "false_negative",
+        "start": 259,
+        "end": 278,
+        "label": "WEAPON",
+        "text_sha256": "dacf255ce6ff3dcfc066e3449f50deb239ce540479dd846e349a91fb58c283b0",
+        "text_length": 19
+      },
+      {
+        "id": 1070736,
+        "type": "false_negative",
+        "start": 292,
+        "end": 300,
+        "label": "WEAPON",
+        "text_sha256": "003d27121ac2164e33f94ac894b8c4444189ee3e80998d631bac5c6a87200294",
+        "text_length": 8
+      },
+      {
+        "id": 1070736,
+        "type": "false_negative",
+        "start": 318,
+        "end": 332,
+        "label": "WEAPON",
+        "text_sha256": "55de848226141f37af1a684ed818023f313f6872940fded97871d4f2cf1e89b9",
+        "text_length": 14
+      },
+      {
+        "id": 1070736,
+        "type": "false_negative",
+        "start": 337,
+        "end": 343,
+        "label": "WEAPON",
+        "text_sha256": "2c71be33bb43a1102fcc259a5cfcd4ec11126c530ea6b119214ca294bfa6f423",
+        "text_length": 6
+      },
+      {
+        "id": 1070736,
+        "type": "false_negative",
+        "start": 463,
+        "end": 469,
+        "label": "WEAPON",
+        "text_sha256": "078bd725edc9568bca4dca12937b61732babcf389a8f19bd00dc08e8b91279af",
+        "text_length": 6
+      },
+      {
+        "id": 1070736,
+        "type": "false_negative",
+        "start": 501,
+        "end": 510,
+        "label": "WEAPON",
+        "text_sha256": "8d5ee832398a7c4e99b2edd6ad0a56bf3a87760fe96457190f6bd4b30dd07681",
+        "text_length": 9
+      },
+      {
+        "id": 1070736,
+        "type": "false_negative",
+        "start": 515,
+        "end": 521,
+        "label": "WEAPON",
+        "text_sha256": "02bf7e51b20dce24347181ace3ca42ca8d945cce2073e10ab2fb8a28ed9b5251",
+        "text_length": 6
+      },
+      {
+        "id": 1070736,
+        "type": "false_negative",
+        "start": 649,
+        "end": 668,
+        "label": "WEAPON",
+        "text_sha256": "dacf255ce6ff3dcfc066e3449f50deb239ce540479dd846e349a91fb58c283b0",
+        "text_length": 19
+      },
+      {
+        "id": 1970201,
+        "type": "false_negative",
+        "start": 172,
+        "end": 188,
+        "label": "MIL_ORG",
+        "text_sha256": "491595b17e5f167bca95cbfee2eb6f5fc7aea1d84fc79630f055c87767243bb5",
+        "text_length": 16
+      },
+      {
+        "id": 1970201,
+        "type": "false_negative",
+        "start": 439,
+        "end": 487,
+        "label": "MIL_ORG",
+        "text_sha256": "8964766d73f447b3c9419f306c16e374a51c49baebb176dd690cbf36f1990f81",
+        "text_length": 48
+      },
+      {
+        "id": 1970201,
+        "type": "false_negative",
+        "start": 547,
+        "end": 550,
+        "label": "WEAPON",
+        "text_sha256": "dc0b418800018f83663825ecec534426e4839036f31d64c33e7dd2d9988e44ac",
+        "text_length": 3
+      },
+      {
+        "id": 1197711,
+        "type": "false_negative",
+        "start": 111,
+        "end": 116,
+        "label": "WEAPON",
+        "text_sha256": "39509385e012f96aece3403fba371659c5cd81ca140dde1fdfd3eb89fed37e5c",
+        "text_length": 5
+      },
+      {
+        "id": 1197711,
+        "type": "false_negative",
+        "start": 149,
+        "end": 174,
+        "label": "MIL_ORG",
+        "text_sha256": "00b4e2fa3d2d9d3a25857231fca8c02b0313494608b21bf7040183cd1befefa4",
+        "text_length": 25
+      },
+      {
+        "id": 1197711,
+        "type": "false_negative",
+        "start": 228,
+        "end": 267,
+        "label": "MIL_ORG",
+        "text_sha256": "63687e0a04da142297a09cbbda5fbdec5642e984f9f3700e2d6346b60e8bbad6",
+        "text_length": 39
+      },
+      {
+        "id": 1197711,
+        "type": "false_negative",
+        "start": 789,
+        "end": 799,
+        "label": "WEAPON",
+        "text_sha256": "620573bed5734bf629fe2b9df0f7ceede87b055c282c0a9f5e9060879342c520",
+        "text_length": 10
+      },
+      {
+        "id": 1197711,
+        "type": "false_negative",
+        "start": 838,
+        "end": 863,
+        "label": "MIL_ORG",
+        "text_sha256": "00b4e2fa3d2d9d3a25857231fca8c02b0313494608b21bf7040183cd1befefa4",
+        "text_length": 25
+      },
+      {
+        "id": 1197711,
+        "type": "false_negative",
+        "start": 870,
+        "end": 901,
+        "label": "MIL_ORG",
+        "text_sha256": "7cdf616caaa0933c581a15b46d1c4f4c1a996766f342e2294ca9bbb974c44c53",
+        "text_length": 31
+      },
+      {
+        "id": 1057825,
+        "type": "false_negative",
+        "start": 631,
+        "end": 643,
+        "label": "MIL_ORG",
+        "text_sha256": "373bc707a4132b8e0517bdca23da0c6fccede8e601aa6d945166bf1fcfa6f502",
+        "text_length": 12
+      },
+      {
+        "id": 1057825,
+        "type": "false_negative",
+        "start": 1203,
+        "end": 1211,
+        "label": "WEAPON",
+        "text_sha256": "5e4c08027cf29e6a3dd74d148609c7667ca9a73a3d4c97475e8a66eaa79ac86b",
+        "text_length": 8
+      },
+      {
+        "id": 1057825,
+        "type": "false_negative",
+        "start": 1213,
+        "end": 1221,
+        "label": "WEAPON",
+        "text_sha256": "52af13fb23ff650f204d7b499ea9ede0690d6cf909f4be6f4f6768ec331997ed",
+        "text_length": 8
+      },
+      {
+        "id": 1057825,
+        "type": "false_negative",
+        "start": 1223,
+        "end": 1229,
+        "label": "WEAPON",
+        "text_sha256": "5ace5f8f860d2f9eee53e0d685a79c176abc24b46c4f6090d6adca450eb473a3",
+        "text_length": 6
+      },
+      {
+        "id": 1714499,
+        "type": "false_positive",
+        "start": 206,
+        "end": 214,
+        "label": "WEAPON",
+        "text_sha256": "16ce173795bbbbc58d5993d3726fc865ba20d13cc16bf043311cc8c920215ae1",
+        "text_length": 8
+      },
+      {
+        "id": 1714499,
+        "type": "false_negative",
+        "start": 206,
+        "end": 214,
+        "label": "MIL_ORG",
+        "text_sha256": "16ce173795bbbbc58d5993d3726fc865ba20d13cc16bf043311cc8c920215ae1",
+        "text_length": 8
+      },
+      {
+        "id": 1243265,
+        "type": "false_negative",
+        "start": 1298,
+        "end": 1335,
+        "label": "MIL_UNIT",
+        "text_sha256": "8327c831da5aafbb2eea78731b4c6536eea947389732ff643721e17eac90bffc",
+        "text_length": 37
+      },
+      {
+        "id": 1243265,
+        "type": "false_negative",
+        "start": 1348,
+        "end": 1373,
+        "label": "MIL_UNIT",
+        "text_sha256": "4dee73b597fc9cf3c13c02e6fd04188e94563e28dd35787266fecf690ce2fc07",
+        "text_length": 25
+      },
+      {
+        "id": 1067653,
+        "type": "false_negative",
+        "start": 24,
+        "end": 41,
+        "label": "MIL_ORG",
+        "text_sha256": "c5c0c9b9457b041f864eb4bb1c82bf944ab9772d1e724cd9699eb73912b7afaf",
+        "text_length": 17
+      },
+      {
+        "id": 1067653,
+        "type": "false_negative",
+        "start": 78,
+        "end": 86,
+        "label": "WEAPON",
+        "text_sha256": "c74ba60411c8f98916b93a9c25a6d5d78def647d5a9f8963a21242bdba374252",
+        "text_length": 8
+      },
+      {
+        "id": 1067653,
+        "type": "false_negative",
+        "start": 305,
+        "end": 313,
+        "label": "WEAPON",
+        "text_sha256": "c74ba60411c8f98916b93a9c25a6d5d78def647d5a9f8963a21242bdba374252",
+        "text_length": 8
+      }
+    ],
+    "documents": 18,
+    "definition": "Exact spans and labels, micro global; undefined denominators are null"
+  },
+  "additional_24": {
+    "global": {
+      "tp": 23,
+      "fp": 19,
+      "fn": 127,
+      "support": 150,
+      "precision": 0.5476190476190477,
+      "recall": 0.15333333333333332,
+      "f1": 0.23958333333333334
+    },
+    "per_label": {
+      "WEAPON": {
+        "tp": 9,
+        "fp": 15,
+        "fn": 75,
+        "support": 84,
+        "precision": 0.375,
+        "recall": 0.10714285714285714,
+        "f1": 0.16666666666666666
+      },
+      "MIL_UNIT": {
+        "tp": 7,
+        "fp": 1,
+        "fn": 13,
+        "support": 20,
+        "precision": 0.875,
+        "recall": 0.35,
+        "f1": 0.5
+      },
+      "MIL_ORG": {
+        "tp": 7,
+        "fp": 3,
+        "fn": 39,
+        "support": 46,
+        "precision": 0.7,
+        "recall": 0.15217391304347827,
+        "f1": 0.25
+      }
+    },
+    "errors": [
+      {
+        "id": 1006759,
+        "type": "false_negative",
+        "start": 32,
+        "end": 45,
+        "label": "MIL_ORG",
+        "text_sha256": "9a20e5a642c738aea458e3cb28488df384d060a61c9d930cbb719caf1c8ce0c8",
+        "text_length": 13
+      },
+      {
+        "id": 1006759,
+        "type": "false_negative",
+        "start": 157,
+        "end": 169,
+        "label": "MIL_ORG",
+        "text_sha256": "a2726682323c60ccb0e03c3ff8cdc53be3065de65c1f40b59243123e494e14ef",
+        "text_length": 12
+      },
+      {
+        "id": 1647503,
+        "type": "false_negative",
+        "start": 83,
+        "end": 97,
+        "label": "MIL_ORG",
+        "text_sha256": "2ce94ed284e97cd925aff04173e85ec4025585cf4f855d732cdb7c3c9146fd54",
+        "text_length": 14
+      },
+      {
+        "id": 1647503,
+        "type": "false_negative",
+        "start": 145,
+        "end": 161,
+        "label": "MIL_ORG",
+        "text_sha256": "491595b17e5f167bca95cbfee2eb6f5fc7aea1d84fc79630f055c87767243bb5",
+        "text_length": 16
+      },
+      {
+        "id": 1647503,
+        "type": "false_negative",
+        "start": 235,
+        "end": 268,
+        "label": "MIL_UNIT",
+        "text_sha256": "f246761753cd2bb4ab1f6d2f905bc134cc0eb92d140c7bf7e62c58b9cb548f17",
+        "text_length": 33
+      },
+      {
+        "id": 1663405,
+        "type": "false_negative",
+        "start": 52,
+        "end": 76,
+        "label": "WEAPON",
+        "text_sha256": "8f4a0889eed7d072fe38f3ce490f8b8009579b454013058fce33cc59af377e28",
+        "text_length": 24
+      },
+      {
+        "id": 1663405,
+        "type": "false_negative",
+        "start": 287,
+        "end": 311,
+        "label": "WEAPON",
+        "text_sha256": "8f4a0889eed7d072fe38f3ce490f8b8009579b454013058fce33cc59af377e28",
+        "text_length": 24
+      },
+      {
+        "id": 1663405,
+        "type": "false_negative",
+        "start": 357,
+        "end": 364,
+        "label": "WEAPON",
+        "text_sha256": "4fcaa47a9a89b22af30771033bb563f3b9c2dfade0ce51f5ca4e70ddf00f082a",
+        "text_length": 7
+      },
+      {
+        "id": 1036353,
+        "type": "false_positive",
+        "start": 78,
+        "end": 87,
+        "label": "MIL_UNIT",
+        "text_sha256": "bff8dbcc177c5d698e41fa2db07e70be04d3cb014144b877b9138447cccc60f0",
+        "text_length": 9
+      },
+      {
+        "id": 1036353,
+        "type": "false_negative",
+        "start": 301,
+        "end": 327,
+        "label": "MIL_UNIT",
+        "text_sha256": "3f9ecc4ab754c493191dd3e0b494a66b0499da6e514addfc8d1d96473086da89",
+        "text_length": 26
+      },
+      {
+        "id": 1036353,
+        "type": "false_negative",
+        "start": 404,
+        "end": 430,
+        "label": "MIL_ORG",
+        "text_sha256": "830ffa8fec69d33f872f931a70f2cc44734b481e68e7c71000fbf85b8fb64b24",
+        "text_length": 26
+      },
+      {
+        "id": 1702235,
+        "type": "false_negative",
+        "start": 266,
+        "end": 289,
+        "label": "MIL_UNIT",
+        "text_sha256": "2eb36b04c058ac51cb9320c6da5c517ad65ac7b3eb0486f246ae3ce3217e25d9",
+        "text_length": 23
+      },
+      {
+        "id": 1702235,
+        "type": "false_negative",
+        "start": 379,
+        "end": 413,
+        "label": "MIL_UNIT",
+        "text_sha256": "3434dff8775960eeb9eb1633b4c80b64a128a8459fde5086930765c07eef43e9",
+        "text_length": 34
+      },
+      {
+        "id": 1702235,
+        "type": "false_negative",
+        "start": 422,
+        "end": 446,
+        "label": "MIL_UNIT",
+        "text_sha256": "ec2b82dec2fc4b65798878b6dd9fbd24aba59156f9e93499f61df8ad4c25f015",
+        "text_length": 24
+      },
+      {
+        "id": 1702235,
+        "type": "false_negative",
+        "start": 645,
+        "end": 649,
+        "label": "WEAPON",
+        "text_sha256": "7131e0a44401e93fe7e8dbd87419dc6601242794ed3fa2762bd0fb850fba9fde",
+        "text_length": 4
+      },
+      {
+        "id": 1122361,
+        "type": "false_negative",
+        "start": 52,
+        "end": 71,
+        "label": "MIL_UNIT",
+        "text_sha256": "ecbcd9f8f92dd6588828798094faa346a0d7d8286b443e9f8a125fd1f0b761de",
+        "text_length": 19
+      },
+      {
+        "id": 1122361,
+        "type": "false_negative",
+        "start": 170,
+        "end": 195,
+        "label": "MIL_UNIT",
+        "text_sha256": "4dee73b597fc9cf3c13c02e6fd04188e94563e28dd35787266fecf690ce2fc07",
+        "text_length": 25
+      },
+      {
+        "id": 1122361,
+        "type": "false_negative",
+        "start": 1106,
+        "end": 1110,
+        "label": "WEAPON",
+        "text_sha256": "a31c141e62e548e1d8f97172d6c8a790757801cd2095893e6de28a987114c33b",
+        "text_length": 4
+      },
+      {
+        "id": 1122361,
+        "type": "false_negative",
+        "start": 1295,
+        "end": 1314,
+        "label": "MIL_UNIT",
+        "text_sha256": "ecbcd9f8f92dd6588828798094faa346a0d7d8286b443e9f8a125fd1f0b761de",
+        "text_length": 19
+      },
+      {
+        "id": 1122361,
+        "type": "false_negative",
+        "start": 1516,
+        "end": 1523,
+        "label": "WEAPON",
+        "text_sha256": "9d166dd4f0c9f64c8537dd375ad74167a4071e7786893b2a252e1a1638a0edca",
+        "text_length": 7
+      },
+      {
+        "id": 1122361,
+        "type": "false_negative",
+        "start": 1552,
+        "end": 1556,
+        "label": "WEAPON",
+        "text_sha256": "d1c586520ecbbf94b3aa7de4ae575f7d028d5532a57f81b41bfc602df93d9eab",
+        "text_length": 4
+      },
+      {
+        "id": 1122361,
+        "type": "false_negative",
+        "start": 1589,
+        "end": 1597,
+        "label": "WEAPON",
+        "text_sha256": "b6cd14b71dca542d1ee242aa5a88a4a3929fd2b305bec0ce8e22d7b63a7435cd",
+        "text_length": 8
+      },
+      {
+        "id": 1122361,
+        "type": "false_negative",
+        "start": 1602,
+        "end": 1610,
+        "label": "WEAPON",
+        "text_sha256": "9c3f254dab5a574389cc3857cd1d2cc088afe8a2b768d3ef6e29649e639350f6",
+        "text_length": 8
+      },
+      {
+        "id": 1226971,
+        "type": "false_positive",
+        "start": 1321,
+        "end": 1327,
+        "label": "WEAPON",
+        "text_sha256": "bbf5ec6691e28d0f06f1620d06d8b383f887108d2b8d4500e75244b28555d944",
+        "text_length": 6
+      },
+      {
+        "id": 1226971,
+        "type": "false_negative",
+        "start": 35,
+        "end": 47,
+        "label": "WEAPON",
+        "text_sha256": "2a7eb95e35ae097ee7039d1e92199f254f6b5155c040f0f9e2073b5f3c9a8fbe",
+        "text_length": 12
+      },
+      {
+        "id": 1226971,
+        "type": "false_negative",
+        "start": 48,
+        "end": 53,
+        "label": "WEAPON",
+        "text_sha256": "a0f51467cf80266810feab008e5dc80162f562099ad9fa492251c1fccc6a12ca",
+        "text_length": 5
+      },
+      {
+        "id": 1226971,
+        "type": "false_negative",
+        "start": 367,
+        "end": 374,
+        "label": "WEAPON",
+        "text_sha256": "5f078e7dcff34efc9fae1589460b8620c7794d0dafe2d06042d57a8999da04bc",
+        "text_length": 7
+      },
+      {
+        "id": 1226971,
+        "type": "false_negative",
+        "start": 389,
+        "end": 394,
+        "label": "WEAPON",
+        "text_sha256": "a0f51467cf80266810feab008e5dc80162f562099ad9fa492251c1fccc6a12ca",
+        "text_length": 5
+      },
+      {
+        "id": 1226971,
+        "type": "false_negative",
+        "start": 829,
+        "end": 849,
+        "label": "MIL_UNIT",
+        "text_sha256": "e762c7608bd37b785d3bfca8f4f59af2ef6b73567ab21c528693fbb4dd919a65",
+        "text_length": 20
+      },
+      {
+        "id": 1226971,
+        "type": "false_negative",
+        "start": 1142,
+        "end": 1147,
+        "label": "WEAPON",
+        "text_sha256": "a0f51467cf80266810feab008e5dc80162f562099ad9fa492251c1fccc6a12ca",
+        "text_length": 5
+      },
+      {
+        "id": 1226971,
+        "type": "false_negative",
+        "start": 1229,
+        "end": 1241,
+        "label": "MIL_ORG",
+        "text_sha256": "a2726682323c60ccb0e03c3ff8cdc53be3065de65c1f40b59243123e494e14ef",
+        "text_length": 12
+      },
+      {
+        "id": 1226971,
+        "type": "false_negative",
+        "start": 1321,
+        "end": 1330,
+        "label": "WEAPON",
+        "text_sha256": "c0a5bd90ac26fd5619b7044a6389b6b1f444cfffc44a0f750c2cd75f7e8f0b9f",
+        "text_length": 9
+      },
+      {
+        "id": 1068385,
+        "type": "false_negative",
+        "start": 76,
+        "end": 92,
+        "label": "WEAPON",
+        "text_sha256": "f5f8a40b10f7701ca276178769f4aada706a68a4d9e6bd9cc9c66e0a403ced5a",
+        "text_length": 16
+      },
+      {
+        "id": 1068385,
+        "type": "false_negative",
+        "start": 535,
+        "end": 540,
+        "label": "WEAPON",
+        "text_sha256": "909dc0adb9f70d8f6444d19812ba4c8cb59003ea9e8468c4cf2248c5910a9b17",
+        "text_length": 5
+      },
+      {
+        "id": 1068385,
+        "type": "false_negative",
+        "start": 599,
+        "end": 604,
+        "label": "WEAPON",
+        "text_sha256": "909dc0adb9f70d8f6444d19812ba4c8cb59003ea9e8468c4cf2248c5910a9b17",
+        "text_length": 5
+      },
+      {
+        "id": 1068385,
+        "type": "false_negative",
+        "start": 1029,
+        "end": 1051,
+        "label": "MIL_UNIT",
+        "text_sha256": "3cc9da367905dd891760557bc5210cb2c394eb8d7c2336847f24bbc9fde9f4ac",
+        "text_length": 22
+      },
+      {
+        "id": 1068385,
+        "type": "false_negative",
+        "start": 1109,
+        "end": 1125,
+        "label": "WEAPON",
+        "text_sha256": "f5f8a40b10f7701ca276178769f4aada706a68a4d9e6bd9cc9c66e0a403ced5a",
+        "text_length": 16
+      },
+      {
+        "id": 999996,
+        "type": "false_negative",
+        "start": 188,
+        "end": 194,
+        "label": "WEAPON",
+        "text_sha256": "e702fc42c1b1d6f20fd7a7da2ef30647201f00cfe8810af16e4d3c5b98c2f352",
+        "text_length": 6
+      },
+      {
+        "id": 999996,
+        "type": "false_negative",
+        "start": 312,
+        "end": 318,
+        "label": "WEAPON",
+        "text_sha256": "e702fc42c1b1d6f20fd7a7da2ef30647201f00cfe8810af16e4d3c5b98c2f352",
+        "text_length": 6
+      },
+      {
+        "id": 999996,
+        "type": "false_negative",
+        "start": 726,
+        "end": 729,
+        "label": "WEAPON",
+        "text_sha256": "631c2bc052fa56da53199e411b72d8d68b137d272ed31f1ac6e3fa466b273dea",
+        "text_length": 3
+      },
+      {
+        "id": 999996,
+        "type": "false_negative",
+        "start": 1044,
+        "end": 1056,
+        "label": "WEAPON",
+        "text_sha256": "b2a1588750b13676c13e4c1407a5f79cf5e92c9feb92c142e99b9da418ad0734",
+        "text_length": 12
+      },
+      {
+        "id": 1113983,
+        "type": "false_negative",
+        "start": 40,
+        "end": 49,
+        "label": "WEAPON",
+        "text_sha256": "6e611b9ccb800b58a1c3f20ba0cf8360b5f440a9935f62a06e8d037b0bcd5833",
+        "text_length": 9
+      },
+      {
+        "id": 1113983,
+        "type": "false_negative",
+        "start": 408,
+        "end": 415,
+        "label": "WEAPON",
+        "text_sha256": "6ede1c5be3b0e0a5c61f124ce4e7e9c84815f6e51d2180bba684f663a4759930",
+        "text_length": 7
+      },
+      {
+        "id": 1113983,
+        "type": "false_negative",
+        "start": 952,
+        "end": 979,
+        "label": "MIL_ORG",
+        "text_sha256": "46dfbc8bd680ce01daac4e3025b7074230d46870f9c9d009827f7bec5666decc",
+        "text_length": 27
+      },
+      {
+        "id": 1113983,
+        "type": "false_negative",
+        "start": 1133,
+        "end": 1142,
+        "label": "WEAPON",
+        "text_sha256": "6e611b9ccb800b58a1c3f20ba0cf8360b5f440a9935f62a06e8d037b0bcd5833",
+        "text_length": 9
+      },
+      {
+        "id": 936322,
+        "type": "false_positive",
+        "start": 82,
+        "end": 86,
+        "label": "WEAPON",
+        "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+        "text_length": 4
+      },
+      {
+        "id": 936322,
+        "type": "false_positive",
+        "start": 666,
+        "end": 670,
+        "label": "WEAPON",
+        "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+        "text_length": 4
+      },
+      {
+        "id": 936322,
+        "type": "false_positive",
+        "start": 1579,
+        "end": 1583,
+        "label": "WEAPON",
+        "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+        "text_length": 4
+      },
+      {
+        "id": 936322,
+        "type": "false_negative",
+        "start": 82,
+        "end": 86,
+        "label": "MIL_ORG",
+        "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+        "text_length": 4
+      },
+      {
+        "id": 936322,
+        "type": "false_negative",
+        "start": 666,
+        "end": 670,
+        "label": "MIL_ORG",
+        "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+        "text_length": 4
+      },
+      {
+        "id": 936322,
+        "type": "false_negative",
+        "start": 1579,
+        "end": 1583,
+        "label": "MIL_ORG",
+        "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+        "text_length": 4
+      },
+      {
+        "id": 936322,
+        "type": "false_negative",
+        "start": 1803,
+        "end": 1823,
+        "label": "MIL_ORG",
+        "text_sha256": "80b284fad01d5f0c9b4f0c522e70bcdcb4846af9a376a3753817dee080116ffa",
+        "text_length": 20
+      },
+      {
+        "id": 936322,
+        "type": "false_negative",
+        "start": 1861,
+        "end": 1882,
+        "label": "WEAPON",
+        "text_sha256": "15c1f02f0a0b37799ca7d29a29775b681676ac5a667c11e961fe6640515b53d5",
+        "text_length": 21
+      },
+      {
+        "id": 936322,
+        "type": "false_negative",
+        "start": 1925,
+        "end": 1930,
+        "label": "WEAPON",
+        "text_sha256": "53a75faddf576afd80818a98fa38ffa78ba960355cb8c5703956b7259b80ad1f",
+        "text_length": 5
+      },
+      {
+        "id": 936322,
+        "type": "false_negative",
+        "start": 2033,
+        "end": 2042,
+        "label": "WEAPON",
+        "text_sha256": "89160fcc0fd8ba88a57258625637fb5afe70c3c5c6cc0d7a207875f399fae2fa",
+        "text_length": 9
+      },
+      {
+        "id": 1493879,
+        "type": "false_positive",
+        "start": 1290,
+        "end": 1297,
+        "label": "WEAPON",
+        "text_sha256": "3e1806d0ffb83868067be0b59c04b369d365d4465bfeb368e351faccc78230e6",
+        "text_length": 7
+      },
+      {
+        "id": 1493879,
+        "type": "false_negative",
+        "start": 31,
+        "end": 70,
+        "label": "MIL_ORG",
+        "text_sha256": "d047fbd66558c30641df133fa7a4e8761654262281fbce86964a48e1322861ec",
+        "text_length": 39
+      },
+      {
+        "id": 1493879,
+        "type": "false_negative",
+        "start": 72,
+        "end": 76,
+        "label": "MIL_ORG",
+        "text_sha256": "cf63aa16c4c6137f050847790b046366659af9614ec08f092b2bb67c59da6d11",
+        "text_length": 4
+      },
+      {
+        "id": 1493879,
+        "type": "false_negative",
+        "start": 209,
+        "end": 225,
+        "label": "MIL_ORG",
+        "text_sha256": "411549c64ac5ec55e83e6a0ee08584ce83c238ca2186ca36c278f281642c73c6",
+        "text_length": 16
+      },
+      {
+        "id": 1493879,
+        "type": "false_negative",
+        "start": 355,
+        "end": 359,
+        "label": "MIL_ORG",
+        "text_sha256": "cf63aa16c4c6137f050847790b046366659af9614ec08f092b2bb67c59da6d11",
+        "text_length": 4
+      },
+      {
+        "id": 1493879,
+        "type": "false_negative",
+        "start": 415,
+        "end": 447,
+        "label": "MIL_UNIT",
+        "text_sha256": "e5f4fc10119e1f28643bb7c77a39f128c0b1fa56758612176b97dcc113796be7",
+        "text_length": 32
+      },
+      {
+        "id": 1493879,
+        "type": "false_negative",
+        "start": 515,
+        "end": 519,
+        "label": "MIL_ORG",
+        "text_sha256": "cf63aa16c4c6137f050847790b046366659af9614ec08f092b2bb67c59da6d11",
+        "text_length": 4
+      },
+      {
+        "id": 1493879,
+        "type": "false_negative",
+        "start": 1079,
+        "end": 1083,
+        "label": "MIL_ORG",
+        "text_sha256": "cf63aa16c4c6137f050847790b046366659af9614ec08f092b2bb67c59da6d11",
+        "text_length": 4
+      },
+      {
+        "id": 1595959,
+        "type": "false_negative",
+        "start": 1809,
+        "end": 1823,
+        "label": "MIL_ORG",
+        "text_sha256": "2ce94ed284e97cd925aff04173e85ec4025585cf4f855d732cdb7c3c9146fd54",
+        "text_length": 14
+      },
+      {
+        "id": 1393795,
+        "type": "false_negative",
+        "start": 208,
+        "end": 232,
+        "label": "MIL_ORG",
+        "text_sha256": "1dbaf35c26799526d269b1e53a40fc12edd3bfb9d4fe8669cb9bd0c1e31bc706",
+        "text_length": 24
+      },
+      {
+        "id": 1393795,
+        "type": "false_negative",
+        "start": 822,
+        "end": 846,
+        "label": "MIL_ORG",
+        "text_sha256": "1dbaf35c26799526d269b1e53a40fc12edd3bfb9d4fe8669cb9bd0c1e31bc706",
+        "text_length": 24
+      },
+      {
+        "id": 1393795,
+        "type": "false_negative",
+        "start": 1879,
+        "end": 1922,
+        "label": "MIL_ORG",
+        "text_sha256": "65354c92fdea4f49b8cee4e4318b33f67c97fce2df81491ceef70975f97fe113",
+        "text_length": 43
+      },
+      {
+        "id": 1393795,
+        "type": "false_negative",
+        "start": 2461,
+        "end": 2485,
+        "label": "MIL_ORG",
+        "text_sha256": "1dbaf35c26799526d269b1e53a40fc12edd3bfb9d4fe8669cb9bd0c1e31bc706",
+        "text_length": 24
+      },
+      {
+        "id": 1498067,
+        "type": "false_positive",
+        "start": 4100,
+        "end": 4104,
+        "label": "WEAPON",
+        "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+        "text_length": 4
+      },
+      {
+        "id": 1498067,
+        "type": "false_negative",
+        "start": 364,
+        "end": 391,
+        "label": "MIL_ORG",
+        "text_sha256": "e09ddf0d76cb0f6bb45ef68d2d6dd1243038cbb2db3f7b8f493ab16c7730afb6",
+        "text_length": 27
+      },
+      {
+        "id": 1498067,
+        "type": "false_negative",
+        "start": 1010,
+        "end": 1037,
+        "label": "MIL_ORG",
+        "text_sha256": "e09ddf0d76cb0f6bb45ef68d2d6dd1243038cbb2db3f7b8f493ab16c7730afb6",
+        "text_length": 27
+      },
+      {
+        "id": 1498067,
+        "type": "false_negative",
+        "start": 2912,
+        "end": 2936,
+        "label": "MIL_ORG",
+        "text_sha256": "624bcaa07b66c21b286fa7c2dcead4c9a8ce77fc8dc54693a1383908b7ab7ecb",
+        "text_length": 24
+      },
+      {
+        "id": 1498067,
+        "type": "false_negative",
+        "start": 4100,
+        "end": 4104,
+        "label": "MIL_ORG",
+        "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+        "text_length": 4
+      },
+      {
+        "id": 1527837,
+        "type": "false_positive",
+        "start": 1538,
+        "end": 1562,
+        "label": "MIL_ORG",
+        "text_sha256": "84d1295f2d51bbaea609a43b8f4c351ad6475631bc432a031c5cf47dc8c365be",
+        "text_length": 24
+      },
+      {
+        "id": 1527837,
+        "type": "false_positive",
+        "start": 2926,
+        "end": 2930,
+        "label": "WEAPON",
+        "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+        "text_length": 4
+      },
+      {
+        "id": 1527837,
+        "type": "false_negative",
+        "start": 706,
+        "end": 710,
+        "label": "WEAPON",
+        "text_sha256": "58092070d37d07605d327f5333bec6ea75655ec03d1bf8f317390703f3b3581a",
+        "text_length": 4
+      },
+      {
+        "id": 1527837,
+        "type": "false_negative",
+        "start": 810,
+        "end": 814,
+        "label": "WEAPON",
+        "text_sha256": "11e86878f2bdf169a0d2895acd7f5ff6111790e181fec57d20624186ee39326c",
+        "text_length": 4
+      },
+      {
+        "id": 1527837,
+        "type": "false_negative",
+        "start": 816,
+        "end": 831,
+        "label": "WEAPON",
+        "text_sha256": "2361b0e3d49b7e13e497e8b4597400aaae7a73ea6b6525674041099f7e5f75e7",
+        "text_length": 15
+      },
+      {
+        "id": 1527837,
+        "type": "false_negative",
+        "start": 992,
+        "end": 999,
+        "label": "WEAPON",
+        "text_sha256": "c07e078766991485d4f68703c4c6d8222a6b2c33f4c1d53e61b21f8bab49869c",
+        "text_length": 7
+      },
+      {
+        "id": 1527837,
+        "type": "false_negative",
+        "start": 1150,
+        "end": 1156,
+        "label": "WEAPON",
+        "text_sha256": "56f7c995cc743ac83c32ba7c76b6b3e3ed36546c8677f9c9e82ae94257fea9b7",
+        "text_length": 6
+      },
+      {
+        "id": 1527837,
+        "type": "false_negative",
+        "start": 1193,
+        "end": 1200,
+        "label": "WEAPON",
+        "text_sha256": "f12d451d3b27cb4585c7426a54a3ee9489f05250aa00768ead2f8091e2280c3d",
+        "text_length": 7
+      },
+      {
+        "id": 1527837,
+        "type": "false_negative",
+        "start": 1229,
+        "end": 1233,
+        "label": "WEAPON",
+        "text_sha256": "11e86878f2bdf169a0d2895acd7f5ff6111790e181fec57d20624186ee39326c",
+        "text_length": 4
+      },
+      {
+        "id": 1527837,
+        "type": "false_negative",
+        "start": 1417,
+        "end": 1424,
+        "label": "WEAPON",
+        "text_sha256": "d473bd02b5c30f9b3bd69f0d2f4d11201a14c65090f022015077b76d52042cf5",
+        "text_length": 7
+      },
+      {
+        "id": 1527837,
+        "type": "false_negative",
+        "start": 1776,
+        "end": 1789,
+        "label": "MIL_ORG",
+        "text_sha256": "099e79ae61a5bb84c738c7c7666f4797d66676a6592ebb5fb1ea53ec11621a56",
+        "text_length": 13
+      },
+      {
+        "id": 1527837,
+        "type": "false_negative",
+        "start": 2729,
+        "end": 2750,
+        "label": "MIL_UNIT",
+        "text_sha256": "89fa98a26f33403ef66bdeb5af365de4ae6c33b0d560b41963f2517aa711ba65",
+        "text_length": 21
+      },
+      {
+        "id": 1527837,
+        "type": "false_negative",
+        "start": 2926,
+        "end": 2930,
+        "label": "MIL_ORG",
+        "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+        "text_length": 4
+      },
+      {
+        "id": 1527837,
+        "type": "false_negative",
+        "start": 2955,
+        "end": 2959,
+        "label": "WEAPON",
+        "text_sha256": "8652979242c09277f2134d04d5d3471c254cc61eb6e77794e1d1affb51e6c4e6",
+        "text_length": 4
+      },
+      {
+        "id": 1527837,
+        "type": "false_negative",
+        "start": 3023,
+        "end": 3028,
+        "label": "WEAPON",
+        "text_sha256": "bbfb83af92de3d6cb4c53e815c8f2dba97f225016406a6c77b64c1b08206c2dd",
+        "text_length": 5
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 164,
+        "end": 172,
+        "label": "WEAPON",
+        "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+        "text_length": 8
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 235,
+        "end": 243,
+        "label": "WEAPON",
+        "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+        "text_length": 8
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 365,
+        "end": 390,
+        "label": "MIL_ORG",
+        "text_sha256": "6f7a55617128e871e7e2de97a5ffdc610b6d823b3b6550a9b671279dd3b72c87",
+        "text_length": 25
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 535,
+        "end": 547,
+        "label": "WEAPON",
+        "text_sha256": "15f7e199fc11fc0f3b990bc8e2edc5d11b3ce8df25856f0ef66b713e08dbc949",
+        "text_length": 12
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 549,
+        "end": 554,
+        "label": "WEAPON",
+        "text_sha256": "ac2d2952f6626773ae80d30581a8359fd5eddb8be5a52f76fe6f5db50c17eb15",
+        "text_length": 5
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 809,
+        "end": 822,
+        "label": "WEAPON",
+        "text_sha256": "5a4f62190bea74c41dbe78d02c291fe8e8a9e525f0ca826f645dd1a5cdfabcea",
+        "text_length": 13
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 926,
+        "end": 934,
+        "label": "WEAPON",
+        "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+        "text_length": 8
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 949,
+        "end": 962,
+        "label": "WEAPON",
+        "text_sha256": "43aa35af5ecfb98809ea81d063d21c10e2ade29c8ddfda4d894e88f228b6f7b9",
+        "text_length": 13
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 1207,
+        "end": 1219,
+        "label": "MIL_ORG",
+        "text_sha256": "a2726682323c60ccb0e03c3ff8cdc53be3065de65c1f40b59243123e494e14ef",
+        "text_length": 12
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 1364,
+        "end": 1372,
+        "label": "WEAPON",
+        "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+        "text_length": 8
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 2346,
+        "end": 2357,
+        "label": "WEAPON",
+        "text_sha256": "bd4dcbdf86fb4bab809fa823372e94893896f3bd9ae8ad17f74f35a16783a098",
+        "text_length": 11
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 2359,
+        "end": 2364,
+        "label": "WEAPON",
+        "text_sha256": "351d666fc7ed5f582c6d176b38ddf5355ad0dfe7bae85b535340edec88913155",
+        "text_length": 5
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 2382,
+        "end": 2390,
+        "label": "WEAPON",
+        "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+        "text_length": 8
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 2407,
+        "end": 2419,
+        "label": "MIL_ORG",
+        "text_sha256": "a2726682323c60ccb0e03c3ff8cdc53be3065de65c1f40b59243123e494e14ef",
+        "text_length": 12
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 2644,
+        "end": 2652,
+        "label": "WEAPON",
+        "text_sha256": "6b4a756bdd2e6614204ddfed3127a7b502c8b9c549a4a9e15694ef83b47606a2",
+        "text_length": 8
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 2792,
+        "end": 2800,
+        "label": "WEAPON",
+        "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+        "text_length": 8
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 2805,
+        "end": 2815,
+        "label": "WEAPON",
+        "text_sha256": "becf86a6fc8198a9c258e8347f0f329cd1288d210d7c6499f732466bc0073572",
+        "text_length": 10
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 3102,
+        "end": 3110,
+        "label": "WEAPON",
+        "text_sha256": "c67cf26cad70fe785d4b5e55a4d689712365cae5f11fbb70ca9a260fd7cfe93f",
+        "text_length": 8
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 3167,
+        "end": 3192,
+        "label": "MIL_ORG",
+        "text_sha256": "6f7a55617128e871e7e2de97a5ffdc610b6d823b3b6550a9b671279dd3b72c87",
+        "text_length": 25
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 3194,
+        "end": 3202,
+        "label": "WEAPON",
+        "text_sha256": "c67cf26cad70fe785d4b5e55a4d689712365cae5f11fbb70ca9a260fd7cfe93f",
+        "text_length": 8
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 3338,
+        "end": 3363,
+        "label": "MIL_ORG",
+        "text_sha256": "6f7a55617128e871e7e2de97a5ffdc610b6d823b3b6550a9b671279dd3b72c87",
+        "text_length": 25
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 3382,
+        "end": 3390,
+        "label": "WEAPON",
+        "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+        "text_length": 8
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 3579,
+        "end": 3587,
+        "label": "WEAPON",
+        "text_sha256": "c67cf26cad70fe785d4b5e55a4d689712365cae5f11fbb70ca9a260fd7cfe93f",
+        "text_length": 8
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 3666,
+        "end": 3674,
+        "label": "WEAPON",
+        "text_sha256": "c67cf26cad70fe785d4b5e55a4d689712365cae5f11fbb70ca9a260fd7cfe93f",
+        "text_length": 8
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 3728,
+        "end": 3736,
+        "label": "WEAPON",
+        "text_sha256": "6b4a756bdd2e6614204ddfed3127a7b502c8b9c549a4a9e15694ef83b47606a2",
+        "text_length": 8
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 3816,
+        "end": 3824,
+        "label": "WEAPON",
+        "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+        "text_length": 8
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 3939,
+        "end": 3947,
+        "label": "WEAPON",
+        "text_sha256": "c67cf26cad70fe785d4b5e55a4d689712365cae5f11fbb70ca9a260fd7cfe93f",
+        "text_length": 8
+      },
+      {
+        "id": 1055135,
+        "type": "false_negative",
+        "start": 4263,
+        "end": 4271,
+        "label": "WEAPON",
+        "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+        "text_length": 8
+      },
+      {
+        "id": 1913641,
+        "type": "false_positive",
+        "start": 471,
+        "end": 494,
+        "label": "MIL_ORG",
+        "text_sha256": "cc1e724f51e4927ab1c2259aff4b05ab1fe52c550bc31f26530dce03cc50ee59",
+        "text_length": 23
+      },
+      {
+        "id": 1913641,
+        "type": "false_positive",
+        "start": 1919,
+        "end": 1925,
+        "label": "WEAPON",
+        "text_sha256": "850de537a105a30eadfe624d1a3a520c45055430855e90c05807bec95a2ef2b7",
+        "text_length": 6
+      },
+      {
+        "id": 1913641,
+        "type": "false_positive",
+        "start": 3016,
+        "end": 3021,
+        "label": "WEAPON",
+        "text_sha256": "cec9aeaac6919bd76c6b5333e4776ebc12a756b47636e4a8f94972a24f0e8958",
+        "text_length": 5
+      },
+      {
+        "id": 1913641,
+        "type": "false_negative",
+        "start": 174,
+        "end": 180,
+        "label": "WEAPON",
+        "text_sha256": "3dfc3e32ae5afd9bf2ed682596a8e23461a3f8d5a306d59ff62b849367c8472c",
+        "text_length": 6
+      },
+      {
+        "id": 1913641,
+        "type": "false_negative",
+        "start": 357,
+        "end": 381,
+        "label": "MIL_UNIT",
+        "text_sha256": "f81387d6f111d4a8105de839098a23eda51dca2ed75ff909d0d2ce45a93cc142",
+        "text_length": 24
+      },
+      {
+        "id": 1913641,
+        "type": "false_negative",
+        "start": 1246,
+        "end": 1252,
+        "label": "WEAPON",
+        "text_sha256": "3dfc3e32ae5afd9bf2ed682596a8e23461a3f8d5a306d59ff62b849367c8472c",
+        "text_length": 6
+      },
+      {
+        "id": 1913641,
+        "type": "false_negative",
+        "start": 1667,
+        "end": 1678,
+        "label": "WEAPON",
+        "text_sha256": "e6330f48827d6e535709cd224e4cd3f51aae9c74a1d55fcc9bfa8213120f9271",
+        "text_length": 11
+      },
+      {
+        "id": 1913641,
+        "type": "false_negative",
+        "start": 1758,
+        "end": 1769,
+        "label": "WEAPON",
+        "text_sha256": "e6330f48827d6e535709cd224e4cd3f51aae9c74a1d55fcc9bfa8213120f9271",
+        "text_length": 11
+      },
+      {
+        "id": 1913641,
+        "type": "false_negative",
+        "start": 1919,
+        "end": 1927,
+        "label": "WEAPON",
+        "text_sha256": "71c993cb4811829d77c0c3d58129f694718d7cd409a538427919b44dab7d4aa5",
+        "text_length": 8
+      },
+      {
+        "id": 1913641,
+        "type": "false_negative",
+        "start": 2160,
+        "end": 2168,
+        "label": "WEAPON",
+        "text_sha256": "55b773f554452c0ba2adb1fa150d2b92bf8eeab305936d461e4da797cd784b6c",
+        "text_length": 8
+      },
+      {
+        "id": 1913641,
+        "type": "false_negative",
+        "start": 2284,
+        "end": 2292,
+        "label": "WEAPON",
+        "text_sha256": "55b773f554452c0ba2adb1fa150d2b92bf8eeab305936d461e4da797cd784b6c",
+        "text_length": 8
+      },
+      {
+        "id": 1913641,
+        "type": "false_negative",
+        "start": 2603,
+        "end": 2611,
+        "label": "WEAPON",
+        "text_sha256": "55b773f554452c0ba2adb1fa150d2b92bf8eeab305936d461e4da797cd784b6c",
+        "text_length": 8
+      },
+      {
+        "id": 1913641,
+        "type": "false_negative",
+        "start": 3016,
+        "end": 3028,
+        "label": "WEAPON",
+        "text_sha256": "63ca782cd237cd90805af194676d55ff7c37b0a7bd4c9a600f83bb9d9e644c54",
+        "text_length": 12
+      },
+      {
+        "id": 1913641,
+        "type": "false_negative",
+        "start": 3077,
+        "end": 3080,
+        "label": "WEAPON",
+        "text_sha256": "e7121e9ff0bcbe21dbf73a10d4ab7a7f4ddaff759c00c8309fd64cbbc85a7995",
+        "text_length": 3
+      },
+      {
+        "id": 1913641,
+        "type": "false_negative",
+        "start": 3183,
+        "end": 3191,
+        "label": "WEAPON",
+        "text_sha256": "b2c5afb4cc075588e9bba7b0b5d1442b5f61a190e9d523070d6007bcf2818d1b",
+        "text_length": 8
+      },
+      {
+        "id": 1913641,
+        "type": "false_negative",
+        "start": 3205,
+        "end": 3211,
+        "label": "WEAPON",
+        "text_sha256": "10943a718d321dad0a93f30e24c54537633bfd35834723cc6cc90109aa93fb91",
+        "text_length": 6
+      },
+      {
+        "id": 1913641,
+        "type": "false_negative",
+        "start": 3224,
+        "end": 3231,
+        "label": "WEAPON",
+        "text_sha256": "bd959c095a26c099ca95532e6dce312227d58c5f782ba4290fcaa3d144a77405",
+        "text_length": 7
+      },
+      {
+        "id": 1494323,
+        "type": "false_positive",
+        "start": 0,
+        "end": 7,
+        "label": "WEAPON",
+        "text_sha256": "3626c9cda5037e7bffe7c6776f98839c544cbbbeffa0fab259ed7d09570d0b24",
+        "text_length": 7
+      },
+      {
+        "id": 1494323,
+        "type": "false_positive",
+        "start": 228,
+        "end": 232,
+        "label": "WEAPON",
+        "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+        "text_length": 4
+      },
+      {
+        "id": 1494323,
+        "type": "false_positive",
+        "start": 298,
+        "end": 322,
+        "label": "MIL_ORG",
+        "text_sha256": "84d1295f2d51bbaea609a43b8f4c351ad6475631bc432a031c5cf47dc8c365be",
+        "text_length": 24
+      },
+      {
+        "id": 1494323,
+        "type": "false_positive",
+        "start": 1756,
+        "end": 1760,
+        "label": "WEAPON",
+        "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+        "text_length": 4
+      },
+      {
+        "id": 1494323,
+        "type": "false_positive",
+        "start": 1878,
+        "end": 1882,
+        "label": "WEAPON",
+        "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+        "text_length": 4
+      },
+      {
+        "id": 1494323,
+        "type": "false_positive",
+        "start": 2960,
+        "end": 2964,
+        "label": "WEAPON",
+        "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+        "text_length": 4
+      },
+      {
+        "id": 1494323,
+        "type": "false_positive",
+        "start": 3267,
+        "end": 3271,
+        "label": "WEAPON",
+        "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+        "text_length": 4
+      },
+      {
+        "id": 1494323,
+        "type": "false_negative",
+        "start": 228,
+        "end": 232,
+        "label": "MIL_ORG",
+        "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+        "text_length": 4
+      },
+      {
+        "id": 1494323,
+        "type": "false_negative",
+        "start": 1756,
+        "end": 1760,
+        "label": "MIL_ORG",
+        "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+        "text_length": 4
+      },
+      {
+        "id": 1494323,
+        "type": "false_negative",
+        "start": 1878,
+        "end": 1882,
+        "label": "MIL_ORG",
+        "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+        "text_length": 4
+      },
+      {
+        "id": 1494323,
+        "type": "false_negative",
+        "start": 2960,
+        "end": 2964,
+        "label": "MIL_ORG",
+        "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+        "text_length": 4
+      },
+      {
+        "id": 1494323,
+        "type": "false_negative",
+        "start": 3267,
+        "end": 3271,
+        "label": "MIL_ORG",
+        "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+        "text_length": 4
+      },
+      {
+        "id": 1494323,
+        "type": "false_negative",
+        "start": 3501,
+        "end": 3506,
+        "label": "MIL_ORG",
+        "text_sha256": "dbf4b0800d8d29b2107f4c48a324dad9f0c66608b785a69c09ad1fbc500533c4",
+        "text_length": 5
+      }
+    ],
+    "documents": 24,
+    "definition": "Exact spans and labels, micro global; undefined denominators are null"
+  },
+  "additional_by_length": {
+    "court": {
+      "global": {
+        "tp": 4,
+        "fp": 1,
+        "fn": 14,
+        "support": 18,
+        "precision": 0.8,
+        "recall": 0.2222222222222222,
+        "f1": 0.34782608695652173
+      },
+      "per_label": {
+        "WEAPON": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 4,
+          "support": 4,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "MIL_UNIT": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 5,
+          "support": 5,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "MIL_ORG": {
+          "tp": 4,
+          "fp": 0,
+          "fn": 5,
+          "support": 9,
+          "precision": 1.0,
+          "recall": 0.4444444444444444,
+          "f1": 0.6153846153846154
+        }
+      },
+      "errors": [
+        {
+          "id": 1006759,
+          "type": "false_negative",
+          "start": 32,
+          "end": 45,
+          "label": "MIL_ORG",
+          "text_sha256": "9a20e5a642c738aea458e3cb28488df384d060a61c9d930cbb719caf1c8ce0c8",
+          "text_length": 13
+        },
+        {
+          "id": 1006759,
+          "type": "false_negative",
+          "start": 157,
+          "end": 169,
+          "label": "MIL_ORG",
+          "text_sha256": "a2726682323c60ccb0e03c3ff8cdc53be3065de65c1f40b59243123e494e14ef",
+          "text_length": 12
+        },
+        {
+          "id": 1647503,
+          "type": "false_negative",
+          "start": 83,
+          "end": 97,
+          "label": "MIL_ORG",
+          "text_sha256": "2ce94ed284e97cd925aff04173e85ec4025585cf4f855d732cdb7c3c9146fd54",
+          "text_length": 14
+        },
+        {
+          "id": 1647503,
+          "type": "false_negative",
+          "start": 145,
+          "end": 161,
+          "label": "MIL_ORG",
+          "text_sha256": "491595b17e5f167bca95cbfee2eb6f5fc7aea1d84fc79630f055c87767243bb5",
+          "text_length": 16
+        },
+        {
+          "id": 1647503,
+          "type": "false_negative",
+          "start": 235,
+          "end": 268,
+          "label": "MIL_UNIT",
+          "text_sha256": "f246761753cd2bb4ab1f6d2f905bc134cc0eb92d140c7bf7e62c58b9cb548f17",
+          "text_length": 33
+        },
+        {
+          "id": 1663405,
+          "type": "false_negative",
+          "start": 52,
+          "end": 76,
+          "label": "WEAPON",
+          "text_sha256": "8f4a0889eed7d072fe38f3ce490f8b8009579b454013058fce33cc59af377e28",
+          "text_length": 24
+        },
+        {
+          "id": 1663405,
+          "type": "false_negative",
+          "start": 287,
+          "end": 311,
+          "label": "WEAPON",
+          "text_sha256": "8f4a0889eed7d072fe38f3ce490f8b8009579b454013058fce33cc59af377e28",
+          "text_length": 24
+        },
+        {
+          "id": 1663405,
+          "type": "false_negative",
+          "start": 357,
+          "end": 364,
+          "label": "WEAPON",
+          "text_sha256": "4fcaa47a9a89b22af30771033bb563f3b9c2dfade0ce51f5ca4e70ddf00f082a",
+          "text_length": 7
+        },
+        {
+          "id": 1036353,
+          "type": "false_positive",
+          "start": 78,
+          "end": 87,
+          "label": "MIL_UNIT",
+          "text_sha256": "bff8dbcc177c5d698e41fa2db07e70be04d3cb014144b877b9138447cccc60f0",
+          "text_length": 9
+        },
+        {
+          "id": 1036353,
+          "type": "false_negative",
+          "start": 301,
+          "end": 327,
+          "label": "MIL_UNIT",
+          "text_sha256": "3f9ecc4ab754c493191dd3e0b494a66b0499da6e514addfc8d1d96473086da89",
+          "text_length": 26
+        },
+        {
+          "id": 1036353,
+          "type": "false_negative",
+          "start": 404,
+          "end": 430,
+          "label": "MIL_ORG",
+          "text_sha256": "830ffa8fec69d33f872f931a70f2cc44734b481e68e7c71000fbf85b8fb64b24",
+          "text_length": 26
+        },
+        {
+          "id": 1702235,
+          "type": "false_negative",
+          "start": 266,
+          "end": 289,
+          "label": "MIL_UNIT",
+          "text_sha256": "2eb36b04c058ac51cb9320c6da5c517ad65ac7b3eb0486f246ae3ce3217e25d9",
+          "text_length": 23
+        },
+        {
+          "id": 1702235,
+          "type": "false_negative",
+          "start": 379,
+          "end": 413,
+          "label": "MIL_UNIT",
+          "text_sha256": "3434dff8775960eeb9eb1633b4c80b64a128a8459fde5086930765c07eef43e9",
+          "text_length": 34
+        },
+        {
+          "id": 1702235,
+          "type": "false_negative",
+          "start": 422,
+          "end": 446,
+          "label": "MIL_UNIT",
+          "text_sha256": "ec2b82dec2fc4b65798878b6dd9fbd24aba59156f9e93499f61df8ad4c25f015",
+          "text_length": 24
+        },
+        {
+          "id": 1702235,
+          "type": "false_negative",
+          "start": 645,
+          "end": 649,
+          "label": "WEAPON",
+          "text_sha256": "7131e0a44401e93fe7e8dbd87419dc6601242794ed3fa2762bd0fb850fba9fde",
+          "text_length": 4
+        }
+      ],
+      "documents": 8,
+      "definition": "Exact spans and labels, micro global; undefined denominators are null"
+    },
+    "moyen": {
+      "global": {
+        "tp": 11,
+        "fp": 5,
+        "fn": 43,
+        "support": 54,
+        "precision": 0.6875,
+        "recall": 0.2037037037037037,
+        "f1": 0.3142857142857143
+      },
+      "per_label": {
+        "WEAPON": {
+          "tp": 4,
+          "fp": 5,
+          "fn": 25,
+          "support": 29,
+          "precision": 0.4444444444444444,
+          "recall": 0.13793103448275862,
+          "f1": 0.21052631578947367
+        },
+        "MIL_UNIT": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 6,
+          "support": 13,
+          "precision": 1.0,
+          "recall": 0.5384615384615384,
+          "f1": 0.7
+        },
+        "MIL_ORG": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 12,
+          "support": 12,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      },
+      "errors": [
+        {
+          "id": 1122361,
+          "type": "false_negative",
+          "start": 52,
+          "end": 71,
+          "label": "MIL_UNIT",
+          "text_sha256": "ecbcd9f8f92dd6588828798094faa346a0d7d8286b443e9f8a125fd1f0b761de",
+          "text_length": 19
+        },
+        {
+          "id": 1122361,
+          "type": "false_negative",
+          "start": 170,
+          "end": 195,
+          "label": "MIL_UNIT",
+          "text_sha256": "4dee73b597fc9cf3c13c02e6fd04188e94563e28dd35787266fecf690ce2fc07",
+          "text_length": 25
+        },
+        {
+          "id": 1122361,
+          "type": "false_negative",
+          "start": 1106,
+          "end": 1110,
+          "label": "WEAPON",
+          "text_sha256": "a31c141e62e548e1d8f97172d6c8a790757801cd2095893e6de28a987114c33b",
+          "text_length": 4
+        },
+        {
+          "id": 1122361,
+          "type": "false_negative",
+          "start": 1295,
+          "end": 1314,
+          "label": "MIL_UNIT",
+          "text_sha256": "ecbcd9f8f92dd6588828798094faa346a0d7d8286b443e9f8a125fd1f0b761de",
+          "text_length": 19
+        },
+        {
+          "id": 1122361,
+          "type": "false_negative",
+          "start": 1516,
+          "end": 1523,
+          "label": "WEAPON",
+          "text_sha256": "9d166dd4f0c9f64c8537dd375ad74167a4071e7786893b2a252e1a1638a0edca",
+          "text_length": 7
+        },
+        {
+          "id": 1122361,
+          "type": "false_negative",
+          "start": 1552,
+          "end": 1556,
+          "label": "WEAPON",
+          "text_sha256": "d1c586520ecbbf94b3aa7de4ae575f7d028d5532a57f81b41bfc602df93d9eab",
+          "text_length": 4
+        },
+        {
+          "id": 1122361,
+          "type": "false_negative",
+          "start": 1589,
+          "end": 1597,
+          "label": "WEAPON",
+          "text_sha256": "b6cd14b71dca542d1ee242aa5a88a4a3929fd2b305bec0ce8e22d7b63a7435cd",
+          "text_length": 8
+        },
+        {
+          "id": 1122361,
+          "type": "false_negative",
+          "start": 1602,
+          "end": 1610,
+          "label": "WEAPON",
+          "text_sha256": "9c3f254dab5a574389cc3857cd1d2cc088afe8a2b768d3ef6e29649e639350f6",
+          "text_length": 8
+        },
+        {
+          "id": 1226971,
+          "type": "false_positive",
+          "start": 1321,
+          "end": 1327,
+          "label": "WEAPON",
+          "text_sha256": "bbf5ec6691e28d0f06f1620d06d8b383f887108d2b8d4500e75244b28555d944",
+          "text_length": 6
+        },
+        {
+          "id": 1226971,
+          "type": "false_negative",
+          "start": 35,
+          "end": 47,
+          "label": "WEAPON",
+          "text_sha256": "2a7eb95e35ae097ee7039d1e92199f254f6b5155c040f0f9e2073b5f3c9a8fbe",
+          "text_length": 12
+        },
+        {
+          "id": 1226971,
+          "type": "false_negative",
+          "start": 48,
+          "end": 53,
+          "label": "WEAPON",
+          "text_sha256": "a0f51467cf80266810feab008e5dc80162f562099ad9fa492251c1fccc6a12ca",
+          "text_length": 5
+        },
+        {
+          "id": 1226971,
+          "type": "false_negative",
+          "start": 367,
+          "end": 374,
+          "label": "WEAPON",
+          "text_sha256": "5f078e7dcff34efc9fae1589460b8620c7794d0dafe2d06042d57a8999da04bc",
+          "text_length": 7
+        },
+        {
+          "id": 1226971,
+          "type": "false_negative",
+          "start": 389,
+          "end": 394,
+          "label": "WEAPON",
+          "text_sha256": "a0f51467cf80266810feab008e5dc80162f562099ad9fa492251c1fccc6a12ca",
+          "text_length": 5
+        },
+        {
+          "id": 1226971,
+          "type": "false_negative",
+          "start": 829,
+          "end": 849,
+          "label": "MIL_UNIT",
+          "text_sha256": "e762c7608bd37b785d3bfca8f4f59af2ef6b73567ab21c528693fbb4dd919a65",
+          "text_length": 20
+        },
+        {
+          "id": 1226971,
+          "type": "false_negative",
+          "start": 1142,
+          "end": 1147,
+          "label": "WEAPON",
+          "text_sha256": "a0f51467cf80266810feab008e5dc80162f562099ad9fa492251c1fccc6a12ca",
+          "text_length": 5
+        },
+        {
+          "id": 1226971,
+          "type": "false_negative",
+          "start": 1229,
+          "end": 1241,
+          "label": "MIL_ORG",
+          "text_sha256": "a2726682323c60ccb0e03c3ff8cdc53be3065de65c1f40b59243123e494e14ef",
+          "text_length": 12
+        },
+        {
+          "id": 1226971,
+          "type": "false_negative",
+          "start": 1321,
+          "end": 1330,
+          "label": "WEAPON",
+          "text_sha256": "c0a5bd90ac26fd5619b7044a6389b6b1f444cfffc44a0f750c2cd75f7e8f0b9f",
+          "text_length": 9
+        },
+        {
+          "id": 1068385,
+          "type": "false_negative",
+          "start": 76,
+          "end": 92,
+          "label": "WEAPON",
+          "text_sha256": "f5f8a40b10f7701ca276178769f4aada706a68a4d9e6bd9cc9c66e0a403ced5a",
+          "text_length": 16
+        },
+        {
+          "id": 1068385,
+          "type": "false_negative",
+          "start": 535,
+          "end": 540,
+          "label": "WEAPON",
+          "text_sha256": "909dc0adb9f70d8f6444d19812ba4c8cb59003ea9e8468c4cf2248c5910a9b17",
+          "text_length": 5
+        },
+        {
+          "id": 1068385,
+          "type": "false_negative",
+          "start": 599,
+          "end": 604,
+          "label": "WEAPON",
+          "text_sha256": "909dc0adb9f70d8f6444d19812ba4c8cb59003ea9e8468c4cf2248c5910a9b17",
+          "text_length": 5
+        },
+        {
+          "id": 1068385,
+          "type": "false_negative",
+          "start": 1029,
+          "end": 1051,
+          "label": "MIL_UNIT",
+          "text_sha256": "3cc9da367905dd891760557bc5210cb2c394eb8d7c2336847f24bbc9fde9f4ac",
+          "text_length": 22
+        },
+        {
+          "id": 1068385,
+          "type": "false_negative",
+          "start": 1109,
+          "end": 1125,
+          "label": "WEAPON",
+          "text_sha256": "f5f8a40b10f7701ca276178769f4aada706a68a4d9e6bd9cc9c66e0a403ced5a",
+          "text_length": 16
+        },
+        {
+          "id": 999996,
+          "type": "false_negative",
+          "start": 188,
+          "end": 194,
+          "label": "WEAPON",
+          "text_sha256": "e702fc42c1b1d6f20fd7a7da2ef30647201f00cfe8810af16e4d3c5b98c2f352",
+          "text_length": 6
+        },
+        {
+          "id": 999996,
+          "type": "false_negative",
+          "start": 312,
+          "end": 318,
+          "label": "WEAPON",
+          "text_sha256": "e702fc42c1b1d6f20fd7a7da2ef30647201f00cfe8810af16e4d3c5b98c2f352",
+          "text_length": 6
+        },
+        {
+          "id": 999996,
+          "type": "false_negative",
+          "start": 726,
+          "end": 729,
+          "label": "WEAPON",
+          "text_sha256": "631c2bc052fa56da53199e411b72d8d68b137d272ed31f1ac6e3fa466b273dea",
+          "text_length": 3
+        },
+        {
+          "id": 999996,
+          "type": "false_negative",
+          "start": 1044,
+          "end": 1056,
+          "label": "WEAPON",
+          "text_sha256": "b2a1588750b13676c13e4c1407a5f79cf5e92c9feb92c142e99b9da418ad0734",
+          "text_length": 12
+        },
+        {
+          "id": 1113983,
+          "type": "false_negative",
+          "start": 40,
+          "end": 49,
+          "label": "WEAPON",
+          "text_sha256": "6e611b9ccb800b58a1c3f20ba0cf8360b5f440a9935f62a06e8d037b0bcd5833",
+          "text_length": 9
+        },
+        {
+          "id": 1113983,
+          "type": "false_negative",
+          "start": 408,
+          "end": 415,
+          "label": "WEAPON",
+          "text_sha256": "6ede1c5be3b0e0a5c61f124ce4e7e9c84815f6e51d2180bba684f663a4759930",
+          "text_length": 7
+        },
+        {
+          "id": 1113983,
+          "type": "false_negative",
+          "start": 952,
+          "end": 979,
+          "label": "MIL_ORG",
+          "text_sha256": "46dfbc8bd680ce01daac4e3025b7074230d46870f9c9d009827f7bec5666decc",
+          "text_length": 27
+        },
+        {
+          "id": 1113983,
+          "type": "false_negative",
+          "start": 1133,
+          "end": 1142,
+          "label": "WEAPON",
+          "text_sha256": "6e611b9ccb800b58a1c3f20ba0cf8360b5f440a9935f62a06e8d037b0bcd5833",
+          "text_length": 9
+        },
+        {
+          "id": 936322,
+          "type": "false_positive",
+          "start": 82,
+          "end": 86,
+          "label": "WEAPON",
+          "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+          "text_length": 4
+        },
+        {
+          "id": 936322,
+          "type": "false_positive",
+          "start": 666,
+          "end": 670,
+          "label": "WEAPON",
+          "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+          "text_length": 4
+        },
+        {
+          "id": 936322,
+          "type": "false_positive",
+          "start": 1579,
+          "end": 1583,
+          "label": "WEAPON",
+          "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+          "text_length": 4
+        },
+        {
+          "id": 936322,
+          "type": "false_negative",
+          "start": 82,
+          "end": 86,
+          "label": "MIL_ORG",
+          "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+          "text_length": 4
+        },
+        {
+          "id": 936322,
+          "type": "false_negative",
+          "start": 666,
+          "end": 670,
+          "label": "MIL_ORG",
+          "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+          "text_length": 4
+        },
+        {
+          "id": 936322,
+          "type": "false_negative",
+          "start": 1579,
+          "end": 1583,
+          "label": "MIL_ORG",
+          "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+          "text_length": 4
+        },
+        {
+          "id": 936322,
+          "type": "false_negative",
+          "start": 1803,
+          "end": 1823,
+          "label": "MIL_ORG",
+          "text_sha256": "80b284fad01d5f0c9b4f0c522e70bcdcb4846af9a376a3753817dee080116ffa",
+          "text_length": 20
+        },
+        {
+          "id": 936322,
+          "type": "false_negative",
+          "start": 1861,
+          "end": 1882,
+          "label": "WEAPON",
+          "text_sha256": "15c1f02f0a0b37799ca7d29a29775b681676ac5a667c11e961fe6640515b53d5",
+          "text_length": 21
+        },
+        {
+          "id": 936322,
+          "type": "false_negative",
+          "start": 1925,
+          "end": 1930,
+          "label": "WEAPON",
+          "text_sha256": "53a75faddf576afd80818a98fa38ffa78ba960355cb8c5703956b7259b80ad1f",
+          "text_length": 5
+        },
+        {
+          "id": 936322,
+          "type": "false_negative",
+          "start": 2033,
+          "end": 2042,
+          "label": "WEAPON",
+          "text_sha256": "89160fcc0fd8ba88a57258625637fb5afe70c3c5c6cc0d7a207875f399fae2fa",
+          "text_length": 9
+        },
+        {
+          "id": 1493879,
+          "type": "false_positive",
+          "start": 1290,
+          "end": 1297,
+          "label": "WEAPON",
+          "text_sha256": "3e1806d0ffb83868067be0b59c04b369d365d4465bfeb368e351faccc78230e6",
+          "text_length": 7
+        },
+        {
+          "id": 1493879,
+          "type": "false_negative",
+          "start": 31,
+          "end": 70,
+          "label": "MIL_ORG",
+          "text_sha256": "d047fbd66558c30641df133fa7a4e8761654262281fbce86964a48e1322861ec",
+          "text_length": 39
+        },
+        {
+          "id": 1493879,
+          "type": "false_negative",
+          "start": 72,
+          "end": 76,
+          "label": "MIL_ORG",
+          "text_sha256": "cf63aa16c4c6137f050847790b046366659af9614ec08f092b2bb67c59da6d11",
+          "text_length": 4
+        },
+        {
+          "id": 1493879,
+          "type": "false_negative",
+          "start": 209,
+          "end": 225,
+          "label": "MIL_ORG",
+          "text_sha256": "411549c64ac5ec55e83e6a0ee08584ce83c238ca2186ca36c278f281642c73c6",
+          "text_length": 16
+        },
+        {
+          "id": 1493879,
+          "type": "false_negative",
+          "start": 355,
+          "end": 359,
+          "label": "MIL_ORG",
+          "text_sha256": "cf63aa16c4c6137f050847790b046366659af9614ec08f092b2bb67c59da6d11",
+          "text_length": 4
+        },
+        {
+          "id": 1493879,
+          "type": "false_negative",
+          "start": 415,
+          "end": 447,
+          "label": "MIL_UNIT",
+          "text_sha256": "e5f4fc10119e1f28643bb7c77a39f128c0b1fa56758612176b97dcc113796be7",
+          "text_length": 32
+        },
+        {
+          "id": 1493879,
+          "type": "false_negative",
+          "start": 515,
+          "end": 519,
+          "label": "MIL_ORG",
+          "text_sha256": "cf63aa16c4c6137f050847790b046366659af9614ec08f092b2bb67c59da6d11",
+          "text_length": 4
+        },
+        {
+          "id": 1493879,
+          "type": "false_negative",
+          "start": 1079,
+          "end": 1083,
+          "label": "MIL_ORG",
+          "text_sha256": "cf63aa16c4c6137f050847790b046366659af9614ec08f092b2bb67c59da6d11",
+          "text_length": 4
+        }
+      ],
+      "documents": 8,
+      "definition": "Exact spans and labels, micro global; undefined denominators are null"
+    },
+    "long": {
+      "global": {
+        "tp": 8,
+        "fp": 13,
+        "fn": 70,
+        "support": 78,
+        "precision": 0.38095238095238093,
+        "recall": 0.10256410256410256,
+        "f1": 0.16161616161616163
+      },
+      "per_label": {
+        "WEAPON": {
+          "tp": 5,
+          "fp": 10,
+          "fn": 46,
+          "support": 51,
+          "precision": 0.3333333333333333,
+          "recall": 0.09803921568627451,
+          "f1": 0.15151515151515152
+        },
+        "MIL_UNIT": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 2,
+          "support": 2,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "MIL_ORG": {
+          "tp": 3,
+          "fp": 3,
+          "fn": 22,
+          "support": 25,
+          "precision": 0.5,
+          "recall": 0.12,
+          "f1": 0.1935483870967742
+        }
+      },
+      "errors": [
+        {
+          "id": 1595959,
+          "type": "false_negative",
+          "start": 1809,
+          "end": 1823,
+          "label": "MIL_ORG",
+          "text_sha256": "2ce94ed284e97cd925aff04173e85ec4025585cf4f855d732cdb7c3c9146fd54",
+          "text_length": 14
+        },
+        {
+          "id": 1393795,
+          "type": "false_negative",
+          "start": 208,
+          "end": 232,
+          "label": "MIL_ORG",
+          "text_sha256": "1dbaf35c26799526d269b1e53a40fc12edd3bfb9d4fe8669cb9bd0c1e31bc706",
+          "text_length": 24
+        },
+        {
+          "id": 1393795,
+          "type": "false_negative",
+          "start": 822,
+          "end": 846,
+          "label": "MIL_ORG",
+          "text_sha256": "1dbaf35c26799526d269b1e53a40fc12edd3bfb9d4fe8669cb9bd0c1e31bc706",
+          "text_length": 24
+        },
+        {
+          "id": 1393795,
+          "type": "false_negative",
+          "start": 1879,
+          "end": 1922,
+          "label": "MIL_ORG",
+          "text_sha256": "65354c92fdea4f49b8cee4e4318b33f67c97fce2df81491ceef70975f97fe113",
+          "text_length": 43
+        },
+        {
+          "id": 1393795,
+          "type": "false_negative",
+          "start": 2461,
+          "end": 2485,
+          "label": "MIL_ORG",
+          "text_sha256": "1dbaf35c26799526d269b1e53a40fc12edd3bfb9d4fe8669cb9bd0c1e31bc706",
+          "text_length": 24
+        },
+        {
+          "id": 1498067,
+          "type": "false_positive",
+          "start": 4100,
+          "end": 4104,
+          "label": "WEAPON",
+          "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+          "text_length": 4
+        },
+        {
+          "id": 1498067,
+          "type": "false_negative",
+          "start": 364,
+          "end": 391,
+          "label": "MIL_ORG",
+          "text_sha256": "e09ddf0d76cb0f6bb45ef68d2d6dd1243038cbb2db3f7b8f493ab16c7730afb6",
+          "text_length": 27
+        },
+        {
+          "id": 1498067,
+          "type": "false_negative",
+          "start": 1010,
+          "end": 1037,
+          "label": "MIL_ORG",
+          "text_sha256": "e09ddf0d76cb0f6bb45ef68d2d6dd1243038cbb2db3f7b8f493ab16c7730afb6",
+          "text_length": 27
+        },
+        {
+          "id": 1498067,
+          "type": "false_negative",
+          "start": 2912,
+          "end": 2936,
+          "label": "MIL_ORG",
+          "text_sha256": "624bcaa07b66c21b286fa7c2dcead4c9a8ce77fc8dc54693a1383908b7ab7ecb",
+          "text_length": 24
+        },
+        {
+          "id": 1498067,
+          "type": "false_negative",
+          "start": 4100,
+          "end": 4104,
+          "label": "MIL_ORG",
+          "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+          "text_length": 4
+        },
+        {
+          "id": 1527837,
+          "type": "false_positive",
+          "start": 1538,
+          "end": 1562,
+          "label": "MIL_ORG",
+          "text_sha256": "84d1295f2d51bbaea609a43b8f4c351ad6475631bc432a031c5cf47dc8c365be",
+          "text_length": 24
+        },
+        {
+          "id": 1527837,
+          "type": "false_positive",
+          "start": 2926,
+          "end": 2930,
+          "label": "WEAPON",
+          "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+          "text_length": 4
+        },
+        {
+          "id": 1527837,
+          "type": "false_negative",
+          "start": 706,
+          "end": 710,
+          "label": "WEAPON",
+          "text_sha256": "58092070d37d07605d327f5333bec6ea75655ec03d1bf8f317390703f3b3581a",
+          "text_length": 4
+        },
+        {
+          "id": 1527837,
+          "type": "false_negative",
+          "start": 810,
+          "end": 814,
+          "label": "WEAPON",
+          "text_sha256": "11e86878f2bdf169a0d2895acd7f5ff6111790e181fec57d20624186ee39326c",
+          "text_length": 4
+        },
+        {
+          "id": 1527837,
+          "type": "false_negative",
+          "start": 816,
+          "end": 831,
+          "label": "WEAPON",
+          "text_sha256": "2361b0e3d49b7e13e497e8b4597400aaae7a73ea6b6525674041099f7e5f75e7",
+          "text_length": 15
+        },
+        {
+          "id": 1527837,
+          "type": "false_negative",
+          "start": 992,
+          "end": 999,
+          "label": "WEAPON",
+          "text_sha256": "c07e078766991485d4f68703c4c6d8222a6b2c33f4c1d53e61b21f8bab49869c",
+          "text_length": 7
+        },
+        {
+          "id": 1527837,
+          "type": "false_negative",
+          "start": 1150,
+          "end": 1156,
+          "label": "WEAPON",
+          "text_sha256": "56f7c995cc743ac83c32ba7c76b6b3e3ed36546c8677f9c9e82ae94257fea9b7",
+          "text_length": 6
+        },
+        {
+          "id": 1527837,
+          "type": "false_negative",
+          "start": 1193,
+          "end": 1200,
+          "label": "WEAPON",
+          "text_sha256": "f12d451d3b27cb4585c7426a54a3ee9489f05250aa00768ead2f8091e2280c3d",
+          "text_length": 7
+        },
+        {
+          "id": 1527837,
+          "type": "false_negative",
+          "start": 1229,
+          "end": 1233,
+          "label": "WEAPON",
+          "text_sha256": "11e86878f2bdf169a0d2895acd7f5ff6111790e181fec57d20624186ee39326c",
+          "text_length": 4
+        },
+        {
+          "id": 1527837,
+          "type": "false_negative",
+          "start": 1417,
+          "end": 1424,
+          "label": "WEAPON",
+          "text_sha256": "d473bd02b5c30f9b3bd69f0d2f4d11201a14c65090f022015077b76d52042cf5",
+          "text_length": 7
+        },
+        {
+          "id": 1527837,
+          "type": "false_negative",
+          "start": 1776,
+          "end": 1789,
+          "label": "MIL_ORG",
+          "text_sha256": "099e79ae61a5bb84c738c7c7666f4797d66676a6592ebb5fb1ea53ec11621a56",
+          "text_length": 13
+        },
+        {
+          "id": 1527837,
+          "type": "false_negative",
+          "start": 2729,
+          "end": 2750,
+          "label": "MIL_UNIT",
+          "text_sha256": "89fa98a26f33403ef66bdeb5af365de4ae6c33b0d560b41963f2517aa711ba65",
+          "text_length": 21
+        },
+        {
+          "id": 1527837,
+          "type": "false_negative",
+          "start": 2926,
+          "end": 2930,
+          "label": "MIL_ORG",
+          "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+          "text_length": 4
+        },
+        {
+          "id": 1527837,
+          "type": "false_negative",
+          "start": 2955,
+          "end": 2959,
+          "label": "WEAPON",
+          "text_sha256": "8652979242c09277f2134d04d5d3471c254cc61eb6e77794e1d1affb51e6c4e6",
+          "text_length": 4
+        },
+        {
+          "id": 1527837,
+          "type": "false_negative",
+          "start": 3023,
+          "end": 3028,
+          "label": "WEAPON",
+          "text_sha256": "bbfb83af92de3d6cb4c53e815c8f2dba97f225016406a6c77b64c1b08206c2dd",
+          "text_length": 5
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 164,
+          "end": 172,
+          "label": "WEAPON",
+          "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+          "text_length": 8
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 235,
+          "end": 243,
+          "label": "WEAPON",
+          "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+          "text_length": 8
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 365,
+          "end": 390,
+          "label": "MIL_ORG",
+          "text_sha256": "6f7a55617128e871e7e2de97a5ffdc610b6d823b3b6550a9b671279dd3b72c87",
+          "text_length": 25
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 535,
+          "end": 547,
+          "label": "WEAPON",
+          "text_sha256": "15f7e199fc11fc0f3b990bc8e2edc5d11b3ce8df25856f0ef66b713e08dbc949",
+          "text_length": 12
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 549,
+          "end": 554,
+          "label": "WEAPON",
+          "text_sha256": "ac2d2952f6626773ae80d30581a8359fd5eddb8be5a52f76fe6f5db50c17eb15",
+          "text_length": 5
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 809,
+          "end": 822,
+          "label": "WEAPON",
+          "text_sha256": "5a4f62190bea74c41dbe78d02c291fe8e8a9e525f0ca826f645dd1a5cdfabcea",
+          "text_length": 13
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 926,
+          "end": 934,
+          "label": "WEAPON",
+          "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+          "text_length": 8
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 949,
+          "end": 962,
+          "label": "WEAPON",
+          "text_sha256": "43aa35af5ecfb98809ea81d063d21c10e2ade29c8ddfda4d894e88f228b6f7b9",
+          "text_length": 13
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 1207,
+          "end": 1219,
+          "label": "MIL_ORG",
+          "text_sha256": "a2726682323c60ccb0e03c3ff8cdc53be3065de65c1f40b59243123e494e14ef",
+          "text_length": 12
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 1364,
+          "end": 1372,
+          "label": "WEAPON",
+          "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+          "text_length": 8
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 2346,
+          "end": 2357,
+          "label": "WEAPON",
+          "text_sha256": "bd4dcbdf86fb4bab809fa823372e94893896f3bd9ae8ad17f74f35a16783a098",
+          "text_length": 11
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 2359,
+          "end": 2364,
+          "label": "WEAPON",
+          "text_sha256": "351d666fc7ed5f582c6d176b38ddf5355ad0dfe7bae85b535340edec88913155",
+          "text_length": 5
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 2382,
+          "end": 2390,
+          "label": "WEAPON",
+          "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+          "text_length": 8
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 2407,
+          "end": 2419,
+          "label": "MIL_ORG",
+          "text_sha256": "a2726682323c60ccb0e03c3ff8cdc53be3065de65c1f40b59243123e494e14ef",
+          "text_length": 12
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 2644,
+          "end": 2652,
+          "label": "WEAPON",
+          "text_sha256": "6b4a756bdd2e6614204ddfed3127a7b502c8b9c549a4a9e15694ef83b47606a2",
+          "text_length": 8
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 2792,
+          "end": 2800,
+          "label": "WEAPON",
+          "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+          "text_length": 8
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 2805,
+          "end": 2815,
+          "label": "WEAPON",
+          "text_sha256": "becf86a6fc8198a9c258e8347f0f329cd1288d210d7c6499f732466bc0073572",
+          "text_length": 10
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 3102,
+          "end": 3110,
+          "label": "WEAPON",
+          "text_sha256": "c67cf26cad70fe785d4b5e55a4d689712365cae5f11fbb70ca9a260fd7cfe93f",
+          "text_length": 8
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 3167,
+          "end": 3192,
+          "label": "MIL_ORG",
+          "text_sha256": "6f7a55617128e871e7e2de97a5ffdc610b6d823b3b6550a9b671279dd3b72c87",
+          "text_length": 25
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 3194,
+          "end": 3202,
+          "label": "WEAPON",
+          "text_sha256": "c67cf26cad70fe785d4b5e55a4d689712365cae5f11fbb70ca9a260fd7cfe93f",
+          "text_length": 8
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 3338,
+          "end": 3363,
+          "label": "MIL_ORG",
+          "text_sha256": "6f7a55617128e871e7e2de97a5ffdc610b6d823b3b6550a9b671279dd3b72c87",
+          "text_length": 25
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 3382,
+          "end": 3390,
+          "label": "WEAPON",
+          "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+          "text_length": 8
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 3579,
+          "end": 3587,
+          "label": "WEAPON",
+          "text_sha256": "c67cf26cad70fe785d4b5e55a4d689712365cae5f11fbb70ca9a260fd7cfe93f",
+          "text_length": 8
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 3666,
+          "end": 3674,
+          "label": "WEAPON",
+          "text_sha256": "c67cf26cad70fe785d4b5e55a4d689712365cae5f11fbb70ca9a260fd7cfe93f",
+          "text_length": 8
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 3728,
+          "end": 3736,
+          "label": "WEAPON",
+          "text_sha256": "6b4a756bdd2e6614204ddfed3127a7b502c8b9c549a4a9e15694ef83b47606a2",
+          "text_length": 8
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 3816,
+          "end": 3824,
+          "label": "WEAPON",
+          "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+          "text_length": 8
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 3939,
+          "end": 3947,
+          "label": "WEAPON",
+          "text_sha256": "c67cf26cad70fe785d4b5e55a4d689712365cae5f11fbb70ca9a260fd7cfe93f",
+          "text_length": 8
+        },
+        {
+          "id": 1055135,
+          "type": "false_negative",
+          "start": 4263,
+          "end": 4271,
+          "label": "WEAPON",
+          "text_sha256": "6955d2587d04bdabcfa76622e811cba2db91f511dfa2a7dd47e37e7e373d7747",
+          "text_length": 8
+        },
+        {
+          "id": 1913641,
+          "type": "false_positive",
+          "start": 471,
+          "end": 494,
+          "label": "MIL_ORG",
+          "text_sha256": "cc1e724f51e4927ab1c2259aff4b05ab1fe52c550bc31f26530dce03cc50ee59",
+          "text_length": 23
+        },
+        {
+          "id": 1913641,
+          "type": "false_positive",
+          "start": 1919,
+          "end": 1925,
+          "label": "WEAPON",
+          "text_sha256": "850de537a105a30eadfe624d1a3a520c45055430855e90c05807bec95a2ef2b7",
+          "text_length": 6
+        },
+        {
+          "id": 1913641,
+          "type": "false_positive",
+          "start": 3016,
+          "end": 3021,
+          "label": "WEAPON",
+          "text_sha256": "cec9aeaac6919bd76c6b5333e4776ebc12a756b47636e4a8f94972a24f0e8958",
+          "text_length": 5
+        },
+        {
+          "id": 1913641,
+          "type": "false_negative",
+          "start": 174,
+          "end": 180,
+          "label": "WEAPON",
+          "text_sha256": "3dfc3e32ae5afd9bf2ed682596a8e23461a3f8d5a306d59ff62b849367c8472c",
+          "text_length": 6
+        },
+        {
+          "id": 1913641,
+          "type": "false_negative",
+          "start": 357,
+          "end": 381,
+          "label": "MIL_UNIT",
+          "text_sha256": "f81387d6f111d4a8105de839098a23eda51dca2ed75ff909d0d2ce45a93cc142",
+          "text_length": 24
+        },
+        {
+          "id": 1913641,
+          "type": "false_negative",
+          "start": 1246,
+          "end": 1252,
+          "label": "WEAPON",
+          "text_sha256": "3dfc3e32ae5afd9bf2ed682596a8e23461a3f8d5a306d59ff62b849367c8472c",
+          "text_length": 6
+        },
+        {
+          "id": 1913641,
+          "type": "false_negative",
+          "start": 1667,
+          "end": 1678,
+          "label": "WEAPON",
+          "text_sha256": "e6330f48827d6e535709cd224e4cd3f51aae9c74a1d55fcc9bfa8213120f9271",
+          "text_length": 11
+        },
+        {
+          "id": 1913641,
+          "type": "false_negative",
+          "start": 1758,
+          "end": 1769,
+          "label": "WEAPON",
+          "text_sha256": "e6330f48827d6e535709cd224e4cd3f51aae9c74a1d55fcc9bfa8213120f9271",
+          "text_length": 11
+        },
+        {
+          "id": 1913641,
+          "type": "false_negative",
+          "start": 1919,
+          "end": 1927,
+          "label": "WEAPON",
+          "text_sha256": "71c993cb4811829d77c0c3d58129f694718d7cd409a538427919b44dab7d4aa5",
+          "text_length": 8
+        },
+        {
+          "id": 1913641,
+          "type": "false_negative",
+          "start": 2160,
+          "end": 2168,
+          "label": "WEAPON",
+          "text_sha256": "55b773f554452c0ba2adb1fa150d2b92bf8eeab305936d461e4da797cd784b6c",
+          "text_length": 8
+        },
+        {
+          "id": 1913641,
+          "type": "false_negative",
+          "start": 2284,
+          "end": 2292,
+          "label": "WEAPON",
+          "text_sha256": "55b773f554452c0ba2adb1fa150d2b92bf8eeab305936d461e4da797cd784b6c",
+          "text_length": 8
+        },
+        {
+          "id": 1913641,
+          "type": "false_negative",
+          "start": 2603,
+          "end": 2611,
+          "label": "WEAPON",
+          "text_sha256": "55b773f554452c0ba2adb1fa150d2b92bf8eeab305936d461e4da797cd784b6c",
+          "text_length": 8
+        },
+        {
+          "id": 1913641,
+          "type": "false_negative",
+          "start": 3016,
+          "end": 3028,
+          "label": "WEAPON",
+          "text_sha256": "63ca782cd237cd90805af194676d55ff7c37b0a7bd4c9a600f83bb9d9e644c54",
+          "text_length": 12
+        },
+        {
+          "id": 1913641,
+          "type": "false_negative",
+          "start": 3077,
+          "end": 3080,
+          "label": "WEAPON",
+          "text_sha256": "e7121e9ff0bcbe21dbf73a10d4ab7a7f4ddaff759c00c8309fd64cbbc85a7995",
+          "text_length": 3
+        },
+        {
+          "id": 1913641,
+          "type": "false_negative",
+          "start": 3183,
+          "end": 3191,
+          "label": "WEAPON",
+          "text_sha256": "b2c5afb4cc075588e9bba7b0b5d1442b5f61a190e9d523070d6007bcf2818d1b",
+          "text_length": 8
+        },
+        {
+          "id": 1913641,
+          "type": "false_negative",
+          "start": 3205,
+          "end": 3211,
+          "label": "WEAPON",
+          "text_sha256": "10943a718d321dad0a93f30e24c54537633bfd35834723cc6cc90109aa93fb91",
+          "text_length": 6
+        },
+        {
+          "id": 1913641,
+          "type": "false_negative",
+          "start": 3224,
+          "end": 3231,
+          "label": "WEAPON",
+          "text_sha256": "bd959c095a26c099ca95532e6dce312227d58c5f782ba4290fcaa3d144a77405",
+          "text_length": 7
+        },
+        {
+          "id": 1494323,
+          "type": "false_positive",
+          "start": 0,
+          "end": 7,
+          "label": "WEAPON",
+          "text_sha256": "3626c9cda5037e7bffe7c6776f98839c544cbbbeffa0fab259ed7d09570d0b24",
+          "text_length": 7
+        },
+        {
+          "id": 1494323,
+          "type": "false_positive",
+          "start": 228,
+          "end": 232,
+          "label": "WEAPON",
+          "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+          "text_length": 4
+        },
+        {
+          "id": 1494323,
+          "type": "false_positive",
+          "start": 298,
+          "end": 322,
+          "label": "MIL_ORG",
+          "text_sha256": "84d1295f2d51bbaea609a43b8f4c351ad6475631bc432a031c5cf47dc8c365be",
+          "text_length": 24
+        },
+        {
+          "id": 1494323,
+          "type": "false_positive",
+          "start": 1756,
+          "end": 1760,
+          "label": "WEAPON",
+          "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+          "text_length": 4
+        },
+        {
+          "id": 1494323,
+          "type": "false_positive",
+          "start": 1878,
+          "end": 1882,
+          "label": "WEAPON",
+          "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+          "text_length": 4
+        },
+        {
+          "id": 1494323,
+          "type": "false_positive",
+          "start": 2960,
+          "end": 2964,
+          "label": "WEAPON",
+          "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+          "text_length": 4
+        },
+        {
+          "id": 1494323,
+          "type": "false_positive",
+          "start": 3267,
+          "end": 3271,
+          "label": "WEAPON",
+          "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+          "text_length": 4
+        },
+        {
+          "id": 1494323,
+          "type": "false_negative",
+          "start": 228,
+          "end": 232,
+          "label": "MIL_ORG",
+          "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+          "text_length": 4
+        },
+        {
+          "id": 1494323,
+          "type": "false_negative",
+          "start": 1756,
+          "end": 1760,
+          "label": "MIL_ORG",
+          "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+          "text_length": 4
+        },
+        {
+          "id": 1494323,
+          "type": "false_negative",
+          "start": 1878,
+          "end": 1882,
+          "label": "MIL_ORG",
+          "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+          "text_length": 4
+        },
+        {
+          "id": 1494323,
+          "type": "false_negative",
+          "start": 2960,
+          "end": 2964,
+          "label": "MIL_ORG",
+          "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+          "text_length": 4
+        },
+        {
+          "id": 1494323,
+          "type": "false_negative",
+          "start": 3267,
+          "end": 3271,
+          "label": "MIL_ORG",
+          "text_sha256": "ace0fc1bd762a6704377a86c2df9b7963290d35b87c944f8a92445a314bbb789",
+          "text_length": 4
+        },
+        {
+          "id": 1494323,
+          "type": "false_negative",
+          "start": 3501,
+          "end": 3506,
+          "label": "MIL_ORG",
+          "text_sha256": "dbf4b0800d8d29b2107f4c48a324dad9f0c66608b785a69c09ad1fbc500533c4",
+          "text_length": 5
+        }
+      ],
+      "documents": 8,
+      "definition": "Exact spans and labels, micro global; undefined denominators are null"
+    }
+  },
+  "negative_documents": 7,
+  "script_sha256": "ee348408bbe8917e16617bd8137548cbfd0f892997952c1d519a038891a59c38",
+  "predictions_sha256": "5d0c3e5bd9ed17854f1c474a43aed6df814cd8a6dcba5b27b7a7839cd002fba5",
+  "model_retrained": false,
+  "eligible_for_model_promotion": false,
+  "limitation": "AI proposals may contain omissions or boundary/class errors. Initial 18 retain selection/anchoring bias. Additional 24 are length-stratified, unweighted, limited to <=4500 codepoints; no corpus-wide accuracy inferred. A changed score reflects a different reference, not model improvement.",
+  "publication": {
+    "source_sha256": "7c615ce6ea0f001b3f54a48a3317e862c88212a990f7173b2734334f7708740f",
+    "text_fields_removed": 590,
+    "scope": "Métriques, identifiants, offsets et empreintes ; surfaces textuelles remplacées par empreinte et longueur. Aucun texte d’article complet."
+  }
+}

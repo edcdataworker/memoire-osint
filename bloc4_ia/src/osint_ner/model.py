@@ -157,6 +157,8 @@ class Predictor:
 def evaluate(run, reference_path, manifest_path):
     rows = [article(r) for r in read_records(reference_path)]
     require_reviewed(rows)
+    if len({str(r["id"]) for r in rows}) != len(rows):
+        raise ValueError("Duplicate article identifiers in quality reference")
     manifest = {str(r["id"]): r for r in read_records(manifest_path)}
     for r in rows:
         original = manifest.get(str(r["id"]))
@@ -164,6 +166,7 @@ def evaluate(run, reference_path, manifest_path):
             not original
             or original["split"] != "test"
             or original["text_sha256"] != r["text_sha256"]
+            or original.get("group_id") != r.get("group_id")
         ):
             raise ValueError("Reference is outside frozen held-out manifest")
     predictor = Predictor(run)

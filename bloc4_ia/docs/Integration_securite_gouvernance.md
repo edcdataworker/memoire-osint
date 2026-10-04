@@ -1,5 +1,7 @@
 # Intégration, sécurité et gouvernance
 
+Mise à jour du 4 octobre 2026 : raccordement aux décisions de droits et au périmètre de protection des Blocs 1, 2 et 3. Les procédures ci-dessous distinguent les contrôles logiciels existants des actions opérateur restant à réaliser sur les copies B4.
+
 ## Contrat et systèmes
 
 Le Bloc 3 fournit un JSONL de schéma 1 avec `id`, `date` en secondes depuis epoch, `title`, `url`, `text`, `text_sha256`, `offset_unit=unicode_codepoint`. L’identifiant numérique reste intact à l’entrée, puis l’export des mentions le transforme explicitement en chaîne pour Elasticsearch. Les contrôles rejettent schema_version incompatible, texte vide, NUL, texte supérieur à 100 000 caractères, empreinte incorrecte et URL hors HTTP(S).
@@ -14,13 +16,61 @@ L’interface sert les résultats en lecture sur 127.0.0.1. Elle refuse POST, le
 
 Le serveur HTTP local n’est pas un serveur Internet durci. L’authentification repose sur la session locale et l’accès OS. Une exposition réseau nécessiterait reverse proxy TLS, authentification forte, quotas, observabilité et revue de menace. Les tests actuels vérifient les routes, l’injection HTML, les limites et le fonctionnement local, sans certification de sécurité ni audit exhaustif de vulnérabilités.
 
-Les exécutants limitent à un processus et un thread numérique par travail. Les corpus, modèles, fichiers de revue et secrets sont exclus du Git public. Le disque local et les sauvegardes relèvent du dispositif du Bloc 1 et du Bloc 2. Le chiffrement intégral du disque n’est pas attesté dans ce bloc.
+Les exécutants limitent à un processus et un thread numérique par travail. Les corpus, modèles, fichiers de revue et secrets sont exclus du Git public. FileVault est désactivé sur le Mac ; les copies B4 inventoriées ont donc été migrées vers l’image chiffrée existante. Ce contrôle ne prétend pas chiffrer tout le disque système.
+
+### Protection des copies B4
+
+La preuve B3 `Preuves/Collecte_TASS/Volume_chiffre.json` constate l’activation AES-256 des états B3. La migration physique B4 a ensuite été exécutée et enregistrée séparément dans `Preuves/Protection_copies_B4.json`. Le contrôle courant `hdiutil info -plist` confirme `image-encrypted=true` pour l’image montée sur `/Volumes/MemoireOSINT`. Le chiffrement des documents PostgreSQL/MongoDB B2 ne constitue pas la protection des fichiers de travail B4.
+
+| Copie B4 | Contenu et protection actuelle | Action opérateur prévue |
+| --- | --- | --- |
+| `.state/data/` et jeux DocBin des runs | Textes, préannotations, manifestes et jeux train/dev/test ; état B4 migré et vérifié sur le volume chiffré. | Réapplication des droits avant préparation et entraînement ; conserver le lien vers le stockage privé. |
+| `.state/inference*.jsonl`, exports bulk et exports téléchargés | Fichiers de travail migrés sur le volume chiffré ; les téléchargements indépendants restent hors inventaire. | Même protection, contrôle de version du texte et registre courant avant diffusion. |
+| HTML de revue et stockage du navigateur | HTML migrés sur le volume chiffré ; copies persistantes possibles dans `localStorage` externe. | Garder les HTML dans le périmètre privé ; purger aussi les sessions de revue après un droit. Chiffrer le HTML seul ne protège pas le profil du navigateur. |
+| `Artefacts_locaux/` et archives contenant jeux ou modèles | Copies de reconstruction et archives locales de remise migrées sur le volume chiffré, empreintes vérifiées. | Reconstruire les archives touchées par un droit ; ne pas réextraire une version invalidée. |
+| Modèles, registres et sauvegardes | Poids, provenance et pointeurs de versions migrés sur le volume chiffré ; modèles locaux exclus de Git. | Protéger les sauvegardes, contrôler l’impact des droits sur les données d’apprentissage et suspendre un modèle affecté selon la décision B1. |
+| Captures, vidéos et rapports | Captures, vidéos et rapports inventoriés migrés ; ils peuvent afficher des extraits même sans corpus joint. | Rechercher les dérivés concernés et remplacer ou retirer les exemplaires à diffuser. |
+
+La migration B4 a été exécutée sans serveur ni ordonnanceur B4 actif : copie des fichiers vers `/Volumes/MemoireOSINT/B4/Copies`, comparaison intégrale des empreintes, retrait des fichiers d’origine puis création de liens aux chemins habituels. L’inventaire couvre l’état, les modèles et jeux, les HTML de revue, les preuves et captures, le rapport et la présentation, les copies locales du dépôt et de remise, les fichiers de construction, le corpus reconstitué partagé et l’archive globale de remise. Une copie identique du corpus dans B2 `.data` a aussi été protégée, sans modifier les bases SQL/Mongo. Les nouvelles évaluations restent directement sous le volume chiffré. Aucun mot de passe n’a été lu ou modifié.
+
+Le dossier `Remise_organisee` entier est ensuite conservé sous `/Volumes/MemoireOSINT/Remise`, avec un lien à sa racine. Ses fichiers B4 héritent de cette protection ; l’inventaire identifie leur emplacement physique actuel et conserve la trace des destinations initiales.
+
+Monter le volume avant de démarrer. Ne pas supprimer les liens ni recréer leurs destinations en clair : un lien dont la cible est absente fait échouer la lecture ou l’écriture. La CLI générique accepte encore un autre chemin fourni explicitement ; elle n’impose pas le chiffrement à toutes ses utilisations. Les empreintes du modèle et les lectures après migration sont vérifiées dans la preuve de clôture. Le retrait des anciennes copies ne garantit pas un effacement forensique des blocs SSD.
+
+Les profils navigateur, téléchargements indépendants, sauvegardes système et sources originales hors de cet inventaire ne sont pas couverts par cette migration. Les outils de revue peuvent écrire dans `localStorage` ; les HTML protégés ne chiffrent pas un profil navigateur externe. Ce périmètre reste explicite plutôt que de déclarer une protection universelle.
 
 ## Suppression et conservation
 
-L’inférence et l’export acceptent un registre d’exclusion, soit une liste d’IDs, soit `{article_ids:[...]}`. Une nouvelle production applique toujours ce registre avant export. `erase` filtre un fichier local et écrit un journal indiquant les suites nécessaires. Cette commande seule ne purge pas l’ensemble du dossier et ne désapprend pas un modèle.
+### Décisions et contrôles existants
 
-Une demande recevable impose de retirer l’article du corpus, des annotations, des données de revue, des exports et des index concernés, de bloquer les modèles affectés, puis de réentraîner sur les données admises. Les sauvegardes doivent réappliquer le registre d’exclusion après restauration, comme prévu au Bloc 2. Les données intégrées au HTML de revue et les copies dans localStorage nécessitent aussi leur régénération ou leur purge. Les procédures et durées restent reliées au plan de gouvernance du Bloc 1, avec validation humaine du responsable du traitement.
+Le responsable désigné dans le Bloc 1 qualifie la demande et son périmètre avant exécution. TECH utilise une référence opaque, l’ID de l’article et les empreintes concernées ; les coordonnées du demandeur restent dans le dossier de droits, séparé des logs techniques.
+
+L’inférence et l’export acceptent un registre d’exclusion, soit une liste d’IDs, soit `{article_ids:[...]}`. L’opérateur doit fournir le registre B2 courant à `infer` et à `export-es` : l’option est facultative dans le code, son application n’est donc pas garantie par défaut. `prepare`, `train` et `serve` ne consultent pas ce registre. Leur entrée doit être contrôlée avant usage. `erase` filtre un fichier local et écrit un journal ; cette commande seule ne purge pas l’ensemble du dossier et ne désapprend pas un modèle.
+
+Les tests B3/B2 de rectification et d’effacement portent sur une fixture. B2 retire les mentions indexées de l’ID rectifié ou supprimé, mais ne purge pas les fichiers B4 et ne relance pas son NER. Le contrat B3/B4 reste de schéma 1. Une rectification renouvelle l’empreinte du texte ; les offsets et annotations de l’ancienne version ne doivent pas être réutilisés automatiquement.
+
+### Accès, rectification et suppression
+
+1. **Accès.** Rechercher les données concernées dans l’inventaire des copies : articles, annotations, prédictions, fichiers de revue et jeux d’apprentissage. Fournir les extraits pertinents et leur provenance selon D01 du Bloc 1, après protection des données de tiers. Les coordonnées ne sont pas ajoutées au corpus.
+2. **Rectification.** Appliquer la décision B3 et sa propagation B2, puis obtenir un nouvel export admis. Suspendre les résultats B4 de la version invalidée. Retirer les anciennes prédictions et propositions d’annotation des copies actives ; régénérer les HTML de revue et supprimer leur état enregistré dans le navigateur. Produire une nouvelle inférence sur le texte corrigé avec le modèle autorisé, puis un export tenant compte des exclusions courantes. Comparer ID, empreinte du texte, modèle et offsets avant réindexation. Une correction de texte destiné seulement à l’inférence n’impose pas à elle seule un réentraînement.
+3. **Suppression.** Appliquer B3/B2 et conserver l’exclusion minimale. Retirer l’ID et ses versions des corpus B4, jeux train/dev/test, DocBin, prédictions, exports, HTML de revue et copies navigateur. Reconstruire les archives contenant la donnée, traiter les captures et exports déjà diffusés selon la décision B1 et vérifier la disparition des mentions indexées. Arrêter puis redémarrer le serveur sur le fichier nettoyé : il charge les articles en mémoire au démarrage et ne se met pas à jour à la seule modification du fichier.
+4. **Impact sur le modèle.** Vérifier par ID et empreinte si la donnée invalidée a servi à l’entraînement ou au dev du modèle, et examiner son éventuelle restitution. Consigner la décision de maintien, suspension ou remplacement du modèle selon B1. Un réentraînement, lorsqu’il est retenu, utilise les jeux admis et une nouvelle version identifiable. La CLI ne possède pas de commande d’invalidation pour droits ; la suspension du service et de l’ordonnanceur est actuellement une action opérateur. La suppression d’une simple sortie d’inférence ne modifie pas les poids.
+5. **Clôture.** Consigner référence, IDs, versions, chemins traités, résultats de contrôle et copies restantes, sans texte complet ni secret dans le journal technique. Une propagation incomplète ou une sauvegarde non traitée reste explicitement suivie. La clôture est décidée par le responsable B1, pas par la seule réussite de `erase`.
+
+### Restauration et conservation
+
+Avant restauration B4, arrêter serveur et ordonnanceur. Restaurer dans un espace privé isolé ; vérifier les empreintes puis appliquer les décisions de suppression ET de rectification les plus récentes, conservées indépendamment de la sauvegarde. Un ancien export ne fait pas autorité sur la version courante d’un texte. Reconstituer les fichiers admis depuis B3/B2 et renouveler les prédictions dont l’empreinte est obsolète. Reconstruire les HTML et contrôler les copies navigateur avant remise en service. Une sauvegarde restaurée ne doit pas réactiver un modèle suspendu. Ce parcours B4 est une procédure documentée ; aucune nouvelle restauration ni purge complète B4 n’est démontrée par cette mise à jour.
+
+Les durées proposées du Bloc 1 s’appliquent aussi à B4 : corpus, versions, annotations, modèles et index pendant 12 mois après la dernière soutenance ; journaux techniques pendant six mois calendaires ; dossiers de droits et incidents pendant 12 mois après clôture ; sauvegardes pendant 30 jours glissants. Ce sont des choix du scénario à réexaminer, pas des délais légaux universels. Les décisions actives de correction/exclusion sont séparées et maintenues tant que nécessaires contre une réintroduction. La purge par échéance et son contrôle sur toutes les copies B4 restent des actions opérateur à organiser ; la purge des journaux B3 ne les réalise pas.
+
+### Preuves et périmètre de la mise à jour
+
+1. Bloc 1 : `Plan_gouvernance_OSINT.md`, sections 4.4 et procédure D01 (décisions, conservation, dérivés et modèles).
+2. Bloc 2 : `docs/Collecte_stockages_securite.md` et `app/osint/cli.py`, fonctions `rectify` et `invalidate_mentions` (versions et retrait des mentions obsolètes).
+3. Bloc 3 : `Preuves/Collecte_TASS/Droits_B3_B2.json` et `Volume_chiffre.json` (droits sur fixture et chiffrement physique B3).
+4. Bloc 4 : `src/osint_ner/cli.py`, `export.py`, `server.py` et `web/review_template.html` (options d’exclusion, portée de `erase`, chargement en mémoire et stockage navigateur).
+
+Cette révision décrit le raccordement et la migration physique des copies B4 inventoriées. Elle ne change pas les poids du modèle ; le diagnostic élargi et les contrôles de lecture sont des preuves distinctes. Les procédures de droits suivent les recommandations de la [CNIL sur l’exercice des droits dans les systèmes d’IA](https://www.cnil.fr/fr/ia-respecter-lexercice-des-droits-des-personnes), consultées le 4 octobre 2026, en distinguant bases d’apprentissage, données dérivées et modèle.
 
 ## Droit et éthique
 

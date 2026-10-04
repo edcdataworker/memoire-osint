@@ -1,41 +1,37 @@
-# Annotation et protocole d’évaluation
+# Annotation et protocole de la solution livrée
 
-## Travail historique préservé
+## Préannotation et contrôle par IA
 
-Le rapport collectif de juillet 2026 crédite Jean-Christophe Dorn, Noah Segonds et Edouard Cappaert, avec Matthieu Larboullet comme enseignant. Il indique Claude Haiku et 40 exemples / 81 entités. Le notebook archivé indique dans la cellule N06 `mistral-small-latest`, un endpoint Mistral et 1 889 articles annotés après sélection de 2 000 articles. La cellule N05 déclare explicitement une vérification manuelle d’un échantillon représentatif. Cette déclaration est conservée. Aucun journal, identité du relecteur, date, liste d’articles corrigés ou fichier d’annotations correspondant n’a été retrouvé lors de la nouvelle inspection locale. L’absence de ces pièces ne prouve pas que la revue n’a pas eu lieu.
+Le projet utilise trois labels : `WEAPON`, `MIL_UNIT` et `MIL_ORG`. La baseline `weak-efc7c759e0-s42-e6` apprend sur des préannotations produites localement par les règles lexicales de `data.py`. Un contrôle complémentaire par Codex propose initialement 104 mentions sur 18 articles réservés au test. L’extension documentée dans `Diagnostic_IA_42_articles.md` conserve ces textes et en ajoute 24 : 254 mentions sur 42 articles, sans modifier les jeux d’apprentissage ni les poids.
 
-N10 conserve 803 exemples positifs, répartis en 642 train et 161 dev, avec 46 et 8 spans ignorés. N08 contient des commandes de téléchargement et leurs widgets, sans export des spans récupérable dans les sorties archivées. Les trois F1 historiques, 34 dans le rapport, 49,82 dans le texte du notebook et 56,55 dans une sortie de validation, restent distincts. Aucun de ces scores n’est attribué à la nouvelle baseline.
+Le modèle utilise `spacy.blank('en')`, un NER à poids initiaux aléatoires, la graine 42 et six époques CPU. Il ne réutilise pas les poids de `en_core_web_sm`. Le train contient 240 articles, dont 60 sans préannotation, et le dev 60 articles, dont 15 sans préannotation. Une absence de proposition ne prouve pas l’absence d’entité. Les labels dev provenant des mêmes règles ne servent pas à annoncer une qualité indépendante.
 
-## Nouvelle expérience de démonstration
+## Schéma d’annotation
 
-Le corpus nettoyé contient 21 676 articles, empreinte dans `.state/data/manifest.json`. Aucun renettoyage n’est effectué. Les indices sont des caractères Unicode, début inclus et fin exclue. Une empreinte du texte relie source, annotation, prédiction et index. La tokenisation de ponctuation a été adaptée pour `ATACMS),The`, tout en préservant intégralement les caractères du texte.
+`WEAPON` couvre les systèmes ou matériels militaires nommés. `MIL_UNIT` couvre les unités nommées ou numérotées, flottes incluses. `MIL_ORG` couvre les organisations de haut niveau, ministères, états-majors et forces armées. Les mentions génériques seules sont exclues. Chaque occurrence conserve son nom complet, sans déterminant ni ponctuation finale, avec début inclus et fin exclue en points de code Unicode. Les personnes et lieux restent hors schéma, mais peuvent subsister dans le texte source.
 
-La baseline utilise `spacy.blank('en')`, un NER à poids initiaux aléatoires et trois labels. Elle n’utilise pas les poids de `en_core_web_sm`. Le choix limite dépendances et coût local, mais ne reproduit pas le transfert pédagogique proposé. Une future comparaison avec transfert devra réutiliser la même référence humaine indépendante.
-
-Les expressions régulières de `data.py` constituent une préannotation limitée aux noms connus. Le train contient 240 articles dont 60 sans détection et le dev 60 articles dont 15 sans détection. « Sans détection » ne signifie pas absence réelle d’entités. Les faux négatifs de l’annotateur risquent d’apprendre au modèle des absences incorrectes. Les dev labels ne servent ni à choisir le meilleur modèle ni à calculer une performance qualité, car ils proviennent des mêmes règles.
+Les propositions IA signalent huit décisions de périmètre à trancher, notamment navires, bases, districts et services de renseignement. Les contrôles d’offsets, de label, de chevauchement et d’empreinte sont déterministes ; la pertinence sémantique des propositions dépend de l’annotateur.
 
 ## Séparation et limites
 
-Les groupes réunissent identifiants, URL, texte canonique et titres identiques. Un hachage avec graine de projet 42 affecte chaque groupe à train, dev ou test. La sélection équilibrée par catégories favorise des textes courts, donc elle ne représente pas uniformément le corpus. Le manifeste est figé par version. Ajouter des doublons peut modifier les groupes, ce qui exige une nouvelle version et une nouvelle vérification des chevauchements.
+Les groupes réunissent identifiants, URL, texte canonique et titres identiques. Un hachage avec graine 42 affecte chaque groupe à train, dev ou test. Le manifeste est figé par version. Ajouter des doublons peut modifier les groupes et impose une nouvelle vérification des chevauchements.
 
-Un audit exhaustif de 19 800 paires entre les trois sélections teste les doublons et la similarité Jaccard des triplets de mots. Aucune paire ne dépasse 0,8, le maximum observé vaut environ 0,374. Cette barrière de projet ne garantit pas l’indépendance sémantique de récits d’un même événement. Une analyse temporelle et une revue des dépêches proches restent utiles.
+L’audit de 19 800 paires entre sélections ne détecte aucune similarité Jaccard des triplets de mots supérieure à 0,8 ; le maximum observé est environ 0,374. Cette barrière ne garantit pas l’indépendance sémantique de récits d’un même événement. Les 18 textes de test sont courts et sélectionnés avec aide des règles initiales ; ils ne représentent pas uniformément le corpus.
 
-## Revue humaine préparée
+## Évaluation exploratoire
 
-`Revue_annotations_locale.html` propose 18 articles complets réservés au test, dont quatre sans préannotation. Le relecteur doit vérifier toutes les mentions, y compris les omissions, corriger les frontières et labels, renseigner son nom, attester chaque article puis exporter `human-reviewed.jsonl`. Le navigateur stocke la progression localement. L’outil ne peut pas authentifier la réalité de la lecture. Aucune attestation n’a été produite par l’assistant.
+Le scorer compare le label et les deux frontières exactes. Une frontière incorrecte compte comme faux positif et faux négatif. Il calcule précision, rappel et F1 micro et par label ; un dénominateur nul donne `null`.
 
-WEAPON : système ou matériel militaire nommé, par exemple S-400. MIL_UNIT : unité combattante nommée ou numérotée, flottes incluses. MIL_ORG : organisation de haut niveau, ministère, état-major ou forces armées. Les mentions génériques seules sont exclues. Annoter chaque occurrence, avec le nom complet sans déterminant ni ponctuation finale. Les noms de personnes et lieux sont hors schéma, mais peuvent subsister dans le texte source.
+La comparaison de la baseline aux propositions IA donne 31 vrais positifs, 3 faux positifs et 73 faux négatifs : précision 91,18 %, rappel 29,81 % et F1 micro 44,93 %. Les erreurs, le modèle, la référence et leurs empreintes sont consignés dans `Preuves/Diagnostic_annotations_IA.json`. Ce diagnostic mesure l’accord avec cette référence générée par IA. Les erreurs de référence, les décisions non tranchées et la sélection des textes limitent son interprétation et toute extrapolation au corpus complet.
 
-## Exigence pédagogique et choix de projet
+## Outils de revue et contrôle de promotion
 
-La relecture humaine d’un échantillon est une exigence du cours AI Deployment p.24. Le jeu de test indépendant revu humainement et les seuils de promotion ci-dessous sont des choix méthodologiques proposés pour le projet, pas des seuils de certification. Garder les nouvelles métriques à null en l’absence de référence indépendante relève de cette prudence méthodologique. La déclaration historique de relecture N05 demeure conservée.
+`Revue_annotations_locale.html` et `Revue_annotations_assistee_IA.html` affichent les textes complets et permettent de corriger les frontières, labels et omissions. Le navigateur conserve la progression localement. L’export de revue comporte la provenance du relecteur ; une attestation doit correspondre à une lecture effectivement réalisée.
 
-## Métriques et promotion
+La commande `evaluate` exige une provenance de revue humaine, une appartenance au manifeste test et l’absence de chevauchement avec train/dev. Elle est distincte du diagnostic IA existant. Le cours AI Deployment p. 24 demande une relecture humaine d’un échantillon : le contrôle par IA est une méthode complémentaire et ne permet pas de déclarer cette étape réalisée.
 
-Le scorer calcule précision, rappel et F1 à correspondance exacte du label et des deux bornes, global micro et par label. Les dénominateurs nuls donnent `null`. Une mauvaise frontière compte comme faux positif et faux négatif. Les erreurs sont exportées pour retour au contexte.
+La promotion de production exige les labels d’entraînement revus, une empreinte modèle concordante, au moins 100 articles de test, au moins 20 entités par label, un F1 global de 0,70 et un rappel par label de 0,50. Ces seuils sont des garde-fous exploratoires de projet, à calibrer selon l’usage, sans provenance scolaire ni validation métier. La baseline reste dans l’environnement de démonstration ; le diagnostic IA ne débloque pas cette promotion.
 
-`evaluate` refuse une référence sans provenance de revue, hors manifeste test ou recouvrant les groupes train/dev du modèle. Un échantillon de 18 articles relus donnerait seulement une première mesure sur un échantillon assisté, avec biais de sélection et d’ancrage. Il ne suffirait pas à démontrer une qualité de production.
+## Revue humaine des 42 articles
 
-En l’absence de fichier revu humainement, toutes les métriques qualité restent nulles. Les scores calculés dans les tests unitaires concernent exclusivement des fixtures synthétiques destinées à vérifier les formules. Ils ne mesurent pas la NER TASS.
-
-La promotion de production requiert labels d’entraînement revus, empreinte modèle concordante, au moins 100 articles de test, support d’au moins 20 entités par label, F1 global de 0,70 et rappel par label de 0,50. Ces seuils sont des garde-fous exploratoires du projet, à calibrer selon l’usage et les erreurs. Ils ne proviennent ni de l’école ni d’une validation métier. La baseline ne remplit pas ces conditions et reste dans l’environnement de démonstration.
+Le [parcours de revue](Revue_humaine_42_articles.md) permet de corriger les propositions, enregistrer les décisions sur le volume chiffré, puis calculer la qualité sur le test figé. Les prédictions sont masquées pendant la lecture. Aucun article réel n’est attesté par les tests automatiques ; la revue personnelle reste à effectuer. Démarrer le lanceur Lancer_revue_humaine.command depuis le dossier B4.

@@ -17,7 +17,7 @@ Problématique : comment faciliter la recherche de mentions militaires sourcées
 3. Il compare les volumes et tops avec leurs dénominateurs.
 4. Il ouvre un article et vérifie la mention dans le texte complet.
 5. Il suit le lien source et confronte l’information à d’autres sources hors outil.
-6. Il signale une erreur, alimente une revue humaine documentée puis attend une évaluation avant toute promotion.
+6. Il signale une erreur, alimente une revue documentée puis attend les contrôles requis avant toute promotion.
 
 ## Exigences, fonctionnalités et vérification
 
@@ -28,7 +28,7 @@ Problématique : comment faciliter la recherche de mentions militaires sourcées
 | Filtrer les mêmes périodes | Paramètre année commun aux agrégations | Tests API et dashboard local ; dates UTC |
 | Inclure les articles sans entités | Conservation de toutes les sorties | Compteurs total et avec entités séparés |
 | Lire au clavier et agrandir | Formulaires étiquetés, focus visible, lien d’évitement, tables, texte fluide | Matrice Chromium ; lecteur d’écran et usages réels non évalués |
-| Comprendre la qualité | Valeurs indisponibles explicitement affichées | Gate qualité et rapport d’entraînement |
+| Comprendre la qualité | Diagnostic sur référence IA et statut de promotion distincts | Diagnostic élargi sur 42 articles, référence initiale conservée, gate et rapport d’entraînement |
 | Réentraîner sans écraser | Détection d’empreinte, candidat immuable, promotion bloquée | Journaux d’ordonnanceur et rollback |
 | Appliquer une exclusion | Registre IDs aux frontières et purge d’export | Tests dédiés ; purge totale et désapprentissage nécessitent procédure transverse |
 | Pouvoir maintenir | Modules, README, Git, tests, wheel | CI/CD locale ; aucun workflow cloud exécuté |

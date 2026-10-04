@@ -61,8 +61,10 @@ def require_reviewed(rows):
     for r in rows:
         if (
             r.get("annotation_status") != "human_reviewed"
-            or not r.get("reviewer")
-            or not r.get("reviewed_at")
+            or not isinstance(r.get("reviewer"), str)
+            or not r["reviewer"].strip()
+            or not isinstance(r.get("reviewed_at"), str)
+            or not r["reviewed_at"].strip()
         ):
             raise ValueError("Every reference needs explicit human review provenance")
         if r.get("split") != "test":

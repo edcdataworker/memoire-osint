@@ -1,10 +1,10 @@
 # Diagnostic NER et revue assistée du 4 octobre 2026
 
-Les 18 articles réservés au test ont été relus par Codex, une IA, afin de proposer des annotations plus complètes que les règles lexicales initiales. Aucune attestation humaine n’a été ajoutée. Les propositions conservent les identifiants, textes, groupes et empreintes de la file de revue initiale. Le modèle n’a pas été réentraîné sur ces propositions.
+Les 18 articles réservés au test ont été relus par Codex, une IA, afin de proposer des annotations plus complètes que les règles lexicales initiales. Les propositions conservent les identifiants, textes, groupes et empreintes de la file de revue initiale. Le modèle n’a pas été réentraîné sur ces propositions.
 
 ## Résultat du diagnostic
 
-Le modèle `weak-efc7c759e0-s42-e6`, SHA-256 `f35d2e57acb16d96b802c1b578b3c9e780ea53114dcd28c7cb8d65b54fc5f918`, est confronté à 104 mentions proposées par l’IA. La correspondance exige le label et les deux frontières exacts. Ces résultats mesurent l’accord avec ce brouillon, pas une qualité validée humainement.
+Le modèle `weak-efc7c759e0-s42-e6`, SHA-256 `f35d2e57acb16d96b802c1b578b3c9e780ea53114dcd28c7cb8d65b54fc5f918`, est confronté à 104 mentions proposées par l’IA. La correspondance exige le label et les deux frontières exacts. Cette évaluation exploratoire mesure l’accord avec la référence générée par IA. Les erreurs de référence et les décisions de périmètre non tranchées influencent les scores.
 
 | Périmètre | TP | FP | FN | Précision | Rappel | F1 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -19,7 +19,7 @@ Les dénominateurs sont petits : les 100 % ne prouvent pas une précision parfai
 
 Le brouillon propose d’inclure le matériel militaire nommé, y compris modèles et noms de navires, d’annoter les branches militaires nommées et d’exclure les services civils de renseignement du schéma militaire. Le classement des bases navales, districts militaires et centres spécialisés exige une décision de périmètre. Les formes coordonnées et les alias doivent être vérifiés. Huit articles comportent une note de décision spécifique. Ces choix ne sont pas attribués à une personne ni à l’école.
 
-## Faire la relecture humaine
+## Corriger et enrichir la référence
 
 1. Ouvrir `Revue_annotations_assistee_IA.html`, renseigner son nom et relire chaque texte intégralement.
 2. Confirmer ou corriger les frontières, labels, omissions et décisions notées. Conserver aussi les articles sans entité.
@@ -28,4 +28,8 @@ Le brouillon propose d’inclure le matériel militaire nommé, y compris modèl
 
 Le fichier `Artefacts_locaux/Propositions_annotations_IA.jsonl` est un brouillon identifiable, avec le statut `ai_proposed_pending_human`. Le HTML initial est conservé pour distinguer les propositions lexicales des propositions retravaillées. Les sessions des deux outils ont des clés de stockage différentes afin de préserver la provenance.
 
-Les métriques qualité validées restent nulles dans le rapport du modèle, et la promotion de production reste bloquée. Les F1 historiques ne sont pas modifiés. La relecture humaine d’un échantillon demandée par AI Deployment p. 24 reste à réaliser ou à documenter avec les preuves historiques correspondantes.
+Le diagnostic est conservé séparément des métriques de promotion du modèle. Il ne débloque pas la mise en production. Une comparaison ultérieure devra identifier sa référence, sa version et ses décisions d’annotation.
+
+## Extension exécutée
+
+Le diagnostic initial reste conservé. La référence a ensuite été élargie à 42 articles et 254 mentions proposées par IA, sans modifier le modèle : F1 micro 32,73 %, précision 71,05 %, rappel 21,26 %. Le [protocole élargi](Diagnostic_IA_42_articles.md) décrit les 24 nouveaux textes, la sélection par longueur et les limites. Les propositions nouvelles sont figées avant leur comparaison aux prédictions.
