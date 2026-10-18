@@ -1,0 +1,42 @@
+[
+  {
+    "name": "/memoire_osint-app-1",
+    "service": "app",
+    "state": "running",
+    "health": "healthy",
+    "user": "10001:10001",
+    "read_only": true,
+    "restart": "unless-stopped",
+    "ports": {
+      "8443/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "18443"
+        }
+      ]
+    },
+    "image": "sha256:b529984f8333afbf43e22e0d6460beec80a668b9dfb4b783e2d3c40933cdd2f6"
+  },
+  {
+    "name": "/memoire_osint-postgres-1",
+    "service": "postgres",
+    "state": "running",
+    "health": "healthy",
+    "user": "",
+    "read_only": false,
+    "restart": "unless-stopped",
+    "ports": {},
+    "image": "sha256:081f1bc7bd5e143dbb6e487b710bbc27712cdcfaced4c071b8e47349aa1b4171"
+  },
+  {
+    "name": "/memoire_osint-mongo-1",
+    "service": "mongo",
+    "state": "running",
+    "health": "healthy",
+    "user": "",
+    "read_only": false,
+    "restart": "unless-stopped",
+    "ports": {},
+    "image": "sha256:8ecb514b00bdcc0bde67ef4e6c330385377a9dc68e24ee94e28c07c891647348"
+  }
+]

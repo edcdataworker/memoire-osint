@@ -391,7 +391,7 @@ Préparé | Trame orale de cinq minutes et 28 critères. Raccordement entre le p
 
 À réaliser avant une exploitation réelle | Chiffrement complet du stockage, gestion et rotation des clés, copie hors machine, calendrier de purge et sauvegarde, supervision permanente et architecture multi-hôte selon disponibilité attendue.
 
-Limites du rendu local | Docker Desktop local, sans serveur virtuel autonome provisionné ni hébergement externe. Aucune validation juridique globale ou répétition orale observée.
+Limites du rendu local | VM Ubuntu déployée : PostgreSQL, MongoDB et API vérifiés sur 100 fixtures, données conservées après redémarrage. Preuves/VM_20261018. Même Mac ; pas de corpus TASS ni de charge réelle dans la VM.
 
 Le critère sectoriel B2-3.4 est analysé dans le cadre de la veille documentaire OSINT : les règles propres au secret médical ou au reporting financier du cas santé ne sont pas transposées. L’analyse devra être revue si l’organisation, la finalité ou le secteur changent.
 

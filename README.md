@@ -82,3 +82,5 @@ La mise à disposition du code ne crée pas de licence sur les cours, les textes
 Le déploiement reproductible et la surveillance locale du Bloc 2 ont été ajoutés. Cette révision du miroir reste locale et n’a pas été publiée. Voir `REVISION_BLOC2_20261018.json`. Les guides de préparation orale sont conservés dans le projet local et exclus des nouveaux paquets de remise.
 
 Les guides de préparation orale restent en local et sont exclus des révisions publiées. Les présentations PowerPoint restent des livrables distincts. Les nouvelles preuves synthétiques sont dans les dossiers `verification/Corrections_20261018` des Blocs 3 et 4.
+
+Le serveur virtuel du Bloc 2 est déployé sur le Mac : trois services sains, 100 documents fictifs, HTTPS authentifié et persistance après redémarrage. [Mode d’emploi et limites](bloc2_architecture/vm/README.md) ; [preuves locales du déploiement](bloc2_architecture/verification/VM_20261018/Validation_VM_Bloc2.json). La CI distante ne redémarre pas la VM locale.

@@ -1,6 +1,6 @@
 # Architecture commune du mémoire OSINT
 
-Version 1.2 du 4 octobre 2026. Le programme développé dans le bloc 3 (Observatoire) collecte par rubrique et dates UTC, publie un export figé puis importe dans Bloc 2. Le raccordement testé conserve 21 676 articles initiaux et ajoute 5 articles, soit 21 681 articles. Voir [la cartographie des copies et la reprise](docs/Collecte_stockages_securite.md).
+Version 1.4 du 18 octobre 2026. Le programme développé dans le bloc 3 (Observatoire) collecte par rubrique et dates UTC, publie un export figé puis importe dans Bloc 2. Le raccordement testé conserve 21 676 articles initiaux et ajoute 5 articles, soit 21 681 articles. Voir [la cartographie des copies et la reprise](docs/Collecte_stockages_securite.md).
 
 Bloc 2, version locale du 4 octobre 2026. Plateforme pour la veille OSINT. Elle stocke le corpus TASS enrichi, relie la collecte du programme développé dans le bloc 3 et la restitution Bloc 4 et distingue systématiquement les données réelles des essais synthétiques.
 
@@ -11,7 +11,7 @@ Bloc 2, version locale du 4 octobre 2026. Plateforme pour la veille OSINT. Elle 
 3. `Preuves/` : résultats des contrôles, mesures, captures et manifeste des versions.
 4. `Demonstration_locale_OSINT.mp4` : enregistrement du fonctionnement local, avec une panne simulée. Ce fichier ne prouve pas un hébergement de production externe.
 5. `Demonstration_raccordement_Observatoire.mp4` : import réel depuis le suivi du programme développé dans le bloc 3, état final des stockages et limites. Journal : `Preuves/Raccordement_Observatoire.json`.
-6. `Correspondance_criteres_Bloc2.csv` : correspondance des 28 critères. La trame orale de cinq minutes reste en local.
+6. `Correspondance_criteres_Bloc2.csv` et `Preparation_orale_Bloc2.md` : correspondance des 28 critères et trame de cinq minutes.
 7. [Presentation_Bloc2_OSINT.pptx](Presentation_Bloc2_OSINT.pptx) : sept diapositives pour les cinq minutes d’oral, avec notes du présentateur et références des preuves. Le minutage est prévu et reste à vérifier pendant une répétition.
 
 ## Stockages et autorité
@@ -138,7 +138,7 @@ Références techniques consultées le 4 octobre 2026 : [Compose et dépendances
 
 Le [rapprochement Bloc 2-3.2](docs/Correspondance_ANSSI_Bloc2.md) localise les recommandations, configurations, preuves et écarts. Le volume chiffré du programme développé dans le bloc 3 et la restauration des rectifications/effacements sont vérifiés dans les preuves jointes. La vidéo de raccordement conserve son état antérieur au chiffrement. Les métadonnées Bloc 2 et les copies externes ne bénéficient pas automatiquement de la protection du volume.
 
-Le [rapport d’infrastructure V1.2](Plan_infrastructure_OSINT.pdf) et la [correspondance des critères](Correspondance_criteres_Bloc2.csv) accompagnent cette version du code. Les preuves publiques expurgées sont dans [verification/Finalisation_Bloc2.json](verification/Finalisation_Bloc2.json).
+Le [rapport d’infrastructure V1.4](Plan_infrastructure_OSINT.pdf) et la [correspondance des critères](Correspondance_criteres_Bloc2.csv) accompagnent cette version du code. Les preuves publiques expurgées sont dans [verification/Finalisation_Bloc2.json](verification/Finalisation_Bloc2.json).
 
 ## Complément des consignes du 18 octobre 2026
 
@@ -173,8 +173,10 @@ La surveillance reste au premier plan et n'est pas installée comme service perm
 
 L'ERD relationnel reste adapté aux écritures opérationnelles, identifiants, sources et révisions. Aucun modèle en étoile n'est implémenté : un entrepôt décisionnel introduirait des faits/dimensions et un chargement distincts, sans besoin établi pour cette consultation documentaire. MongoDB conserve le JSON variable et le texte chiffré ; l'index Elasticsearch se reconstruit depuis les autorités SQL/Mongo.
 
-Les nouvelles preuves sont dans `Preuves/Complement_20261018/`. Les essais de 60 000, 600 000 et 6 000 000 lignes ne sont pas relancés : code d'ingestion et schémas inchangés, résultats attribués à leur version mesurée. Le redéploiement testé sur l'environnement existant ne démontre pas une installation vierge sur un deuxième poste. La révision corrigée est destinée au dépôt public ; consulter l’onglet Actions pour les vérifications distantes.
+Les nouvelles preuves sont dans `Preuves/Complement_20261018/`. Les essais de 60 000, 600 000 et 6 000 000 lignes ne sont pas relancés : code d'ingestion et schémas inchangés, résultats attribués à leur version mesurée. Le redéploiement testé sur l'environnement existant ne démontre pas une installation vierge sur un deuxième poste. Les révisions publiées et leurs vérifications distantes sont consultables dans GitHub Actions.
 
 ## Provisionnement du serveur virtuel
 
-Le plan reproductible et ses garde-fous sont dans [vm/README.md](vm/README.md). `python3 scripts/virtual_server.py plan` décrit une VM locale Ubuntu et sa configuration cloud-init. Deux tests vérifient le refus sans fournisseur et la conservation d’une instance existante. Multipass étant absent du poste, aucun déploiement VM n’est revendiqué. Le Compose testé sous Docker Desktop reste distinct.
+La VM `memoire-osint-bloc2` est déployée et laissée démarrée : Ubuntu 24.04.5, 4 CPU, 8 Go de RAM et 30 Go de disque virtuel. PostgreSQL, MongoDB et l’API HTTPS sont vérifiés sur 100 documents fictifs. Un redémarrage complet conserve les données et relance les services automatiquement. Trois relevés de monitoring ne déclenchent aucune alerte. La procédure corrigée, les commandes d’arrêt et les limites sont dans [vm/README.md](vm/README.md) ; preuves dans `Preuves/VM_20261018/`. Les essais TASS et les charges de Docker Desktop restent distincts. Aucun corpus, secret existant, guide oral ou vidéo transféré dans la VM.
+
+Les preuves du déploiement VM sont accessibles dans [verification/VM_20261018](verification/VM_20261018). Elles identifient les essais locaux, distincts de la CI GitHub.

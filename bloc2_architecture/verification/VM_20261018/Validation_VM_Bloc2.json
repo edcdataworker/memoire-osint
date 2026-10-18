@@ -1,0 +1,63 @@
+{
+  "date_utc": "2026-10-18T21:25:23.210301+00:00",
+  "vm": "memoire-osint-bloc2",
+  "state": "Running",
+  "release": "Ubuntu 24.04.5 LTS",
+  "resources": {
+    "cpus": 4,
+    "memory_gib": 8,
+    "disk_gib": 30
+  },
+  "provider": "Multipass 1.16.4, qemu sur macOS ARM64",
+  "cloud_init": "done, sans erreur ni avertissement",
+  "code_hashes_verified": 22,
+  "application": {
+    "scope": "VM dédiée, 100 documents synthétiques, aucun corpus TASS",
+    "checks": {
+      "https_health": true,
+      "unauthenticated_rejected": true,
+      "sql_mongo_counts": true,
+      "authenticated_article_roundtrip": true,
+      "postgres_tls": true
+    },
+    "status": {
+      "mode": "primary",
+      "limitations": "Lecture locale, aucun modèle NER exécuté à ce stade.",
+      "articles": 0,
+      "synthetic": 100,
+      "runs": [
+        [
+          "synthetic",
+          "complete",
+          100,
+          100
+        ]
+      ],
+      "documents": 100
+    },
+    "postgres_tls": [
+      true,
+      "TLSv1.3"
+    ]
+  },
+  "restart": {
+    "boot_id_changed": true,
+    "before": "2d4051c4-59b2-4b98-b2f7-6602bf947518",
+    "after": "6ab965d0-1e34-4b5b-b733-700cca2b2260",
+    "counts_and_authenticated_read_preserved": true,
+    "automatic_service_restart": true
+  },
+  "monitoring_samples": 3,
+  "monitoring_alerts": 0,
+  "port_exposure": "API 127.0.0.1:18443 dans la VM ; aucune publication des ports PostgreSQL et MongoDB",
+  "scope": "VM locale et trois services sur 100 documents fictifs. Aucun corpus TASS, secret existant, modèle, guide oral ou vidéo transféré. Elasticsearch, Kibana et interfaces administratives non activés dans cet essai.",
+  "limits": "Pas de preuve de disponibilité pendant la panne, de copie hors hôte, de charge représentative TASS ou de chiffrement intégral du disque VM. Aucun redémarrage du Mac effectué.",
+  "corrections": [
+    "Champ permissions du marqueur public retiré pour éviter sa conversion par Multipass en entier YAML",
+    "Code public normalisé à 0755 pour les dossiers et 0644 pour les fichiers dans la VM ; états réservés à UID 10001",
+    "Initialisation mongo/init.js incluse dans la liste de transfert"
+  ],
+  "actual_cpu_count": 4,
+  "actual_memory_bytes": 8303779840,
+  "second_deploy_refused": true
+}

@@ -1,5 +1,5 @@
 {
-  "scope": "Révision locale corrigée. Code des archives actualisées, sans corpus ni modèles ni guides oraux. Publication non effectuée.",
+  "scope": "Code issu des archives de remise, sans corpus, modèles, secrets, vidéos ni guides oraux. Les README publics adaptent les liens aux chemins du dépôt.",
   "files": [
     {
       "path": "bloc2_architecture/.env.example",
@@ -14,7 +14,7 @@
     {
       "path": "bloc2_architecture/README.md",
       "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
-      "sha256": "6bb5a861fd31242622720e906d9b5ed1c3ffc72920cfdf2fa0794c1255b27727"
+      "sha256": "a53a6b5bd15b652b7a9b1450b0c492b1b992902c0488542c7066fe270e0284aa"
     },
     {
       "path": "bloc2_architecture/app/Dockerfile",
@@ -219,12 +219,12 @@
     {
       "path": "bloc2_architecture/vm/README.md",
       "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
-      "sha256": "f90c6cafffdf0e825e14c82a86b09e9409978becd99c8c615b1c68d9ccbf94d2"
+      "sha256": "7d9f80c7323e2a745e244a2fa94cd5d27dce7c1ec9c5b13447754a8be37f8252"
     },
     {
       "path": "bloc2_architecture/vm/cloud-init.yaml",
       "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
-      "sha256": "3f8de9134f8fd0a1ad93b1cc36be11b776b3d8a04dd0d6f1d0e74bba621e53e4"
+      "sha256": "a8fa614d011228544347a4b561a43b8950aca62d14a77706d02423a1e0d41a5f"
     },
     {
       "path": "bloc3_pipeline/Collecte_TASS.md",
@@ -820,6 +820,17 @@
       "path": "bloc4_ia/tests/test_serving_lifecycle.py",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
       "sha256": "ef9ea5fbaf6d5f5ef160aaf845050fe324de3275645f4084da4dffb10b2459af"
+    },
+    {
+      "path": "bloc2_architecture/vm/deploy_synthetic.py",
+      "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
+      "sha256": "c44a1167a8eaffbe215177ce3f964f9c0896694107e35c2e8684c2943f0f715e"
+    },
+    {
+      "path": "bloc2_architecture/vm/verify_stack.py",
+      "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
+      "sha256": "1c844b8c9b3ef06420ab1795bea4ca463301d1921249059888b23ac694317b9c"
     }
-  ]
+  ],
+  "vm_revision": "Bloc 2 : déploiement local du 18 octobre 2026, configuration corrigée et preuves dans bloc2_architecture/verification/VM_20261018. Les README publics adaptent les liens locaux aux chemins du dépôt."
 }

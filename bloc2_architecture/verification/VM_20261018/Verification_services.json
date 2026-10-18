@@ -1,0 +1,29 @@
+{
+  "scope": "VM dédiée, 100 documents synthétiques, aucun corpus TASS",
+  "checks": {
+    "https_health": true,
+    "unauthenticated_rejected": true,
+    "sql_mongo_counts": true,
+    "authenticated_article_roundtrip": true,
+    "postgres_tls": true
+  },
+  "status": {
+    "mode": "primary",
+    "limitations": "Lecture locale, aucun modèle NER exécuté à ce stade.",
+    "articles": 0,
+    "synthetic": 100,
+    "runs": [
+      [
+        "synthetic",
+        "complete",
+        100,
+        100
+      ]
+    ],
+    "documents": 100
+  },
+  "postgres_tls": [
+    true,
+    "TLSv1.3"
+  ]
+}

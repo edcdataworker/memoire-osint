@@ -1,0 +1,27 @@
+{
+  "scope": "Fichiers publics effectivement déployés, après correction des transferts initiaux",
+  "files": {
+    ".env.example": "f02247b3a4fdc4e386bb403e273d60687700e16aa66b4f1d467c20cb884c1555",
+    "app/Dockerfile": "42297174ba141373fa27afa94db54eb7a6cb436e7a136c9f21a1a6cdd0229137",
+    "app/osint/__init__.py": "76fed3b4029b7bb64a05b420b28ee6c21e05e8f10d19f15de24439570f0f07b6",
+    "app/osint/api.py": "f841b7d40ec110bdb337790bdc90c76e7ccf87bfe287d04b7955be85ad25fd34",
+    "app/osint/cli.py": "0088675a620085cee2aa664626120fda5b74bfed2d57a3f384b4d8b1592862c1",
+    "app/osint/ingest.py": "3cca7b2849eff4d8bbda98e6da6a1e6456c54ed8515060e13eb375d9da58b2e6",
+    "app/osint/storage.py": "154df88a2da494941098d3b88112651c98abeb2fd32921676e43aadda84cd18d",
+    "app/requirements.txt": "be10514606f820dc676b6e4281a72cff82ba66a76ccdc02c160e7b3ea8b285be",
+    "docker-compose.yml": "c8afe2fc9a122c4f2553193b8d402c48c66c21ea0646ad8c5f7f22f556f864df",
+    "docs/nosql_schema.json": "c15ba68445a8ff4140791e20f5ba81cff11841d0fd13a02e055c811ed0d1a867",
+    "docs/pgadmin-servers.json": "069728d610ea237a2afbf2c544388bd44686cbfd5b22dd6128498796bdd7dcae",
+    "docs/sql_schema.dbml": "9fdef01e7cf538c7c2c4953cd99f8f258cc67a992aa979e6ba9242273d313aa4",
+    "mongo/init.js": "31923a29f9e4fa9cb1da6441109c8a09964cbda6a88deb04499d04d0055497d5",
+    "scripts/infrastructure.py": "fd2a0faf10cab0d63209c69d4ac28802eb2700e33e83f723ae91efe2de1112f2",
+    "scripts/mongo-entrypoint.sh": "f25f1cea820d2e0dbfd42058c0af94562da932ee18e735047f575eeb25b01d71",
+    "scripts/postgres-entrypoint.sh": "6af5f29486f4e3318cee47e14044c8a208c3e0a730e07be30ddaa0c9a8482723",
+    "scripts/setup.py": "54b7b19573671acb0da3a85be34550ed2f93d9a25a3b47d926d97263502ac3e1",
+    "sql/00_roles.sh": "21d330981e5fce0dcf0def8f894cc9736d65d4ccfe169c29e20af8862d253fc6",
+    "sql/01_schema.sql": "ee49c6506f1386263bb0ed26c38f5a9eeff478007dcb1c9f0acd7b60f6c27b57",
+    "sql/02_revisions.sql": "3c8d4b549fc714ae3a93f55aeb5cbc2d05638729a87b23329dcf67db8f4620f3",
+    "sql/pg_hba.conf": "f023f31450811a01255c65b108cfc19f6d6da317e337d3d47479536a5fd788d1",
+    "vm/verify_stack.py": "1c844b8c9b3ef06420ab1795bea4ca463301d1921249059888b23ac694317b9c"
+  }
+}
