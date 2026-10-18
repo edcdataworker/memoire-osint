@@ -8,3 +8,10 @@ progress.progress-track{width:100%;border:0;appearance:none;accent-color:#81a870
 .sidebar{overflow-y:auto}.sidebar>*{flex-shrink:0}
 #corpus>section{container-type:inline-size;container-name:corpus}.corpus-filters{grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr))}.article-row h3{overflow-wrap:anywhere}
 @container corpus (max-width:500px){.article-row{grid-template-columns:minmax(0,1fr)}.article-row .button{justify-self:start}.corpus-toolbar .button-row{width:100%;flex-wrap:wrap}}
+/* Reflow follows the content container, including enlarged text. */
+#collecte{container-type:inline-size;container-name:collecte;overflow-wrap:anywhere}
+.overview{grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}
+.brand{min-width:0;flex-wrap:nowrap}.brand>span:last-child{min-width:0;overflow-wrap:anywhere}
+.panel-heading{flex-wrap:wrap}.summary-count{flex-wrap:wrap}.stat-card strong{min-width:0;overflow-wrap:anywhere}
+@container collecte (max-width:600px){.collect-layout{grid-template-columns:minmax(0,1fr)}}
+@container collecte (max-width:250px){.stat-card{display:block}.stat-card strong{margin:8px 0}.date-fields{grid-template-columns:minmax(0,1fr)}}

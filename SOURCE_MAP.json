@@ -1,5 +1,5 @@
 {
-  "scope": "Code extrait des archives de remise, sans corpus, modèle, secrets ni historique Git ancien. Les adaptations de publication sont décrites dans le README.",
+  "scope": "Révision locale corrigée. Code des archives actualisées, sans corpus ni modèles ni guides oraux. Publication non effectuée.",
   "files": [
     {
       "path": "bloc2_architecture/.env.example",
@@ -12,14 +12,9 @@
       "sha256": "b007a71c2fc2bf3a7a77a4c1b4a0f14dd340ba17cc438776305f03c358ffea24"
     },
     {
-      "path": "bloc2_architecture/Preparation_orale_Bloc2.md",
-      "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
-      "sha256": "f7cfbb0c1bfaa7606d79ac48e35cb24005855e8c323a31baec890c822a36d360"
-    },
-    {
       "path": "bloc2_architecture/README.md",
       "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
-      "sha256": "93b04df72425f14216e3dd1abde57451ddebf6e322f248a93320b5b337e55272"
+      "sha256": "6bb5a861fd31242622720e906d9b5ed1c3ffc72920cfdf2fa0794c1255b27727"
     },
     {
       "path": "bloc2_architecture/app/Dockerfile",
@@ -34,22 +29,22 @@
     {
       "path": "bloc2_architecture/app/osint/api.py",
       "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
-      "sha256": "94f966ca20fc00508c4305ae9384238d52e637b640a71e092df7feebfd3b860c"
+      "sha256": "f841b7d40ec110bdb337790bdc90c76e7ccf87bfe287d04b7955be85ad25fd34"
     },
     {
       "path": "bloc2_architecture/app/osint/cli.py",
       "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
-      "sha256": "b886c3b40506b9257996c28676c96a7cae3befff843fed629ae089bc3a355c37"
+      "sha256": "0088675a620085cee2aa664626120fda5b74bfed2d57a3f384b4d8b1592862c1"
     },
     {
       "path": "bloc2_architecture/app/osint/ingest.py",
       "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
-      "sha256": "594d39328fdf548311e8f199d0acf787ab9186178455ae428750f30aba8efb53"
+      "sha256": "3cca7b2849eff4d8bbda98e6da6a1e6456c54ed8515060e13eb375d9da58b2e6"
     },
     {
       "path": "bloc2_architecture/app/osint/storage.py",
       "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
-      "sha256": "d782dc61bdecbdd4f77a8e582e0596cf9ddec9722168153cd2f9a050a135a113"
+      "sha256": "154df88a2da494941098d3b88112651c98abeb2fd32921676e43aadda84cd18d"
     },
     {
       "path": "bloc2_architecture/app/requirements.txt",
@@ -59,17 +54,37 @@
     {
       "path": "bloc2_architecture/docker-compose.yml",
       "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
-      "sha256": "909ec2821bbcdfa968b61971d96d2cba71f9e13cd379b3a97ba61286a5f88a2c"
+      "sha256": "c8afe2fc9a122c4f2553193b8d402c48c66c21ea0646ad8c5f7f22f556f864df"
+    },
+    {
+      "path": "bloc2_architecture/docker/README.md",
+      "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
+      "sha256": "4f67c01b57f5edd0804981b939a8d813676a19f7a28be17718cb929b2443adad"
+    },
+    {
+      "path": "bloc2_architecture/docker/compose.yaml",
+      "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
+      "sha256": "c0b39110ee7b85ef82e78c64d24af2cfd6b1f6e832cfa1b3c4ad809ccbf8c738"
+    },
+    {
+      "path": "bloc2_architecture/docs/Collecte_stockages_securite.md",
+      "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
+      "sha256": "18c2b684cd2bc9e1cc06475fdfdffac0fccd50c779161b2eabda02afd066ce2e"
+    },
+    {
+      "path": "bloc2_architecture/docs/Correspondance_ANSSI_Bloc2.md",
+      "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
+      "sha256": "6b6233a289c0fd1971560f6ee50b17fb64507870e2429b8cda324213c49ca1a0"
     },
     {
       "path": "bloc2_architecture/docs/architecture.mmd",
       "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
-      "sha256": "d62cf9ec4e4c3a07bd5997d5a8928a3e588150db21a7c110446917957f6e8f84"
+      "sha256": "5049848bf5bed24470a98ee3fb65c43527987500df674f22d05909a7f85d38e4"
     },
     {
       "path": "bloc2_architecture/docs/nosql_schema.json",
       "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
-      "sha256": "693747b56bea9197b1655455f554865a8c41c829d5a6960cec9335630b6d2cb3"
+      "sha256": "c15ba68445a8ff4140791e20f5ba81cff11841d0fd13a02e055c811ed0d1a867"
     },
     {
       "path": "bloc2_architecture/docs/pgadmin-servers.json",
@@ -79,7 +94,7 @@
     {
       "path": "bloc2_architecture/docs/sql_schema.dbml",
       "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
-      "sha256": "13a35859f9e708f9768861ef5b61473569756b78d40e2fc928c28f47b7b30798"
+      "sha256": "9fdef01e7cf538c7c2c4953cd99f8f258cc67a992aa979e6ba9242273d313aa4"
     },
     {
       "path": "bloc2_architecture/mongo/init.js",
@@ -99,12 +114,17 @@
     {
       "path": "bloc2_architecture/scripts/backup_restore.py",
       "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
-      "sha256": "67b87c972ec45fc422d9c1d9adb1909973733b7d01e916b86c2667e815dc32b4"
+      "sha256": "a6b189924fde5865c03cf06c9d32418e94e66650d605e11048adf534e9781c66"
     },
     {
       "path": "bloc2_architecture/scripts/benchmark.py",
       "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
       "sha256": "0e677f0a40489c1e147af02d20ac349d68e13e65d24ad3bf6f91b7b4bbc36fcf"
+    },
+    {
+      "path": "bloc2_architecture/scripts/infrastructure.py",
+      "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
+      "sha256": "fd2a0faf10cab0d63209c69d4ac28802eb2700e33e83f723ae91efe2de1112f2"
     },
     {
       "path": "bloc2_architecture/scripts/mongo-entrypoint.sh",
@@ -115,6 +135,21 @@
       "path": "bloc2_architecture/scripts/postgres-entrypoint.sh",
       "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
       "sha256": "6af5f29486f4e3318cee47e14044c8a208c3e0a730e07be30ddaa0c9a8482723"
+    },
+    {
+      "path": "bloc2_architecture/scripts/record_architecture_demo.py",
+      "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
+      "sha256": "cdb09fd54da7b01d1acebfdb7c573345ee1857c3f51ab6aa7b9be6425beb86a1"
+    },
+    {
+      "path": "bloc2_architecture/scripts/render_architecture_demo.py",
+      "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
+      "sha256": "0725945242b872c365ef90e1abe82ed05f497e2dffa13139691a186223bfdb5e"
+    },
+    {
+      "path": "bloc2_architecture/scripts/render_execution_demo.py",
+      "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
+      "sha256": "91aad93f83f6ed5e108925648edffe6e520a992404130533e7e1cc5c0cc7fb88"
     },
     {
       "path": "bloc2_architecture/scripts/setup.py",
@@ -132,6 +167,11 @@
       "sha256": "d05415f7b6eb3fd2ac32b80b9f8a2cc8ee873a09e23b60cf912534a76610864f"
     },
     {
+      "path": "bloc2_architecture/scripts/virtual_server.py",
+      "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
+      "sha256": "bcae4404e81b69be46fb4a1cf87ff902108df264538eb1ba90841856e91dde42"
+    },
+    {
       "path": "bloc2_architecture/sql/00_roles.sh",
       "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
       "sha256": "21d330981e5fce0dcf0def8f894cc9736d65d4ccfe169c29e20af8862d253fc6"
@@ -142,24 +182,134 @@
       "sha256": "ee49c6506f1386263bb0ed26c38f5a9eeff478007dcb1c9f0acd7b60f6c27b57"
     },
     {
+      "path": "bloc2_architecture/sql/02_revisions.sql",
+      "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
+      "sha256": "3c8d4b549fc714ae3a93f55aeb5cbc2d05638729a87b23329dcf67db8f4620f3"
+    },
+    {
       "path": "bloc2_architecture/sql/pg_hba.conf",
       "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
       "sha256": "f023f31450811a01255c65b108cfc19f6d6da317e337d3d47479536a5fd788d1"
     },
     {
+      "path": "bloc2_architecture/tests/collection.py",
+      "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
+      "sha256": "13a9ee8c0532167c1bffbd0b9492c8d456b0ba3af2ed9fdd843408e3ebf70b92"
+    },
+    {
+      "path": "bloc2_architecture/tests/collection_contract.py",
+      "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
+      "sha256": "6d124eb83e697f82c89ea6df5d382160dfa5a04c97770b959c20315f5e35661b"
+    },
+    {
+      "path": "bloc2_architecture/tests/infrastructure.py",
+      "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
+      "sha256": "0ac582e9d555f2bd5812bc629391ac40121452016be4faeb72d5d8faed8e30aa"
+    },
+    {
       "path": "bloc2_architecture/tests/integration.py",
       "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
-      "sha256": "8e911483f7c65d6b2df00ede1a918b4d2001d2899364372402b4e2ca6341b830"
+      "sha256": "b3ba51d7907fad43375481052ee51827a6e73cf06516e5be0e7f158f3202baf7"
     },
     {
-      "path": "bloc3_pipeline/pipeline/worker.py",
-      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
-      "sha256": "a9d70451dc4a197c773dcd3944c195ed45b9b4f3e0ff48f2443384d42f6e3ccf"
+      "path": "bloc2_architecture/tests/virtual_server.py",
+      "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
+      "sha256": "017b4d790ddbfd1e12a0ad7fa28a93631a9efa4f20b67af3dda512ec19799322"
     },
     {
-      "path": "bloc3_pipeline/pipeline/monitor.py",
+      "path": "bloc2_architecture/vm/README.md",
+      "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
+      "sha256": "f90c6cafffdf0e825e14c82a86b09e9409978becd99c8c615b1c68d9ccbf94d2"
+    },
+    {
+      "path": "bloc2_architecture/vm/cloud-init.yaml",
+      "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
+      "sha256": "3f8de9134f8fd0a1ad93b1cc36be11b776b3d8a04dd0d6f1d0e74bba621e53e4"
+    },
+    {
+      "path": "bloc3_pipeline/Collecte_TASS.md",
       "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
-      "sha256": "e9a842f33878dede901417a7ea87c3bb27bf91e1ff01580ff61eaadd477c8d2d"
+      "sha256": "97b59c40414da61efc1be454932b81079e8a8b6291c31e68d7b8c978f33dff5a"
+    },
+    {
+      "path": "bloc3_pipeline/Correspondance_criteres_Bloc3.json",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "c1ba985a4cf8cb10adfb4e26bb0798431b0a13a666835472a931bf3a8e889ff7"
+    },
+    {
+      "path": "bloc3_pipeline/Dockerfile",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "5bb3330c75a7b77cdc2eea4fa93d69cfd35e9b66be9ee31c29bc055c73cd1808"
+    },
+    {
+      "path": "bloc3_pipeline/Lancer_Observatoire_TASS.command",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "24bf1a5ccf0619e9de5dddb3cd1c1b7a247f3447b7f1f12bd19f72c8d37bebc0"
+    },
+    {
+      "path": "bloc3_pipeline/Lancer_collecte_continue.command",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "d395dab0d03dfbd2dbf82cfcca7a7c152a282ba3941053541d4ab145fc5c9e9d"
+    },
+    {
+      "path": "bloc3_pipeline/Plan_pipeline_OSINT.md",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "34845b73c9dc8c0c079376236500cc481bf60257212ce5c39f64529ede7e3c5e"
+    },
+    {
+      "path": "bloc3_pipeline/Preparer_volume_chiffre.command",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "fa6fbe4d911c7749ccaafe7fbcab31999e70b0d9f8fb728b46baa8bb0834674b"
+    },
+    {
+      "path": "bloc3_pipeline/README.md",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "ec6bdcd274f863c3548907d58b62d0ae58d0b9519a3a6e4b313aca38fe689ef7"
+    },
+    {
+      "path": "bloc3_pipeline/config/collecte_continue.json",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "478c787a11821ec52c4ca1d0f7d738d9a73887b21b4775d678d87493c991dc60"
+    },
+    {
+      "path": "bloc3_pipeline/config/corpus_clean.json",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "e8405dcc3d6bbfb1cff2997cb663ddd5bc70d777837d1986278d39101dc2df04"
+    },
+    {
+      "path": "bloc3_pipeline/config/docker.json",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "f9a340954bfcf8e35442bf9e01e968939c8cb5e38f221e7ea3785fce923ff593"
+    },
+    {
+      "path": "bloc3_pipeline/config/portable.json",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "2242e89ecca6f9686a42e5d99cd574578c146384fdb42d6c91af602236039aad"
+    },
+    {
+      "path": "bloc3_pipeline/docker-compose.yml",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "153273d8c95f0b5f189875e20cb72dfa9927a0e06ce94503cfe851c01cc0a4c8"
+    },
+    {
+      "path": "bloc3_pipeline/docs/Controles_volume_chiffre.md",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "7ee943322e8a8fa5d8649c79f237134b6f8c0518a0599f2ad4b1625e811fc569"
+    },
+    {
+      "path": "bloc3_pipeline/docs/architecture.mmd",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "18c6883cca39afd4808c3859a0c4395625eb4df61631ccc241d782327df4d348"
+    },
+    {
+      "path": "bloc3_pipeline/docs/criteres_evaluation_Bloc3.json",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "f94b787276ad9cb9a84d63a93df461d71453382e32038a59614ae8b096211d1e"
+    },
+    {
+      "path": "bloc3_pipeline/docs/criteres_exacts_Bloc3.json",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "7bcb02f018c04ff09561917b45a45c0e1f0f28108347102b3a8a56208049a72b"
     },
     {
       "path": "bloc3_pipeline/pipeline/__init__.py",
@@ -167,19 +317,94 @@
       "sha256": "e6627eea550ecfe7a37bfd67cf8944d7660b0b01eea3796457f96f1a1952021a"
     },
     {
+      "path": "bloc3_pipeline/pipeline/__main__.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "509b039a568b468b12091e298c30206ab1fd23a261d65d520e4483f5a67a7e53"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/collection/__init__.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "59f0962850e6615718a924bc3f280e3024e15aeec0fe71f1e4220fb1a285e983"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/collection/continuous.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "2005280925009aaf0a2c31e7613d553b3c79fd9e1c3f0390f6ba35734616cdb1"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/collection/resilience.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "6793211569e4b7306adb65688e9eba55c1abc5b22904e2a4edf65f5e9d2d3666"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/collection/rights.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "3ee4e074beb89ab34af755f1063529f92662b71fd8fd138e7fafe8c507ae6e8c"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/collection/security.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "020775c93241b38cd35e014ac27fef9bcee8a9f50a7d296c650d9d52d0521c01"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/collection/service.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "14e045442c851a57fcf432cb7bab0e47330b0140a924f5fdcba874dda038274a"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/collection/source.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "93568d14d32112138368550574f252ef7c3bd0a5d9a65e41a7ecebbd1d731016"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/collection/static/app.js",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "2881d7383a6773ab05ad71f12e0289b18977bd8005919d5c0eb77d7b8c5d896c"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/collection/static/index.html",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "6fa5fc436a63f2065f343df424bb8d7467e8aef57fe900eaf77961e2fc1db7e3"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/collection/static/style.css",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "123ee9535bc8ec0fa29e487d8b5fe1402b4f7e3814fbae3fc06781212a512506"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/collection/store.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "1971b21118c976f7145296a03d635d29bd46510c9dd0361ec4414c9e3e3f7af3"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/collection/volume.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "3b03010a5044655659ff1f0935e08454ec73175192eca0747a36291e7399c824"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/collection/worker.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "4f21d27d4a46356c2fd28f04359014ba94b7d0f3b8a32030ee317e8ab21b21af"
+    },
+    {
       "path": "bloc3_pipeline/pipeline/common.py",
       "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
       "sha256": "c2779912811bffb50592c73b9e635f7c97c2585c291ac6fa4b3d7f2ab9525215"
     },
     {
+      "path": "bloc3_pipeline/pipeline/monitor.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "e9a842f33878dede901417a7ea87c3bb27bf91e1ff01580ff61eaadd477c8d2d"
+    },
+    {
+      "path": "bloc3_pipeline/pipeline/publish.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "0570a80e0019a85581f2bddbf7d67b53a0e40f7c74b8546caeab8b5bc509d2ce"
+    },
+    {
       "path": "bloc3_pipeline/pipeline/rights.py",
       "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
       "sha256": "dd30b467df3b662fa48e6e69ac42912e5bebb2947032c5a4586dde26b18670fe"
-    },
-    {
-      "path": "bloc3_pipeline/pipeline/transform.py",
-      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
-      "sha256": "cb1b4969bacb05e75c26474e3a7b4367fd2eb3a7bf29cf6f9e9665b4654446ac"
     },
     {
       "path": "bloc3_pipeline/pipeline/scheduler.py",
@@ -192,79 +417,19 @@
       "sha256": "43723463d1a40f3b683f75b8e71c59880489164382225bc33b0863ad951f6947"
     },
     {
-      "path": "bloc3_pipeline/pipeline/__main__.py",
-      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
-      "sha256": "18f83e2a3b83ee59fdd22abcdb57446c0edfdac2b19a5c84620f998c8ee4e422"
-    },
-    {
       "path": "bloc3_pipeline/pipeline/state.py",
       "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
       "sha256": "138a3f01cf3cb63c56d49a50d8c9fe34eed50b0324725cf8bb47176ea2056f22"
     },
     {
-      "path": "bloc3_pipeline/pipeline/publish.py",
+      "path": "bloc3_pipeline/pipeline/transform.py",
       "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
-      "sha256": "0570a80e0019a85581f2bddbf7d67b53a0e40f7c74b8546caeab8b5bc509d2ce"
+      "sha256": "cb1b4969bacb05e75c26474e3a7b4367fd2eb3a7bf29cf6f9e9665b4654446ac"
     },
     {
-      "path": "bloc3_pipeline/tests/integration.py",
+      "path": "bloc3_pipeline/pipeline/worker.py",
       "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
-      "sha256": "0862753664eda73317d4399dd310a2a1d829afcc73218d758e7b2a13c29750a0"
-    },
-    {
-      "path": "bloc3_pipeline/tests/fixtures/articles_synthetiques.json",
-      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
-      "sha256": "cbdc88656c7f969b51e52d63452bc282b4afde82b7ae97e9f0b92ec3889bad8f"
-    },
-    {
-      "path": "bloc3_pipeline/scripts/benchmark.py",
-      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
-      "sha256": "94ebccb7ae2b8da0e6d55c99c33c0adfea93833487788851f4b6e8811c4d86e3"
-    },
-    {
-      "path": "bloc3_pipeline/scripts/build_plan.py",
-      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
-      "sha256": "753e9ea32789d0c54ee7f81a93be7d0a04c75e1c08e14a76a87261bbc89e6d67"
-    },
-    {
-      "path": "bloc3_pipeline/scripts/capture_demo.py",
-      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
-      "sha256": "65c103beef72133fb1f352aedf39ad662f3d36c99d7fe215fdb220e084936d0e"
-    },
-    {
-      "path": "bloc3_pipeline/scripts/build_criteria.py",
-      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
-      "sha256": "40d3ddadfd78b6a983ea7e4e4e0fb89f3e97b1111c8c42fa3e94cdfd8f6e5ae3"
-    },
-    {
-      "path": "bloc3_pipeline/config/portable.json",
-      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
-      "sha256": "2242e89ecca6f9686a42e5d99cd574578c146384fdb42d6c91af602236039aad"
-    },
-    {
-      "path": "bloc3_pipeline/config/docker.json",
-      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
-      "sha256": "f9a340954bfcf8e35442bf9e01e968939c8cb5e38f221e7ea3785fce923ff593"
-    },
-    {
-      "path": "bloc3_pipeline/config/corpus_clean.json",
-      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
-      "sha256": "e8405dcc3d6bbfb1cff2997cb663ddd5bc70d777837d1986278d39101dc2df04"
-    },
-    {
-      "path": "bloc3_pipeline/README.md",
-      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
-      "sha256": "1e1cbcb69f58c321572c38b3e2e03b7e7a249a08507a85621ec4388deda8beb5"
-    },
-    {
-      "path": "bloc3_pipeline/Dockerfile",
-      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
-      "sha256": "5bb3330c75a7b77cdc2eea4fa93d69cfd35e9b66be9ee31c29bc055c73cd1808"
-    },
-    {
-      "path": "bloc3_pipeline/docker-compose.yml",
-      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
-      "sha256": "153273d8c95f0b5f189875e20cb72dfa9927a0e06ce94503cfe851c01cc0a4c8"
+      "sha256": "a9d70451dc4a197c773dcd3944c195ed45b9b4f3e0ff48f2443384d42f6e3ccf"
     },
     {
       "path": "bloc3_pipeline/pyproject.toml",
@@ -272,44 +437,139 @@
       "sha256": "53b306125e7c4dd0466156948cd8b105f71a3c4c171a9697672478eefd3a3adf"
     },
     {
-      "path": "bloc3_pipeline/.gitignore",
+      "path": "bloc3_pipeline/scripts/benchmark.py",
       "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
-      "sha256": "5da2d421fbac91973d6eb53c9e3248eed632bed9546616c2b93107771e7761c6"
+      "sha256": "94ebccb7ae2b8da0e6d55c99c33c0adfea93833487788851f4b6e8811c4d86e3"
     },
     {
-      "path": "bloc3_pipeline/MANIFEST_CODE.json",
+      "path": "bloc3_pipeline/scripts/benchmark_collection.py",
       "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
-      "sha256": "e8c22ebab7d2f870c5fdebc82fe241c1b9c221dcd07924bc4b814874110fd1ee"
+      "sha256": "edc64c0feb3f8e8b6d090ae7daa822a837fa7b26223ba08983898735b0d3bb28"
+    },
+    {
+      "path": "bloc3_pipeline/scripts/benchmark_continuous.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "53c4975f6daf86f0882713651171f65ad77963a8fa9b41f999169c902d31a872"
+    },
+    {
+      "path": "bloc3_pipeline/scripts/benchmark_encrypted.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "2fdc25d3f976f6d44b5f90cd44ed9f603d1b4aae51a0a7cea10c8e80ce0ac677"
+    },
+    {
+      "path": "bloc3_pipeline/scripts/build_criteria.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "b95916e8496a4924abc5918e01d8b53ae1faf7801474e2905f30ce8581d8637b"
+    },
+    {
+      "path": "bloc3_pipeline/scripts/build_plan.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "ceb07be854c6626b8295e6903d8265dde01ff5692c23369ccaf38f33cbe4f887"
+    },
+    {
+      "path": "bloc3_pipeline/scripts/capture_demo.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "65c103beef72133fb1f352aedf39ad662f3d36c99d7fe215fdb220e084936d0e"
+    },
+    {
+      "path": "bloc3_pipeline/scripts/demo_collection_fixture.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "25c40e1dcf638895c091a80f7e2b34c72e7b9bce5b0aece5e67ab15a5202333d"
+    },
+    {
+      "path": "bloc3_pipeline/scripts/demo_continuous_fixture.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "1bf4ab2d20d2601d1dea5824f189ac248eadababfe691bec62680483a2ab8165"
+    },
+    {
+      "path": "bloc3_pipeline/scripts/verify_closure_ui.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "38e515b82568188f30d5eb8cd786e9e47516be225863b9f3fde1a531d6826c81"
+    },
+    {
+      "path": "bloc3_pipeline/scripts/verify_collection_rights.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "1d761ff28917ef69b5d567c35b4f5f64ab14fca6d8307481e03e28863c890cc4"
+    },
+    {
+      "path": "bloc3_pipeline/scripts/verify_collection_ui.cjs",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "bc979e1f758cd933638b4d592d7bfb761f97b007060e4bad73a013563d86de9d"
+    },
+    {
+      "path": "bloc3_pipeline/scripts/verify_continuous_ui.cjs",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "3b29e3bef5a9e8cf9a130d2c2b9933630d8e3725503c304a3a52c8d3e8ce605f"
+    },
+    {
+      "path": "bloc3_pipeline/scripts/verify_responsive.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "2a89e8bce1a2c81ffabc0a147dab2bb54c4c291c5a5ee3d4ea7e58d7eafcab67"
+    },
+    {
+      "path": "bloc3_pipeline/scripts/verify_tass_bounded.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "48057d38bbc80e03f96b3add83a663be250589ab88e08ac8d6d205791f1a4228"
+    },
+    {
+      "path": "bloc3_pipeline/tests/closure.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "54786210aa289cf2bb68d5933dcc407ade9b77d00c6a14a98352138baa17de61"
+    },
+    {
+      "path": "bloc3_pipeline/tests/collection.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "331fbd68989b3c7df342e95b27d07088e717e6d2cf9b72afc539c1f958f58020"
+    },
+    {
+      "path": "bloc3_pipeline/tests/continuous.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "46e1824f54ed1d0998dff5369544c3f5205414c53cccd1128dd40648625d3d81"
+    },
+    {
+      "path": "bloc3_pipeline/tests/fixtures/articles_synthetiques.json",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "cbdc88656c7f969b51e52d63452bc282b4afde82b7ae97e9f0b92ec3889bad8f"
+    },
+    {
+      "path": "bloc3_pipeline/tests/frontend_recovery.cjs",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "2745f46e4c72244895c9c771e4605156e990efeae4eb2a4cf2e59259aeac2433"
+    },
+    {
+      "path": "bloc3_pipeline/tests/integration.py",
+      "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
+      "sha256": "0862753664eda73317d4399dd310a2a1d829afcc73218d758e7b2a13c29750a0"
+    },
+    {
+      "path": "bloc4_ia/.dockerignore",
+      "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
+      "sha256": "0522fc2e82671838f1761f80838aded1987204b54eb0fe5adc9b75d4a12c0012"
     },
     {
       "path": "bloc4_ia/.github/workflows/tests.yml",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "dfd67e9c0cea595e08daeca9780e64ccb3044bbcb36902b3ba499cfa666c6f41"
+      "sha256": "82cdbffee8801c3f62509b1981624c582e0dc412a45afbe944f366da085ad47e"
     },
     {
       "path": "bloc4_ia/.gitignore",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "6b6e200aa1b6eb8725a6afc9cb99fd79563bac29c9a0ff51e9d66832f74f2ca5"
+      "sha256": "28aec87890a5fec45467eb616c8f6d5d2d0aac5399a53c91e8b0b16e70bdfca8"
     },
     {
       "path": "bloc4_ia/Correspondance_criteres_Bloc4.json",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "30977fda74fab01ba6603b339f63fb4aaea0b17c01bdbbfd66eb7974f098b7ba"
+      "sha256": "87471bd1e678aa25fd9774e297fdce6ac8d2bb7b0de4aeec0f085b8c224e7a5e"
     },
     {
-      "path": "bloc4_ia/Guide_oral_Bloc4.md",
+      "path": "bloc4_ia/Dockerfile",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "0c38968c8bb789fab2275329824075f087db78c41b25d811d4b304ec20f0e8c4"
-    },
-    {
-      "path": "bloc4_ia/Note_analyse.md",
-      "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "a6a5806bf621bada4003645554a46f5b338757d70505cb6add1ac59abe292ab9"
+      "sha256": "8d40bf3d0db81d4c138660f18e5c9bf6f3fa90f4f840f27b278b821883a9587b"
     },
     {
       "path": "bloc4_ia/README.md",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "1939963fda75be0c75d7a1b4abb6fa55cd79648a7023f9237c81095435e34416"
+      "sha256": "1a544eee51ee380cdb546d1581a58258bda50c41beea70fbdc061f050042dca3"
     },
     {
       "path": "bloc4_ia/config/elasticsearch-entities-mapping.json",
@@ -317,29 +577,59 @@
       "sha256": "055fd33d5314f43297b025a6e98e890a9c2f01cde026922ee0461a5c398103fb"
     },
     {
+      "path": "bloc4_ia/docker-compose.yml",
+      "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
+      "sha256": "4d59b134900463ff84331c01240799adaece7ac6400cb7da114fbc345415ae65"
+    },
+    {
       "path": "bloc4_ia/docs/Annotation_et_protocole.md",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "4b9056304e510558b383fa40a2f6591e530597b8c5e2cd08aa700321ca938f96"
+      "sha256": "2f5197605f07fe7ef94c9aa03da10867d149854e1b7658675e85d87413d38375"
     },
     {
       "path": "bloc4_ia/docs/Automatisation_et_exploitation.md",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "cec9d56c4d9b1af06bd8f1844c3d2ae5915ffe1d796e0e189a52b07bd0ff0e73"
+      "sha256": "a31ed93177770a2a0c3edb04325e5b182a60d63ef524fba3f649fd1e46274eb5"
     },
     {
       "path": "bloc4_ia/docs/Cahier_des_charges.md",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "a5873470ddaf3f98887fcfdcee9292987a00d2ef4d12222f2237828219679acb"
+      "sha256": "57e03588b22baeb49ad8e534f959d2c51cfd24b84b0df69e5a83a17ceeaaf48a"
+    },
+    {
+      "path": "bloc4_ia/docs/Diagnostic_IA_42_articles.md",
+      "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
+      "sha256": "c27d104ccdf885ebfb27921ece6f37b2e3ee75f535dcbe76b3ea64b565536764"
+    },
+    {
+      "path": "bloc4_ia/docs/Diagnostic_et_revue_assistee.md",
+      "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
+      "sha256": "c41081204f31458ae115ff715ed3e0733ba82668f3dc483629865f0061a4ef93"
     },
     {
       "path": "bloc4_ia/docs/Integration_securite_gouvernance.md",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "c468234e43c823b24d54420d61cc0281f5d48626b52944f07ffaaa443dba4969"
+      "sha256": "15302c305bdef6f37f4f187fdef71823e803c646cc39d2b641586b8351399697"
+    },
+    {
+      "path": "bloc4_ia/docs/Raccordement_manuel_nouveaux_articles.md",
+      "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
+      "sha256": "0c0801f2149e9e0b325c02890ead98c9b2e9b4ef66590848a693dbcc6ff002de"
+    },
+    {
+      "path": "bloc4_ia/docs/Revue_humaine_42_articles.md",
+      "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
+      "sha256": "abbb84f97975e8bf24b1cf86b455a9cfeb6e64f0f24cd7770f1fd519ccdc380e"
     },
     {
       "path": "bloc4_ia/pyproject.toml",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "3106146f328fcf08c707d218f4a92f9ebb09873ad9d9c8112f7639c1fedfd5fa"
+      "sha256": "ac30a6d10508e59dc5944ed79dc2d84c9d6aee54000222630a12fa2dac0585e8"
+    },
+    {
+      "path": "bloc4_ia/requirements.docker.lock.txt",
+      "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
+      "sha256": "576887d7241e0fec0a2ac15c558d8b7eaebd64c305ca850b642de57097ceb472"
     },
     {
       "path": "bloc4_ia/requirements.lock.txt",
@@ -349,7 +639,7 @@
     {
       "path": "bloc4_ia/scripts/audit_splits.py",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "ee76b1f5b1a30edcaba1fd0149fb50a238af5750e7d3d3fec619b726049ff03a"
+      "sha256": "9ffa8a70ba1b4b865db867b2155999e6d12d58db5f89b6914db3e6947dbe866d"
     },
     {
       "path": "bloc4_ia/scripts/benchmark.py",
@@ -359,7 +649,7 @@
     {
       "path": "bloc4_ia/scripts/build_report.py",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "ec6c4e510242175cfc3ec7ec5868425ebce9637811730804b704918ddfdce1b0"
+      "sha256": "4ebdec97d0b8b46ce0d93ef54385808905bf6e2ff2e23ba8a1e273f6947ab678"
     },
     {
       "path": "bloc4_ia/scripts/build_review.py",
@@ -369,7 +659,27 @@
     {
       "path": "bloc4_ia/scripts/ci_local.py",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "cf72f6132f8e13c98a562a87815a39767f45a16353edf978648006b3ba36ffac"
+      "sha256": "f8da6bae560cbd115f9e2881dafe6540c1fb95818e7c1c73688df58a27c5c3d8"
+    },
+    {
+      "path": "bloc4_ia/scripts/diagnostic_ia_elargi.py",
+      "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
+      "sha256": "ee348408bbe8917e16617bd8137548cbfd0f892997952c1d519a038891a59c38"
+    },
+    {
+      "path": "bloc4_ia/scripts/prepare_ci_demo.py",
+      "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
+      "sha256": "3dffc60017d1d8e6b2348d5453819785904a1ea6b91c9ed02f180e03476aea84"
+    },
+    {
+      "path": "bloc4_ia/scripts/qualify_annotations.py",
+      "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
+      "sha256": "186d1a544757e2e7d3b0def9a7ea522e9a2dcdc6afe7a31b8c0859785b3bc0ea"
+    },
+    {
+      "path": "bloc4_ia/scripts/test_docker.py",
+      "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
+      "sha256": "60288c714b2b97881b95a23e355f9994cdb8ebbf5836bf01089d141d67365b80"
     },
     {
       "path": "bloc4_ia/scripts/validate_operations.py",
@@ -377,19 +687,49 @@
       "sha256": "7e701628d71d950162d1d0a0108a4ac207fd8755ba1f5292d7ca4a02582a5eb0"
     },
     {
+      "path": "bloc4_ia/scripts/verifier_nouveaux_articles.py",
+      "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
+      "sha256": "8b59ce926209b55eed6b2588ef1f013bfb1ffede0f7624ebe26071e4cf318b1f"
+    },
+    {
+      "path": "bloc4_ia/scripts/verify_delivery.py",
+      "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
+      "sha256": "c70563b89e67fb8634d8c9e08fa9ef1d1901eac2e1ab40cd87a0ae4da7100e24"
+    },
+    {
+      "path": "bloc4_ia/scripts/verify_human_review.cjs",
+      "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
+      "sha256": "bf3c9dea58e36ff1f906da3c341e2b5a1d91457e9b73d6b3d0a02935ccdf78da"
+    },
+    {
+      "path": "bloc4_ia/scripts/verify_human_review.py",
+      "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
+      "sha256": "44f60ddd7a652798d6845bf4f54d4761f41452cd9a11ee18d1ddfaff79531299"
+    },
+    {
+      "path": "bloc4_ia/scripts/verify_prediction_ui.cjs",
+      "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
+      "sha256": "f2dbc99ef1c2e3eef5c322fc5003aa775ff2243ff38ef8a45dc1e5eefdb6949e"
+    },
+    {
+      "path": "bloc4_ia/scripts/watch_delivery.py",
+      "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
+      "sha256": "ea20a16b02e8fc5f5d2d703dc52c8df21f8aff5f8ecefca3d7a5e8a7bc3647e2"
+    },
+    {
       "path": "bloc4_ia/src/osint_ner/__init__.py",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "bfa135759686679ef447aeec5fd96808fb365ed31ea851b27c1cae9d350b2421"
+      "sha256": "66fcd98ad98d492498701dc45534981132114f73bd6ef99982df42a5ad0a043f"
     },
     {
       "path": "bloc4_ia/src/osint_ner/automation.py",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "def1956cfbc69429e8a6e42fe1be4582ad399518cd8908d171741ee9b68c588b"
+      "sha256": "b09466f92fb493c976a19bca220935f2aeac8acbf4ab1b35e445fb9e3641703d"
     },
     {
       "path": "bloc4_ia/src/osint_ner/cli.py",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "cca7cc8a4a8707c343d0a77189a8dac4eb166295e7dd1689a0c260841340bcec"
+      "sha256": "9501d467a4a5f8fa875d7fea6610a7e6ea1ab4c7627ffb1132560fbb02133b89"
     },
     {
       "path": "bloc4_ia/src/osint_ner/contracts.py",
@@ -402,19 +742,29 @@
       "sha256": "4c18c1c9d257bdae5c98ecf1049184293c4d9faa3920e61aae969e948381dbb8"
     },
     {
+      "path": "bloc4_ia/src/osint_ner/deployment.py",
+      "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
+      "sha256": "75dcaf73f764896a5694550ddcb39834f6c6858f97bf20f7e9eaa5b271b852e0"
+    },
+    {
       "path": "bloc4_ia/src/osint_ner/export.py",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
       "sha256": "f461f83f6ed7c5f5d138edcc76128703e191be7dd3398cf5ab45da54c9961b48"
     },
     {
+      "path": "bloc4_ia/src/osint_ner/human_review.py",
+      "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
+      "sha256": "5a508ca0c2c7b13ed8f591b9f41d63dd78f13ca786d6a62e6e97a9c4e1d164f0"
+    },
+    {
       "path": "bloc4_ia/src/osint_ner/metrics.py",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "540aaebb8fdc3ee21a0a315f9d2ce60749c2675430966a37025d1787f32b1c04"
+      "sha256": "0d944ea1b8d9322e1218c0327ff2fd96e156a7373feeb0eb5f02150c9064a701"
     },
     {
       "path": "bloc4_ia/src/osint_ner/model.py",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "7b0a7a96bd39ce872a0897339127d6f9ce681749b7533772755fb784072d98d4"
+      "sha256": "6974d80f2bb3a8c0f78a19ad4e5d73f0ba6f87c7f67d386bdb8d2c60bd56788a"
     },
     {
       "path": "bloc4_ia/src/osint_ner/monitor.py",
@@ -429,22 +779,37 @@
     {
       "path": "bloc4_ia/src/osint_ner/server.py",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "85616bece87080d071871dccc58597137ebb9c5709edc16e56dccfdfc9ff5b57"
+      "sha256": "d6e8ea40a2dd7460c2554bdb868c853ad0d0f9d92f042ee5f1f62d7667189559"
     },
     {
       "path": "bloc4_ia/src/osint_ner/static/app.js",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "6b443b95639170acedbeae3de5bc426738aa862629ae1eac7b44a699445cbe30"
+      "sha256": "6cd57392dc1adb3f4f5f739b8c68d18d56e1a283a8bbe173d04420ed3d07cb8f"
+    },
+    {
+      "path": "bloc4_ia/src/osint_ner/static/human_review.html",
+      "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
+      "sha256": "a920f806cbd6a7afd73199c9c8d52c8e73fe37502c9c5b7816827e3507f22300"
+    },
+    {
+      "path": "bloc4_ia/src/osint_ner/static/human_review.js",
+      "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
+      "sha256": "dbe9452672793f2a9dee4b7479b94e088c85d217a54d75a8925ea2247d60cca9"
     },
     {
       "path": "bloc4_ia/src/osint_ner/static/index.html",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "4f1ff9830233f2833d0da903620a151b13163c2df7cda7edc1dffe1a14f4429e"
+      "sha256": "0ee0c0db63c26b97cdb447ecc0b702970e121a854481f0f48d20b40c85af97ce"
     },
     {
       "path": "bloc4_ia/src/osint_ner/static/style.css",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "97205f36438b373250e4a1c552f51cdef62b060d8899b0f2cae04114d7ccce60"
+      "sha256": "df454964a820c8df7882c0a20ab1cfe01b14ccd19a56d886cebd975641f92773"
+    },
+    {
+      "path": "bloc4_ia/tests/test_human_review.py",
+      "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
+      "sha256": "340e32864c3f98cbc262320fb10b91d7ab0c15621298d1e356f1a75381bf05be"
     },
     {
       "path": "bloc4_ia/tests/test_pipeline.py",
@@ -452,9 +817,9 @@
       "sha256": "d7ff4c4baf92348c9d390cc2c04deafa72ba685dcb5103c12b52840e7748e6e2"
     },
     {
-      "path": "bloc4_ia/web/review_template.html",
+      "path": "bloc4_ia/tests/test_serving_lifecycle.py",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "5e2fffee4e3f99c55f8571cf2f20720981d1cb021a3c5c41d41a18c050401832"
+      "sha256": "ef9ea5fbaf6d5f5ef160aaf845050fe324de3275645f4084da4dffb10b2459af"
     }
   ]
 }

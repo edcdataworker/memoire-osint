@@ -21,4 +21,4 @@ if [[ ! -f .collection-location.json ]]; then
   exit 1
 fi
 collection_state=$("$collection_python" -c 'import json; print(json.load(open(".collection-location.json"))["state"])')
-exec "$collection_python" -m pipeline collect-ui --state "$collection_state" --require-encrypted --open
+exec "$collection_python" -m pipeline collect-ui --state "$collection_state" --require-encrypted --open "$@"

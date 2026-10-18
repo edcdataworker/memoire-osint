@@ -1,6 +1,7 @@
 """Generate the OSINT pipeline PDF and editable Markdown."""
 
 import json
+import re
 from pathlib import Path
 from xml.sax.saxutils import escape
 
@@ -67,6 +68,7 @@ md = []
 
 
 def p(text, style="BodyText"):
+    text = re.sub(r"\bB([234])\b", r"Bloc \1", text)
     flow.append(Paragraph(escape(text).replace("\n", "<br/>"), styles[style]))
     md.append(text + "\n")
 
@@ -168,10 +170,10 @@ table(
     [
         ["Auteur", "Edouard Cappaert"],
         ["Code", "Code_OSINT_Bloc3.zip et dépôt GitHub memoire-osint"],
-        ["Date", "04/10/2026"],
+        ["Date", "18/10/2026"],
         [
             "Statut",
-            "Application locale testée, collecte réseau bornée et essais fictifs identifiés",
+            "Application locale testée, collecte périodique et essais fictifs identifiés",
         ],
     ],
     [110, 370],
@@ -197,7 +199,7 @@ p(
     "Prévu : préparé sans exécution observée. Implémenté : présent dans le code. Testé : scénario exécuté et rattaché à une version. Démontré au jury dépend de la prestation réelle. Les 33 critères exacts de Bloc 3!A6:A38 sont reliés à leur preuve dans Correspondance_criteres_Bloc3.json."
 )
 p(
-    "La chaîne locale automatise découverte, téléchargement, validation, publication et suivi après le déclenchement du formulaire. L’import dans B2 est une action explicite sur une sélection validée. Le bloc 4 conserve ses modèles ; choisir une période ne déclenche pas un entraînement."
+    "La chaîne locale automatise découverte, téléchargement, qualité et publication. Le mode périodique relance des micro-lots sur une fenêtre glissante sans nouveau formulaire. La collecte manuelle reste disponible. L’import dans le Bloc 2 et l’inférence du Bloc 4 restent des opérations distinctes."
 )
 page("Introduction et analyse des données")
 h("Contexte et problématique", 2)
@@ -235,7 +237,7 @@ boxes = [
     (174, 140, "Extraction et qualité", "texte, date, erreurs"),
     (336, 140, "Catalogue validé", "SQLite et versions"),
     (336, 45, "JSON et JSONL", "sélection temporelle"),
-    (174, 45, "B2 puis inférence B4", "import explicite"),
+    (174, 45, "Bloc 2 puis Bloc 4", "import explicite"),
     (12, 45, "Suivi et secours", "logs, lecture seule"),
 ]
 for x, y, a, b in boxes:
@@ -275,6 +277,10 @@ p(
 p(
     "Le serveur écoute sur 127.0.0.1, vérifie l’hôte et protège les commandes par session CSRF. Les textes et exports gérés sont destinés au volume chiffré. Une copie SQLite cohérente et vérifiée maintient la lecture en cas de panne du catalogue principal ; les écritures sont alors bloquées."
 )
+h("Collecte périodique", 2)
+p(
+    "Le module continuous orchestre des cycles successifs sur les deux derniers jours UTC. La configuration attend 60 secondes après la fin d’un cycle. Le délai total comprend aussi découverte, traitement, publication et reprises. Ce fonctionnement par micro-lots ne garantit pas un temps réel strict."
+)
 page("Code principal et reprise automatique")
 h("Checkpoints persistants", 2)
 p(
@@ -282,6 +288,10 @@ p(
 )
 code(
     'with database(state) as db, db:\n    db.execute("UPDATE tasks SET status=?,payload=? "\n               "WHERE job_id=? AND url=?",\n               (status, normalized_payload, key, url))\n# worker.py : aucun déplacement du checkpoint avant persistance.'
+)
+h("Calendrier et reprise", 2)
+p(
+    "Une transaction crée la tâche et son lien au calendrier. Après arrêt brutal, la reprise conserve la tâche en attente. Une pause volontaire reste prioritaire. Les relances de cycle sont bornées, en plus des tentatives internes du worker. Un lot bloqué par la qualité demande une correction avant reprise."
 )
 h("Qualité avant activation", 2)
 p(
@@ -370,6 +380,11 @@ p(
     "18 exécutions sur le même volume APFS AES-256, trois répétitions par taille et catalogue. Copies isolées du catalogue rempli, corps HTML fictifs d’environ 1, 10 et 50 Kio. Préparation des copies exclue ; découverte, extraction, checkpoints, exports et copie de secours inclus. Comptes, empreintes et égalité JSON/JSONL vérifiés. Détail, dispersion et volumes : Benchmark_chiffre.json.",
     "CaptionText",
 )
+h("Arrivées successives", 2)
+p(
+    "Un essai complémentaire traite 10 000 articles fictifs d’environ 2 Kio sur 40 cycles en 35,48 s, soit 281,82 articles/s. Les 62 répétitions entre cycles ne créent pas de révision superflue. Délais disponibilité-publication : 0,38 à 1,36 s. Source injectée, sans réseau TASS ni garantie de temps réel strict. Preuve : Complement_20261018/Charge_continue.json.",
+    "CaptionText",
+)
 h("Interprétation", 2)
 p(
     "La publication recopie le catalogue entier vers le secours : son coût fixe pénalise les petits lots. Les durées et débits sont à comparer entre tailles et catalogues ; aucun seuil d’absence de ralentissement significatif n’est fixé par la grille. Poste partagé, caches non neutralisés, collecte bornée à 2 000 candidats. Sans réseau ni mesure isolée du coût du chiffrement. Les anciens benchmarks restent historiques."
@@ -383,20 +398,20 @@ p(
 )
 page("Captures d’exécution et monitoring")
 p(
-    "La vidéo actualisée montre une exécution de l’interface, ses compteurs, les événements et le passage en lecture de secours après une panne de catalogue simulée. Le type de données, la version et les événements sont explicités dans Video_cloture.json. La démonstration fictive reste distincte des vérifications TASS réelles."
+    "Le suivi conserve l’interface du collecteur et affiche maintenant les cycles, la prochaine échéance et la durée du dernier cycle. La capture ci-dessous provient de dix cycles sur une source fictive. Les nouvelles vérifications restent distinctes des mesures réseau et des captures antérieures."
 )
-image = FINAL / "Cloture_suivi.png"
+image = ROOT / "Preuves/Complement_20261018/Suivi_flux_apercu.png"
 if image.exists():
     picture(
-        "Collecte_TASS/Cloture_suivi.png",
-        "Figure 2. Suivi dans l’interface actuelle ; nature fictive de la démonstration identifiée.",
+        "Complement_20261018/Suivi_flux_apercu.png",
+        "Figure 2. Collecte périodique : dix cycles sur une source fictive, sans requête TASS.",
     )
 h("Indicateurs et extension", 2)
 p(
     "Actualisation chaque seconde : découvert, téléchargé, validé, nouveau, modifié, inchangé, filtré, supprimé, rejeté, durée, débit, tentatives, étape et dernière activité. Le statut indique aussi backend, fraîcheur du secours et sécurité. Les événements stage_duration ajoutent les durées par étape sans modifier le contrat des articles."
 )
 p(
-    "Une alerte SLOW_ARTICLE est déclenchée par franchissement d’un seuil configurable. SECURITY_PERMISSIONS signale et contient des droits trop ouverts ; CATALOG_INTEGRITY signale la bascule. Les alertes restent locales, sans destinataire externe. Preuves : Tests_cloture_final.log et Incident_simule.json."
+    "POLL_STALLED signale un worker sans activité récente. POLL_COVERAGE_LIMITED signale un quota ou une pagination limitant la couverture. Les alertes de lenteur, permissions et intégrité restent actives. Les seuils sont des choix du projet. Les alertes restent locales, sans destinataire externe."
 )
 page("Documentation d’utilisation")
 h("Application personnelle sur le Mac", 2)
@@ -404,7 +419,7 @@ p(
     "Préparer Preparer_volume_chiffre.command dans Terminal, saisir le mot de passe, puis ouvrir Lancer_Observatoire_TASS.command. Le service doit être arrêté pendant migration et restauration. Le lanceur garde un pointeur privé vers l’état chiffré."
 )
 code(
-    "python3 -m pipeline collect-ui --state /Volumes/MemoireOSINT/B3 \\\n  --require-encrypted --slow-article-seconds 10 --open\npython3 -m pipeline collect-check-security \\\n  --state /Volumes/MemoireOSINT/B3 --require-encrypted\npython3 -m pipeline collect-restore --state /Volumes/MemoireOSINT/B3"
+    "python3 -m pipeline collect-ui --state /Volumes/MemoireOSINT/B3 \\\n  --require-encrypted --watch-config config/collecte_continue.json\npython3 -m pipeline collect-check-security \\\n  --state /Volumes/MemoireOSINT/B3 --require-encrypted\npython3 -m pipeline collect-restore --state /Volumes/MemoireOSINT/B3"
 )
 h("Collecte, consultation et droits", 2)
 p(
@@ -419,10 +434,10 @@ p(
 page("Conclusion, soutenance et sources")
 h("Résultat et limites", 2)
 p(
-    "La collecte, la qualité, les versions, la reprise et le suivi sont implémentés. Les droits sont testés jusqu’à B2 sur une fixture ; la lecture de secours et la restauration sont vérifiées. Le volume chiffré et la migration sont décrits par leur état de preuve réel, sans confondre préparation et activation."
+    "La collecte périodique, la qualité, les versions, la reprise et le suivi sont implémentés et testés sur des arrivées fictives. La cadence est configurable. Les droits, la lecture de secours et la restauration gardent leurs preuves distinctes. Le volume chiffré conserve son périmètre documenté."
 )
 p(
-    "La machine demeure un domaine unique de panne. Le miroir maintient la lecture mais ne constitue pas une haute disponibilité complète. Les archives TASS peuvent être partielles. L’import B2 conserve une commande explicite et B4 requiert une inférence sur le texte identifié, sans réentraînement automatique."
+    "La machine demeure un domaine unique de panne. Le miroir maintient la lecture mais ne constitue pas une haute disponibilité complète. Les archives TASS peuvent être partielles. Un quota saturé demande une revue de la fenêtre et de la pagination, sans promesse d’exhaustivité. L’import B2 conserve une commande explicite et B4 requiert une inférence sur le texte identifié, sans réentraînement automatique."
 )
 table(
     ["Temps", "Preuve à expliquer"],
@@ -439,7 +454,7 @@ p(
     "Les huit critères d’oral restent prévus jusqu’à une répétition réelle. Questions : comment éviter la réintroduction d’un texte corrigé ? Que continue-t-on lors d’une panne SQLite ? Pourquoi un nouveau corpus ne demande-t-il pas un nouvel entraînement ?"
 )
 p(
-    "Sources : grille fournie RNCP38777, Bloc 3!A6:A38 ; consignes du directeur ; code et preuves de cette version. Dépôt : https://github.com/edcdataworker/memoire-osint. Les documents descriptifs ne remplacent pas les tests OSINT.",
+    "Sources : grille RNCP38777, Bloc 3!A6:A38 ; complément de consigne du Bloc 3 reçu le 18 octobre 2026 ; code et preuves de cette version. Dépôt : https://github.com/edcdataworker/memoire-osint. Les documents descriptifs ne remplacent pas les tests OSINT.",
     "SmallText",
 )
 SimpleDocTemplate(

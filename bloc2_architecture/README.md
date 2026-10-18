@@ -11,7 +11,8 @@ Bloc 2, version locale du 4 octobre 2026. Plateforme pour la veille OSINT. Elle 
 3. `Preuves/` : résultats des contrôles, mesures, captures et manifeste des versions.
 4. `Demonstration_locale_OSINT.mp4` : enregistrement du fonctionnement local, avec une panne simulée. Ce fichier ne prouve pas un hébergement de production externe.
 5. `Demonstration_raccordement_Observatoire.mp4` : import réel depuis le suivi du programme développé dans le bloc 3, état final des stockages et limites. Journal : `Preuves/Raccordement_Observatoire.json`.
-6. `Correspondance_criteres_Bloc2.csv` et `Preparation_orale_Bloc2.md` : correspondance des 28 critères et trame de cinq minutes.
+6. `Correspondance_criteres_Bloc2.csv` : correspondance des 28 critères. La trame orale de cinq minutes reste en local.
+7. [Presentation_Bloc2_OSINT.pptx](Presentation_Bloc2_OSINT.pptx) : sept diapositives pour les cinq minutes d’oral, avec notes du présentateur et références des preuves. Le minutage est prévu et reste à vérifier pendant une répétition.
 
 ## Stockages et autorité
 
@@ -138,3 +139,42 @@ Références techniques consultées le 4 octobre 2026 : [Compose et dépendances
 Le [rapprochement Bloc 2-3.2](docs/Correspondance_ANSSI_Bloc2.md) localise les recommandations, configurations, preuves et écarts. Le volume chiffré du programme développé dans le bloc 3 et la restauration des rectifications/effacements sont vérifiés dans les preuves jointes. La vidéo de raccordement conserve son état antérieur au chiffrement. Les métadonnées Bloc 2 et les copies externes ne bénéficient pas automatiquement de la protection du volume.
 
 Le [rapport d’infrastructure V1.2](Plan_infrastructure_OSINT.pdf) et la [correspondance des critères](Correspondance_criteres_Bloc2.csv) accompagnent cette version du code. Les preuves publiques expurgées sont dans [verification/Finalisation_Bloc2.json](verification/Finalisation_Bloc2.json).
+
+## Complément des consignes du 18 octobre 2026
+
+Le plan PDF et les sept diapositives gardent leur structure. Le complément fourni précise l'architecture, le modèle de données, le code IaC, le déploiement, la surveillance et la documentation. Les critères pondérés sont : architecture 25 %, modèle 15 %, IaC 20 %, déploiement 15 %, monitoring 10 %, documentation 10 %, présentation et questions 5 %. Ces poids ne remplacent pas les 28 formulations de la grille école. La vidéo est hors périmètre de cette révision.
+
+### Déploiement reproductible
+
+Prérequis : Python 3, OpenSSL, Docker Desktop démarré, Docker Compose v2 avec `up --wait`, volume de données monté et espace disque disponible. Le moteur virtualisé de Docker Desktop est l'hôte local testé. Aucun serveur virtuel autonome ou cloud n'est provisionné par ces scripts.
+
+```sh
+python3 scripts/infrastructure.py deploy
+```
+
+Cette commande génère uniquement les secrets/certificats absents, valide Compose, construit l'image, démarre PostgreSQL/MongoDB/application, attend leurs healthchecks puis applique la migration additive des révisions. Un deuxième passage réutilise les volumes. `--no-build` utilise l'image locale existante. Aucun import de corpus, effacement de volume ou remplacement d'index n'est implicite. Les étapes Elasticsearch/Kibana et l'ingestion restent explicites dans le mode opératoire ci-dessus. Une erreur arrête la commande avec un code non nul et un diagnostic sans sortie brute de sous-processus. Un échec partiel n'entraîne pas un rollback des données : corriger la cause puis relancer.
+
+`docker/compose.yaml` inclut la définition racine sans la dupliquer. Le dossier `docker/` documente les chemins de construction. Docker Compose constitue le choix IaC de ce projet ; Terraform et Kubernetes ne sont pas utilisés.
+
+### Surveillance active locale
+
+```sh
+python3 scripts/infrastructure.py monitor --search --samples 0 --interval 30 \
+  --output .state/infrastructure_monitor.jsonl
+```
+
+Arrêt par Ctrl+C. `--samples 3` permet une vérification bornée. L'intervalle est une attente après le prélèvement ; le prélèvement lui-même prend aussi du temps. La commande suit les seuls conteneurs des services attendus du projet Compose et n'affiche ni labels, ni variables d'environnement, ni commandes internes, ni secrets. PostgreSQL, MongoDB et l'application sont obligatoires ; `--search` ajoute Elasticsearch.
+
+À chaque échantillon : état, healthcheck disponible, CPU, mémoire utilisée/limite et pourcentage, réseau et disque cumulatifs. Alertes : service absent, arrêté, non sain ou mémoire au moins égale au seuil configurable, 85 % par défaut. Ce seuil est un choix d'exploitation, pas un seuil de certification. Code 0 si tous les prélèvements sont bons ; 2 si au moins un prélèvement signale une alerte ; 1 pour un échec du déploiement ; 130 après Ctrl+C. Le fichier JSONL est ajouté sans écrasement. Prévoir sa rotation si utilisé durablement.
+
+La surveillance reste au premier plan et n'est pas installée comme service permanent. Elle ne redémarre pas les services, n'envoie aucune notification distante et ne mesure ni la fraîcheur des données ni la qualité NER. Le healthcheck `/health` de l'application vérifie sa disponibilité HTTP, pas une lecture SQL/Mongo ; Elasticsearch sans healthcheck est contrôlé comme processus en cours. Le test d'intégration distinct vérifie les données et droits. Les compteurs réseau/disque ne sont pas des débits ni le coût isolé d'un lot.
+
+### Modèle et preuve
+
+L'ERD relationnel reste adapté aux écritures opérationnelles, identifiants, sources et révisions. Aucun modèle en étoile n'est implémenté : un entrepôt décisionnel introduirait des faits/dimensions et un chargement distincts, sans besoin établi pour cette consultation documentaire. MongoDB conserve le JSON variable et le texte chiffré ; l'index Elasticsearch se reconstruit depuis les autorités SQL/Mongo.
+
+Les nouvelles preuves sont dans `Preuves/Complement_20261018/`. Les essais de 60 000, 600 000 et 6 000 000 lignes ne sont pas relancés : code d'ingestion et schémas inchangés, résultats attribués à leur version mesurée. Le redéploiement testé sur l'environnement existant ne démontre pas une installation vierge sur un deuxième poste. La révision corrigée est destinée au dépôt public ; consulter l’onglet Actions pour les vérifications distantes.
+
+## Provisionnement du serveur virtuel
+
+Le plan reproductible et ses garde-fous sont dans [vm/README.md](vm/README.md). `python3 scripts/virtual_server.py plan` décrit une VM locale Ubuntu et sa configuration cloud-init. Deux tests vérifient le refus sans fournisseur et la conservation d’une instance existante. Multipass étant absent du poste, aucun déploiement VM n’est revendiqué. Le Compose testé sous Docker Desktop reste distinct.

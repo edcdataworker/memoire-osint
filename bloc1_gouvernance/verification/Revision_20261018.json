@@ -1,0 +1,64 @@
+{
+  "revision": "1.6",
+  "date": "2026-10-18",
+  "requirements": {
+    "plan_pages": [
+      8,
+      10
+    ],
+    "presentation_slides": [
+      10,
+      15
+    ]
+  },
+  "actual": {
+    "plan_pages": 10,
+    "slides": 12,
+    "planned_oral_seconds": 900
+  },
+  "cover_contents_and_references_included": true,
+  "appendices_inside_main_pdf": false,
+  "supporting_legal_workbook": "Dossier juridique de huit pages distinct et inchangé, hors plan principal",
+  "criteria_exact_verified": 22,
+  "risks_with_response": 10,
+  "raci_retained": true,
+  "table_of_contents_and_page_refs_checked": true,
+  "slide_page_refs": [
+    "1     1",
+    "2     2",
+    "2     3",
+    "2     4",
+    "3     5",
+    "4     6",
+    "4 et 5     7",
+    "5     8",
+    "6 et 7     9",
+    "8     10",
+    "5 et 9     11",
+    "9     12"
+  ],
+  "visual_review": "Dix pages et douze diapositives rendues ; tableaux et sections vérifiés, styles et plan préservés",
+  "pptx_native_tables": 7,
+  "pptx_package_and_geometry": "pass",
+  "training_or_audit_performed": false,
+  "human_rehearsal_observed": false,
+  "remote_publication_updated": false,
+  "other_blocks_code_changed": false,
+  "limitations": [
+    "droits d’usage et décisions réelles non attestés",
+    "contacts et diffusion de notice à compléter",
+    "formation et audit indépendant prévus",
+    "revue humaine TASS à réaliser",
+    "copie hors machine non mise en œuvre"
+  ],
+  "supplement_sha256": "4b0da1231840c27eb069a83c79a8b72d8d86198e02c29ef6af96626babc830ac",
+  "outputs": {
+    "Plan_gouvernance_OSINT.pdf": "26402c9614733a6610b220d7a0f117f2eb31f53545d9771bac0525ecd9bee6ed",
+    "Presentation_Bloc1_OSINT.pptx": "20c599ad5ed81fe4a442b9c1f09e5fffb9741a1cf8caf5c1acd86e87b93b7bf6",
+    "Correspondance_criteres_Bloc1.csv": "f243a7dda52d65175efe3c891d5a895135a943963d330da5e8e90f5ac1d6cce5"
+  },
+  "documentary_review_performed": true,
+  "organizational_audit_performed": false,
+  "notes_page_references_remapped": true,
+  "latest_slide_renders_pixel_identical_to_reviewed_version": true
+}

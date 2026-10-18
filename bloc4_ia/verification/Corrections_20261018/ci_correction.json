@@ -1,0 +1,82 @@
+{
+  "environment": "local_loopback_demo",
+  "executed_at": "2026-10-18T20:59:40.441087+00:00",
+  "source_commit": "deef3efcf9966a8dcd0f2141fff35179214675ff",
+  "source_tree_sha256": "8a16564e4961e5986c09b9ee223f67a0aae451267f7934fbf1ff6904bb036fce",
+  "source_identity": "Working files identified by hash; commit alone does not describe uncommitted changes",
+  "steps": [
+    {
+      "step": "dependencies",
+      "exit_code": 0,
+      "duration_seconds": 0.199
+    },
+    {
+      "step": "lint",
+      "exit_code": 0,
+      "duration_seconds": 0.061
+    },
+    {
+      "step": "tests",
+      "exit_code": 0,
+      "duration_seconds": 9.997
+    },
+    {
+      "step": "build",
+      "exit_code": 0,
+      "duration_seconds": 0.332
+    },
+    {
+      "step": "install_wheel",
+      "exit_code": 0,
+      "duration_seconds": 0.216
+    }
+  ],
+  "deployment": {
+    "wheel_sha256": "743b36d7df4dd2442dce9cce7c16142b1b8bd140ad27c678ec4f0437f3c95103",
+    "release": "/Users/ed/Desktop/Mémoire/04_Bloc_4_IA/.state/releases/743b36d7df4dd244",
+    "deployed_at": "2026-10-18T20:59:39.992929+00:00",
+    "previous": {
+      "wheel_sha256": "a2443582cee9e4539bb7737610ef880b67eb82aa5fa6765be723d381f17ce6b5",
+      "release": "/Users/ed/Desktop/Mémoire/04_Bloc_4_IA/.state/releases/a2443582cee9e453",
+      "deployed_at": "2026-10-18T20:55:27.555127+00:00",
+      "previous": {
+        "wheel_sha256": "366ab0f172624f00b228419b2143277d2de004c7954c757e6c846dd56aad8634",
+        "release": "/Users/ed/Desktop/Mémoire/04_Bloc_4_IA/.state/releases/366ab0f172624f00",
+        "deployed_at": "2026-10-04T01:23:13.651014+00:00",
+        "previous": {
+          "wheel_sha256": "41e7a5f3c6fc24e288d6d1456613613724efb1ffb5e4433476ff0d8b00dc215c",
+          "release": "/Users/ed/Desktop/Mémoire/04_Bloc_4_IA/.state/releases/41e7a5f3c6fc24e2",
+          "deployed_at": "2026-10-04T01:22:24.067153+00:00",
+          "previous": null
+        }
+      }
+    }
+  },
+  "smoke": {
+    "status": "ok",
+    "version": "0.2.1",
+    "quality_status": "unavailable_without_independent_human_reference",
+    "release_token": "dd3b725c65a541eab8cc0e66c87d5023",
+    "documents": 500,
+    "model_version": "weak-efc7c759e0-s42-e6",
+    "model_sha256": "f35d2e57acb16d96b802c1b578b3c9e780ea53114dcd28c7cb8d65b54fc5f918",
+    "prediction_ready": true
+  },
+  "rollback_probe": {
+    "restored_wheel_sha256": "a2443582cee9e4539bb7737610ef880b67eb82aa5fa6765be723d381f17ce6b5",
+    "health": {
+      "status": "ok",
+      "version": "0.2.1",
+      "quality_status": "unavailable_without_independent_human_reference",
+      "release_token": "697c8cee271a4968a2d53ef0a31869a5",
+      "documents": 500,
+      "model_version": "weak-efc7c759e0-s42-e6",
+      "model_sha256": "f35d2e57acb16d96b802c1b578b3c9e780ea53114dcd28c7cb8d65b54fc5f918",
+      "prediction_ready": true
+    }
+  },
+  "duration_seconds": 11.8,
+  "cloud_ci_executed": false,
+  "production_model_promoted": false,
+  "continuity": "Service is started and stopped for smoke; no uninterrupted public service claim"
+}

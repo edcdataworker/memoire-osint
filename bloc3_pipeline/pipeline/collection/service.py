@@ -52,6 +52,7 @@ class Controller:
         self.stop_server = threading.Event()
         self.active = None
         self.bridge_active = False
+        self.continuous = None
         self.security_status = security.check(self.state, config.get("require_encrypted", False))
         if not (self.state / "collection.sqlite").exists() and not (self.state / "mirror").exists():
             store.initialize(self.state)
@@ -102,6 +103,7 @@ class Controller:
             if resume:
                 current = store.job(self.state, resume)
                 if current["status"] not in (
+                    "queued",
                     "paused",
                     "failed",
                     "retryable",
@@ -254,6 +256,7 @@ class Controller:
             "read_only": kind != "primary",
             "mirror_at": mirror_at,
             "security": self.security_status,
+            "continuous": self.continuous.snapshot() if self.continuous else {"enabled": False},
         }
 
     def ingest_b2(self, key):
@@ -535,7 +538,13 @@ def serve(config, port=18743, open_browser=False):
                     self.send(400, {"error": str(exc)})
 
         server = ThreadingHTTPServer(("127.0.0.1", port), Handler)
+        if config.get("continuous") is not None:
+            from .continuous import ContinuousCollector
+
+            controller.continuous = ContinuousCollector(controller, config["continuous"])
         controller.recover()
+        if controller.continuous:
+            threading.Thread(target=controller.continuous.run, daemon=True).start()
         print(f"Application TASS : http://127.0.0.1:{port}", flush=True)
         if open_browser:
             import webbrowser

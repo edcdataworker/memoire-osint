@@ -12,7 +12,7 @@ La CLI prépare des fichiers et ne contacte pas de service externe. L’intégra
 
 ## Sécurité proportionnée à une démonstration locale
 
-L’interface sert les résultats en lecture sur 127.0.0.1. Elle refuse POST, les routes arbitraires, un Host distant et les URL trop longues. Les textes non fiables passent par `textContent`, les scripts viennent du même serveur et une politique CSP bloque les scripts inline, objets et frames. Les URL sources sont limitées à HTTP(S). Aucun mot de passe ne figure dans le code, les logs ou les exports. Les dépendances sont gelées dans `requirements.lock.txt` et `pip check` est exécuté.
+L’interface consulte les résultats et calcule des prédictions sur 127.0.0.1. Elle accepte uniquement POST /api/predict pour calculer des mentions sans enregistrer le texte. Elle refuse les autres mutations, les routes arbitraires, un Host distant, une origine différente et les URL trop longues. La taille des requêtes, le délai de lecture et les inférences simultanées sont bornés. Les textes non fiables passent par `textContent`, les scripts viennent du même serveur et une politique CSP bloque les scripts inline, objets et frames. Les URL sources sont limitées à HTTP(S). Aucun mot de passe ne figure dans le code, les logs ou les exports. Les dépendances sont gelées dans `requirements.lock.txt` et `pip check` est exécuté.
 
 Le serveur HTTP local n’est pas un serveur Internet durci. L’authentification repose sur la session locale et l’accès OS. Une exposition réseau nécessiterait reverse proxy TLS, authentification forte, quotas, observabilité et revue de menace. Les tests actuels vérifient les routes, l’injection HTML, les limites et le fonctionnement local, sans certification de sécurité ni audit exhaustif de vulnérabilités.
 

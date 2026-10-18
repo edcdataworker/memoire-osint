@@ -1,0 +1,17 @@
+{
+  "pdf_pages": 20,
+  "slides": 7,
+  "visual_review": "PDF complet et pages modifiées ; sept diapositives, rendu du PPTX exporté ; aucun débordement visible",
+  "pptx_package_and_geometry": "pass",
+  "native_tables_owner_slides": [
+    3,
+    4,
+    5
+  ],
+  "videos_modified": false,
+  "outputs": {
+    "Plan_infrastructure_OSINT.pdf": "2bc49bf90afde27d935b9a29ff437fcb09a3c9cb2e795adc5f6d94c032ccd5c2",
+    "Presentation_Bloc2_OSINT.pptx": "669b026556365fc971cf601a36b5c0774a79150321df7b344e62f50040fa9b75",
+    "Code_OSINT_Bloc2.zip": "07f15bc27b89085bfd5bc09be8c6beb3a84d31f63edbf1384dc07d255f13d9a8"
+  }
+}

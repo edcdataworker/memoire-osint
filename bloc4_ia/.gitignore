@@ -17,3 +17,5 @@ Artefacts_locaux/
 Revue_annotations_locale.html
 Revue_annotations_assistee_IA.html
 Preuves/*.webm
+
+.validation-*/

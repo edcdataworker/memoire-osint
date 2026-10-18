@@ -4,13 +4,24 @@
     "source_exacte": "Bloc 4!A6",
     "critere_exact": "1.1 - Le degré d'adéquation entre les besoins spécifiés dans le cahier des charges et les fonctionnalités offertes par la solution d'IA est évalué. Toutes les exigences du cahier des charges doivent être couvertes par la solution incluant l'accessibilité aux personnes en situation de handicap.",
     "statut": "Implémenté",
-    "existant": "Deux personas hypothétiques, parcours six étapes, matrice besoin/fonctionnalité, UI accessible.",
+    "existant": "Formulaire de prédiction ajouté au parcours existant ; vérification de 44 combinaisons de largeur et agrandissement, clavier et erreurs.",
     "preuves": [
       "docs/Cahier_des_charges.md",
-      "Preuves/browser_accessibility.json"
+      "Preuves/browser_accessibility.json",
+      "Preuves_complement_20261018/Verification_interface.json",
+      "Preuves/Complement_20261018/Verification_interface.json"
     ],
     "ecart": "Aucun entretien ni test avec utilisateur ou lecteur d’écran.",
-    "prochaine_action": "Faire tester les parcours et couvrir les besoins réellement exprimés."
+    "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
+    "complement_20261018": {
+      "version": "0.2.1",
+      "constat": "Formulaire de prédiction ajouté au parcours existant ; vérification de 44 combinaisons de largeur et agrandissement, clavier et erreurs.",
+      "preuve": [
+        "Preuves_complement_20261018/Verification_interface.json",
+        "Preuves/Complement_20261018/Verification_interface.json"
+      ],
+      "portee": "Tests techniques localisés ; pas de validation humaine ni de décision du jury"
+    }
   },
   {
     "id": "B4-1.2",
@@ -41,13 +52,24 @@
     "source_exacte": "Bloc 4!A8",
     "critere_exact": "1.3 - La capacité de la solution à maintenir une performance acceptable même en présence de données d'entrée imparfaites ou erronées, ou de conditions de fonctionnement difficiles, est évaluée par des tests de stress ou de robustesse.",
     "statut": "Implémenté",
-    "existant": "Rejets entrées invalides et essais bruit/longueur réalisés.",
+    "existant": "API : rejet des contrats invalides, origine distante et saturation ; traitement de 40000 caractères par le modèle TASS livré.",
     "preuves": [
       "Preuves/benchmark.json",
-      "Preuves/tests.xml"
+      "Preuves/tests.xml",
+      "tests/test_serving_lifecycle.py",
+      "Preuves_complement_20261018/API_modele_TASS.json"
     ],
-    "ecart": "Robustesse opérationnelle testée ; maintien de qualité sous bruit inconnu.",
-    "prochaine_action": "Annoter les cas perturbés et mesurer les erreurs de NER."
+    "ecart": "La robustesse du service est testée ; maintien de la qualité NER sur entrées bruitées non mesuré.",
+    "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
+    "complement_20261018": {
+      "version": "0.2.1",
+      "constat": "API : rejet des contrats invalides, origine distante et saturation ; traitement de 40000 caractères par le modèle TASS livré.",
+      "preuve": [
+        "tests/test_serving_lifecycle.py",
+        "Preuves_complement_20261018/API_modele_TASS.json"
+      ],
+      "portee": "Tests techniques localisés ; pas de validation humaine ni de décision du jury"
+    }
   },
   {
     "id": "B4-1.4",
@@ -80,36 +102,56 @@
     "source_exacte": "Bloc 4!A11",
     "critere_exact": "2.1 - La solution d'IA doit être compatible avec l'infrastructure de données existante. Les points à vérifier pourraient inclure la compatibilité des formats de données, l'adéquation avec les protocoles de communication existants, la capacité à interagir avec les bases de données existantes, etc.",
     "statut": "Testé",
-    "existant": "Contrats B3, modèle, export index distinct, import TLS et lecture transversale. Raccordement manuel de cinq nouveaux articles : neuf mentions relues, rejeu sans doublon.",
+    "existant": "Le serving charge le modèle livré, préserve texte et offsets Unicode, et restitue son empreinte sur de nouvelles entrées.",
     "preuves": [
       "../00_Pilotage/Integration_transversale/Preuves/Controle_B3_B2_B4_complet.json",
       "config/elasticsearch-entities-mapping.json",
       "Preuves/Raccordement_manuel_5_articles.json",
       "docs/Raccordement_manuel_nouveaux_articles.md",
-      "scripts/verifier_nouveaux_articles.py"
+      "scripts/verifier_nouveaux_articles.py",
+      "Preuves_complement_20261018/API_modele_TASS.json"
     ],
     "ecart": "Démonstration locale, modèle expérimental.",
-    "prochaine_action": "Conserver les versions concordantes et vérifier les accès avant remise."
+    "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
+    "complement_20261018": {
+      "version": "0.2.1",
+      "constat": "Le serving charge le modèle livré, préserve texte et offsets Unicode, et restitue son empreinte sur de nouvelles entrées.",
+      "preuve": [
+        "Preuves_complement_20261018/API_modele_TASS.json"
+      ],
+      "portee": "Tests techniques localisés ; pas de validation humaine ni de décision du jury"
+    }
   },
   {
     "id": "B4-2.2",
     "source_exacte": "Bloc 4!A12",
     "critere_exact": "2.2 - La solution d'IA doit interagir sans heurts avec les autres composants du système. Il s'agit notamment d'éviter les interruptions de service, d'assurer un temps de réponse approprié, de respecter les limites de ressources (CPU, mémoire, stockage, bande passante), etc.",
     "statut": "Implémenté",
-    "existant": "CPU/RAM et débit local mesurés ; intégration par fichiers et TLS.",
+    "existant": "API locale, temps mesurés et mise à jour avec passerelle stable ; sondes de santé pendant livraison et retour arrière.",
     "preuves": [
       "Preuves/benchmark.json",
-      "Preuves/inference_full.json"
+      "Preuves/inference_full.json",
+      "Preuves_complement_20261018/Verification_livraison.json",
+      "Preuves_complement_20261018/API_modele_TASS.json"
     ],
-    "ecart": "Pas de SLA ni mesure exhaustive de continuité/bande passante en charge multi-service.",
-    "prochaine_action": "Tester charge et indisponibilités représentatives en environnement cible."
+    "ecart": "Fenêtre locale observée ; aucun SLA, basculement inter-hôtes ni mesure exhaustive des ressources réseau en charge.",
+    "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
+    "complement_20261018": {
+      "version": "0.2.1",
+      "constat": "API locale, temps mesurés et mise à jour avec passerelle stable ; sondes de santé pendant livraison et retour arrière.",
+      "preuve": [
+        "Preuves_complement_20261018/Verification_livraison.json",
+        "Preuves_complement_20261018/API_modele_TASS.json"
+      ],
+      "portee": "Tests techniques localisés ; pas de validation humaine ni de décision du jury"
+    }
   },
   {
     "id": "B4-2.3",
     "source_exacte": "Bloc 4!A13",
     "critere_exact": "2.3 - La solution d'IA doit comporter des mécanismes appropriés pour la gestion des erreurs. Il peut s'agir de la détection d'erreurs, de la reprise après erreur, de la journalisation des erreurs pour faciliter le débogage, de l'envoi d'alertes en cas d'erreur, etc.",
     "statut": "Testé",
-    "existant": "Exceptions explicites, codes sortie, alertes locales, artefacts immuables, contrôle des corruptions. Revue : erreurs de saisie explicites, incomplet refusé, brouillon retirant attestation.",
+    "existant": "Entrées invalides et erreurs API explicites ; refus de candidat corrompu avec service précédent conservé. Échec de livraison rétablit le registre.",
     "preuves": [
       "Preuves/ci_tests.xml",
       "src/osint_ner/automation.py",
@@ -117,89 +159,168 @@
       "docs/Revue_humaine_42_articles.md",
       "src/osint_ner/human_review.py",
       "tests/test_human_review.py",
-      "Preuves/Revue_humaine/Verification_interface.json"
+      "Preuves/Revue_humaine/Verification_interface.json",
+      "tests/test_serving_lifecycle.py",
+      "Preuves_complement_20261018/Verification_livraison.json"
     ],
     "ecart": "Alertes par fichiers, pas d’astreinte ni envoi externe.",
-    "prochaine_action": "Brancher supervision opérationnelle autorisée et tester prise en charge."
+    "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
+    "complement_20261018": {
+      "version": "0.2.1",
+      "constat": "Entrées invalides et erreurs API explicites ; refus de candidat corrompu avec service précédent conservé. Échec de livraison rétablit le registre.",
+      "preuve": [
+        "tests/test_serving_lifecycle.py",
+        "Preuves_complement_20261018/Verification_livraison.json"
+      ],
+      "portee": "Tests techniques localisés ; pas de validation humaine ni de décision du jury"
+    }
   },
   {
     "id": "B4-2.4",
     "source_exacte": "Bloc 4!A14",
     "critere_exact": "2.4 - La solution d'IA doit être facile à maintenir et à mettre à jour. Les aspects à évaluer pourraient inclure la modularité du code, l'utilisation de versions de code contrôlées, la facilité d'ajout de nouvelles fonctionnalités ou d'amélioration des performances, la présence de tests automatisés, etc.",
     "statut": "Testé",
-    "existant": "Modules ciblés, Git, dépendances gelées, tests et wheel déployé. Parcours de revue modulaire, données privées et 40 tests locaux réussis.",
+    "existant": "Modules serving, livraison et watcher documentés ; tests fonctionnels et wheel vérifié sur la version locale courante.",
     "preuves": [
       "README.md",
       "Preuves/ci_local.json",
       "docs/Revue_humaine_42_articles.md",
       "src/osint_ner/human_review.py",
       "tests/test_human_review.py",
-      "Preuves/Revue_humaine/Verification_interface.json"
+      "Preuves/Revue_humaine/Verification_interface.json",
+      "src/osint_ner/deployment.py",
+      "scripts/watch_delivery.py",
+      "Preuves_complement_20261018/ci_tests.xml",
+      "Dockerfile",
+      "docker-compose.yml",
+      "Preuves_complement_20261018/Docker.json",
+      "Preuves_complement_20261018/ci_correction.json"
     ],
     "ecart": "Installation sur poste de remise et accès jury à vérifier ; dépôt publié et run GitHub attestés, dernières révisions locales distinctes.",
-    "prochaine_action": "Vérifier installation sur poste de remise et accès au code."
+    "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
+    "complement_20261018": {
+      "version": "0.2.1",
+      "constat": "Modules serving, livraison et watcher documentés ; tests fonctionnels et wheel vérifié sur la version locale courante.",
+      "preuve": [
+        "src/osint_ner/deployment.py",
+        "scripts/watch_delivery.py",
+        "Preuves_complement_20261018/ci_tests.xml"
+      ],
+      "portee": "Tests techniques localisés ; pas de validation humaine ni de décision du jury"
+    },
+    "correction_20261018": {
+      "constat": "Image construite avec dépendances Linux figées ; santé, prédiction, métriques, Host et protections du conteneur vérifiés sur fixtures. CI locale réexécutée.",
+      "limite": "Chemin Docker distinct de la livraison wheel ; aucun run distant ni déploiement externe attesté."
+    }
   },
   {
     "id": "B4-2.5",
     "source_exacte": "Bloc 4!A15",
     "critere_exact": "2.5 - La solution d'IA doit respecter les normes de sécurité en vigueur. Cela comprend la protection des données sensibles, l'utilisation de protocoles de communication sécurisés, la résistance aux attaques courantes (injection SQL, attaques par déni de service, etc.), la conformité aux réglementations comme le RGPD et l'accessibilité aux personnes en situation de handicap.",
     "statut": "Implémenté",
-    "existant": "Lecture locale, CSP, contrôles entrée/Host/routes, TLS B2, accessibilité responsive testée. Copies B4 inventoriées migrées sur le volume chiffré, empreintes et lecture HTTP contrôlées.",
+    "existant": "Prédiction JSON bornée, origine et Host contrôlés, une inférence simultanée, aucune persistance de la saisie ; interface agrandie et clavier testés.",
     "preuves": [
       "docs/Integration_securite_gouvernance.md",
       "Preuves/browser_accessibility.json",
       "Preuves/ci_tests.xml",
-      "Preuves/Protection_copies_B4.json"
+      "Preuves/Protection_copies_B4.json",
+      "src/osint_ner/server.py",
+      "tests/test_serving_lifecycle.py",
+      "Preuves_complement_20261018/Verification_interface.json"
     ],
     "ecart": "Cadre juridique et tests avec utilisateurs à confirmer ; profils navigateur et copies externes hors migration.",
-    "prochaine_action": "Valider cadre de traitement, tester lecteur d’écran et exposition cible."
+    "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
+    "complement_20261018": {
+      "version": "0.2.1",
+      "constat": "Prédiction JSON bornée, origine et Host contrôlés, une inférence simultanée, aucune persistance de la saisie ; interface agrandie et clavier testés.",
+      "preuve": [
+        "src/osint_ner/server.py",
+        "tests/test_serving_lifecycle.py",
+        "Preuves_complement_20261018/Verification_interface.json"
+      ],
+      "portee": "Tests techniques localisés ; pas de validation humaine ni de décision du jury"
+    }
   },
   {
     "id": "B4-3.1",
     "source_exacte": "Bloc 4!A16",
     "critere_exact": "3.1 - Le candidat a mis en place un système pour le réentrainement automatique des modèles d'IA. Cela peut être vérifié en examinant le code fourni, en inspectant les outils de gestion des tâches, les planificateurs de travaux, les scripts d'automatisation, etc.",
     "statut": "Testé",
-    "existant": "Polling empreintes déclenche entraînement candidat réel.",
+    "existant": "Ordonnanceur relié à évaluation, monitoring, promotion et livraison optionnelle du candidat accepté.",
     "preuves": [
       "Preuves/retraining_events.jsonl",
-      "src/osint_ner/automation.py"
+      "src/osint_ner/automation.py",
+      "tests/test_serving_lifecycle.py"
     ],
-    "ecart": "Démonstration en supervision faible, pas de labels humains nouvellement validés.",
-    "prochaine_action": "Relier la file de labels revus et programmer la cadence retenue."
+    "ecart": "Mécanisme exécuté sur fixtures ; cycle complet sur annotations TASS réellement revues à réaliser.",
+    "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
+    "complement_20261018": {
+      "version": "0.2.1",
+      "constat": "Ordonnanceur relié à évaluation, monitoring, promotion et livraison optionnelle du candidat accepté.",
+      "preuve": [
+        "src/osint_ner/automation.py",
+        "tests/test_serving_lifecycle.py"
+      ],
+      "portee": "Tests techniques localisés ; pas de validation humaine ni de décision du jury"
+    }
   },
   {
     "id": "B4-3.2",
     "source_exacte": "Bloc 4!A17",
     "critere_exact": "3.2 - Le système d'automatisation réentraine les modèles de manière efficace et opportune. L'efficacité peut être évaluée par la fréquence de réentrainement, le temps nécessaire pour le réentrainement, l'absence d'erreurs ou de défaillances pendant le réentrainement, etc.",
     "statut": "Testé",
-    "existant": "Durée de réentraînement mesurée, données inchangées ignorées, échec signalé.",
+    "existant": "Déclenchement par empreinte, saut des entrées inchangées, durée et erreurs journalisées.",
     "preuves": [
       "Preuves/retraining_events.jsonl",
-      "Preuves/ci_tests.xml"
+      "Preuves/ci_tests.xml",
+      "src/osint_ner/automation.py",
+      "Preuves_complement_20261018/Ordonnanceur_events.jsonl"
     ],
-    "ecart": "Mesures sur petit lot de démonstration.",
-    "prochaine_action": "Mesurer lot revu et cadence métier, valider délai attendu."
+    "ecart": "Cadence et ressources sur données TASS revues non qualifiées ; aucune amélioration du modèle affirmée.",
+    "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
+    "complement_20261018": {
+      "version": "0.2.1",
+      "constat": "Déclenchement par empreinte, saut des entrées inchangées, durée et erreurs journalisées.",
+      "preuve": [
+        "src/osint_ner/automation.py",
+        "Preuves_complement_20261018/Ordonnanceur_events.jsonl"
+      ],
+      "portee": "Tests techniques localisés ; pas de validation humaine ni de décision du jury"
+    }
   },
   {
     "id": "B4-3.3",
     "source_exacte": "Bloc 4!A18",
     "critere_exact": "3.3 - Le système d'automatisation prend en compte les changements dans les données. Cela peut être évalué par la capacité du système à gérer de nouvelles données, des formats de données modifiés, des changements dans la distribution des données, etc.",
     "statut": "Testé",
-    "existant": "Nouveau hash provoque candidat, schéma2 rejeté, dérive de longueur suivie.",
+    "existant": "Empreintes des jeux, référence, manifeste et données courantes ; validation des schémas et contrôles de séparation.",
     "preuves": [
       "Preuves/retraining_events.jsonl",
       "Preuves/reproducibility.json",
-      "Preuves/monitor_current.json"
+      "Preuves/monitor_current.json",
+      "src/osint_ner/automation.py",
+      "src/osint_ner/model.py",
+      "tests/test_serving_lifecycle.py"
     ],
     "ecart": "Pas de nouvel exemple humain réellement livré.",
-    "prochaine_action": "Intégrer données revues en conservant manifeste et exclusions."
+    "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
+    "complement_20261018": {
+      "version": "0.2.1",
+      "constat": "Empreintes des jeux, référence, manifeste et données courantes ; validation des schémas et contrôles de séparation.",
+      "preuve": [
+        "src/osint_ner/automation.py",
+        "src/osint_ner/model.py",
+        "tests/test_serving_lifecycle.py"
+      ],
+      "portee": "Tests techniques localisés ; pas de validation humaine ni de décision du jury"
+    }
   },
   {
     "id": "B4-3.4",
     "source_exacte": "Bloc 4!A19",
     "critere_exact": "3.4 - Le système d'automatisation détecte et gère la dérive du modèle. La dérive du modèle se produit lorsque le comportement du modèle change avec le temps en raison de changements dans les données sous-jacentes. Les indicateurs de ceci peuvent inclure des mécanismes de surveillance du modèle, des alertes en cas de dérive significative, des mesures correctives automatiques, etc.",
     "statut": "Implémenté",
-    "existant": "Divergence de distribution, métrique qualité séparée, alerte et gel de promotion implémentés. Parcours de revue du test préparé, sans données réelles attestées.",
+    "existant": "Monitoring et gel de promotion raccordés dans la même boucle ; une dérive synthétique bloque un candidat malgré des métriques favorables de test.",
     "preuves": [
       "Preuves/monitor_current.json",
       "Preuves/monitor_synthetic_shift.json",
@@ -209,119 +330,231 @@
       "docs/Revue_humaine_42_articles.md",
       "src/osint_ner/human_review.py",
       "tests/test_human_review.py",
-      "Preuves/Revue_humaine/Verification_interface.json"
+      "Preuves/Revue_humaine/Verification_interface.json",
+      "src/osint_ner/automation.py",
+      "tests/test_serving_lifecycle.py"
     ],
-    "ecart": "Qualité réelle non observable sans labels ; seuils exploratoires, réaction intégrée partielle.",
-    "prochaine_action": "Constituer référence revue, calibrer seuils et relier le gel au pilote de production."
+    "ecart": "Capteur de longueur seulement ; baisse réelle de qualité indisponible sans référence humaine. Branche favorable vérifiée sur fixtures temporaires.",
+    "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
+    "complement_20261018": {
+      "version": "0.2.1",
+      "constat": "Monitoring et gel de promotion raccordés dans la même boucle ; une dérive synthétique bloque un candidat malgré des métriques favorables de test.",
+      "preuve": [
+        "src/osint_ner/automation.py",
+        "tests/test_serving_lifecycle.py"
+      ],
+      "portee": "Tests techniques localisés ; pas de validation humaine ni de décision du jury"
+    }
   },
   {
     "id": "B4-3.5",
     "source_exacte": "Bloc 4!A20",
     "critere_exact": "3.5 - Le système d'automatisation garantit la prévisibilité et la reproductibilité du processus de réentrainement. Cela peut être évalué par la présence de contrôles de version pour les modèles et les données, l'enregistrement de métriques de performance du modèle, l'utilisation de graines aléatoires fixes, etc.",
     "statut": "Testé",
-    "existant": "Graines, hashes, config, dépendances ; deux entraînements donnent même modèle local.",
+    "existant": "Données, paramètres, référence, modèle et décisions identifiés ; livraison du même candidat avec prédictions concordantes.",
     "preuves": [
       "Preuves/training_run.json",
       "Preuves/reproducibility.json",
-      "requirements.lock.txt"
+      "requirements.lock.txt",
+      "src/osint_ner/automation.py",
+      "tests/test_serving_lifecycle.py"
     ],
     "ecart": "Premier artefact comparé issu d’un entraînement fini dont rapport avait échoué ; déterminisme inter-plateforme non garanti.",
-    "prochaine_action": "Rejouer une installation propre et vérifier les hashes sur plateforme cible."
+    "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
+    "complement_20261018": {
+      "version": "0.2.1",
+      "constat": "Données, paramètres, référence, modèle et décisions identifiés ; livraison du même candidat avec prédictions concordantes.",
+      "preuve": [
+        "src/osint_ner/automation.py",
+        "tests/test_serving_lifecycle.py"
+      ],
+      "portee": "Tests techniques localisés ; pas de validation humaine ni de décision du jury"
+    }
   },
   {
     "id": "B4-4.1",
     "source_exacte": "Bloc 4!A21",
     "critere_exact": "4.1 - Le candidat a mis en place un pipeline d'intégration et de déploiement continu pour la solution d'IA. Cela peut être vérifié en examinant le code, la configuration du pipeline, et les outils ou services utilisés.",
     "statut": "Testé",
-    "existant": "Build, tests, wheel, installation, démarrage et santé en chaîne locale. Workflow GitHub public déclenché par push, 3 jobs réussis ; 14 tests B3, 32 tests IA et livraison synthétique éphémère.",
+    "existant": "Changement des sources déclenchant dépendances, tests, build et livraison locale persistante avec passerelle stable.",
     "preuves": [
       "scripts/ci_local.py",
       "Preuves/ci_local.json",
       "Preuves/GitHub_workflow_final.json",
       "Preuves/GitHub_CI_report.json",
-      "Code_OSINT_GitHub.zip"
+      "Code_OSINT_GitHub.zip",
+      "scripts/watch_delivery.py",
+      "Preuves_complement_20261018/delivery_watch_events.jsonl",
+      "Dockerfile",
+      "docker-compose.yml",
+      "Preuves_complement_20261018/Docker.json",
+      "Preuves_complement_20261018/ci_correction.json"
     ],
-    "ecart": "Qualité humaine et service public permanent non établis. Les essais cloud concernent le runner de démonstration.",
-    "prochaine_action": "Conserver commit et URL du run réussi ; documenter toute évolution de la version remise."
+    "ecart": "Démonstration locale testée ; workflow distant actualisé mais non exécuté pour cette révision.",
+    "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
+    "complement_20261018": {
+      "version": "0.2.1",
+      "constat": "Changement des sources déclenchant dépendances, tests, build et livraison locale persistante avec passerelle stable.",
+      "preuve": [
+        "scripts/watch_delivery.py",
+        "scripts/ci_local.py",
+        "Preuves_complement_20261018/delivery_watch_events.jsonl"
+      ],
+      "portee": "Tests techniques localisés ; pas de validation humaine ni de décision du jury"
+    },
+    "correction_20261018": {
+      "constat": "Image construite avec dépendances Linux figées ; santé, prédiction, métriques, Host et protections du conteneur vérifiés sur fixtures. CI locale réexécutée.",
+      "limite": "Chemin Docker distinct de la livraison wheel ; aucun run distant ni déploiement externe attesté."
+    }
   },
   {
     "id": "B4-4.2",
     "source_exacte": "Bloc 4!A22",
     "critere_exact": "4.2 - Le pipeline fonctionne correctement, sans erreurs ou défaillances. Cela peut être vérifié par des tests automatisés, des rapports de build, des logs d'erreur, etc.",
     "statut": "Testé",
-    "existant": "Chaîne finale réussie avec codes retour, logs et tests. Workflow GitHub public déclenché par push, 3 jobs réussis ; 14 tests B3, 32 tests IA et livraison synthétique éphémère.",
+    "existant": "Chaîne locale courante réussie ; candidat corrompu refusé et échecs explicites.",
     "preuves": [
       "Preuves/ci_local.json",
       "Preuves/ci_tests.xml",
       "Preuves/GitHub_workflow_final.json",
       "Preuves/GitHub_CI_report.json",
-      "Code_OSINT_GitHub.zip"
+      "Code_OSINT_GitHub.zip",
+      "Preuves_complement_20261018/ci_local.json",
+      "Preuves_complement_20261018/ci_tests.xml",
+      "Preuves_complement_20261018/Verification_livraison.json",
+      "Dockerfile",
+      "docker-compose.yml",
+      "Preuves_complement_20261018/Docker.json",
+      "Preuves_complement_20261018/ci_correction.json"
     ],
     "ecart": "Qualité humaine et service public permanent non établis. Les essais cloud concernent le runner de démonstration.",
-    "prochaine_action": "Conserver commit et URL du run réussi ; documenter toute évolution de la version remise."
+    "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
+    "complement_20261018": {
+      "version": "0.2.1",
+      "constat": "Chaîne locale courante réussie ; candidat corrompu refusé et échecs explicites.",
+      "preuve": [
+        "Preuves_complement_20261018/ci_local.json",
+        "Preuves_complement_20261018/ci_tests.xml",
+        "Preuves_complement_20261018/Verification_livraison.json"
+      ],
+      "portee": "Tests techniques localisés ; pas de validation humaine ni de décision du jury"
+    },
+    "correction_20261018": {
+      "constat": "Image construite avec dépendances Linux figées ; santé, prédiction, métriques, Host et protections du conteneur vérifiés sur fixtures. CI locale réexécutée.",
+      "limite": "Chemin Docker distinct de la livraison wheel ; aucun run distant ni déploiement externe attesté."
+    }
   },
   {
     "id": "B4-4.3",
     "source_exacte": "Bloc 4!A23",
     "critere_exact": "4.3 - Le pipeline assure une mise à jour et une livraison fluides de la solution d'IA. Cela peut être évalué par la durée des builds, la fréquence des mises à jour réussies, l'absence de problèmes lors de la mise à jour de la solution d'IA, etc.",
     "statut": "Testé",
-    "existant": "Deux versions de wheel, durée, contrôle santé et retour arrière exécutés.",
+    "existant": "Backend candidat contrôlé avant bascule atomique ; retour arrière et conservation du service en cas de corruption vérifiés.",
     "preuves": [
       "Preuves/ci_first_run.json",
       "Preuves/ci_second_run.json",
-      "Preuves/ci_local.json"
+      "Preuves/ci_local.json",
+      "Preuves_complement_20261018/Verification_livraison.json"
     ],
-    "ecart": "Le service de contrôle démarre et s’arrête ; aucune continuité sans interruption revendiquée.",
-    "prochaine_action": "Tester bascule de service continue si besoin métier."
+    "ecart": "Mesures sur le poste dans une fenêtre observée ; reprise après panne hôte non implémentée.",
+    "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
+    "complement_20261018": {
+      "version": "0.2.1",
+      "constat": "Backend candidat contrôlé avant bascule atomique ; retour arrière et conservation du service en cas de corruption vérifiés.",
+      "preuve": [
+        "Preuves_complement_20261018/Verification_livraison.json"
+      ],
+      "portee": "Tests techniques localisés ; pas de validation humaine ni de décision du jury"
+    }
   },
   {
     "id": "B4-4.4",
     "source_exacte": "Bloc 4!A24",
     "critere_exact": "4.4 - Le pipeline est entièrement automatisé, sans nécessiter d'interventions manuelles pour la build, les tests, ou le déploiement. Cela peut être vérifié par la configuration du pipeline et l'absence d'étapes manuelles.",
     "statut": "Testé",
-    "existant": "Commande unique automatise build, tests et déploiement de démonstration sans étape intermédiaire. Workflow GitHub public déclenché par push, 3 jobs réussis ; 14 tests B3, 32 tests IA et livraison synthétique éphémère.",
+    "existant": "Watcher déclenchant automatiquement toute la chaîne puis ignorant les sources inchangées.",
     "preuves": [
       "scripts/ci_local.py",
       "Preuves/ci_local.json",
       "Preuves/GitHub_workflow_final.json",
       "Preuves/GitHub_CI_report.json",
-      "Code_OSINT_GitHub.zip"
+      "Code_OSINT_GitHub.zip",
+      "scripts/watch_delivery.py",
+      "Preuves_complement_20261018/delivery_watch_events.jsonl",
+      "Dockerfile",
+      "docker-compose.yml",
+      "Preuves_complement_20261018/Docker.json",
+      "Preuves_complement_20261018/ci_correction.json"
     ],
-    "ecart": "Qualité humaine et service public permanent non établis. Les essais cloud concernent le runner de démonstration.",
-    "prochaine_action": "Conserver commit et URL du run réussi ; documenter toute évolution de la version remise."
+    "ecart": "Observation bornée lancée par opérateur ; pas de service système permanent. Aucun cycle distant actuel attesté.",
+    "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
+    "complement_20261018": {
+      "version": "0.2.1",
+      "constat": "Watcher déclenchant automatiquement toute la chaîne puis ignorant les sources inchangées.",
+      "preuve": [
+        "scripts/watch_delivery.py",
+        "Preuves_complement_20261018/delivery_watch_events.jsonl"
+      ],
+      "portee": "Tests techniques localisés ; pas de validation humaine ni de décision du jury"
+    },
+    "correction_20261018": {
+      "constat": "Image construite avec dépendances Linux figées ; santé, prédiction, métriques, Host et protections du conteneur vérifiés sur fixtures. CI locale réexécutée.",
+      "limite": "Chemin Docker distinct de la livraison wheel ; aucun run distant ni déploiement externe attesté."
+    }
   },
   {
     "id": "B4-4.5",
     "source_exacte": "Bloc 4!A25",
     "critere_exact": "4.5 - Le pipeline inclut une gestion des versions appropriée pour la solution d'IA. Cela peut être vérifié par l'utilisation de contrôles de version, l'étiquetage des versions, l'enregistrement des modifications, etc.",
     "statut": "Testé",
-    "existant": "Git, commits, version paquet, hashes wheels/modèle/données et registre. Workflow GitHub public déclenché par push, 3 jobs réussis ; 14 tests B3, 32 tests IA et livraison synthétique éphémère.",
+    "existant": "Version applicative 0.2.1 ; empreinte des sources non commitées, wheel immuable, modèle et pointeur de livraison identifiés.",
     "preuves": [
       "Preuves/ci_local.json",
       "Preuves/Versions.json",
       "Preuves/GitHub_workflow_final.json",
       "Preuves/GitHub_CI_report.json",
-      "Code_OSINT_GitHub.zip"
+      "Code_OSINT_GitHub.zip",
+      "Preuves_complement_20261018/ci_local.json",
+      "src/osint_ner/deployment.py"
     ],
     "ecart": "Qualité humaine et service public permanent non établis. Les essais cloud concernent le runner de démonstration.",
-    "prochaine_action": "Conserver commit et URL du run réussi ; documenter toute évolution de la version remise."
+    "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
+    "complement_20261018": {
+      "version": "0.2.1",
+      "constat": "Version applicative 0.2.1 ; empreinte des sources non commitées, wheel immuable, modèle et pointeur de livraison identifiés.",
+      "preuve": [
+        "Preuves_complement_20261018/ci_local.json",
+        "src/osint_ner/deployment.py"
+      ],
+      "portee": "Tests techniques localisés ; pas de validation humaine ni de décision du jury"
+    }
   },
   {
     "id": "B4-4.6",
     "source_exacte": "Bloc 4!A26",
     "critere_exact": "4.6 - Le pipeline respecte les meilleures pratiques de sécurité, y compris l'utilisation de secrets pour les identifiants, le chiffrement des données sensibles, le respect des principes du moindre privilège, etc.",
     "statut": "Implémenté",
-    "existant": "Secrets absents code, données hors Git, permissions lecture workflow, TLS côté B2. Workflow public : permission contents:read, actions identifiées par SHA et fixtures synthétiques sans secret. Migration privée B4 exécutée et vérifiée sur image AES-256 ; sources de données et archives inventoriées protégées.",
+    "existant": "Livraison limitée à la boucle locale, corpus TASS et état de serving sur volume chiffré ; aucun secret transmis à la CI.",
     "preuves": [
       "docs/Integration_securite_gouvernance.md",
       ".github/workflows/tests.yml",
       ".gitignore",
       "Code_OSINT_GitHub.zip",
       "Preuves/GitHub_workflow_final.json",
-      "Preuves/Protection_copies_B4.json"
+      "Preuves/Protection_copies_B4.json",
+      "Preuves_complement_20261018/Deploiement_modele_TASS.json"
     ],
     "ecart": "FileVault désactivé ; protection des copies inventoriées seulement, profils navigateur et copies externes hors périmètre. Audit dépendances non exhaustif.",
-    "prochaine_action": "Conserver le volume et les liens, gérer les copies externes et scanner les dépendances avant exposition."
+    "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
+    "complement_20261018": {
+      "version": "0.2.1",
+      "constat": "Livraison limitée à la boucle locale, corpus TASS et état de serving sur volume chiffré ; aucun secret transmis à la CI.",
+      "preuve": [
+        "Preuves_complement_20261018/Deploiement_modele_TASS.json",
+        ".github/workflows/tests.yml"
+      ],
+      "portee": "Tests techniques localisés ; pas de validation humaine ni de décision du jury"
+    }
   },
   {
     "id": "B4-5.1",
@@ -436,7 +669,7 @@
     "source_exacte": "Bloc 4!A35",
     "critere_exact": "6.4 - Il existe une documentation complète du code qui explique comment utiliser la solution d'IA, y compris comment installer et configurer le code, comment utiliser les différentes fonctionnalités, etc.",
     "statut": "Implémenté",
-    "existant": "README, protocole, exploitation, sécurité et commandes de reconstruction. Guide de revue et lanceur local, reprise de progression et évaluation complète.",
+    "existant": "README, commandes de prédiction, réentraînement et livraison actualisés ; plan du rapport et présentation conservés.",
     "preuves": [
       "README.md",
       "docs/",
@@ -444,10 +677,20 @@
       "docs/Revue_humaine_42_articles.md",
       "src/osint_ner/human_review.py",
       "tests/test_human_review.py",
-      "Preuves/Revue_humaine/Verification_interface.json"
+      "Preuves/Revue_humaine/Verification_interface.json",
+      "docs/Automatisation_et_exploitation.md"
     ],
     "ecart": "Installation sur autre poste et accès jury non testés.",
-    "prochaine_action": "Tester le bundle sur environnement de remise."
+    "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
+    "complement_20261018": {
+      "version": "0.2.1",
+      "constat": "README, commandes de prédiction, réentraînement et livraison actualisés ; plan du rapport et présentation conservés.",
+      "preuve": [
+        "README.md",
+        "docs/Automatisation_et_exploitation.md"
+      ],
+      "portee": "Tests techniques localisés ; pas de validation humaine ni de décision du jury"
+    }
   },
   {
     "id": "B4-6.5",
@@ -467,7 +710,7 @@
     "source_exacte": "Bloc 4!A37",
     "critere_exact": "6.6 - Le code comprend une gestion appropriée des erreurs et des exceptions. Il ne doit pas échouer silencieusement en cas d'erreur, mais plutôt signaler l'erreur de manière appropriée.",
     "statut": "Testé",
-    "existant": "Exceptions et codes non nuls, erreur du scheduler remontée. Revue : erreurs de saisie explicites, incomplet refusé, brouillon retirant attestation.",
+    "existant": "Gestion des erreurs de prediction, disponibilité et échec de livraison avec restauration du registre et maintien du service.",
     "preuves": [
       "Preuves/ci_tests.xml",
       "src/osint_ner/cli.py",
@@ -475,17 +718,28 @@
       "docs/Revue_humaine_42_articles.md",
       "src/osint_ner/human_review.py",
       "tests/test_human_review.py",
-      "Preuves/Revue_humaine/Verification_interface.json"
+      "Preuves/Revue_humaine/Verification_interface.json",
+      "tests/test_serving_lifecycle.py",
+      "Preuves_complement_20261018/Verification_livraison.json"
     ],
     "ecart": "Verrou abandonné après SIGKILL nécessite procédure opérateur.",
-    "prochaine_action": "Documenter/tester reprise après arrêt brutal si automatisation permanente."
+    "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
+    "complement_20261018": {
+      "version": "0.2.1",
+      "constat": "Gestion des erreurs de prediction, disponibilité et échec de livraison avec restauration du registre et maintien du service.",
+      "preuve": [
+        "tests/test_serving_lifecycle.py",
+        "Preuves_complement_20261018/Verification_livraison.json"
+      ],
+      "portee": "Tests techniques localisés ; pas de validation humaine ni de décision du jury"
+    }
   },
   {
     "id": "B4-6.7",
     "source_exacte": "Bloc 4!A38",
     "critere_exact": "6.7 - Le code est accompagné de tests unitaires, d'intégration ou fonctionnels appropriés, garantissant que le code fonctionne comme prévu.",
     "statut": "Testé",
-    "existant": "Tests contrats, Unicode, métriques fixtures, HTTP, exclusions, cycle spaCy et scheduler. Workflow GitHub public déclenché par push, 3 jobs réussis ; 14 tests B3, 32 tests IA et livraison synthétique éphémère. Nouvelle suite locale : 40 tests réussis, dont provenance de revue, reprise et contrôles HTTP.",
+    "existant": "Tests de serving et cycle ajoutés, incluant modèle spaCy réel sur fixture, contrat Unicode, concurrence et intégration promotion/livraison.",
     "preuves": [
       "Preuves/ci_tests.xml",
       "tests/test_pipeline.py",
@@ -495,50 +749,75 @@
       "docs/Revue_humaine_42_articles.md",
       "src/osint_ner/human_review.py",
       "tests/test_human_review.py",
-      "Preuves/Revue_humaine/Verification_interface.json"
+      "Preuves/Revue_humaine/Verification_interface.json",
+      "tests/test_serving_lifecycle.py",
+      "Preuves_complement_20261018/ci_tests.xml"
     ],
     "ecart": "Qualité humaine et service public permanent non établis. Les essais cloud concernent le runner de démonstration.",
-    "prochaine_action": "Conserver commit et URL du run réussi ; documenter toute évolution de la version remise."
+    "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
+    "complement_20261018": {
+      "version": "0.2.1",
+      "constat": "Tests de serving et cycle ajoutés, incluant modèle spaCy réel sur fixture, contrat Unicode, concurrence et intégration promotion/livraison.",
+      "preuve": [
+        "tests/test_serving_lifecycle.py",
+        "Preuves_complement_20261018/ci_tests.xml"
+      ],
+      "portee": "Tests techniques localisés ; pas de validation humaine ni de décision du jury"
+    }
   },
   {
     "id": "B4-6.8",
     "source_exacte": "Bloc 4!A39",
     "critere_exact": "6.8 - Le code est hébergé sur un système de versioning comme Git, et l'utilisation de ce système est appropriée, avec des commit messages clairs et informatifs.",
     "statut": "Implémenté",
-    "existant": "Dépôt Git local, dépôt public identifié, commits et crédits ; code de développement et déploiement livré dans les archives locales.",
+    "existant": "Code local et miroir du dépôt actualisés ; archives de code renouvelées. Aucun push de la révision effectué.",
     "preuves": [
       "Preuves/Versions.json",
       "Code_OSINT_Bloc4.zip",
-      "Preuves/GitHub_workflow_final.json"
+      "Preuves/GitHub_workflow_final.json",
+      "Code_OSINT_GitHub.zip"
     ],
-    "ecart": "Dernières révisions locales non publiées dans cette opération ; accès et versions transmis au jury à vérifier.",
-    "prochaine_action": "Mettre le code à disposition par canal autorisé et vérifier accès."
+    "ecart": "Révision courante non publiée sur GitHub ; accès du jury et version distante à synchroniser avant remise.",
+    "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
+    "complement_20261018": {
+      "version": "0.2.1",
+      "constat": "Code local et miroir du dépôt actualisés ; archives de code renouvelées. Aucun push de la révision effectué.",
+      "preuve": [
+        "Code_OSINT_Bloc4.zip",
+        "Code_OSINT_GitHub.zip"
+      ],
+      "portee": "Tests techniques localisés ; pas de validation humaine ni de décision du jury"
+    }
   },
   {
     "id": "B4-7.1",
     "source_exacte": "Bloc 4!A40",
     "critere_exact": "7.1 - Le candidat explique clairement la solution d'IA et son fonctionnement. Les informations sont présentées de manière structurée et logique, facilitant la compréhension.",
     "statut": "Prévu",
-    "existant": "Support cinq minutes et guide de questions préparés.",
+    "existant": "Support de 19 diapositives : 15 principales pour un exposé visé de cinq minutes, puis 4 annexes pour les questions. Notes, sources et guide chronométré indicatif. Les limites techniques et les métriques exploratoires restent explicites.",
     "preuves": [
       "Presentation_Bloc4.pptx",
-      "Guide_oral_Bloc4.md"
+      "Guide_oral_Bloc4.md",
+      "Preuves/Presentation_orale_20261005.json",
+      "Preuves_complement_20261018/Presentation_15_principales.json"
     ],
     "ecart": "Prestation et chronométrage humains non observés.",
-    "prochaine_action": "Répéter et chronométrer la présentation ; faire évaluer écoute et réponses."
+    "prochaine_action": "Répéter personnellement l’exposé et mesurer sa durée."
   },
   {
     "id": "B4-7.2",
     "source_exacte": "Bloc 4!A41",
     "critere_exact": "7.2 - Le candidat explique les choix techniques qu'il a faits lors du développement et du déploiement de la solution d'IA. Ces explications devraient comprendre pourquoi certains choix ont été faits au détriment d'autres.",
     "statut": "Prévu",
-    "existant": "Support cinq minutes et guide de questions préparés.",
+    "existant": "Support de 19 diapositives : 15 principales pour un exposé visé de cinq minutes, puis 4 annexes pour les questions. Notes, sources et guide chronométré indicatif. Les limites techniques et les métriques exploratoires restent explicites.",
     "preuves": [
       "Presentation_Bloc4.pptx",
-      "Guide_oral_Bloc4.md"
+      "Guide_oral_Bloc4.md",
+      "Preuves/Presentation_orale_20261005.json",
+      "Preuves_complement_20261018/Presentation_15_principales.json"
     ],
     "ecart": "Prestation et chronométrage humains non observés.",
-    "prochaine_action": "Répéter et chronométrer la présentation ; faire évaluer écoute et réponses."
+    "prochaine_action": "Répéter personnellement l’exposé et mesurer sa durée."
   },
   {
     "id": "B4-7.3",
@@ -558,13 +837,15 @@
     "source_exacte": "Bloc 4!A43",
     "critere_exact": "7.4 - Le candidat communique clairement les performances de la solution d'IA, en expliquant comment il a évalué ces performances et en contextualisant ces résultats.",
     "statut": "Prévu",
-    "existant": "Support cinq minutes et guide de questions préparés.",
+    "existant": "Support de 19 diapositives : 15 principales pour un exposé visé de cinq minutes, puis 4 annexes pour les questions. Notes, sources et guide chronométré indicatif. Les limites techniques et les métriques exploratoires restent explicites.",
     "preuves": [
       "Presentation_Bloc4.pptx",
-      "Guide_oral_Bloc4.md"
+      "Guide_oral_Bloc4.md",
+      "Preuves/Presentation_orale_20261005.json",
+      "Preuves_complement_20261018/Presentation_15_principales.json"
     ],
     "ecart": "Prestation et chronométrage humains non observés.",
-    "prochaine_action": "Répéter et chronométrer la présentation ; faire évaluer écoute et réponses."
+    "prochaine_action": "Répéter personnellement l’exposé et mesurer sa durée."
   },
   {
     "id": "B4-7.5",
@@ -584,25 +865,29 @@
     "source_exacte": "Bloc 4!A45",
     "critere_exact": "7.6 - Le candidat utilise efficacement des supports visuels pour aider à expliquer la solution d'IA. Ces supports sont clairs, bien organisés et ajoutent de la valeur à la présentation.",
     "statut": "Prévu",
-    "existant": "Support cinq minutes et guide de questions préparés.",
+    "existant": "Support de 19 diapositives : 15 principales pour un exposé visé de cinq minutes, puis 4 annexes pour les questions. Notes, sources et guide chronométré indicatif. Les limites techniques et les métriques exploratoires restent explicites.",
     "preuves": [
       "Presentation_Bloc4.pptx",
-      "Guide_oral_Bloc4.md"
+      "Guide_oral_Bloc4.md",
+      "Preuves/Presentation_orale_20261005.json",
+      "Preuves_complement_20261018/Presentation_15_principales.json"
     ],
     "ecart": "Prestation et chronométrage humains non observés.",
-    "prochaine_action": "Répéter et chronométrer la présentation ; faire évaluer écoute et réponses."
+    "prochaine_action": "Répéter personnellement l’exposé et mesurer sa durée."
   },
   {
     "id": "B4-7.7",
     "source_exacte": "Bloc 4!A46",
     "critere_exact": "7.7 - Le candidat respecte le temps imparti pour la présentation, couvrant tous les points importants sans se précipiter ou dépasser le temps alloué.",
     "statut": "Prévu",
-    "existant": "Support cinq minutes et guide de questions préparés.",
+    "existant": "Support de 19 diapositives : 15 principales pour un exposé visé de cinq minutes, puis 4 annexes pour les questions. Notes, sources et guide chronométré indicatif. Les limites techniques et les métriques exploratoires restent explicites.",
     "preuves": [
       "Presentation_Bloc4.pptx",
-      "Guide_oral_Bloc4.md"
+      "Guide_oral_Bloc4.md",
+      "Preuves/Presentation_orale_20261005.json",
+      "Preuves_complement_20261018/Presentation_15_principales.json"
     ],
     "ecart": "Prestation et chronométrage humains non observés.",
-    "prochaine_action": "Répéter et chronométrer la présentation ; faire évaluer écoute et réponses."
+    "prochaine_action": "Répéter personnellement l’exposé et mesurer sa durée."
   }
 ]

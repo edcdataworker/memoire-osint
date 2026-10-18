@@ -4,80 +4,56 @@ Page 1 du PDF
 Mémoire OSINT
 Cellule de veille documentaire fictive
 
-Edouard Cappaert · Bloc 1 · Version 1.4 · 4 octobre 2026
+Edouard Cappaert · Bloc 1 · Version 1.6 · 18 octobre 2026
 
-Ce plan encadre l’Observatoire TASS local : collecte d’articles, consultation, exports et exploitation des résultats NER. Il relie les décisions de la cellule de veille aux contrôles disponibles dans les blocs techniques.
+Ce plan encadre une cellule d’un petit organisme privé fictif établi en France. Elle produit des notes documentaires à partir d’articles TASS et de mentions militaires extraites par IA. La politique couvre acquisition, qualité, accès, conservation, droits, incidents et contrôle.
 
-Statut : étude de cas et politique proposée. Rôles, durées et objectifs restent des hypothèses. Les preuves techniques locales sont distinguées des procédures à réaliser. Aucune approbation de direction, nomination réelle de DPO, formation ou conformité globale n’est revendiquée. Grille d’utilisation associée : Grille_utilisation_gouvernance.md.
+Statut : politique proposée. DIR désigne la direction du scénario, responsable des décisions de traitement. Aucune approbation réelle, désignation de DPO, formation, audit indépendant ou conformité globale n’est attestée. Les contrôles techniques locaux sont identifiés séparément.
 
 Sommaire
 
-| Section | Page |
+| Rubrique | Page |
 | --- | --- |
-| 1 Introduction et contexte stratégique | 2 |
-| 2 Références réglementaires et normatives | 3 |
-| 3 Parties prenantes et responsabilités | 4 |
-| 4.1 Qualité des données et gouvernance de l’IA | 5 |
-| 4.2 Sécurité et prestataires | 6 |
-| 4.3 Vie privée et registre des traitements | 7 |
-| 4.4 Conservation droits et accessibilité | 8 |
-| 5.1 et 5.2 Identification et évaluation des risques | 9 |
-| 5.3 Traitement de chaque risque | 10 |
-| 5.4 Incidents et continuité | 11 |
-| 6 Audit formation et amélioration continue · 7 Conclusion | 12 |
-| Résumé visuel intégré | 13 et 14 |
-| Références | 15 |
-| Extension TASS : gouvernance et preuves | 16 |
+| 1 Contexte stratégique et 2 cadre réglementaire | 2 |
+| 3 Parties prenantes et responsabilités | 3 |
+| 4.1 Qualité, gouvernance de l’IA et 4.2 sécurité | 4 |
+| 4.3 Vie privée et 4.4 conservation, droits, accessibilité | 5 |
+| 5.1 et 5.2 Identification et évaluation des risques | 6 |
+| 5.3 Traitement de chaque risque | 7 |
+| 5.4 Incidents et plans de contingence | 8 |
+| 6 Audit et amélioration, 7 conclusion | 9 |
+| Références et traçabilité | 10 |
+
+Lecture : les règles sont proposées ; « testé » désigne une preuve technique datée, souvent sur données fictives. Une mesure écrite ne prouve pas son exécution organisationnelle. Les visuels de responsabilités, cycle de vie et risques sont intégrés aux pages 3, 4 et 6.
+
+Crédits : cours et modèle de politique Eugenia cités. Adaptation pour Edouard Cappaert avec assistance Codex ; relecture, maîtrise et décisions lui reviennent.
 
 # 1 Introduction et contexte stratégique
 Page 2 du PDF
 
 1.1 Finalité et périmètre
 
-La cellule fictive appartient à un petit organisme privé établi en France. Deux utilisateurs métier, un analyste et un responsable de veille, explorent des mentions d’armes, d’unités et d’organisations militaires pour rédiger des notes sourcées. La direction de cet organisme est responsable des décisions de traitement. Les fonctions techniques et de conseil sont décrites p. 4, sans création d’une organisation réelle.
+AN, analyste, retrouve les passages ; RV, responsable de veille, contrôle la note avant diffusion. Le périmètre comprend collecte et catalogue du Bloc 3, versions et exports, SQL/MongoDB du Bloc 2, annotations, modèle et index du Bloc 4. Profilage individuel, décision automatisée sur les personnes et surveillance opérationnelle sont exclus. Toute nouvelle source, finalité ou destination impose une revue.
 
-Le périmètre couvre le corpus historique, la collecte réseau TASS du bloc 3, le catalogue SQLite, ses versions et exports, les stockages B2, annotations, modèles, index et restitution. Le mini-site fonctionne sur le poste. Profilage individuel, décisions automatisées sur les personnes et surveillance opérationnelle restent exclus. Toute extension de source ou de finalité exige une revue [P5].
+1.2 État vérifié et limites
 
-1.2 État documenté au 4 octobre 2026
+Le corpus initial contient 21 676 articles nettoyés. Cinq ajouts portent les stockages à 21 681, concordance encore contrôlée le 18 octobre [P5, P9]. L’inférence initiale produit 39 511 mentions ; un raccordement distinct en ajoute neuf [P6]. Le diagnostic sur 42 articles contre des propositions IA donne F1 32,73 %, sans attestation humaine. Une collecte ne lance pas le NER. TASS reste une source unique : ses mentions ne prouvent pas les événements.
 
-| Objet | État et classement proposé |
+2 Références réglementaires et normatives
+
+| Référence et portée | Mécanisme du scénario |
 | --- | --- |
-| Corpus historique | 21 742 articles bruts ; 21 676 nettoyés après 66 rejets. Les 1 889 identifiants sélectionnés concordent avec le notebook. Ces contrôles ne mesurent pas la qualité NER. |
-| Collecte et catalogue B3 | Rubriques, dates UTC, mots-clés et limite. La recette réelle ajoute cinq articles : catalogue et stockages B2 à 21 681 articles dans les preuves du 4 octobre [P5]. |
-| Modèle et restitution | Baseline locale de démonstration B4 : 39 511 mentions sur les 21 676 articles historiques. Les cinq nouveaux articles ne sont pas analysés dans cette recette. Qualité humaine indépendante non établie [P6]. |
-| Archives et confidentialité | Artefacts historiques incomplets, distincts de la baseline reconstruite. Documents B2 chiffrés. Volume AES-256 B3 activé ; migration et contrôles attestés dans Volume_chiffre.json. Anciennes clés retirées du notebook copié, révocation non attestée. |
+| RGPD, loi Informatique et Libertés [S1, S2] | Finalités et bases distinctes, registre, minimisation, information et droits (p. 5), sécurité (p. 4), incidents (p. 8). Données publiques parfois personnelles. |
+| Scraping et réutilisation [S3, S17, S18] | Qualifier droits sur les textes, CGU, restrictions et base légale. Respecter les exclusions, sans contournement. Pas de licence ni d’autorisation générale déduite. |
+| Règlement IA [S10] | Qualifier l’usage et les rôles avant exploitation, former aux limites et assurer un contrôle humain. Le thème militaire ne suffit pas à classer le cas à haut risque. |
+| Accessibilité [S11] | Exigence du projet ; RGAA comme méthode. Assujettissement légal à examiner selon l’organisme et le service, contrôle des parcours p. 5. |
+| ISO 27001:2022 et 27701:2025 [S12, S13] | Références volontaires pour risques, sécurité et vie privée. Aucun audit de clauses complet ou certificat revendiqué. |
+| NIS 2 [S14] | Qualification selon activité, taille et exceptions. Aucune obligation sectorielle attribuée automatiquement à cette cellule. |
 
-Les nombres ci-dessus décrivent les versions de recette, pas un compteur permanent. Les empreintes des preuves et du code consultés figurent dans Preuves/Harmonisation_bloc3.json. Les droits d’usage et l’analyse juridique restent à établir.
-
-1.3 Objectifs et limites
-
-RV définit le besoin et autorise un périmètre dans le scénario. AN sélectionne rubrique, dates, mots-clés et limite dans Collecte, consulte Suivi puis lit les articles et versions dans Corpus. Un export ou import B2 prépare la suite ; il ne lance ni inférence ni entraînement B4. RV relit toute note avant diffusion.
-
-TASS constitue une source unique : les fréquences reflètent ses publications, leur couverture et les erreurs d’extraction. Elles ne mesurent pas un inventaire militaire réel. Les articles peuvent citer des personnes physiques, même si les trois labels visés ne portent pas sur elles. Une donnée publiée reste susceptible d’être une donnée personnelle [S1, S3].
-
-# 2 Références réglementaires et normatives
-Page 3 du PDF
-
-2.1 Applicabilité et mécanismes retenus
-
-| Référence et portée | Application dans le scénario |
-| --- | --- |
-| RGPD et loi Informatique et Libertés [S1, S2] | Cadre contraignant pour les données personnelles. Finalités et base légale p. 7, minimisation p. 5, droits et durées p. 8, sécurité p. 6, incidents p. 11. Registre et analyse des risques documentés. |
-| Réutilisation et scraping [S3, S17, S18] | Vérifier provenance, CGU, droits sur les textes, base légale et restrictions techniques. Consulter robots.txt et respecter les exclusions. Ces contrôles ne valent pas licence de redistribution. Collecte bornée et diffusion intégrale exclue avant clarification. |
-| Règlement européen sur l’IA [S10] | Qualifier l’usage et les rôles de fournisseur ou déployeur avant exploitation. Le cas de recherche documentaire décrit ne suffit pas à établir un usage à haut risque. Former aux limites de l’IA et conserver une supervision humaine. Réexaminer en cas de nouvelle finalité. |
-| Accessibilité [S11] | Exigence explicite B1-1.2 et besoin utilisateur. RGAA utilisé comme méthode de contrôle. L’assujettissement légal dépend de l’organisme et du service ; le seul scénario fictif ne l’établit pas. Parcours et alternatives p. 8. |
-| ISO/IEC 27001:2022 [S12] | Référence volontaire de management de la sécurité : risques, accès, incidents, continuité et amélioration. Aucune certification ni audit ISO complet revendiqué. |
-| ISO/IEC 27701:2025 [S13] | Référence volontaire de management de la vie privée. L’édition 2025 remplace ici la référence historique de 2019 ; aucune conformité à toutes les clauses n’est revendiquée. |
-| NIS 2 [S14] | Assujettissement à qualifier selon activité, taille et exceptions. Il ne découle pas du thème militaire des articles. Aucune obligation NIS 2 spécifique n’est attribuée automatiquement à cette cellule. |
-
-2.2 Règle de décision et veille
-
-Pour chaque texte, RPD relie disposition, traitement, mécanisme et preuve. RV documente les restrictions TASS et le périmètre avant collecte. DIR arbitre les moyens. Revoir aussi tout changement de pagination, CGU ou robots.txt, sans assimiler une API interne du site à une autorisation contractuelle [P5].
-
-Le calendrier du règlement IA a évolué en 2026. La page officielle de la Commission consultée décrit une application générale au 2 août 2026 avec exceptions et des échéances distinctes pour le haut risque. La qualification doit utiliser le texte en vigueur avant exploitation [S10].
+RPD, référent protection des données, conseille ; DIR décide et RV conserve le motif et la preuve. Le calendrier et les qualifications du règlement IA sont réexaminés sur les sources officielles avant tout usage nouveau, sans présumer l’applicabilité de toutes ses dispositions.
 
 # 3 Parties prenantes et responsabilités
-Page 4 du PDF
+Page 3 du PDF
 
 3.1 Fonctions du scénario
 
@@ -94,7 +70,7 @@ Personnes citées, éditeur TASS, titulaires des droits, école et jury, héberg
 | Qualité et relecture des annotations | I | A | R | C | C |
 | Accès et départ d’un utilisateur | I | A | I | R | C |
 | Entraînement et publication du modèle | I | A | C | R | C |
-| Export import B2 et diffusion des notes | I | A | R | R | C |
+| Export import Bloc 2 et diffusion des notes | I | A | R | R | C |
 | Demande de droits et effacement | A | R | C | R | C |
 | Qualification et notification incident | A | R | I | R | C |
 | Restauration et reprise | I | A | C | R | C |
@@ -106,109 +82,62 @@ A : décide et rend compte. R : réalise. C : consulté. I : informé. Une seule
 
 RV tient le registre des décisions et réunit mensuellement DIR, TECH et RPD pendant 30 minutes. Les incidents graves déclenchent une réunion immédiate. Toute décision comporte date, objet, version, avis, responsable, échéance et preuve attendue. Un rôle peut être cumulé dans une petite équipe, mais une personne ne clôt pas seule une correction qu’elle a réalisée : RV ou un relecteur distinct la vérifie.
 
-Au lancement, AN relève job_id et paramètres approuvés. Pour un export, AN décrit sélection et destination ; RV donne son visa ; TECH exécute l’import B2. Le visa, la liste des utilisateurs et le suivi des copies restent des procédures proposées, sans bouton d’approbation existant.
+Au lancement, AN relève job_id et paramètres approuvés. Pour un export, AN décrit sélection et destination ; RV donne son visa ; TECH exécute l’import Bloc 2. Le visa, la liste des utilisateurs et le suivi des copies restent des procédures proposées, sans bouton d’approbation existant.
 
 # 4 Politiques et procédures de gestion des données
-Page 5 du PDF
+Page 4 du PDF
 
 4.1 Qualité des données et gouvernance de l’IA
 
-Procédure Q01. RV justifie source, rubrique, période UTC, mots-clés et limite avant acquisition. TECH vérifie restrictions et provenance. Le collecteur borne requêtes et reprises, puis valide les articles avant publication. Un taux de rejets supérieur au seuil configuré bloque le lot ; 20 % est un choix du projet [P5].
+Q01 : RV autorise source, rubrique, fenêtre UTC, mots-clés, cadence et limite. TECH vérifie restrictions et provenance. Le mode périodique du Bloc 3 conserve une fenêtre glissante ; quotas et reprises limitent sa couverture. Son essai sur source fictive ne prouve pas un flux TASS permanent [P9].
 
-| Contrat de données cible | Contrôle et preuve |
+| Cycle de vie | Règle et preuve à conserver |
 | --- | --- |
-| id, source, url, date | ID source stable, URL et date UTC. Pour la collecte : job_id, paramètres, date d’acquisition et version d’extracteur. Séparer publication et collecte. |
-| text et empreintes | Texte rattaché à sa source, empreinte et revision_sha256. Catalogue courant et anciennes versions inventoriés. Rejets, filtres et doublons comptés. |
-| annotation et entités | article_id, version du texte, start/end, label parmi WEAPON, MIL_UNIT, MIL_ORG, auteur de validation et date. Vérifier que le segment correspond exactement au texte. |
-| exécution modèle et résultat | run_id, versions corpus/annotations/configuration/code/modèle, graine, métriques et date. Le dashboard expose le périmètre réellement traité. |
+| Acquérir et préparer | ID, URL, date de publication et de collecte, job_id, paramètres, version d’extracteur et empreinte. Compter rejets, filtres et doublons. Le seuil de rejets de 20 % est un choix du projet. |
+| Annoter, Q02 | AN relit au moins 50 articles, ou tout lot plus petit, couvrant trois labels et des négatifs. Tirage, auteur, date et corrections attendus. La préannotation par règles et les propositions IA ne valent pas revue humaine. |
+| Évaluer, Q03 | TECH fige jeux séparés, code, configuration, graine et modèle. Vérifier positions Unicode et texte exact ; mesurer précision/rappel/F1 par label. RV motive la décision. La qualité humaine TASS reste indisponible. |
+| Restituer et effacer | Filtrer articles et mentions avec le même périmètre. Garder extrait, source, dates et limites dans chaque note. D01 propage corrections et exclusions aux versions, exports et index (p. 5). |
 
-Annotation Q02. AN rédige des consignes et relit au moins 50 articles, ou tout le lot plus petit, en couvrant les trois labels et des négatifs. Conserver tirage, auteur, date, désaccords et corrections. Ce choix du scénario reste à réaliser ; la supervision faible de la baseline B4 ne remplace pas cette validation humaine [P6].
+Minimisation : titres, textes et métadonnées utiles ; pas de collecte distincte d’images, profils ou coordonnées. Les mots-clés filtrent après téléchargement. Les contenus personnels ou sensibles présents dans les articles ne sont pas automatiquement anonymisés.
 
-Validation Q03. TECH conserve jeux séparés, versions et métriques par label. RV examine les erreurs et motive l’acceptation. Les scores historiques ne sont pas reproduits ; les sorties de démonstration ne prouvent pas une qualité sur référence humaine. Aucun seuil de certification n’est inventé [P6].
+4.2 Sécurité des données et prestataires
 
-Règle de restitution. Le filtre temporel s’applique aux articles et aux mentions. Chaque mention reste reliée à un extrait consultable. Les notes précisent source unique, dates, dénominateurs et limites. Le responsable valide la note avant diffusion ; aucune conclusion sur une personne n’est générée automatiquement.
+Accès : RV autorise nominativement ; TECH révoque après départ signalé, cible de 24 h. Session nominative requise avant partage. Boucle locale, Host/CSRF, permissions et volume AES-256 du Bloc 3 sont vérifiés. Les traces portent le compte système ; ni comptes applicatifs individuels ni chiffrement de tout le Mac attestés. Le Bloc 2 chiffre ses textes et sauvegardes, avec métadonnées partiellement protégées.
 
-Minimisation : rubriques publiques TASS en anglais, dates UTC inclusives, limites de pages et d’articles, cadence et robots.txt. Conserver titres, textes et métadonnées utiles, sans collecte séparée d’images, profils, coordonnées ou biographies. Les mots-clés filtrent après téléchargement ; les payloads hors filtre sont retirés. Les données personnelles ou sensibles dans les articles acceptés ne sont pas automatiquement détectées ni anonymisées [S18, P5].
+S01 : avant tout prestataire, RV décrit finalité et champs ; RPD examine contrat, rôles, sous-traitants, accès hors UE, conservation et entraînement du fournisseur ; DIR autorise sur justificatifs [S8, S9]. Aucun nouvel envoi de texte personnel sans garanties. Secrets hors code, rotation et copie sûre des clés à contrôler.
 
-# 4.2 Sécurité des données et prestataires
-Page 6 du PDF
-
-Accès selon le besoin
-
-Cible organisationnelle : RV approuve nominativement les accès, TECH les liste et les révoque, cible de 24 heures après départ signalé. Le mini-site ne sépare pas AN/RV et ne possède pas de comptes applicatifs individuels. Les traces portent le compte système du serveur : une session partagée n’identifie pas chacun. Utiliser une session nominative.
-
-Configuration cible et vérification
-
-Contrôles disponibles : boucle locale, Host, origine, jeton CSRF, permissions restrictives et refus 403 testés [P5]. Le jeton n’authentifie pas une personne. Le volume macOS AES-256 dédié aux états, journaux, exports et secours B3 est activé. La migration physique, les comptes et les empreintes sont vérifiés dans Volume_chiffre.json ; le mot de passe reste personnel. Le lanceur exige le volume monté, sans remplacement en clair. Cela ne chiffre ni tout le Mac ni les copies externes.
-
-Le chiffrement des documents B2 ne protège pas les copies B3. Avant accès distant ou partagé : authentification, autorisations, TLS avec certificats vérifiés et MFA d’administration si disponible. Secrets hors code, rotation des clés historiques et révocation des accès restent requis [P4].
-
-Prestataires et transferts
-
-Procédure S01. Avant un envoi à un LLM ou à un hébergeur, RV décrit les champs transmis et la finalité. RPD vérifie le rôle contractuel, l’accord de sous-traitance si applicable, les sous-traitants ultérieurs, les lieux de traitement et d’accès support, la conservation et l’usage éventuel pour entraîner le fournisseur. DIR autorise le prestataire sur dossier [S8].
-
-Un hébergement annoncé en Europe ne suffit pas à écarter les transferts. Tout accès depuis un pays tiers est examiné ; le mécanisme du chapitre V, l’analyse du transfert et les mesures complémentaires sont documentés lorsque nécessaires. Sans garanties établies, aucun nouveau texte personnel n’est transmis à ce service. La préannotation externe est facultative : une annotation locale reste possible [S9].
-
-Journalisation et diffusion
-
-Procédure E01 proposée. AN relève filtre, nombre, destinataire, motif et échéance ; RV autorise ; TECH conserve export_id et empreinte. L’export peut dépasser la limite du dernier job. Pas de partage intégral sans droits établis. Consultations, exports et droits sont journalisés avec compte système, date, résultat et références, sans texte, secret ni mots-clés libres. Copies externes et visa métier restent suivis manuellement [P5].
+E01 : AN décrit sélection, nombre, destinataire, motif et échéance ; RV donne son visa ; TECH conserve export_id et empreinte. Le visa et les copies sorties du périmètre restent suivis manuellement. Code public séparé des textes, modèles privés et guides oraux locaux.
 
 # 4.3 Confidentialité et protection de la vie privée
-Page 7 du PDF
+Page 5 du PDF
 
-Registre initial du scénario
+Registre initial : finalités et bases à valider
 
-| Traitement et finalité | Données personnes et destinataires |
+| Traitement | Base proposée, données et accès |
 | --- | --- |
-| T01 Collecte veille et synthèse | Acquisition TASS, textes, versions et mentions pouvant citer des personnes. AN/RV, TECH au besoin. Intérêt légitime proposé, à documenter pour acquisition et consultation. |
-| T02 Annotation entraînement évaluation | Textes et annotations liés à T01. AN et TECH ; fournisseur uniquement après S01. Intérêt légitime à apprécier séparément pour le développement du modèle. |
-| T03 Sécurité et traçabilité | Compte système du serveur, dates, résultats et références techniques, sans textes ni mots-clés libres. TECH/RV/RPD au besoin. Intérêt légitime de sécurisation. Pas de comptes applicatifs ni identification individuelle sur session partagée. |
-| T04 Droits et violations | Coordonnées nécessaires, demande, décisions et preuves limitées. DIR, RV, RPD, TECH pour exécution. Obligation légale de répondre et documenter [S1]. |
+| T01 Collecte, veille et synthèse | Intérêt légitime art. 6(1)(f), à justifier par nécessité et mise en balance. Articles, versions, mentions ; AN/RV, TECH au besoin. |
+| T02 Annotation et modèle | Intérêt légitime à apprécier séparément de T01. Textes, annotations et poids ; AN/TECH. Une collecte n’autorise pas un entraînement. Prestataire soumis à S01. |
+| T03 Sécurité et traces | Intérêt légitime de sécurisation ; compte système, date et références sans texte, secret ni mots-clés libres ; TECH/RV/RPD. |
+| T04 Droits et incidents | Obligations légales ; demande, coordonnées nécessaires, décision et preuve minimisées ; DIR/RV/RPD, TECH pour exécution. |
 
-RV complète contact réel, sources, systèmes, catégories, destinataires, bases, transferts, durées et mesures. T01 inclut SQLite B3, exports et import B2. Une collecte ne déclenche pas T02 ; toute réutilisation pour entraîner exige sa décision distincte. Registre proposé, sans déclaration à la CNIL.
+RV renseigne contact réel, sources, destinataires, transferts, durées et mesures. J02 analyse séparément T01/T02 : intérêt, nécessité, attentes, atteintes et garanties. Le consentement n’est pas automatique. Les droits d’usage TASS restent à établir. Isoler les données sensibles ou pénales tant qu’un fondement des art. 9-10 manque ; une publication par un média ne vaut pas divulgation manifeste par la personne [S1, S4, S17].
 
-Intérêt légitime et données sensibles
+J03/J04 : analyse d’impact de précaution avant ouverture, à faire examiner et décider réellement. J05 : notice rédigée avec sources, finalités, bases, destinataires, durées, droits et recours ; identité/contact et diffusion restent à réaliser. Art. 14 : information au plus tard sous un mois, ou au premier contact/transfert si antérieur, sauf exception motivée au cas par cas [S5, S6].
 
-Analyse initiale T01/T02. Justifier intérêt, nécessité et mise en balance pour collecte documentaire et développement du modèle séparément. Textes nécessaires à la vérification, images et profils exclus. Risques : réexposition, anciennes versions, export ou inférence trompeuse. Garanties : périmètre borné, accès local, relecture et droits [S4, S17].
+4.4 Conservation, droits et accessibilité
 
-Décision proposée : base non validée sans analyse des attentes et des contenus. Le consentement n’est pas automatique. Des données sensibles ou pénales doivent être isolées et exclues tant qu’un fondement applicable manque. Une publication par un média ne vaut pas publication manifeste par la personne. Ce tri n’est pas automatisé dans B3 [S1, art. 9-10].
+| Données | Durée proposée et justification |
+| --- | --- |
+| Corpus, versions, annotations, modèles, index | 12 mois après la dernière soutenance pour reproductibilité ; revoir si veille durable. Purge coordonnée des copies. |
+| Journaux / dossiers de droits et incidents | 6 mois calendaires pour diagnostic / 12 mois après clôture pour preuve minimisée. Décisions actives d’exclusion séparées tant que nécessaires. |
+| Sauvegardes | 30 jours glissants pour reprise ; réappliquer les droits avant restauration. Calendrier hors journaux à mettre en œuvre. |
 
-Analyse d’impact et information
+D01 : RV ouvre le dossier et vérifie l’identité seulement si doute raisonnable. RPD qualifie accès, rectification, opposition, limitation ou effacement ; DIR décide. TECH retrouve ID, versions et dérivés, utilise collect-access, collect-rectify ou collect-erase puis propage au Bloc 2, index, destinataires et copies. RV répond sous un mois ; prolongation motivée jusqu’à deux mois supplémentaires annoncée dans le premier mois [S15]. Contrôle et preuve conditionnent la clôture. Pas de portabilité générale sous intérêt légitime ni de désapprentissage promis.
 
-RPD évalue la nécessité d’une AIPD selon usages, échelle et risques, notamment données sensibles ou personnes vulnérables. Le scénario retient sa réalisation avant extension à grande échelle ou envoi externe. DIR arbitre. Ni l’IA seule ni le cadre scolaire ne règlent automatiquement cette qualification [S5].
-
-RV prépare une notice avec responsable/contact, sources, finalités, bases, catégories, destinataires, transferts, durées, droits et recours CNIL. Information art. 14 : au plus tard dans le mois, ou plus tôt au premier contact ou à la communication. Une exception exige justification et garanties. Le mini-site local ne fournit pas actuellement de notice pour les personnes citées ; la publier et prévoir un canal effectif restent des actions proposées [S6].
-
-# 4.4 Conservation droits et accessibilité
-Page 8 du PDF
-
-Durées proposées et justifications
-
-| Données | Durée proposée | Justification et fin de vie |
-| --- | --- | --- |
-| Corpus versions annotations modèles index | 12 mois après la dernière soutenance | Choix pour reproduction du mémoire, à revoir si veille durable. Inclut SQLite et exports B3. Purge coordonnée, non automatisée par échéance. |
-| Journaux techniques et accès | 6 mois glissants | Diagnostic et sécurité. Purge au démarrage puis quotidienne hors worker actif : six mois calendaires. Purge testée ; délai réel de 24 h non observé. |
-| Dossiers de droits et incidents | 12 mois après clôture | Preuve du traitement, minimisée. Conservation litigieuse séparée uniquement si nécessité justifiée. |
-| Sauvegardes | 30 jours glissants | Restauration. Purge à expiration ; liste des effacements à réappliquer avant toute remise en service. |
-
-Ces durées sont des choix du scénario, pas des délais légaux universels. RV documente nécessité et départ. Les décisions actives de correction/exclusion sont conservées séparément tant que nécessaires contre la réintroduction, puis réexaminées. Le calendrier des corpus et copies externes reste à mettre en œuvre [S7].
-
-Procédure D01 pour une demande de droits
-
-1. RV reçoit la demande sur le contact prévu dans la notice, ouvre un numéro et accuse réception. Il ne demande une pièce d’identité que si un doute raisonnable le justifie.
-2. RPD qualifie accès, rectification, opposition, limitation ou effacement. La portabilité n’est pas générale pour T01/T02 fondés sur l’intérêt légitime.
-3. TECH recherche les articles et dérivés par identifiant, texte et versions : corpus, annotations, jeux, index, exports et fournisseurs. DIR décide ; RV répond dans le délai applicable d’un mois. Une prolongation jusqu’à deux mois supplémentaires doit être justifiée et annoncée dans le premier mois [S1, S15].
-4. Après une décision d’effacement, TECH retire les copies actives, propage aux destinataires concernés et consigne la purge différée des sauvegardes. Si le modèle peut restituer la donnée, suspendre sa diffusion et évaluer son remplacement ou réentraînement. Ne pas promettre un effacement des poids sans preuve.
-5. RV contrôle la disparition des résultats et clôt avec date, périmètre, exceptions motivées et information de recours. Un dossier sans preuve de propagation reste ouvert.
-
-Accessibilité et inclusion
-
-RV contrôle Collecte, Suivi, Corpus, dialogue article et exports au clavier, focus, zoom, contrastes et lecture des tableaux. Prévoir descriptions, sous-titres et transcription pour les preuves visuelles. Des tests Chrome de disposition jusqu’au zoom CSS 200 % sont enregistrés [P5] ; ils ne démontrent ni audit RGAA complet, lecteur d’écran, zoom natif ni test avec une personne concernée. TECH corrige puis RV refait le parcours [S11].
-
-Application D01 : après décision, TECH utilise collect-access, collect-rectify ou collect-erase avec ID et référence opaque ; coordonner la propagation B2. Tests fictifs : anciennes versions, tâches, exports gérés, copie de secours, rejeu et restauration ; registre de correction B2 chiffré. Recherche par personne, annotations, modèles, sources et copies externes restent coordonnés. Purge logique et recherche SQLite/WAL ne prouvent pas l’effacement physique du SSD [P5, P6].
+Accessibilité : RV/TECH vérifient clavier, focus, zoom, contrastes, tableaux et alternatives textuelles. Prévoir sous-titres/transcription pour les visuels. Les tests de disposition ne valent pas audit RGAA, test avec personne concernée ou lecteur d’écran [S11]. Les durées ci-dessus sont des choix, pas des délais légaux universels [S7].
 
 # 5 Gestion des risques liés aux données
-Page 9 du PDF
+Page 6 du PDF
 
 5.1 Méthode de cotation
 
@@ -220,7 +149,7 @@ Choix interne : scores 1 à 3, surveillance ; 4 à 7, traitement planifié ; 8 �
 
 | ID | Cause ou situation | Impact principal | P × I |
 | --- | --- | --- | --- |
-| R01 | Clés historiques ou copies B3 exposées | Divulgation de textes, contrôle local insuffisant | 3 × 4 = 12 |
+| R01 | Clés historiques ou copies Bloc 3 exposées | Divulgation de textes, contrôle local insuffisant | 3 × 4 = 12 |
 | R02 | Scraping finalité base ou licence mal qualifiés | Collecte ou redistribution injustifiée | 3 × 4 = 12 |
 | R03 | Transfert LLM ou cloud mal encadré | Réutilisation externe et perte de maîtrise des copies | 3 × 4 = 12 |
 | R04 | Annotations erronées et source unique | Synthèse trompeuse, réexposition de personnes citées | 3 × 3 = 9 |
@@ -231,18 +160,18 @@ Choix interne : scores 1 à 3, surveillance ; 4 à 7, traitement planifié ; 8 �
 | R09 | Interface ou support inaccessible | Exclusion d’un utilisateur ou d’un membre du jury | 2 × 3 = 6 |
 | R10 | Changement TASS du droit ou de la finalité | Collecte inadaptée ou extension non évaluée | 2 × 4 = 8 |
 
-R01, R05 et R06 s’appuient sur les défauts historiques. B3 ajoute copies locales, versions, exports et secours. L’activation du volume B3 est attestée ; les autres mesures de R01 restent à contrôler. Cotations estimées, sans incident réel affirmé. Revoir après toute évolution de source, CGU, utilisateur, corpus, modèle ou finalité [P4, P5].
+R01, R05 et R06 s’appuient sur les défauts historiques. Bloc 3 ajoute copies locales, versions, exports et secours. L’activation du volume Bloc 3 est attestée ; les autres mesures de R01 restent à contrôler. Cotations estimées, sans incident réel affirmé. Revoir après toute évolution de source, CGU, utilisateur, corpus, modèle ou finalité [P4, P5].
 
 Un prestataire ou une assurance ne transfère pas la responsabilité réglementaire de l’organisme. DIR peut accepter un risque résiduel compatible avec le droit, en documentant motif, durée et révision. Le référent conseille et contrôle cette décision.
 
 # 5.3 Traitement de chaque risque
-Page 10 du PDF
+Page 7 du PDF
 
-Les stratégies couvrent les dix risques. Certains mécanismes disposent de preuves locales [P5, P6], sans clôture globale : permissions et CSRF ne prouvent pas le chiffrement B3 ; l’exclusion d’un ID ne prouve pas la purge de toutes les copies. DIR arbitre et RV conserve le résultat de chaque contrôle.
+Les dix risques ont chacun une stratégie, un pilote, une échéance, une preuve et une cible résiduelle. Les contrôles locaux sont datés [P5, P6, P9] ; le chiffrement activé du Bloc 3 ne prouve pas la protection des copies externes. DIR arbitre, RV conserve le contrôle et RPD conseille. Aucune cible résiduelle n’est déclarée atteinte sans preuve.
 
 | ID | Stratégie | Mesures et pilote | Échéance | Preuve et cible résiduelle |
 | --- | --- | --- | --- | --- |
-| R01 | Réduire | Rotation clés, Host/CSRF et permissions ; maintenir le volume AES-256 B3 et contrôler son montage et ses permissions. TECH | Avant appel ou accès distant | Preuve expurgée de rotation et tests ; cible 1 × 4 = 4 |
+| R01 | Réduire | Rotation clés, Host/CSRF et permissions ; maintenir le volume AES-256 Bloc 3 et contrôler son montage et ses permissions. TECH | Avant appel ou accès distant | Preuve expurgée de rotation et tests ; cible 1 × 4 = 4 |
 | R02 | Éviter puis réduire | Qualifier CGU, droits, base et périmètre ; respecter exclusions réseau. DIR/RPD | Avant nouvel usage ou diffusion | Analyse et décision motivées ; cible 1 × 4 = 4 |
 | R03 | Éviter puis réduire | Suspendre envois non encadrés, vérifier S01 et transferts, minimiser le texte. RV/TECH | Avant chaque prestataire | Contrat et cartographie des accès ; cible 1 × 4 = 4 |
 | R04 | Réduire | Relecture humaine stratifiée, erreurs par label, limites visibles et validation des notes. AN/RV | Avant entraînement et note | Fiche Q02 et protocole Q03 ; cible 2 × 3 = 6 |
@@ -255,10 +184,10 @@ Les stratégies couvrent les dix risques. Certains mécanismes disposent de preu
 
 Après vérification, RV renseigne date, résultat, preuve, cotation résiduelle observée, avis RPD et décision DIR. Les cibles ci-dessus sont des estimations, pas des scores constatés. Revue mensuelle tant qu’un risque prioritaire reste ouvert, puis trimestrielle. Toute preuve absente maintient la mesure au statut prévu.
 
-Ordre de réalisation : sécuriser les identifiants et les flux ; qualifier usages et prestataires ; récupérer ou reconstruire les artefacts ; valider qualité et restitution ; tester continuité, droits et accessibilité. Ces dépendances relient le plan du bloc 1 aux réalisations des blocs 2, 3 et 4.
+Ordre de réalisation : sécuriser les identifiants et les flux ; qualifier usages et prestataires ; récupérer ou reconstruire les artefacts ; valider qualité et restitution ; tester continuité, droits et accessibilité. Ces dépendances relient le plan du Bloc 1 aux réalisations des Blocs 2, 3 et 4.
 
 # 5.4 Incidents et plans de contingence
-Page 11 du PDF
+Page 8 du PDF
 
 I01 Violation de données ou non conformité
 
@@ -278,21 +207,21 @@ C02 Résultat IA trompeur ou export erroné
 
 RV retire la note ou le résultat concerné, avertit ses destinataires et consigne la correction. TECH fige la version et analyse le périmètre ; AN vérifie les annotations et erreurs. La reprise exige une évaluation et une validation de RV. Si une divulgation accompagne l’erreur, appliquer aussi I01. Un F1 seul n’autorise pas à déclarer fiables toutes les tendances.
 
-Cas B3 : suspendre devant refus ou changement TASS, sans contournement. Reprise du worker et lecture/export sur copie saine testés ; collecte, import et droits bloqués en secours. Restauration explicite serveur arrêté, intégrité et registres appliqués avant exposition. Alertes de permissions et d’intégrité reliées à I01 ; tests fictifs de confinement, sans notification réelle. Restauration B2 isolée documentée, perte du Mac non couverte [P5].
+Cas Bloc 3 : suspendre devant refus ou changement TASS, sans contournement. Reprise du worker et lecture/export sur copie saine testés ; collecte, import et droits bloqués en secours. Restauration explicite serveur arrêté, intégrité et registres appliqués avant exposition. Alertes de permissions et d’intégrité reliées à I01 ; tests fictifs de confinement, sans notification réelle. Restauration Bloc 2 isolée documentée, perte du Mac non couverte [P5].
 
 # 6 Audit contrôle et amélioration continue
-Page 12 du PDF
+Page 9 du PDF
 
 6.1 Programme de contrôle
 
 | Quand et responsable | Contrôle et trace à conserver |
 | --- | --- |
-| Avant accès puis annuel · RV/RPD | Formation de 45 minutes sur données publiques, limites NER, partage, droits et incidents. Exercice sur une note sourcée et une demande de droits ; feuille de présence et corrections. |
+| Avant accès puis annuel · RV/RPD | Formation de 45 min : 10 min données publiques/droits, 10 min limites NER, 15 min note sourcée et demande de droits, 10 min correction. Adapter métier/technique, fournir support accessible. Feuille de présence, erreurs et rattrapage avant accès. Formation prévue, non réalisée. |
 | À chaque lot · AN/TECH | Q01-Q03 : qualité, offsets, versions et évaluation. RV accepte ou renvoie le lot avec motif. |
 | Mensuel · RV avec TECH/RPD | Accès, incidents, purges, risques ouverts et veille officielle. Ticket par écart avec responsable et date. |
 | Trimestriel et avant remise · relecteur distinct | Audit : cadrage du périmètre, revue de preuves, entretiens, tests ciblés, constats, contradictoire, corrections et contre-tests. Clôture validée par DIR. |
 
-La Grille_utilisation_gouvernance.md relie sept parcours à leurs acteurs, règles, contrôles et limites. Les tests locaux couvrent collecte, droits fictifs, refus Host/CSRF, alertes et secours. Visa d’export, formation, examen juridique, test utilisateur et revue indépendante restent à réaliser [P5, P6].
+RV organise une revue mensuelle de 30 min avec DIR, TECH et RPD : demandes, risques ouverts et décisions. AN signale les obstacles ; TECH propose les corrections ; un relecteur distinct vérifie la clôture. Chaque décision relie objet, version, avis, pilote, échéance et preuve. Collaboration, formation et audit indépendant restent prévus.
 
 6.2 Indicateurs proposés
 
@@ -304,134 +233,45 @@ RPD consulte mensuellement CNIL, EUR-Lex, Légifrance, Commission, ANSSI, ISO et
 
 7 Conclusion et état de cette version
 
-La V1.4 intègre le mini-site et les protections B3/B2 en conservant les limites : droits d’usage, analyses juridiques, notice, validation humaine, purge par échéance hors journaux, copies externes et sauvegarde hors poste. Aucune conformité globale ni répétition orale attestée.
+La politique encadre le cycle de vie complet, avec responsabilités, risques et procédures. Analyses juridiques et notice sont rédigées ; autorisations, identité/contact, décisions, exécution métier et revue humaine restent à établir. Contrôles techniques locaux distincts des actes de gouvernance ; aucune conformité globale ou répétition orale attestée.
 
 Repères : OSINT : analyse de sources ouvertes. NER : extraction d’entités nommées. AIPD : analyse d’impact sur la protection des données. DPO : délégué à la protection des données. RTO : délai cible de reprise. RPO : perte de travail maximale visée.
 
-# Résumé visuel de la stratégie
-Page 13 du PDF
-
-Une note doit rester reliée à ses sources
-
-AN choisit une collecte bornée, suit le job puis consulte les textes. RV autorise périmètre et diffusion dans le scénario. Le lien article, version et preuve accompagne chaque note.
-
-| Étape | Décision de gouvernance | Preuve attendue |
-| --- | --- | --- |
-| 1 Acquérir | Source et périmètre justifiés | Paramètres, job et restrictions |
-| 2 Préparer | Rejets et transformations expliqués | Contrat et journal de qualité |
-| 3 Annoter | Relecture humaine effective | Échantillon et corrections |
-| 4 Évaluer | Données et modèle identifiés | Protocole et erreurs par label |
-| 5 Restituer | Article et extrait retrouvables | Filtre et dénominateur vérifiés |
-| 6 Effacer | Versions et copies suivies | Purge et exclusion de recollecte |
-
-État vérifié
-
-21 676 articles historiques nettoyés
-Cinq articles ajoutés dans la recette B3
-21 681 articles dans le catalogue et B2 [P5]
-
-À compléter
-
-Droits d’usage, analyses juridiques, validation humaine, copies externes et contrôle complet d’accessibilité restent à établir.
-
-Source unique TASS. Les mentions décrivent un corpus éditorial ; leurs fréquences ne prouvent pas l’activité réelle des acteurs. [P4]
-
-# Résumé visuel des responsabilités et des risques
-Page 14 du PDF
-
-La décision revient au responsable du traitement
-
-| Fonction | Responsabilité essentielle |
-| --- | --- |
-| Direction | Décider des finalités, moyens et risques acceptés |
-| Responsable de veille | Valider les notes et vérifier les preuves |
-| Analyste | Contrôler les textes et relire les annotations |
-| Équipe technique | Protéger les accès et tracer les transformations |
-| Référent ou DPO | Conseiller et contrôler avec indépendance |
-
-Priorités avant utilisation
-
-R01 à R03 : protéger les copies locales, qualifier collecte et droits d’usage, encadrer toute transmission externe.
-
-R04 à R06 : relire les annotations, tracer les versions et distinguer checkpoints de sauvegardes.
-
-R07 à R10 : autoriser les exports, suivre l’effacement et la recollecte, tester l’accessibilité et revoir tout changement.
-
-En cas de violation
-
-Contenir, documenter et évaluer le risque. DIR décide de la notification CNIL selon les conditions de l’article 33. Le RPD apporte son analyse. [S1, S16]
-
 # Références et traçabilité
-Page 15 du PDF
+Page 10 du PDF
 
-Sources officielles consultées le 4 octobre 2026. Les liens ci-dessous permettent d’ouvrir les pages. Les normes ISO sont utilisées comme références de méthode ; leur texte intégral n’a pas fait l’objet d’un audit de conformité.
+Sources officielles : liens cliquables. S5, S6, S10-S13 et S15-S18 revérifiés le 18 octobre 2026 ; autres sources consultées le 4 octobre. Les normes ISO apportent une méthode, sans audit exhaustif des clauses.
 
-S1 RGPD, règlement (UE) 2016/679, notamment art. 5-6, 9-10, 12-22, 25, 28, 30, 32-39 et 44 et suivants
+| ID | Texte ou référence |
+| --- | --- |
+| S1 | RGPD : art. 5-6, 9-10, 12-22, 25, 28, 30, 32-39, 44 et suiv. |
+| S2 | Loi Informatique et Libertés |
+| S3 | CNIL, réutilisation de données publiées en ligne |
+| S4 | CNIL, intérêt légitime |
+| S5 | CNIL, analyse d’impact IA |
+| S6 | CNIL, information des personnes et IA |
+| S7 | CNIL, durées de conservation |
+| S8 | CNIL, sous-traitance et clauses contractuelles |
+| S9 | CNIL, transferts hors UE |
+| S10 | Commission européenne, règlement IA |
+| S11 | RGAA, champ d’application |
+| S12 | ISO/IEC 27001:2022 |
+| S13 | ISO/IEC 27701:2025 |
+| S14 | ANSSI, qualification NIS 2 |
+| S15 | CNIL, droits des personnes (chapitre III) |
+| S16 | CNIL, notification des violations |
+| S17 | CNIL, intérêt légitime et moissonnage |
+| S18 | CNIL, protection dès la collecte |
 
-S2 Loi du 6 janvier 1978 modifiée, Informatique et Libertés
+Sources de l’école et preuves localisées
 
-S3 CNIL, recommandations aux réutilisateurs de données publiées sur Internet
+P1/P2 : grille école RNCP38777, Bloc 1 A6:A27, 22 critères ; complément fourni « BLOC 1 : DATA GOVERNANCE » : plan 8 à 10 pages, présentation 10 à 15 diapositives, oral 15 min puis questions 15 min. Cours Data Governance & RGPD : diapositives 16, 18-21, 40-42, 53-54, 58, 62 et 66. Le document qualité RNCP41993 reste distinct.
 
-S4 CNIL, intérêt légitime : nécessité et mise en balance
+P4 : corpus et modèle reconstruits identifiés dans les manifestes du projet. P5/P8 : Bloc 3, Preuves/Collecte_TASS : Volume_chiffre.json, Droits_B3_B2.json, Incident_simule.json ; Bloc 2, Preuves/Collecte_TASS/restore.json. Tests fictifs, activation du volume et restauration isolée ont des portées distinctes.
 
-S5 CNIL, IA : réaliser une analyse d’impact si nécessaire
+P6 : Bloc 4, Preuves/Diagnostic_annotations_IA_42_articles.json et Raccordement_manuel_5_articles.json : propositions IA et neuf mentions supplémentaires, sans revue humaine. P7 : Grille_utilisation_gouvernance.md : sept parcours U01-U07. Dossier_juridique_et_procedures_OSINT : formulaires J01-J07 de travail, sans autorisation ni exécution réputée acquise.
 
-S6 CNIL, IA : informer les personnes concernées
-
-S7 CNIL, les durées de conservation des données
-
-S8 CNIL, contrats entre responsable de traitement et sous-traitant
-
-S9 CNIL, identifier et traiter les transferts hors UE
-
-S10 Commission européenne, AI Act, état du calendrier et des obligations
-
-S11 RGAA, référentiel et champ d’application
-
-S12 ISO/IEC 27001:2022, management de la sécurité
-
-S13 ISO/IEC 27701:2025, management de la vie privée
-
-S14 ANSSI, NIS 2, qualification des entités
-
-S15 CNIL, chapitre III du RGPD, droits des personnes
-
-S16 CNIL, notifier une violation de données personnelles
-
-S17 CNIL, intérêt légitime et collecte par moissonnage, 19 juin 2025
-
-S18 CNIL, protection des données dans la collecte et la gestion, 8 avril 2024
-
-Sources de l’école et du projet
-
-P2 Grille évaluation RNCP38777, Bloc 1, cellules A6 à A27 : 22 critères. Consignes du directeur : plan et présentation, 15 minutes puis 15 minutes de questions. Le PDF qualité fourni porte RNCP41993 ; aucune substitution de grille n’est effectuée.
-
-P4 Dossier 00_Pilotage : Cadrage_OSINT, Audit_et_ecarts, Recuperation_artefacts, Inventaire et Controle_reconstitution. Notebook historique : cellules N04, N06, N10, N12 et N19-N22. La nouvelle version nettoyée utilise UTC.
-
-La correspondance complète des 22 critères figure dans Correspondance_criteres_Bloc1.csv. Les procédures écrites sont distinguées des exécutions observées. Les hypothèses de la cellule fictive ne décrivent pas une organisation réelle.
-
-P1 Grille fournie RNCP38777, consignes de soutenance et sources locales identifiées dans le dossier de remise. La présence de données publiques ne suffit pas à exclure les données personnelles.
-
-P5 Collecte_TASS.md et Execution_PRD_TASS.md ; B3 : Verification_HTTP.json, Reseau_final.json, Responsive_final.json, Tests_cloture_final.log, Droits_B3_B2.json et tests/closure.py (droits, secours, alertes). B2 : Revisions_collecte_TASS.json, Contrat_collecte_TASS.json et Collecte_TASS/restore.json. Voir P7 pour les empreintes et états au moment de lecture.
-
-P6 00_Pilotage/Integration_transversale/README.md et Preuves/Controle_B3_B2_B4_complet.json : parcours NER et effacement synthétique. P7 Grille_utilisation_gouvernance.md et Preuves/Harmonisation_bloc3.json : preuves, versions et frontières de la V1.2.
-
-# Extension TASS : gouvernance et preuves
-Page 16 du PDF
-
-Périmètre. Collecte locale bornée, catalogue versionné, exports gérés et secours B3. B2 reçoit les publications validées et les décisions de droits ; les modèles B4 sont conservés. Les copies déjà sorties du périmètre nécessitent une coordination.
-
-Protection. Volume macOS AES-256 activé et lanceur sans remplacement en clair. Migration vérifiée : 69 fichiers du collecteur et 19 historiques contrôlés par empreinte ; 21 681 articles conservés lors du transfert. Mot de passe saisi personnellement dans Terminal. Aucun chiffrement global du Mac ni effacement physique garanti du SSD affirmé.
-
-Droits. Accès, rectification normalisée et suppression persistante. Purge des anciennes versions, tâches, exports et secours. La recollecte et la restauration ne peuvent rétablir automatiquement un texte invalidé. Propagation SQL/Mongo/index et restauration B2 testées sur un identifiant fictif [P8].
-
-Audit et conservation. Compte système, date UTC, résultat et références techniques. Exclusion des textes, secrets, mots-clés libres et coordonnées. Journaux : six mois calendaires ; décisions actives séparées tant que nécessaires contre une réintroduction. Un compte partagé ne distingue pas les personnes et l’accès direct aux fichiers n’est pas audité.
-
-Incident I01. Alertes de lenteur, permissions et intégrité reliées à la procédure. Exercice fictif : détection, confinement, qualification sans personne réelle concernée, restauration hors serveur et clôture technique. DIR/RPD qualifient le risque et une éventuelle notification ; aucun envoi réel n’a lieu [S16, P8].
-
-Continuité. Consultation et export depuis une copie vérifiée, écritures bloquées. Restauration avec registres de droits avant remise en service. Même Mac et même volume ; perte du poste non couverte. La base légale, les droits d’usage, les copies externes et la conservation des corpus restent à qualifier.
-
-P8 Preuves/Extension_collecte_TASS.json et B3 Preuves/Collecte_TASS : Version_finale.json, Droits_B3_B2.json, Verification_HTTP.json, Incident_simule.json et Volume_chiffre.json. Les preuves distinguent implémentation, tests, activation physique vérifiée et préparation orale. Aucune conformité globale ou validation du jury n’est déclarée.
+P9 : révisions du 18 octobre : Bloc 2, Preuves/Complement_20261018/Validation.json et integration.json ; Bloc 3, Preuves/Complement_20261018/Flux_continu.json ; Bloc 4, Preuves_complement_20261018/Verification_livraison.json. Le présent plan est autonome ; ces traces complètent ses règles.
 
 # Liens des références
 

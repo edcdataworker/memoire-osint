@@ -9,9 +9,9 @@
     "statut": "testé",
     "existant": "18 mesures sur volume APFS AES-256 : catalogues vide et rempli de 21 701 articles, trois répétitions par taille. Catalogue rempli, médianes : 100 : 2.89 s (34.5 articles/s), 1000 : 14.29 s (70.0 articles/s), 2000 : 26.17 s (76.4 articles/s). Étapes, volumes et dispersion conservés.",
     "preuves": [
-      "verification/Benchmark_chiffre.json",
-      "verification/Benchmark_chiffre_avant_index.json",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Benchmark_chiffre.json",
+      "Preuves/Collecte_TASS/Benchmark_chiffre_avant_index.json",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Poste partagé et caches non neutralisés ; aucun SLA ni débit réseau déduit de ces fixtures.",
     "prochaine_action": "Présenter la durée bout en bout, ses étapes et les limites du protocole."
@@ -26,9 +26,9 @@
     "statut": "testé",
     "existant": "Erreurs réseau bornées, rejet isolé, blocage qualité, journalisation et maintien de la dernière publication valide.",
     "preuves": [
-      "verification/Tests_collecte_final.log",
-      "verification/Tests_pipeline_final.log",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Tests_collecte_final.log",
+      "Preuves/Collecte_TASS/Tests_pipeline_final.log",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Une erreur permanente demande une correction ; aucune alerte externe.",
     "prochaine_action": "Expliquer rejet isolable et panne bloquante."
@@ -43,10 +43,10 @@
     "statut": "testé",
     "existant": "Contrat JSON/JSONL, normalisation, date UTC, ID, URL et hash vérifiés ; 20 extractions TASS bornées.",
     "preuves": [
-      "verification/Tests_collecte_final.log",
-      "verification/Tests_pipeline_final.log",
-      "verification/Reseau_final.json",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Tests_collecte_final.log",
+      "Preuves/Collecte_TASS/Tests_pipeline_final.log",
+      "Preuves/Collecte_TASS/Reseau_final.json",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Exactitude technique du texte, sans vérification factuelle de TASS.",
     "prochaine_action": "Montrer le hash du texte et ses offsets Unicode."
@@ -61,10 +61,10 @@
     "statut": "testé",
     "existant": "Deux index évitent le tri répété des tâches et le parcours complet pour les droits. Catalogue rempli, 100/1 000/2 000 candidats traités ; exports JSON/JSONL et empreintes vérifiés. Doubler le lot de 1 000 à 2 000 multiplie la durée par 1.83 et fait varier le débit de +9.2 %.",
     "preuves": [
-      "verification/Benchmark_chiffre.json",
-      "verification/Benchmark_chiffre_avant_index.json",
-      "verification/Tests_pipeline_final.log",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Benchmark_chiffre.json",
+      "Preuves/Collecte_TASS/Benchmark_chiffre_avant_index.json",
+      "Preuves/Collecte_TASS/Tests_pipeline_final.log",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "La hausse des volumes reste bornée à 2 000 candidats ; aucune garantie générale d’absence de ralentissement significatif ni extrapolation. Copie de secours complète à chaque publication.",
     "prochaine_action": "Expliquer l’effet mesuré des index et le coût des checkpoints et du secours."
@@ -79,9 +79,9 @@
     "statut": "testé",
     "existant": "Copie SQLite vérifiée après publication ; basculement en lecture, exports disponibles et écritures interdites ; restauration explicite.",
     "preuves": [
-      "verification/Verification_HTTP.json",
-      "verification/Tests_cloture_final.log",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Verification_HTTP.json",
+      "Preuves/Collecte_TASS/Tests_cloture_final.log",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Même Mac et même volume ; panne du poste ou du volume non couverte.",
     "prochaine_action": "Montrer le mode de secours et sa date."
@@ -96,9 +96,9 @@
     "statut": "testé",
     "existant": "Déclencheur UI produit un job durable ; ordonnanceur historique également rejoué par les tests.",
     "preuves": [
-      "verification/Verification_HTTP.json",
-      "verification/Tests_pipeline_final.log",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Verification_HTTP.json",
+      "Preuves/Collecte_TASS/Tests_pipeline_final.log",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Collecte réseau déclenchée manuellement ; aucun service système périodique installé.",
     "prochaine_action": "Montrer déclencheur, paramètres et UUID."
@@ -113,9 +113,9 @@
     "statut": "testé",
     "existant": "Découverte, extraction, normalisation, contrôle, transaction et export sans action intermédiaire.",
     "preuves": [
-      "verification/Tests_collecte_final.log",
-      "verification/Verification_HTTP.json",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Tests_collecte_final.log",
+      "Preuves/Collecte_TASS/Verification_HTTP.json",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Intervention nécessaire pour changer périmètre ou corriger la source.",
     "prochaine_action": "Suivre le parcours d’un article dans le schéma."
@@ -130,9 +130,9 @@
     "statut": "testé",
     "existant": "Publication automatique après qualité ; rejeu idempotent ; import B2 explicite et décisions de droits persistantes.",
     "preuves": [
-      "verification/Tests_collecte_final.log",
-      "verification/Droits_B3_B2.json",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Tests_collecte_final.log",
+      "Preuves/Collecte_TASS/Droits_B3_B2.json",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Import B2 lancé par l’opérateur après validation ; écritures bloquées en secours.",
     "prochaine_action": "Montrer nouveau, modifié et inchangé."
@@ -147,10 +147,10 @@
     "statut": "testé",
     "existant": "Superviseur, événements par étape, seuil de lenteur configurable, permissions contrôlées toutes les cinq secondes et intégrité du catalogue.",
     "preuves": [
-      "verification/Tests_collecte_final.log",
-      "verification/Tests_cloture_final.log",
-      "verification/Verification_HTTP.json",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Tests_collecte_final.log",
+      "Preuves/Collecte_TASS/Tests_cloture_final.log",
+      "Preuves/Collecte_TASS/Verification_HTTP.json",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Alertes locales ; seuil choisi sans SLA validé.",
     "prochaine_action": "Expliquer les trois alertes et leur procédure de traitement."
@@ -165,9 +165,9 @@
     "statut": "testé",
     "existant": "Destruction réelle d’un worker et reprise automatique aux checkpoints durables ; pause volontaire et reprise UI distinctes.",
     "preuves": [
-      "verification/Tests_collecte_final.log",
-      "verification/Tests_pipeline_final.log",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Tests_collecte_final.log",
+      "Preuves/Collecte_TASS/Tests_pipeline_final.log",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Le superviseur doit fonctionner ; une pause volontaire nécessite Reprendre.",
     "prochaine_action": "Distinguer reprise autonome et restauration administrateur."
@@ -182,10 +182,10 @@
     "statut": "testé",
     "existant": "Suivi HTTP actualisé chaque seconde ; compteurs, étape, événements et secours visibles pendant la démonstration.",
     "preuves": [
-      "verification/Verification_HTTP.json",
-      "verification/Video_cloture.json",
-      "verification/Cloture_suivi.png",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Verification_HTTP.json",
+      "Preuves/Collecte_TASS/Video_cloture.json",
+      "Preuves/Collecte_TASS/Cloture_suivi.png",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Suivi local sur le poste ; aucune exploitation distante démontrée.",
     "prochaine_action": "Montrer la vidéo actuelle."
@@ -200,9 +200,9 @@
     "statut": "testé",
     "existant": "Découverts, téléchargés, validés, rejets, nouveautés, modifications, durée, débit, tentatives, fraîcheur, backend et sécurité.",
     "preuves": [
-      "verification/Benchmark_collecteur.json",
-      "verification/Verification_HTTP.json",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Benchmark_collecteur.json",
+      "Preuves/Collecte_TASS/Verification_HTTP.json",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Débit UI calculé sur work_s ; benchmark bout en bout séparé.",
     "prochaine_action": "Préciser unités et périmètre de chaque durée."
@@ -217,9 +217,9 @@
     "statut": "testé",
     "existant": "Trois vues locales, incident en français et journaux lisibles ; 147 états responsive, dialogue et agrandissement CSS.",
     "preuves": [
-      "verification/Responsive_final.json",
-      "verification/Cloture_mobile.png",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Responsive_final.json",
+      "Preuves/Collecte_TASS/Cloture_mobile.png",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Chrome macOS seulement ; pas d’étude utilisateur ni comptes multiutilisateurs.",
     "prochaine_action": "Recueillir un retour métier si ouverture à d’autres analystes."
@@ -234,10 +234,10 @@
     "statut": "testé",
     "existant": "Franchissement SLOW_ARTICLE, permissions trop larges confinées et perte d’intégrité signalée ; récupération affichée.",
     "preuves": [
-      "verification/Tests_cloture_final.log",
-      "verification/Incident_simule.json",
-      "verification/Verification_HTTP.json",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Tests_cloture_final.log",
+      "Preuves/Collecte_TASS/Incident_simule.json",
+      "Preuves/Collecte_TASS/Verification_HTTP.json",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Les seuils sont configurables ; aucune notification réglementaire automatique.",
     "prochaine_action": "Montrer incident, confinement puis état restauré."
@@ -252,8 +252,8 @@
     "statut": "testé",
     "existant": "Instrumentation stage_duration pour découverte, téléchargement et publication ; seuil slow_article_seconds exposé en CLI.",
     "preuves": [
-      "verification/Benchmark_collecteur.json",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Benchmark_collecteur.json",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "L’ajout de nouvelles métriques demeure une modification de code.",
     "prochaine_action": "Lire le mode d’emploi pour l’ajout d’une métrique."
@@ -268,8 +268,8 @@
     "statut": "testé",
     "existant": "Modules source, store, worker, service, rights, security, resilience et volume séparés ; pipeline fichier conservé.",
     "preuves": [
-      "verification/Lint_final.log",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Lint_final.log",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Bibliothèque standard POSIX ; volume natif macOS seulement.",
     "prochaine_action": "Présenter responsabilités et points d’entrée."
@@ -284,8 +284,8 @@
     "statut": "testé",
     "existant": "Commentaires des transactions, registre prioritaire, purge, copie cohérente et restauration avant exposition.",
     "preuves": [
-      "verification/Lint_final.log",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Lint_final.log",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Commentaires techniques relus, sans revue humaine indépendante observée.",
     "prochaine_action": "Relire les mécanismes à défendre avant l’oral."
@@ -300,9 +300,9 @@
     "statut": "testé",
     "existant": "Noms de champs OSINT, commandes explicites, interface en français et erreurs localisées.",
     "preuves": [
-      "verification/Lint_final.log",
-      "verification/Responsive_final.json",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Lint_final.log",
+      "Preuves/Collecte_TASS/Responsive_final.json",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Certains identifiants internes restent en anglais.",
     "prochaine_action": "Expliquer ces identifiants dans le guide oral."
@@ -317,11 +317,11 @@
     "statut": "testé",
     "existant": "README, Collecte_TASS.md, plan PDF et guide oral actualisés ; cycle physique arrêt, démontage, déverrouillage natif et relance exécuté. Démarrage strict refusé volume fermé, aucun état en clair créé.",
     "preuves": [
-      "verification/Cycle_volume_chiffre.json",
-      "verification/Relance_exports_inchanges.json",
-      "verification/Livrables_final.json",
-      "verification/Version_finale.json",
-      "verification/Docker_cycle.json"
+      "Preuves/Collecte_TASS/Cycle_volume_chiffre.json",
+      "Preuves/Collecte_TASS/Relance_exports_inchanges.json",
+      "Preuves/Collecte_TASS/Livrables_final.json",
+      "Preuves/Collecte_TASS/Version_finale.json",
+      "Preuves/Collecte_TASS/Docker_cycle.json"
     ],
     "ecart": "Cycle observé sur ce Mac ; reproduction sur un second poste non observée.",
     "prochaine_action": "Reprendre le déroulé vérifié de verrouillage et relance pour l’oral."
@@ -336,10 +336,10 @@
     "statut": "testé",
     "existant": "Ruff et suites Python/JavaScript ; CI GitHub de la version publiée suivie séparément.",
     "preuves": [
-      "verification/Lint_final.log",
-      "verification/Tests_cloture_final.log",
-      "verification/Frontend_tests.log",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Lint_final.log",
+      "Preuves/Collecte_TASS/Tests_cloture_final.log",
+      "Preuves/Collecte_TASS/Frontend_tests.log",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Contrôles proportionnés ; absence de preuve d’une norme de développement exhaustive.",
     "prochaine_action": "Consulter Publication_GitHub.json pour le résultat de CI."
@@ -354,8 +354,8 @@
     "statut": "prévu",
     "existant": "Déroulé de cinq minutes, supports et réponses préparés dans Preparation_orale_Bloc3.md.",
     "preuves": [
-      "verification/Video_cloture.json",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Video_cloture.json",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Aucune répétition personnelle ni prestation devant le jury observée.",
     "prochaine_action": "Effectuer une répétition chronométrée et consigner les observations de ce critère."
@@ -370,8 +370,8 @@
     "statut": "prévu",
     "existant": "Déroulé de cinq minutes, supports et réponses préparés dans Preparation_orale_Bloc3.md.",
     "preuves": [
-      "verification/Video_cloture.json",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Video_cloture.json",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Aucune répétition personnelle ni prestation devant le jury observée.",
     "prochaine_action": "Effectuer une répétition chronométrée et consigner les observations de ce critère."
@@ -386,8 +386,8 @@
     "statut": "prévu",
     "existant": "Déroulé de cinq minutes, supports et réponses préparés dans Preparation_orale_Bloc3.md.",
     "preuves": [
-      "verification/Video_cloture.json",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Video_cloture.json",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Aucune répétition personnelle ni prestation devant le jury observée.",
     "prochaine_action": "Effectuer une répétition chronométrée et consigner les observations de ce critère."
@@ -402,8 +402,8 @@
     "statut": "prévu",
     "existant": "Déroulé de cinq minutes, supports et réponses préparés dans Preparation_orale_Bloc3.md.",
     "preuves": [
-      "verification/Video_cloture.json",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Video_cloture.json",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Aucune répétition personnelle ni prestation devant le jury observée.",
     "prochaine_action": "Effectuer une répétition chronométrée et consigner les observations de ce critère."
@@ -418,8 +418,8 @@
     "statut": "prévu",
     "existant": "Déroulé de cinq minutes, supports et réponses préparés dans Preparation_orale_Bloc3.md.",
     "preuves": [
-      "verification/Video_cloture.json",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Video_cloture.json",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Aucune répétition personnelle ni prestation devant le jury observée.",
     "prochaine_action": "Effectuer une répétition chronométrée et consigner les observations de ce critère."
@@ -434,8 +434,8 @@
     "statut": "prévu",
     "existant": "Déroulé de cinq minutes, supports et réponses préparés dans Preparation_orale_Bloc3.md.",
     "preuves": [
-      "verification/Video_cloture.json",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Video_cloture.json",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Aucune répétition personnelle ni prestation devant le jury observée.",
     "prochaine_action": "Effectuer une répétition chronométrée et consigner les observations de ce critère."
@@ -450,8 +450,8 @@
     "statut": "prévu",
     "existant": "Déroulé de cinq minutes, supports et réponses préparés dans Preparation_orale_Bloc3.md.",
     "preuves": [
-      "verification/Video_cloture.json",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Video_cloture.json",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Aucune répétition personnelle ni prestation devant le jury observée.",
     "prochaine_action": "Effectuer une répétition chronométrée et consigner les observations de ce critère."
@@ -466,8 +466,8 @@
     "statut": "prévu",
     "existant": "Déroulé de cinq minutes, supports et réponses préparés dans Preparation_orale_Bloc3.md.",
     "preuves": [
-      "verification/Video_cloture.json",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Video_cloture.json",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Aucune répétition personnelle ni prestation devant le jury observée.",
     "prochaine_action": "Effectuer une répétition chronométrée et consigner les observations de ce critère."
@@ -482,8 +482,8 @@
     "statut": "testé",
     "existant": "Champs utiles au texte/NER sélectionnés ; aucun contact de demandeur, texte ni mot-clé libre dans les audits ; conservation de six mois.",
     "preuves": [
-      "verification/Tests_cloture_final.log",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Tests_cloture_final.log",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Les textes publics peuvent contenir des personnes ; finalité, base légale et conservation du corpus restent à qualifier par le responsable.",
     "prochaine_action": "Appliquer la gouvernance B1 à toute exploitation effective."
@@ -498,13 +498,13 @@
     "statut": "testé",
     "existant": "Volume APFS AES-256 activé et migration vérifiée ; cycle physique complet testé. Les 21 701 articles, tables et exports conservent leurs empreintes après relance. Intégrité principal/secours, permissions et statut HTTP vérifiés ; mot de passe saisi uniquement dans Terminal.",
     "preuves": [
-      "verification/Cycle_volume_chiffre.json",
-      "verification/Relance_exports_inchanges.json",
-      "verification/Volume_chiffre.json",
-      "verification/Verification_HTTP.json",
-      "verification/Tests_cloture_final.log",
-      "verification/Version_finale.json",
-      "verification/Docker_cycle.json"
+      "Preuves/Collecte_TASS/Cycle_volume_chiffre.json",
+      "Preuves/Collecte_TASS/Relance_exports_inchanges.json",
+      "Preuves/Collecte_TASS/Volume_chiffre.json",
+      "Preuves/Collecte_TASS/Verification_HTTP.json",
+      "Preuves/Collecte_TASS/Tests_cloture_final.log",
+      "Preuves/Collecte_TASS/Version_finale.json",
+      "Preuves/Collecte_TASS/Docker_cycle.json"
     ],
     "ecart": "Protection des états B3 migrés, pas du Mac entier ni des copies externes. Aucun test de perte du poste.",
     "prochaine_action": "Présenter le refus de démarrage volume fermé et les empreintes avant/après."
@@ -519,9 +519,9 @@
     "statut": "testé",
     "existant": "Accès, rectification et suppression ; purge des anciennes versions, WAL, exports, copie et recollecte ; propagation B2 et réapplication en restauration.",
     "preuves": [
-      "verification/Droits_B3_B2.json",
-      "verification/Tests_cloture_final.log",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Droits_B3_B2.json",
+      "Preuves/Collecte_TASS/Tests_cloture_final.log",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Consentement/base légale à qualifier selon B1. Sources historiques, annotations, modèles et copies déjà sorties du périmètre nécessitent une coordination humaine.",
     "prochaine_action": "Qualifier la demande et traiter les dépendances externes au collecteur."
@@ -536,9 +536,9 @@
     "statut": "testé",
     "existant": "Source/ID/date/hash/révision/job liés ; consultation, export et droits journalisés avec compte système, date, résultat et référence opaque.",
     "preuves": [
-      "verification/Verification_HTTP.json",
-      "verification/Tests_cloture_final.log",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Verification_HTTP.json",
+      "Preuves/Collecte_TASS/Tests_cloture_final.log",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Le compte du serveur ne distingue pas plusieurs personnes partageant la même session ; accès direct aux fichiers non audité.",
     "prochaine_action": "Conserver une session personnelle ou prévoir des comptes nominatifs avant ouverture multiutilisateur."
@@ -553,10 +553,10 @@
     "statut": "testé",
     "existant": "Exercice fictif : permissions et intégrité détectées, confinement, qualification documentée puis récupération et clôture technique.",
     "preuves": [
-      "verification/Incident_simule.json",
-      "verification/Verification_HTTP.json",
-      "verification/Tests_cloture_final.log",
-      "verification/Version_finale.json"
+      "Preuves/Collecte_TASS/Incident_simule.json",
+      "Preuves/Collecte_TASS/Verification_HTTP.json",
+      "Preuves/Collecte_TASS/Tests_cloture_final.log",
+      "Preuves/Collecte_TASS/Version_finale.json"
     ],
     "ecart": "Exercice technique et dossier préparé ; appréciation du risque et décision réelle de notification relèvent du responsable.",
     "prochaine_action": "Répéter personnellement la procédure B1 et ne pas assimiler toute alerte à une violation."

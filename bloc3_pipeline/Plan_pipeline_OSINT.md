@@ -12,8 +12,8 @@ Collecte TASS et corpus historique
 | --- | --- |
 | Auteur | Edouard Cappaert |
 | Code | Code_OSINT_Bloc3.zip et dépôt GitHub memoire-osint |
-| Date | 04/10/2026 |
-| Statut | Application locale testée, collecte réseau bornée et essais fictifs identifiés |
+| Date | 18/10/2026 |
+| Statut | Application locale testée, collecte périodique et essais fictifs identifiés |
 
 Les preuves distinguent corpus historique, collecte réelle et fixtures synthétiques. La soutenance personnelle et la validation du jury restent à observer.
 
@@ -39,13 +39,13 @@ Conclusion, soutenance et sources  ........................................  10
 
 Prévu : préparé sans exécution observée. Implémenté : présent dans le code. Testé : scénario exécuté et rattaché à une version. Démontré au jury dépend de la prestation réelle. Les 33 critères exacts de Bloc 3!A6:A38 sont reliés à leur preuve dans Correspondance_criteres_Bloc3.json.
 
-La chaîne locale automatise découverte, téléchargement, validation, publication et suivi après le déclenchement du formulaire. L’import dans B2 est une action explicite sur une sélection validée. Le bloc 4 conserve ses modèles ; choisir une période ne déclenche pas un entraînement.
+La chaîne locale automatise découverte, téléchargement, qualité et publication. Le mode périodique relance des micro-lots sur une fenêtre glissante sans nouveau formulaire. La collecte manuelle reste disponible. L’import dans le Bloc 2 et l’inférence du Bloc 4 restent des opérations distinctes.
 
 ## Introduction et analyse des données
 
 ### Contexte et problématique
 
-La cellule fictive de veille documentaire recherche des mentions WEAPON, MIL_UNIT et MIL_ORG. Le pipeline prépare des textes stables pour l’architecture B2 et l’inférence B4. Il doit tolérer les erreurs isolables, préserver la dernière publication valide et reprendre sans perte ni doublon.
+La cellule fictive de veille documentaire recherche des mentions WEAPON, MIL_UNIT et MIL_ORG. Le pipeline prépare des textes stables pour l’architecture Bloc 2 et l’inférence Bloc 4. Il doit tolérer les erreurs isolables, préserver la dernière publication valide et reprendre sans perte ni doublon.
 
 ### Deux sources identifiées
 
@@ -67,9 +67,13 @@ Schéma : TASS / JSON fourni → extraction → qualité → catalogue versionn�
 
 ### Séparation des responsabilités
 
-Python 3.12 et sa bibliothèque standard : source pour accès et extraction, store pour persistance, worker pour checkpoints et publication, service pour interface et supervision, rights/security/resilience pour les contrôles transversaux. SQLite est un catalogue local ; PostgreSQL et MongoDB restent les stockages métier B2.
+Python 3.12 et sa bibliothèque standard : source pour accès et extraction, store pour persistance, worker pour checkpoints et publication, service pour interface et supervision, rights/security/resilience pour les contrôles transversaux. SQLite est un catalogue local ; PostgreSQL et MongoDB restent les stockages métier Bloc 2.
 
 Le serveur écoute sur 127.0.0.1, vérifie l’hôte et protège les commandes par session CSRF. Les textes et exports gérés sont destinés au volume chiffré. Une copie SQLite cohérente et vérifiée maintient la lecture en cas de panne du catalogue principal ; les écritures sont alors bloquées.
+
+### Collecte périodique
+
+Le module continuous orchestre des cycles successifs sur les deux derniers jours UTC. La configuration attend 60 secondes après la fin d’un cycle. Le délai total comprend aussi découverte, traitement, publication et reprises. Ce fonctionnement par micro-lots ne garantit pas un temps réel strict.
 
 ## Code principal et reprise automatique
 
@@ -84,6 +88,10 @@ with database(state) as db, db:
                (status, normalized_payload, key, url))
 # worker.py : aucun déplacement du checkpoint avant persistance.
 ```
+
+### Calendrier et reprise
+
+Une transaction crée la tâche et son lien au calendrier. Après arrêt brutal, la reprise conserve la tâche en attente. Une pause volontaire reste prioritaire. Les relances de cycle sont bornées, en plus des tentatives internes du worker. Un lot bloqué par la qualité demande une correction avant reprise.
 
 ### Qualité avant activation
 
@@ -131,6 +139,10 @@ La fixture Droits_B3_B2.json vérifie correction, purge et refus de réimport da
 
 18 exécutions sur le même volume APFS AES-256, trois répétitions par taille et catalogue. Copies isolées du catalogue rempli, corps HTML fictifs d’environ 1, 10 et 50 Kio. Préparation des copies exclue ; découverte, extraction, checkpoints, exports et copie de secours inclus. Comptes, empreintes et égalité JSON/JSONL vérifiés. Détail, dispersion et volumes : Benchmark_chiffre.json.
 
+### Arrivées successives
+
+Un essai complémentaire traite 10 000 articles fictifs d’environ 2 Kio sur 40 cycles en 35,48 s, soit 281,82 articles/s. Les 62 répétitions entre cycles ne créent pas de révision superflue. Délais disponibilité-publication : 0,38 à 1,36 s. Source injectée, sans réseau TASS ni garantie de temps réel strict. Preuve : Complement_20261018/Charge_continue.json.
+
 ### Interprétation
 
 La publication recopie le catalogue entier vers le secours : son coût fixe pénalise les petits lots. Les durées et débits sont à comparer entre tailles et catalogues ; aucun seuil d’absence de ralentissement significatif n’est fixé par la grille. Poste partagé, caches non neutralisés, collecte bornée à 2 000 candidats. Sans réseau ni mesure isolée du coût du chiffrement. Les anciens benchmarks restent historiques.
@@ -143,17 +155,17 @@ Les tests de restauration utilisent une ancienne copie fictive et vérifient l�
 
 ## Captures d’exécution et monitoring
 
-La vidéo actualisée montre une exécution de l’interface, ses compteurs, les événements et le passage en lecture de secours après une panne de catalogue simulée. Le type de données, la version et les événements sont explicités dans Video_cloture.json. La démonstration fictive reste distincte des vérifications TASS réelles.
+Le suivi conserve l’interface du collecteur et affiche maintenant les cycles, la prochaine échéance et la durée du dernier cycle. La capture ci-dessous provient de dix cycles sur une source fictive. Les nouvelles vérifications restent distinctes des mesures réseau et des captures antérieures.
 
-Figure 2. Suivi dans l’interface actuelle ; nature fictive de la démonstration identifiée.
+Figure 2. Collecte périodique : dix cycles sur une source fictive, sans requête TASS.
 
-![Figure 2. Suivi dans l’interface actuelle ; nature fictive de la démonstration identifiée.](Preuves/Collecte_TASS/Cloture_suivi.png)
+![Figure 2. Collecte périodique : dix cycles sur une source fictive, sans requête TASS.](Preuves/Complement_20261018/Suivi_flux_apercu.png)
 
 ### Indicateurs et extension
 
 Actualisation chaque seconde : découvert, téléchargé, validé, nouveau, modifié, inchangé, filtré, supprimé, rejeté, durée, débit, tentatives, étape et dernière activité. Le statut indique aussi backend, fraîcheur du secours et sécurité. Les événements stage_duration ajoutent les durées par étape sans modifier le contrat des articles.
 
-Une alerte SLOW_ARTICLE est déclenchée par franchissement d’un seuil configurable. SECURITY_PERMISSIONS signale et contient des droits trop ouverts ; CATALOG_INTEGRITY signale la bascule. Les alertes restent locales, sans destinataire externe. Preuves : Tests_cloture_final.log et Incident_simule.json.
+POLL_STALLED signale un worker sans activité récente. POLL_COVERAGE_LIMITED signale un quota ou une pagination limitant la couverture. Les alertes de lenteur, permissions et intégrité restent actives. Les seuils sont des choix du projet. Les alertes restent locales, sans destinataire externe.
 
 ## Documentation d’utilisation
 
@@ -163,7 +175,7 @@ Préparer Preparer_volume_chiffre.command dans Terminal, saisir le mot de passe,
 
 ```python
 python3 -m pipeline collect-ui --state /Volumes/MemoireOSINT/B3 \
-  --require-encrypted --slow-article-seconds 10 --open
+  --require-encrypted --watch-config config/collecte_continue.json
 python3 -m pipeline collect-check-security \
   --state /Volumes/MemoireOSINT/B3 --require-encrypted
 python3 -m pipeline collect-restore --state /Volumes/MemoireOSINT/B3
@@ -171,7 +183,7 @@ python3 -m pipeline collect-restore --state /Volumes/MemoireOSINT/B3
 
 ### Collecte, consultation et droits
 
-Choisir rubrique, période UTC, mots-clés OU et limite. La limite concerne les candidats vérifiés, même déjà connus. Le catalogue publie automatiquement après qualité ; Importer dans B2 est une action explicite. Les fichiers JSON/JSONL téléchargés en dehors du volume redeviennent des copies sous responsabilité de leur destinataire.
+Choisir rubrique, période UTC, mots-clés OU et limite. La limite concerne les candidats vérifiés, même déjà connus. Le catalogue publie automatiquement après qualité ; Importer dans Bloc 2 est une action explicite. Les fichiers JSON/JSONL téléchargés en dehors du volume redeviennent des copies sous responsabilité de leur destinataire.
 
 ```python
 python3 -m pipeline collect-rectify ID --request-ref DOSSIER-001 \
@@ -181,15 +193,15 @@ python3 -m pipeline collect-erase ID --request-ref DOSSIER-002 \
   --state /Volumes/MemoireOSINT/B3 --propagate-b2
 ```
 
-Une erreur de propagation B2 conserve un état d’échec et peut être rejouée. Le mode de secours bloque les modifications ; restaurer hors serveur après diagnostic. Pour reproduire sur Linux, utiliser exclusivement les fixtures et suivre Collecte_TASS.md ; l’outil de volume est propre à macOS.
+Une erreur de propagation Bloc 2 conserve un état d’échec et peut être rejouée. Le mode de secours bloque les modifications ; restaurer hors serveur après diagnostic. Pour reproduire sur Linux, utiliser exclusivement les fixtures et suivre Collecte_TASS.md ; l’outil de volume est propre à macOS.
 
 ## Conclusion, soutenance et sources
 
 ### Résultat et limites
 
-La collecte, la qualité, les versions, la reprise et le suivi sont implémentés. Les droits sont testés jusqu’à B2 sur une fixture ; la lecture de secours et la restauration sont vérifiées. Le volume chiffré et la migration sont décrits par leur état de preuve réel, sans confondre préparation et activation.
+La collecte périodique, la qualité, les versions, la reprise et le suivi sont implémentés et testés sur des arrivées fictives. La cadence est configurable. Les droits, la lecture de secours et la restauration gardent leurs preuves distinctes. Le volume chiffré conserve son périmètre documenté.
 
-La machine demeure un domaine unique de panne. Le miroir maintient la lecture mais ne constitue pas une haute disponibilité complète. Les archives TASS peuvent être partielles. L’import B2 conserve une commande explicite et B4 requiert une inférence sur le texte identifié, sans réentraînement automatique.
+La machine demeure un domaine unique de panne. Le miroir maintient la lecture mais ne constitue pas une haute disponibilité complète. Les archives TASS peuvent être partielles. Un quota saturé demande une revue de la fenêtre et de la pagination, sans promesse d’exhaustivité. L’import Bloc 2 conserve une commande explicite et Bloc 4 requiert une inférence sur le texte identifié, sans réentraînement automatique.
 
 | Temps | Preuve à expliquer |
 | --- | --- |
@@ -201,4 +213,4 @@ La machine demeure un domaine unique de panne. Le miroir maintient la lecture ma
 
 Les huit critères d’oral restent prévus jusqu’à une répétition réelle. Questions : comment éviter la réintroduction d’un texte corrigé ? Que continue-t-on lors d’une panne SQLite ? Pourquoi un nouveau corpus ne demande-t-il pas un nouvel entraînement ?
 
-Sources : grille fournie RNCP38777, Bloc 3!A6:A38 ; consignes du directeur ; code et preuves de cette version. Dépôt : https://github.com/edcdataworker/memoire-osint. Les documents descriptifs ne remplacent pas les tests OSINT.
+Sources : grille RNCP38777, Bloc 3!A6:A38 ; complément de consigne du Bloc 3 reçu le 18 octobre 2026 ; code et preuves de cette version. Dépôt : https://github.com/edcdataworker/memoire-osint. Les documents descriptifs ne remplacent pas les tests OSINT.

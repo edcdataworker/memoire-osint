@@ -1,0 +1,247 @@
+{
+  "synthetic": true,
+  "network_requests": 0,
+  "python": "3.12.14",
+  "cycles": 40,
+  "articles": 10000,
+  "seconds": 35.484107,
+  "articles_per_second": 281.816,
+  "overlap_per_cycle": 62,
+  "measurements": [
+    {
+      "cycle": 1,
+      "articles": 250,
+      "availability_to_publication_seconds": 0.379669
+    },
+    {
+      "cycle": 2,
+      "articles": 500,
+      "availability_to_publication_seconds": 0.514819
+    },
+    {
+      "cycle": 3,
+      "articles": 750,
+      "availability_to_publication_seconds": 0.568694
+    },
+    {
+      "cycle": 4,
+      "articles": 1000,
+      "availability_to_publication_seconds": 0.599984
+    },
+    {
+      "cycle": 5,
+      "articles": 1250,
+      "availability_to_publication_seconds": 0.541693
+    },
+    {
+      "cycle": 6,
+      "articles": 1500,
+      "availability_to_publication_seconds": 0.580141
+    },
+    {
+      "cycle": 7,
+      "articles": 1750,
+      "availability_to_publication_seconds": 0.627531
+    },
+    {
+      "cycle": 8,
+      "articles": 2000,
+      "availability_to_publication_seconds": 0.625515
+    },
+    {
+      "cycle": 9,
+      "articles": 2250,
+      "availability_to_publication_seconds": 0.602765
+    },
+    {
+      "cycle": 10,
+      "articles": 2500,
+      "availability_to_publication_seconds": 0.630482
+    },
+    {
+      "cycle": 11,
+      "articles": 2750,
+      "availability_to_publication_seconds": 0.633642
+    },
+    {
+      "cycle": 12,
+      "articles": 3000,
+      "availability_to_publication_seconds": 0.78333
+    },
+    {
+      "cycle": 13,
+      "articles": 3250,
+      "availability_to_publication_seconds": 0.674646
+    },
+    {
+      "cycle": 14,
+      "articles": 3500,
+      "availability_to_publication_seconds": 0.731553
+    },
+    {
+      "cycle": 15,
+      "articles": 3750,
+      "availability_to_publication_seconds": 0.774337
+    },
+    {
+      "cycle": 16,
+      "articles": 4000,
+      "availability_to_publication_seconds": 0.830348
+    },
+    {
+      "cycle": 17,
+      "articles": 4250,
+      "availability_to_publication_seconds": 0.800397
+    },
+    {
+      "cycle": 18,
+      "articles": 4500,
+      "availability_to_publication_seconds": 0.788004
+    },
+    {
+      "cycle": 19,
+      "articles": 4750,
+      "availability_to_publication_seconds": 0.816059
+    },
+    {
+      "cycle": 20,
+      "articles": 5000,
+      "availability_to_publication_seconds": 0.91354
+    },
+    {
+      "cycle": 21,
+      "articles": 5250,
+      "availability_to_publication_seconds": 0.907854
+    },
+    {
+      "cycle": 22,
+      "articles": 5500,
+      "availability_to_publication_seconds": 0.867723
+    },
+    {
+      "cycle": 23,
+      "articles": 5750,
+      "availability_to_publication_seconds": 0.871938
+    },
+    {
+      "cycle": 24,
+      "articles": 6000,
+      "availability_to_publication_seconds": 1.003625
+    },
+    {
+      "cycle": 25,
+      "articles": 6250,
+      "availability_to_publication_seconds": 1.023859
+    },
+    {
+      "cycle": 26,
+      "articles": 6500,
+      "availability_to_publication_seconds": 1.217287
+    },
+    {
+      "cycle": 27,
+      "articles": 6750,
+      "availability_to_publication_seconds": 1.112963
+    },
+    {
+      "cycle": 28,
+      "articles": 7000,
+      "availability_to_publication_seconds": 0.984353
+    },
+    {
+      "cycle": 29,
+      "articles": 7250,
+      "availability_to_publication_seconds": 1.043465
+    },
+    {
+      "cycle": 30,
+      "articles": 7500,
+      "availability_to_publication_seconds": 1.093078
+    },
+    {
+      "cycle": 31,
+      "articles": 7750,
+      "availability_to_publication_seconds": 1.090168
+    },
+    {
+      "cycle": 32,
+      "articles": 8000,
+      "availability_to_publication_seconds": 1.142054
+    },
+    {
+      "cycle": 33,
+      "articles": 8250,
+      "availability_to_publication_seconds": 1.038424
+    },
+    {
+      "cycle": 34,
+      "articles": 8500,
+      "availability_to_publication_seconds": 1.152509
+    },
+    {
+      "cycle": 35,
+      "articles": 8750,
+      "availability_to_publication_seconds": 1.209273
+    },
+    {
+      "cycle": 36,
+      "articles": 9000,
+      "availability_to_publication_seconds": 1.223777
+    },
+    {
+      "cycle": 37,
+      "articles": 9250,
+      "availability_to_publication_seconds": 1.175487
+    },
+    {
+      "cycle": 38,
+      "articles": 9500,
+      "availability_to_publication_seconds": 1.216464
+    },
+    {
+      "cycle": 39,
+      "articles": 9750,
+      "availability_to_publication_seconds": 1.333518
+    },
+    {
+      "cycle": 40,
+      "articles": 10000,
+      "availability_to_publication_seconds": 1.358262
+    }
+  ],
+  "final_schedule": {
+    "singleton": 1,
+    "config_sha256": "4c997112a504e617f7793cab53ab01b2214cd4d12cd6cb3155bb032d38246d46",
+    "next_due": 1792356741.5623968,
+    "pending_job": null,
+    "completed": 40,
+    "failures": 0,
+    "status": "finished",
+    "last_success": 1792356741.4623969,
+    "last_job": "0d2c9720-b655-41eb-85d4-473d20cfbffc",
+    "last_duration": 0.9254148006439209,
+    "last_lag": 0.3321552276611328,
+    "stale_alert": 0,
+    "enabled": true,
+    "runner_active": false,
+    "interval_seconds": 0.1,
+    "lookback_days": 2,
+    "seconds_until_next": 0.083,
+    "success_age_seconds": 0.017,
+    "mode": "periodic_microbatches_no_hard_realtime_guarantee",
+    "storage_backend": "primary"
+  },
+  "limits": "Injected fictional source, approximately 2 KiB bodies, one local host; no TASS throughput or hard realtime guarantee.",
+  "code_sha256": {
+    "pipeline/collection/__init__.py": "59f0962850e6615718a924bc3f280e3024e15aeec0fe71f1e4220fb1a285e983",
+    "pipeline/collection/continuous.py": "2005280925009aaf0a2c31e7613d553b3c79fd9e1c3f0390f6ba35734616cdb1",
+    "pipeline/collection/resilience.py": "6793211569e4b7306adb65688e9eba55c1abc5b22904e2a4edf65f5e9d2d3666",
+    "pipeline/collection/rights.py": "3ee4e074beb89ab34af755f1063529f92662b71fd8fd138e7fafe8c507ae6e8c",
+    "pipeline/collection/security.py": "020775c93241b38cd35e014ac27fef9bcee8a9f50a7d296c650d9d52d0521c01",
+    "pipeline/collection/service.py": "14e045442c851a57fcf432cb7bab0e47330b0140a924f5fdcba874dda038274a",
+    "pipeline/collection/source.py": "93568d14d32112138368550574f252ef7c3bd0a5d9a65e41a7ecebbd1d731016",
+    "pipeline/collection/store.py": "1971b21118c976f7145296a03d635d29bd46510c9dd0361ec4414c9e3e3f7af3",
+    "pipeline/collection/volume.py": "3b03010a5044655659ff1f0935e08454ec73175192eca0747a36291e7399c824",
+    "pipeline/collection/worker.py": "4f21d27d4a46356c2fd28f04359014ba94b7d0f3b8a32030ee317e8ab21b21af"
+  }
+}

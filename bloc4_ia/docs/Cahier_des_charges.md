@@ -23,14 +23,14 @@ Problématique : comment faciliter la recherche de mentions militaires sourcées
 
 | Besoin | Réponse implémentée | Preuve et limite |
 | --- | --- | --- |
-| Extraire trois catégories | NER spaCy, labels stricts | Modèle sérialisé et inférence ; qualité réelle inconnue |
+| Extraire trois catégories | NER spaCy, labels stricts, POST /api/predict | API et interface testées ; qualité réelle inconnue |
 | Retour à l’origine | ID, URL, texte complet, empreinte, offsets | Tests de spans et UI ; source unique |
 | Filtrer les mêmes périodes | Paramètre année commun aux agrégations | Tests API et dashboard local ; dates UTC |
 | Inclure les articles sans entités | Conservation de toutes les sorties | Compteurs total et avec entités séparés |
 | Lire au clavier et agrandir | Formulaires étiquetés, focus visible, lien d’évitement, tables, texte fluide | Matrice Chromium ; lecteur d’écran et usages réels non évalués |
 | Comprendre la qualité | Diagnostic sur référence IA et statut de promotion distincts | Diagnostic élargi sur 42 articles, référence initiale conservée, gate et rapport d’entraînement |
-| Réentraîner sans écraser | Détection d’empreinte, candidat immuable, promotion bloquée | Journaux d’ordonnanceur et rollback |
+| Réentraîner sans écraser | Candidat, évaluation, dérive et décision de promotion reliés | Tests sur fixtures ; revue humaine TASS encore absente |
 | Appliquer une exclusion | Registre IDs aux frontières et purge d’export | Tests dédiés ; purge totale et désapprentissage nécessitent procédure transverse |
-| Pouvoir maintenir | Modules, README, Git, tests, wheel | CI/CD locale ; aucun workflow cloud exécuté |
+| Pouvoir maintenir | Modules, README, tests, wheel et bascule de release | Livraison locale persistante et retour arrière testés ; nouvelle version distante non exécutée |
 
 Les objectifs de charge et de disponibilité restent ceux d’une démonstration locale. Aucun SLA de production n’est revendiqué. L’essai CPU mesure la capacité sur les données disponibles et ne prédit pas à lui seul les ressources d’un service multi-utilisateur.

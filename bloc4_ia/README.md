@@ -1,15 +1,13 @@
 # Bloc 4 : solution IA OSINT
 
-Remise du 5 octobre 2026 : le [guide de reproduction](REPRODUCTION.md) ouvre le développement et le déploiement de cette version commune. Le tag `remise-2026-10-05` et le manifeste Drive identifient les sources remises.
-
-Version locale de démonstration, 4 octobre 2026. Extraction spaCy des labels WEAPON, MIL_UNIT et MIL_ORG dans les articles TASS. Préannotation par règles lexicales et contrôle complémentaire par IA. Le diagnostic élargi sur 42 articles mesure un F1 de 32,73 % contre une référence générée par IA ; son protocole et ses limites sont décrits dans `docs/Diagnostic_IA_42_articles.md`.
+Version locale de démonstration, 18 octobre 2026. Extraction spaCy des labels WEAPON, MIL_UNIT et MIL_ORG dans les articles TASS. Préannotation par règles lexicales et contrôle complémentaire par IA. Le diagnostic élargi sur 42 articles mesure un F1 de 32,73 % contre une référence générée par IA ; son protocole et ses limites sont décrits dans `docs/Diagnostic_IA_42_articles.md`.
 
 ## Livrables
 
 1. `Rapport_solution_IA_OSINT.pdf` : pipeline, modèle, dashboards, métriques et note d’analyse.
-2. `Presentation_Bloc4.pptx` et `Guide_oral_Bloc4.md` : support de cinq minutes et questions du jury.
+2. `Presentation_Bloc4.pptx` : présentation de 19 diapositives : 15 principales pour cinq minutes indicatives, puis 4 annexes distinctes. Le guide de préparation orale reste local.
 3. `src/osint_ner/` : code de développement, contrats, annotation, apprentissage, évaluation, inférence, monitoring, registre et interface.
-4. `scripts/ci_local.py`, `.github/workflows/tests.yml`, `config/` : code de déploiement local et workflow cloud préparé.
+4. `scripts/ci_local.py`, `.github/workflows/tests.yml`, `config/` : code de déploiement local, passerelle stable, retour arrière et workflow GitHub.
 5. `Preuves/` : exécutions, tests, captures, manifests et vidéo si présente.
 6. `Correspondance_criteres_Bloc4.json` : les 41 critères exacts, état, preuves et limites.
 7. `Revue_annotations_locale.html` : interface de revue de 18 articles, sans attestation préremplie.
@@ -38,11 +36,11 @@ export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1
 .venv/bin/python -m osint_ner.cli export-es --input .state/inference.jsonl --output .state/es-mentions.ndjson --exclusions ../02_Bloc_2_Architecture/.state/erasures.json
 ```
 
-Le nom de run doit être neuf. Adapter le chemin du registre réel d’exclusion, vérifier sa présence et sa forme, puis toujours l’appliquer à l’inférence ET à l’export en exploitation. Le corpus B3 JSONL est accepté sans renettoyage. Le mapping distinct est dans `config/elasticsearch-entities-mapping.json`. L’import dans Elasticsearch TLS relève du raccordement entre les Blocs 2, 3 et 4, sans toucher l’index des articles.
+Le nom de run doit être neuf. Adapter le chemin du registre réel d’exclusion, vérifier sa présence et sa forme, puis toujours l’appliquer à l’inférence ET à l’export en exploitation. Le corpus B3 JSONL est accepté sans renettoyage. Le mapping distinct est dans `config/elasticsearch-entities-mapping.json`. L’import dans Elasticsearch TLS relève du raccordement B2/B3/B4, sans toucher l’index des articles.
 
 ## Contrôle par IA et évaluation
 
-Le diagnostic exploratoire courant porte sur 42 articles du test figé, contre une référence proposée par Codex. Son F1 micro vaut 32,73 % ; il ne mesure pas une qualité validée par une personne. Voir [le protocole et les résultats](docs/Diagnostic_IA_42_articles.md), [la preuve publique expurgée](docs/Diagnostic_annotations_IA_42_articles.json) et [la revue humaine](docs/Revue_humaine_42_articles.md). Ces articles ne doivent pas intégrer train/dev. La commande ci-dessous concerne une référence réellement relue et attestée ; aucune attestation humaine n’est créée par la publication du code.
+Le diagnostic livré utilise les propositions de Codex sur 18 articles réservés au test, avec 104 mentions et une correspondance exacte des labels et offsets. Voir `Preuves/Diagnostic_annotations_IA.json`. Ces articles ne doivent pas intégrer train/dev. Les outils de revue permettent de corriger les propositions et de constituer une référence supplémentaire. La commande ci-dessous concerne cette référence documentée ; elle est distincte du diagnostic IA déjà livré.
 
 ```sh
 .venv/bin/python -m osint_ner.cli evaluate --run .state/runs/baseline --reference .state/data/human-reviewed.jsonl --manifest .state/data/split_manifest.jsonl --output Preuves/quality_human_sample.json
@@ -59,7 +57,32 @@ Cette commande contrôle la provenance de revue et l’indépendance du test. Le
 .venv/bin/python scripts/ci_local.py
 ```
 
-L’interface écoute sur http://127.0.0.1:8764. La chaîne CI/CD locale livre un wheel identifié et contrôle le service sur 8765. Le [workflow commun](../.github/workflows/verification.yml) contrôle l’architecture, le pipeline et l’IA, construit le wheel et vérifie un service éphémère sur données synthétiques. Consulter l’exécution correspondant au commit de remise dans GitHub Actions ; la présence du workflow ne prouve pas son succès. Le fichier `.github/workflows/tests.yml` de ce dossier est un autre workflow, conservé pour la version locale ; sa présence ne constitue pas la preuve du run commun. L’ordonnanceur normal exige des labels revus ; le mode démo mesure le mécanisme sans promouvoir un modèle non validé.
+L’interface conserve les filtres, les couleurs et le retour aux passages sources. Elle ajoute un formulaire de prédiction sur un texte nouveau. `POST /api/predict` reçoit un objet JSON avec le seul champ `text`, renvoie entités, offsets Unicode, empreintes et durée, sans enregistrer la saisie. Une seule inférence simultanée est admise ; une requête concurrente reçoit 429. `GET /api/metrics` donne les compteurs et durées du processus, sans texte source. Le service reste limité à la boucle locale.
+
+```sh
+curl -H 'Content-Type: application/json' -d '{"text":"NATO mentioned a Kalibr missile."}' http://127.0.0.1:8764/api/predict
+```
+
+Pour un réentraînement évalué, fournir les annotations train et dev revues, une référence de test revue et son manifeste figé :
+
+```sh
+.venv/bin/python -m osint_ner.cli watch --train .state/data/train-reviewed.jsonl --dev .state/data/dev-reviewed.jsonl --reference .state/data/human-reviewed.jsonl --manifest .state/data/split_manifest.jsonl --current .state/current-articles.jsonl --state .state/scheduler-reviewed --cycles 2 --interval 60 --epochs 6
+```
+
+Chaque changement d’empreinte produit un candidat immuable, son évaluation, le monitoring et une décision de promotion. Le modèle courant reste en place en cas de refus. La commande n’atteste aucune revue humaine : elle exige les fichiers réellement relus. L’option `--delivery-config` permet ensuite de reconstruire les prédictions et de livrer automatiquement le candidat accepté ; en cas d’échec, le registre précédent est restauré. Voir `docs/Automatisation_et_exploitation.md`.
+
+Pour construire, tester et livrer un service qui reste actif après la commande :
+
+```sh
+.venv/bin/python scripts/ci_local.py --data .state/inference-full.jsonl --run .state/runs/baseline --state .state/delivery --proofs Preuves/Delivery --persistent --port 8766
+.venv/bin/python -m osint_ner.deployment status --state .state/delivery/service
+.venv/bin/python -m osint_ner.deployment rollback --state .state/delivery/service
+.venv/bin/python -m osint_ner.deployment stop --state .state/delivery/service
+```
+
+La passerelle conserve l’adresse http://127.0.0.1:8766. Elle bascule vers un nouveau processus seulement après contrôle de santé et garde la version précédente pour le retour arrière. Les processus survivent à la fermeture du terminal, pas à un redémarrage du Mac. Pour déclencher la chaîne automatiquement sur changement des sources, remplacer la première commande par `scripts/watch_delivery.py` avec les mêmes arguments, sans `--persistent`, et ajouter `--cycles 360 --interval 10`. Cela observe pendant environ une heure hors temps de livraison ; aucune tâche système permanente n’est installée. Un changement déclenche build, tests et déploiement sans étape manuelle intermédiaire ; les sources inchangées sont ignorées.
+
+Le workflow GitHub exécute la même chaîne sur une fixture explicite dans un runner éphémère. Les preuves locales restent identifiées séparément ; consulter Actions pour l’état de la révision publiée. Le service TASS reste un environnement local de démonstration. Une livraison applicative ne valide pas la qualité du modèle.
 
 ## Tests et limites
 
@@ -77,7 +100,7 @@ Le rendu de cours historique reste attribué à Jean-Christophe Dorn, Noah Segon
 
 ## Références
 
-Cours AI Deployment, pages 21 à 31 ; Design Thinking, pages 6 et 8 à 15 ; grille Bloc 4 A6:A46. Documentation technique consultée le 4 octobre 2026 : https://spacy.io/usage/training et https://spacy.io/api/entityrecognizer. Les dépendances logicielles conservent leurs licences respectives. Le code courant est publié dans le dépôt GitHub transversal ; les textes, états de revue et modèles réels restent locaux.
+Cours AI Deployment, pages 21 à 31 ; Design Thinking, pages 6 et 8 à 15 ; grille Bloc 4 A6:A46. Documentation technique consultée le 4 octobre 2026 : https://spacy.io/usage/training et https://spacy.io/api/entityrecognizer. Les dépendances logicielles conservent leurs licences respectives. Le code corrigé est publié dans le dépôt GitHub commun.
 
 ## Artefacts locaux fournis et démarrage court
 
@@ -92,11 +115,11 @@ unzip Artefacts_locaux/Jeux_reproductibles_OSINT.zip -d .state/data
 
 Ce parcours affiche cinq articles réels avec le modèle livré. L’inférence complète de cette exécution reste dans `.state/inference-full.jsonl` ; pour reconstruire la totalité, fournir le corpus B3 autorisé et appliquer le registre d’exclusion courant. La vidéo et les captures finales utilisent les 21 676 sorties complètes, pas le petit fixture portable.
 
-La version de remise comporte 40 tests Python, notamment pour la revue d’annotations et la provenance du test indépendant. Le commit public et les empreintes des archives identifient le code courant. Ces tests utilisent des fixtures et ne valident pas les annotations réelles. La vidéo finale décrit une capture réelle de l’interface locale ; ses caractéristiques sont vérifiées avec ffprobe et consignées dans `Preuves/Video_metadata.json`.
+La vérification initiale comportait 32 tests au commit `5d571ee`. Les tests de la révision courante et les empreintes des sources figurent dans `Preuves_complement_20261018/`. La révision du 18 octobre ajoute une API de prédiction et une livraison locale persistante ; ses preuves sont distinctes de cette exécution initiale. Les identités précises figurent dans `Preuves/Versions.json`. La vidéo finale décrit une capture réelle de l’interface locale ; ses caractéristiques sont vérifiées avec ffprobe et consignées dans `Preuves/Video_metadata.json`.
 
 ## Complément de finalisation
 
-Le code public est disponible sur [GitHub](https://github.com/edcdataworker/memoire-osint). Le workflow commun y contrôle les Blocs 2, 3 et 4 et livre un service IA éphémère sur données synthétiques dans son runner. L’archive `Code_OSINT_GitHub.zip` conserve cette organisation commune. Le tag de remise et le manifeste Drive rattachent les archives à cette version publique.
+Le code public est disponible sur [GitHub](https://github.com/edcdataworker/memoire-osint). Le workflow commun y contrôle B2, B3 et B4 et livre un service IA éphémère sur données synthétiques dans son runner. L’archive `Code_OSINT_GitHub.zip` conserve cette organisation commune. La version locale initiale et la publication sont identifiées séparément dans l’addendum de remise.
 
 Un [diagnostic initial et une revue assistée](docs/Diagnostic_et_revue_assistee.md) complètent les préannotations : 18 articles, 104 mentions proposées par Codex, F1 diagnostic de 44,93 %. Cette évaluation exploratoire mesure l’accord avec les propositions IA. `Revue_annotations_assistee_IA.html` permet de corriger les frontières, labels et décisions de périmètre. Le modèle reste identique.
 
@@ -110,3 +133,19 @@ Le [parcours de revue](docs/Revue_humaine_42_articles.md) permet de corriger les
 
 
 Codex a examiné les 42 textes de test et corrigé les propositions comme IA. La méthode est décrite dans [le guide de revue](docs/Revue_humaine_42_articles.md). L’attestation et les décisions détaillées sont dans le dossier chiffré privé, fichier `Codex_prelecture_attestation_42.json`, empreinte 2f889f6130008464c181fb4e72ae134e4f9dc7be9da717a2d3292109d87f9d79. Elles ne constituent pas une validation humaine. La remise comporte 0/42 attestations humaines ; aucune métrique humaine n’est calculée. Le [parcours local](Lancer_revue_humaine.command) attend ta lecture personnelle pour attester chaque article.
+
+## Serving conteneurisé
+
+Le Dockerfile construit le paquet avec les versions Linux de `requirements.docker.lock.txt`. `.dockerignore` limite le contexte aux sources et à la configuration de construction : ni corpus, ni modèle, ni état privé ne sont intégrés. Les artefacts autorisés sont montés séparément en lecture seule.
+
+```sh
+docker build -t memoire-osint-bloc4:local .
+OSINT_ARTIFACTS=/chemin/absolu/autorise docker compose up -d
+OSINT_ARTIFACTS=/chemin/absolu/autorise docker compose stop
+```
+
+Le dossier doit contenir `inference.jsonl` et `runs/baseline/`. Le service est publié uniquement sur `127.0.0.1:18767`, avec utilisateur 10001, racine en lecture seule, capacités retirées et ressources bornées. `--host 0.0.0.0` sert à l’écoute interne du conteneur ; l’écoute native conserve son défaut local et les protections Host/Origin restent actives. Le serveur standard répond aux besoins de l’API locale sans ajouter de framework. Ce choix n’atteste pas un déploiement Internet.
+
+L’essai `scripts/test_docker.py` vérifie santé, prédiction, métriques, rejet d’un Host tiers et protections du conteneur, puis le supprime. Il accepte seulement des fixtures explicitement synthétiques préparées avec `scripts/prepare_ci_demo.py --state DOSSIER_NEUF`. Preuve exécutée : `Preuves_complement_20261018/Docker.json`. Le workflow inclut désormais cet essai, sans attribuer de succès à une exécution GitHub non réalisée.
+
+Correspondance avec l’arborescence proposée : `src/osint_ner/data.py` prépare les données, `model.py` entraîne et évalue, `server.py` fournit l’API, `monitor.py` suit la dérive, `automation.py` réentraîne et `deployment.py` livre. Les tests sont dans `tests/`, les modèles locaux restent hors dépôt et sont montés comme artefacts. Les scripts remplacent les notebooks exécutables ; Kubernetes n’est pas utilisé sur cette cible locale. Les scores métier restent conditionnés à une référence indépendante revue par une personne.

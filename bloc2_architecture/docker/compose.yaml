@@ -1,0 +1,4 @@
+# Entrée IaC complémentaire. La définition racine reste la source unique.
+name: memoire_osint
+include:
+  - ../docker-compose.yml

@@ -15,7 +15,7 @@ SQLite conserve catalogue, versions et checkpoints. JSON tableau alimente B2, JS
 
 L’image sparse APFS AES-256 est dans le dossier personnel Application Support/MemoireOSINT. macOS gère le mot de passe. Image, états et pointeur sont exclus de GitHub. Catalogue, audits, exports gérés, droits et secours sont dans ce volume après migration. Les corpus originaux et stockages des autres blocs ont leur propre politique. Ce volume ne protège pas automatiquement toutes les copies du mémoire.
 
-État de preuve : volume APFS AES-256 activé et migration physique vérifiée le 4 octobre 2026. Les comptes de 21 681 articles au transfert, 69 fichiers du collecteur et 19 historiques ont été contrôlés. verification/Volume_chiffre.json fait foi. Le test unitaire simule un montage ; la preuve physique est distincte. La protection concerne les états B3 migrés et ne démontre pas le chiffrement intégral du Mac. Aucun effacement physique garanti du SSD n’est revendiqué.
+État de preuve : volume APFS AES-256 activé et migration physique vérifiée le 4 octobre 2026. Les comptes de 21 681 articles au transfert, 69 fichiers du collecteur et 19 historiques ont été contrôlés. Preuves/Collecte_TASS/Volume_chiffre.json fait foi. Le test unitaire simule un montage ; la preuve physique est distincte. La protection concerne les états B3 migrés et ne démontre pas le chiffrement intégral du Mac. Aucun effacement physique garanti du SSD n’est revendiqué.
 
 ```sh
 python3 -m pipeline collect-ui --state /Volumes/MemoireOSINT/B3 --require-encrypted --open
@@ -102,3 +102,11 @@ Procédure de cycle, état réel dans Cycle_volume_chiffre.json :
 Cycle complet exécuté, avec 21 701 articles et empreintes conservés.
 
 Docker a été arrêté temporairement avec l’autorisation de l’utilisateur, puis redémarré. Les 40 conteneurs précédemment actifs sont remis en service et tous ceux auparavant sains retrouvent cet état. Le contrôle porte sur leurs statuts, sans audit fonctionnel des autres applications. Preuve : Docker_cycle.json. Aucun démontage forcé.
+
+## Mode périodique, complément du 18 octobre 2026
+
+Activer `--watch-config config/collecte_continue.json` avec la commande `collect-ui` pour traiter les nouvelles arrivées sans relancer un formulaire à chaque cycle. La fenêtre glisse sur les jours UTC et se recouvre entre cycles ; les identifiants et révisions évitent les doublons. La cadence nominale est une attente de 60 secondes après chaque cycle, à laquelle s’ajoutent le traitement et les reprises.
+
+Le calendrier et la tâche sont liés transactionnellement dans `poll_schedule`. Un lot bloqué reste à examiner ; une pause volontaire reste prioritaire. La surveillance affiche cycles, échéance, retard et durée, et alerte sur activité trop ancienne ou couverture limitée. Les limites de pages et d’articles peuvent empêcher de couvrir une période chargée : ajuster le périmètre sans présenter un résultat partiel comme exhaustif.
+
+Les essais sur arrivées fictives, contrôles qualité, reprise et interface sont localisés dans `Preuves/Complement_20261018/`. Aucun cycle réseau TASS récurrent n’a été activé pour ces essais. Les mesures volumétriques du 4 octobre restent datées et ne constituent pas un nouveau benchmark du mode périodique. Le mode Docker historique conserve le réseau désactivé et traite des fichiers ; la commande Mac ci-dessus concerne la collecte réseau.

@@ -20,6 +20,6 @@ Arrêt sans tâche active, checkpoint WAL, démontage normal, API indisponible, 
 
 Les critères B3-1.1, B3-1.4, B3-4.4 et B3-6.2 disposent des nouvelles preuves localisées. Leur statut « testé » décrit ces scénarios ; la décision de conformité reste celle du jury. Les huit critères oraux restent « prévu ». Le cycle protège les états B3, sans démontrer le chiffrement du Mac entier ni une récupération après perte du poste.
 
-Preuves : verification/Benchmark_chiffre.json, Benchmark_chiffre_avant_index.json, Cycle_volume_chiffre.json et Version_finale.json.
+Preuves : Preuves/Collecte_TASS/Benchmark_chiffre.json, Benchmark_chiffre_avant_index.json, Cycle_volume_chiffre.json et Version_finale.json.
 
 Docker a été arrêté temporairement avec l’autorisation de l’utilisateur, puis redémarré. Les 40 conteneurs précédemment actifs sont remis en service et tous ceux auparavant sains retrouvent cet état. Le contrôle porte sur leurs statuts, sans audit fonctionnel des autres applications. Preuve : Docker_cycle.json. Aucun démontage forcé.

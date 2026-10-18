@@ -67,6 +67,13 @@ def initialize(state):
         );
         CREATE TABLE IF NOT EXISTS denied (article_id TEXT PRIMARY KEY);
         CREATE TABLE IF NOT EXISTS corrections (article_id TEXT PRIMARY KEY, payload TEXT NOT NULL);
+        CREATE TABLE IF NOT EXISTS poll_schedule (
+          singleton INTEGER PRIMARY KEY CHECK(singleton=1), config_sha256 TEXT NOT NULL,
+          next_due REAL NOT NULL, pending_job TEXT, completed INTEGER NOT NULL DEFAULT 0,
+          failures INTEGER NOT NULL DEFAULT 0, status TEXT NOT NULL DEFAULT 'waiting',
+          last_success REAL, last_job TEXT, last_duration REAL, last_lag REAL,
+          stale_alert INTEGER NOT NULL DEFAULT 0
+        );
         """)
         if "started_at" not in {r[1] for r in db.execute("PRAGMA table_info(jobs)")}:
             db.execute("ALTER TABLE jobs ADD COLUMN started_at TEXT")
@@ -226,7 +233,7 @@ def bootstrap(state, config):
     return count
 
 
-def new_job(state, params):
+def new_job(state, params, scheduled=False):
     key = str(uuid.uuid4())
     _, right = bounds(params["start"], params["end"])
     with database(state) as db, db:
@@ -238,6 +245,16 @@ def new_job(state, params):
             "INSERT INTO jobs(job_id,params,status,stage,cursor,created,updated) VALUES(?,?,?,?,?,?,?)",
             (key, json.dumps(params), "queued", "discovery", right, now(), now()),
         )
+        if scheduled:
+            # The job and its schedule checkpoint commit together. A crash cannot
+            # create an untracked polling job or advance to a new cycle early.
+            updated = db.execute(
+                "UPDATE poll_schedule SET pending_job=?,status='running' "
+                "WHERE singleton=1 AND pending_job IS NULL",
+                (key,),
+            )
+            if updated.rowcount != 1:
+                raise ValueError("Une collecte périodique attend déjà sa reprise.")
     emit(state, key, "collection_queued", **params)
     return key
 

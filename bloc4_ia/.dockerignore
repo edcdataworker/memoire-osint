@@ -1,0 +1,9 @@
+**
+!Dockerfile
+!requirements.docker.lock.txt
+!pyproject.toml
+!src/
+!src/osint_ner/
+!src/osint_ner/**
+src/**/__pycache__/
+src/**/*.pyc

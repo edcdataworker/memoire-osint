@@ -58,7 +58,7 @@ L’architecture du Bloc 2 nécessite Docker et des secrets générés localemen
 
 ## Résultats et limites
 
-Le pipeline initial a accepté 21 676 articles. L’inférence complète de la baseline expérimentale a produit 39 511 mentions. Les tests du pipeline, les 40 tests IA et le déploiement éphémère sur données synthétiques sont exécutés par le workflow commun. Les preuves, versions et conditions de mesure sont fournies dans les livrables et les exécutions GitHub Actions.
+Le pipeline initial a accepté 21 676 articles. L’inférence complète de la baseline expérimentale a produit 39 511 mentions. La révision locale corrigée passe 50 tests IA, 8 tests de collecte périodique et 2 tests des garde-fous VM. Le conteneur IA est vérifié sur fixtures et le flux sur 40 cycles et 10 000 articles fictifs. Le workflow commun est préparé pour ces contrôles ; le résultat distant est consultable dans l’onglet Actions du dépôt. Les preuves locales, versions et limites restent distinctes des exécutions distantes antérieures.
 
 Le modèle TASS livré est entraîné sur des préannotations lexicales. Sa qualité métier n’est pas validée. Le [diagnostic exploratoire sur 42 articles](bloc4_ia/docs/Diagnostic_IA_42_articles.md) donne un F1 micro de 32,73 % contre une référence proposée par IA. Le modèle est inchangé. L’[interface de revue humaine](bloc4_ia/docs/Revue_humaine_42_articles.md) contrôle les attestations et la provenance sur des fixtures ; elle n’atteste pas les 42 articles réels. Une revue humaine et une mesure sur une référence indépendante restent à réaliser.
 
@@ -75,3 +75,10 @@ Le workflow [verification.yml](.github/workflows/verification.yml) exécute les 
 Les travaux collectifs historiques conservent les crédits Edouard Cappaert, Jean-Christophe Dorn et Noah Segonds, ainsi que les références pédagogiques de Matthieu Larboullet. L’adaptation actuelle et les vérifications ont été assistées par Codex. Les anciens coauteurs ne sont pas présentés comme ayant validé cette nouvelle version.
 
 La mise à disposition du code ne crée pas de licence sur les cours, les textes TASS ou les ressources tierces. Aucune licence générale de réutilisation n’est ajoutée sans clarification des droits. Chaque dépendance conserve sa licence.
+
+
+## Révision locale du Bloc 2, 18 octobre 2026
+
+Le déploiement reproductible et la surveillance locale du Bloc 2 ont été ajoutés. Cette révision du miroir reste locale et n’a pas été publiée. Voir `REVISION_BLOC2_20261018.json`. Les guides de préparation orale sont conservés dans le projet local et exclus des nouveaux paquets de remise.
+
+Les guides de préparation orale restent en local et sont exclus des révisions publiées. Les présentations PowerPoint restent des livrables distincts. Les nouvelles preuves synthétiques sont dans les dossiers `verification/Corrections_20261018` des Blocs 3 et 4.

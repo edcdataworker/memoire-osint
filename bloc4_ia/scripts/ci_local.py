@@ -1,6 +1,7 @@
 """Actual local build, tests, immutable wheel deploy, smoke and rollback probe."""
 
 import hashlib
+import argparse
 import json
 import os
 import subprocess
@@ -12,12 +13,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PYTHON = sys.executable
+PROOFS = ROOT / "Preuves"
+DATA = ROOT / ".state/inference.jsonl"
+RUN = ROOT / ".state/runs/baseline"
 
 
 def command(args, name):
     started = time.perf_counter()
     result = subprocess.run(args, cwd=ROOT, capture_output=True, text=True)
-    (ROOT / "Preuves" / f"ci_{name}.log").write_text(result.stdout + result.stderr)
+    (PROOFS / f"ci_{name}.log").write_text(result.stdout + result.stderr)
     if result.returncode:
         raise RuntimeError(f"{name} failed with exit status {result.returncode}")
     return {
@@ -48,9 +52,9 @@ def start_release(release, port, duration=30):
             "osint_ner.cli",
             "serve",
             "--data",
-            str(ROOT / ".state/inference.jsonl"),
+            str(DATA),
             "--run",
-            str(ROOT / ".state/runs/baseline"),
+            str(RUN),
             "--port",
             str(port),
         ],
@@ -75,18 +79,35 @@ def start_release(release, port, duration=30):
 
 
 def main():
+    global PROOFS, DATA, RUN
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--state", type=Path, default=ROOT / ".state")
+    parser.add_argument("--proofs", type=Path, default=ROOT / "Preuves")
+    parser.add_argument("--data", type=Path, default=DATA)
+    parser.add_argument("--run", type=Path, default=RUN)
+    parser.add_argument("--persistent", action="store_true")
+    parser.add_argument("--port", type=int, default=8766)
+    args = parser.parse_args()
+    DATA, RUN, PROOFS = (
+        args.data.resolve(strict=True),
+        args.run.resolve(strict=True),
+        args.proofs.absolute(),
+    )
+    PROOFS.mkdir(parents=True, exist_ok=True)
+    args.state = args.state.absolute()
+    args.state.mkdir(parents=True, exist_ok=True)
     started = time.perf_counter()
     steps = []
-    for args, name in [
+    for command_args, name in [
         ([PYTHON, "-m", "pip", "check"], "dependencies"),
         ([PYTHON, "-m", "ruff", "check", "src", "tests", "scripts"], "lint"),
-        ([PYTHON, "-m", "pytest", "-q", "--junitxml=Preuves/ci_tests.xml"], "tests"),
+        ([PYTHON, "-m", "pytest", "-q", f"--junitxml={PROOFS / 'ci_tests.xml'}"], "tests"),
         ([PYTHON, "-m", "build", "--wheel", "--no-isolation"], "build"),
     ]:
-        steps.append(command(args, name))
+        steps.append(command(command_args, name))
     wheel = max((ROOT / "dist").glob("*.whl"), key=lambda p: p.stat().st_mtime)
     checksum = hashlib.sha256(wheel.read_bytes()).hexdigest()
-    release = ROOT / ".state/releases" / checksum[:16]
+    release = args.state / "releases" / checksum[:16]
     steps.append(
         command(
             [PYTHON, "-m", "pip", "install", "--no-deps", "--target", str(release), str(wheel)],
@@ -95,7 +116,7 @@ def main():
     )
     from osint_ner.contracts import atomic_json, utcnow
 
-    pointer = ROOT / ".state/deploy/current.json"
+    pointer = args.state / "deploy/current.json"
     previous = json.loads(pointer.read_text()) if pointer.exists() else None
     proc, smoke = start_release(release, 8765)
     proc.terminate()
@@ -116,12 +137,28 @@ def main():
         rollback = {"restored_wheel_sha256": previous["wheel_sha256"], "health": old_health}
         atomic_json(pointer, deployed)
     git = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True)
+    from watch_delivery import fingerprint
+
+    source_paths = [
+        ROOT / name
+        for name in (
+            "src",
+            "scripts",
+            "tests",
+            "config",
+            ".github",
+            "pyproject.toml",
+            "requirements.lock.txt",
+        )
+    ]
     report = {
         "environment": "github_actions_ephemeral_demo"
         if os.getenv("GITHUB_ACTIONS") == "true"
         else "local_loopback_demo",
         "executed_at": utcnow(),
         "source_commit": git.stdout.strip() or None,
+        "source_tree_sha256": fingerprint(source_paths),
+        "source_identity": "Working files identified by hash; commit alone does not describe uncommitted changes",
         "steps": steps,
         "deployment": deployed,
         "smoke": smoke,
@@ -131,7 +168,16 @@ def main():
         "production_model_promoted": False,
         "continuity": "Service is started and stopped for smoke; no uninterrupted public service claim",
     }
-    atomic_json(ROOT / "Preuves/ci_local.json", report)
+    if args.persistent:
+        from osint_ner.deployment import deploy
+
+        report["persistent_deployment"] = deploy(
+            wheel, DATA, RUN, args.state / "service", args.port
+        )
+        report["continuity"] = (
+            "Stable loopback gateway; healthy backend switch; previous backend retained for rollback"
+        )
+    atomic_json(PROOFS / "ci_local.json", report)
     print(json.dumps(report, indent=2))
 
 

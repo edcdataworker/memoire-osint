@@ -1,0 +1,34 @@
+[
+  {
+    "test": "SQL reader cannot write",
+    "status": "passed"
+  },
+  {
+    "test": "Mongo reader cannot write",
+    "status": "passed"
+  },
+  {
+    "test": "SQL rejects plaintext TCP",
+    "status": "passed"
+  },
+  {
+    "test": "Mongo rejects plaintext TCP",
+    "status": "passed"
+  },
+  {
+    "test": "SQL enforces foreign key",
+    "status": "passed"
+  },
+  {
+    "test": "Mongo validates required fields",
+    "status": "passed"
+  },
+  {
+    "test": "Historical corpus preserved, all cross-store hashes and decrypted samples",
+    "status": "passed"
+  },
+  {
+    "test": "AES-GCM authenticates identifier",
+    "status": "passed"
+  }
+]

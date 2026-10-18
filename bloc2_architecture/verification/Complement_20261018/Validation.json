@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-18T20:15:48.179253+00:00",
+  "scope": "Bloc 2, hors vidéo",
+  "criteria_exact_count_verified": 28,
+  "operational_tests": 10,
+  "integration_checks": 8,
+  "deployment": "Docker Desktop local, volumes existants, construction puis attente de santé et migration additive ; réexécution sans construction",
+  "alert_test": {
+    "memory_threshold_percent": 1,
+    "observed_exit_code": 2,
+    "purpose": "déclenchement contrôlé sans arrêter un service"
+  },
+  "normal_samples": 3,
+  "default_memory_threshold_percent": 85,
+  "limitations": [
+    "pas de serveur virtuel autonome provisionné",
+    "pas de test sur poste vierge",
+    "pas de nouvelle mesure 60k/600k/6M",
+    "surveillance au premier plan, sans notification distante",
+    "pas de nouvelle publication GitHub"
+  ],
+  "supplement_sha256": "95a4ceab87e0c1ffdd14945f0fbdcb15aa2fbd7f14a29c7ac8e76f1d183aa18a",
+  "code_sha256": {
+    "scripts/infrastructure.py": "fd2a0faf10cab0d63209c69d4ac28802eb2700e33e83f723ae91efe2de1112f2",
+    "tests/infrastructure.py": "0ac582e9d555f2bd5812bc629391ac40121452016be4faeb72d5d8faed8e30aa",
+    "docker/compose.yaml": "c0b39110ee7b85ef82e78c64d24af2cfd6b1f6e832cfa1b3c4ad809ccbf8c738"
+  },
+  "docker_version": "29.1.2",
+  "compose_version": "2.40.3-desktop.1"
+}

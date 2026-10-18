@@ -26,7 +26,7 @@ def load(name):
 
 train = load("Preuves/training_run.json")
 bench = load("Preuves/benchmark.json")
-ci = load("Preuves/ci_local.json")
+ci = load("Preuves_complement_20261018/ci_correction.json")
 full = load("Preuves/inference_full.json")
 count = load("Preuves/corpus_predictions_summary.json")
 diagnostic = load("Preuves/Diagnostic_annotations_IA_42_articles.json")
@@ -145,7 +145,7 @@ def footer(c, doc):
     c.line(54, 49, 541, 49)
     c.setFont("Helvetica", 8)
     c.setFillColor(colors.HexColor("#50616f"))
-    c.drawString(54, 35, "Edouard Cappaert | Mémoire OSINT | Bloc 4 | 4 octobre 2026")
+    c.drawString(54, 35, "Edouard Cappaert | Mémoire OSINT | Bloc 4 | 18 octobre 2026")
     c.drawRightString(541, 35, str(doc.page))
 
 
@@ -159,7 +159,7 @@ p(
 p("Edouard Cappaert\nMSc 2025-2026", "BodyX")
 sub("État de la solution livrée")
 p(
-    f"{full['documents']:,} articles traités localement. Modèle spaCy à supervision faible. Infrastructure de démonstration raccordée aux Blocs 2 et 3. Modèle NER opérationnel ; évaluation exploratoire sur une référence générée par IA.".replace(
+    f"{full['documents']:,} articles traités localement. Modèle spaCy à supervision faible. Infrastructure de démonstration raccordée au Bloc 2 et au Bloc 3. Modèle NER opérationnel ; évaluation exploratoire sur une référence générée par IA.".replace(
         ",", " "
     )
 )
@@ -253,7 +253,7 @@ p(
     "L’ouverture d’un article restitue le texte complet, les mentions surlignées, la catégorie et les offsets. Le lien TASS permet de revenir à la source. Le NER ne fournit pas de raisonnement interne lisible : l’explication proposée porte sur le passage détecté, la tâche et ses limites."
 )
 p(
-    "L’interface ne prétend ni calibrer une confiance de prédiction ni garantir l’exactitude d’un nom. Le code utilise textContent pour afficher les chaînes non fiables, et le serveur est limité à la lecture sur127.0.0.1.",
+    "L’interface ne prétend ni calibrer une confiance de prédiction ni garantir l’exactitude d’un nom. Le code utilise textContent pour afficher les chaînes non fiables, et le serveur écoute sur 127.0.0.1. La route POST /api/predict calcule de nouvelles mentions sans enregistrer la saisie.",
     "SmallX",
 )
 page()
@@ -313,34 +313,34 @@ p(
 )
 page()
 heading("6. Réentraînement, dérive et livraison")
-sub("6.1 Déclenchement réellement exécuté")
+sub("6.1 Déclenchement et évaluation")
 p(
-    "L’ordonnanceur surveille les empreintes des jeux. Un lot de24 articles déclenche un candidat en2,865s, puis le cycle inchangé est ignoré. Une modification à25 articles déclenche un second candidat. Ce sont des essais de mécanisme à supervision faible. Le mode normal exige les annotations revues."
+    "L’ordonnanceur détecte les changements des jeux et conserve un candidat immuable. Le mode normal exige des annotations train et dev revues. Avec la référence et le manifeste figés, il évalue le candidat, vérifie la séparation du test et transmet ses métriques au contrôle de promotion. La revue humaine TASS reste à réaliser."
 )
 p(
-    "Le registre conserve les versions et refuse automatiquement la production lorsque les conditions de provenance et de qualité ne sont pas remplies. Le diagnostic IA reste distinct des scores utilisés pour la promotion. Le retour arrière est vérifié dans l’environnement de démonstration. Les erreurs produisent un journal et une alerte locale, et un code de sortie non nul. Un verrou abandonné après SIGKILL nécessite la procédure opérateur documentée."
+    "Une configuration de livraison peut reconstruire les prédictions avec le candidat accepté, appliquer les exclusions et livrer ce même modèle. Un échec conserve le service précédent et restaure le pointeur du registre. Les branches favorables de ce mécanisme sont testées sur fixtures. Aucun modèle TASS n’est promu sur la seule base du diagnostic IA."
 )
 sub("6.2 Distribution et qualité")
 p(
-    "La divergence Jensen-Shannon compare les classes de longueur des textes. Un seuil exploratoire de0,1 produit une demande de revue. Une baisse F1 de0,05 exige des scores comparables sur la même référence admise par le contrôle de qualité. Le diagnostic IA ponctuel ne démontre pas une baisse de qualité dans le temps. Le cas de décalage synthétique teste la réaction, sans prouver une dérive réelle de qualité."
+    "Le monitoring compare les classes de longueur par divergence Jensen-Shannon. Le seuil exploratoire 0,1 demande une revue et gèle la promotion. Une baisse de F1 de 0,05 exige la même référence humaine. Les compteurs de requêtes, erreurs et durées de l’API complètent ce suivi, sans mesurer la justesse des prédictions."
 )
-sub("6.3 Chaîne locale de livraison")
+sub("6.3 API et chaîne de livraison")
 p(
-    f"La chaîne finale a pris{ci['duration_seconds']}s : dépendances, lint, tests, construction wheel, installation isolée, démarrage HTTP, contrôle santé et pointeur atomique. La release précédente est redémarrée pour le test de retour arrière. Les logs identifient le commit et les hashes des wheels."
+    "POST /api/predict reçoit un texte nouveau et renvoie les mentions, leurs offsets Unicode, l’empreinte du texte et celle du modèle chargé. La saisie n’est pas enregistrée. Les entrées invalides sont rejetées, la taille et le temps de lecture bornés, et une seule inférence simultanée est admise."
 )
 p(
-    "Le workflow commun GitHub verification.yml a terminé trois jobs avec succès au commit 02bf729 : contrôles B2, tests B3 et IA, build puis service HTTP éphémère sur données synthétiques. Preuves/GitHub_workflow_final.json identifie le run. Les révisions locales ultérieures ne sont pas attribuées à cette exécution. Le service de contrôle démarre puis s’arrête ; aucune continuité de service public n’est démontrée."
+    f"La chaîne vérifiée prend {ci['duration_seconds']} s : dépendances, style, tests, wheel, installation et contrôle HTTP. Un observateur des sources la déclenche automatiquement puis ignore les sources inchangées. La passerelle locale conserve son adresse et bascule après contrôle d’un nouveau backend. Le retour arrière et le refus d’un modèle corrompu ont été vérifiés avec conservation du service précédent."
 )
-sub("6.4 Reproductibilité")
+sub("6.4 Versions et limites")
 p(
-    "Deux entraînements terminés, avec la même graine et les mêmes données, produisent le même hash du modèle dans cet environnement. L’identité inter-plateformes reste à vérifier.",
+    "Dockerfile et Compose ajoutent un conteneur non privilégié, racine et artefacts en lecture seule, port publié en local. Santé, prédiction, métriques et refus d’un Host tiers sont testés sur fixtures (Docker.json). Les empreintes identifient image et modèle. La chaîne wheel reste distincte. Reprise après redémarrage, qualité humaine et exploitation externe durable restent à établir.",
     "SmallX",
 )
 page()
 heading("7. Sécurité, accessibilité et droits")
 sub("7.1 Contrôles techniques")
 p(
-    "Le serveur écoute en local et en lecture. Les routes, POST, Host distant, injections et requêtes trop longues sont testés ; la CSP limite les scripts et Elasticsearch utilise TLS. Les copies B4 inventoriées, corpus, modèles, annotations, prédictions et archives de remise, ont été migrées vers le volume AES-256 avec contrôle des empreintes et lecture après migration. Les chemins habituels restent des liens. FileVault est désactivé ; les profils navigateur et copies externes ne sont pas couverts. Voir Protection_copies_B4.json."
+    "Le serveur écoute en local. La prédiction accepte uniquement du JSON borné, refuse une origine distante et ne conserve pas le texte saisi. Les routes, injections et limites sont testées. La CSP limite les scripts et Elasticsearch utilise TLS. Les copies B4 inventoriées, corpus, modèles, annotations, prédictions et archives de remise, ont été migrées vers le volume AES-256 avec contrôle des empreintes et lecture après migration. Les chemins habituels restent des liens. FileVault est désactivé ; les profils navigateur et copies externes ne sont pas couverts. Voir Protection_copies_B4.json."
 )
 sub("7.2 Accessibilité vérifiée et limites")
 p(
@@ -383,7 +383,7 @@ p(
     "SmallX",
 )
 p(
-    "Preuves locales : Preuves/training_run.json, inference_full.json, benchmark.json, Diagnostic_annotations_IA.json, quality_gate.json, retraining_events.jsonl, reproducibility.json, ci_local.json et ci_tests.xml. La matrice Correspondance_criteres_Bloc4.json couvre les41critères exacts.",
+    "Preuves du corpus : training_run.json, inference_full.json, Diagnostic_annotations_IA_42_articles.json. Preuves de serving et livraison : Preuves_complement_20261018/ci_local.json, Verification_livraison.json et Verification_interface.json. La matrice Correspondance_criteres_Bloc4.json relie les 41 critères à leurs preuves et limites.",
     "SmallX",
 )
 # Normalize accidental joined numeric prose while preserving paths and identifiers.

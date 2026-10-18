@@ -1,0 +1,10 @@
+{
+  "section": "defense",
+  "lookback_days": 2,
+  "limit": 200,
+  "interval_seconds": 60,
+  "max_cycles": 0,
+  "max_failures": 3,
+  "retry_seconds": 10,
+  "freshness_seconds": 300
+}

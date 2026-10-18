@@ -1,0 +1,33 @@
+{
+  "synthetic": true,
+  "checks": {
+    "non_root_readonly": true,
+    "prediction": true,
+    "host_rejection": true
+  },
+  "health": {
+    "status": "ok",
+    "version": "0.2.1",
+    "quality_status": "unavailable_without_independent_human_reference",
+    "release_token": null,
+    "documents": 4,
+    "model_version": "weak-be4b4f958b-s42-e2",
+    "model_sha256": "4bf529f300981e6ae1f6e34347b500b3a22b88d13f645fb84bc00a85dc77e52f",
+    "prediction_ready": true
+  },
+  "metrics": {
+    "prediction": {
+      "requests": 1,
+      "successes": 1,
+      "errors": 0,
+      "busy": 0,
+      "total_seconds": 0.005412,
+      "last_seconds": 0.005412,
+      "last_characters": 51
+    },
+    "scope": "current_process_no_source_text",
+    "model_sha256": "4bf529f300981e6ae1f6e34347b500b3a22b88d13f645fb84bc00a85dc77e52f"
+  },
+  "image_id": "sha256:b444b8d47f674042ef4a74cbac917d17e6f4b089da7c8ca546e43f648b030842",
+  "limits": "Local synthetic serving only; no TASS model quality or external production claim."
+}

@@ -29,3 +29,10 @@ __pycache__/
 *.dmg
 **/rights.json
 **/rectifications.json
+
+# Les guides oraux restent en local.
+**/Guide_oral*
+**/Preparation_orale*
+*.webm
+*.mov
+*.m4v

@@ -1,5 +1,6 @@
 """Prepare an explicitly synthetic, disposable CI deployment dataset."""
 
+import argparse
 from pathlib import Path
 
 from osint_ner.contracts import article, digest, write_records
@@ -37,7 +38,10 @@ def examples(split, count):
 
 
 def main():
-    state = ROOT / ".state"
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--state", type=Path, default=ROOT / ".state")
+    args = parser.parse_args()
+    state = args.state.absolute()
     run = state / "runs/baseline"
     if run.exists():
         raise SystemExit("Use a clean disposable checkout; existing runs are preserved")
@@ -45,7 +49,6 @@ def main():
     train_file, dev_file = state / "ci/train.jsonl", state / "ci/dev.jsonl"
     write_records(train_file, train_rows)
     write_records(dev_file, dev_rows)
-    (ROOT / "Preuves").mkdir(exist_ok=True)
     train(train_file, dev_file, run, epochs=2, seed=42)
     write_records(state / "inference.jsonl", Predictor(run).predict(dev_rows))
     print("Synthetic CI fixture ready. No TASS data; no human quality claim.")
@@ -53,4 +56,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

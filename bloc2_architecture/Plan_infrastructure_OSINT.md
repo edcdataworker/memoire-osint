@@ -50,7 +50,7 @@ Correspondance ANSSI | 19 et 20
 
 Contexte et usages
 
-Le nettoyage conserve 21 676 des 21 742 entrées initiales. Le programme développé dans le bloc 3 enrichit ce corpus par rubrique et période UTC ; B2 importe les lots validés. Le raccordement vérifié compte 21 681 articles. Une collecte ne déclenche ni inférence ni entraînement.
+Le nettoyage conserve 21 676 des 21 742 entrées initiales. Le programme développé dans le Bloc 3 enrichit ce corpus par rubrique et période UTC ; Bloc 2 importe les lots validés. Le raccordement vérifié compte 21 681 articles. Une collecte ne déclenche ni inférence ni entraînement.
 
 Besoin | Réponse et contrôle
 
@@ -58,7 +58,7 @@ Données hétérogènes | Métadonnées relationnelles, JSON variable et texte i
 
 Traçabilité | Identifiant partagé, empreintes du texte et du JSON, provenance, exécution, point de reprise et révisions conservées.
 
-Lecture et source | API HTTPS authentifiée : article et liste par dates UTC, au plus 1 000 résultats. Index NER B4 distinct, limité aux textes déjà analysés.
+Lecture et source | API HTTPS authentifiée : article et liste par dates UTC, au plus 1 000 résultats. Index NER Bloc 4 distinct, limité aux textes déjà analysés.
 
 Cadence proposée | Hypothèse de dimensionnement : un lot quotidien de 1 000 nouveaux articles, disponible en moins de 15 minutes. Ces cibles sont des choix du scénario.
 
@@ -76,7 +76,7 @@ Extension : une nouvelle source doit être inscrite dans la table sources ; ses 
 
 2. Schéma SQL PostgreSQL
 
-Cinq tables séparent sources, exécutions, articles, effacements et révisions. sql/01_schema.sql et la migration additive sql/02_revisions.sql définissent le schéma ; docs/sql_schema.dbml décrit aussi les archives.
+L’ERD opérationnel est retenu ; aucun entrepôt en étoile n’est implémenté. Cinq tables séparent sources, exécutions, articles, effacements et révisions. sql/01_schema.sql et la migration additive sql/02_revisions.sql définissent le schéma ; docs/sql_schema.dbml décrit aussi les archives.
 
 Les révisions archivent les métadonnées précédentes quand le contenu change. La clé composée empêche une archive dupliquée au rejeu. Les index de date servent la sélection temporelle ; une migration additive conserve les volumes.
 
@@ -128,7 +128,7 @@ Contrat | schema_version=1 ; révision de contenu distincte de la version du sch
 
 3. Architecture et flux
 
-Le navigateur pilote un service local du programme développé dans le bloc 3 et un worker séparé. Le flux B2 passe par les conteneurs opérateurs ; aucun secret des bases ne transite dans le navigateur.
+Le navigateur pilote un service local du programme développé dans le Bloc 3 et un worker séparé. Le flux Bloc 2 passe par les conteneurs opérateurs ; aucun secret des bases ne transite dans le navigateur.
 
 Le corpus nettoyé initial reste une autre entrée d’ingestion. PostgreSQL valide les identifiants et métadonnées ; MongoDB garde les textes. Une divergence doit être résolue avant indexation. Aucune transaction distribuée SQL/MongoDB.
 
@@ -187,13 +187,13 @@ Textes au repos | AES-256-GCM, nonce aléatoire et identifiant authentifié. Sau
 
 Secrets | Aucun secret dans le Compose ni dans l’archive de remise ; clés montées selon besoin. | Pas de coffre central ni rotation automatique ; conserver une copie sûre des clés hors machine.
 
-Programme développé dans le bloc 3 | Permissions restrictives, Host et CSRF ; volume AES-256 activé et migration physique vérifiée (Volume_chiffre.json). | Pas de comptes individuels ; après montage, le processus lit les textes. Copies hors volume à inventorier.
+Programme développé dans le Bloc 3 | Permissions restrictives, Host et CSRF ; volume AES-256 activé et migration physique vérifiée (Volume_chiffre.json). | Pas de comptes individuels ; après montage, le processus lit les textes. Copies hors volume à inventorier.
 
 Administration | Ports locaux et Mongo Express en lecture seule. | pgAdmin et Mongo Express utilisent HTTP local. Portainer reçoit le socket Docker et doit être fermé après usage.
 
 Les tests vérifient aussi le refus des connexions SQL et MongoDB sans TLS, l’intégrité AES-GCM et les contraintes de schéma. Ils ne constituent ni un audit de sécurité exhaustif ni une certification ISO 27001.
 
-Lien au bloc 1 : minimisation des métadonnées, responsabilités organisationnelles du scénario, sans comptes individuels dans le programme développé dans le bloc 3, traçabilité des exécutions, durées proposées, registre des suppressions et examen préalable des prestataires. Le mini-site local ne constitue pas un hébergement public. Le contrôle CSRF ne remplace pas une authentification personnelle.
+Lien au Bloc 1 : minimisation des métadonnées, responsabilités organisationnelles du scénario, sans comptes individuels dans le programme développé dans le Bloc 3, traçabilité des exécutions, durées proposées, registre des suppressions et examen préalable des prestataires. Le mini-site local ne constitue pas un hébergement public. Le contrôle CSRF ne remplace pas une authentification personnelle.
 
 
 # 6. Capture PostgreSQL et application
@@ -207,7 +207,7 @@ pgAdmin connecté à PostgreSQL avec le rôle de lecture. Les courbes décrivent
 
 Capture : 01_application.png
 
-Application B2 authentifiée, capturée pendant les essais de stockage. Les compteurs visibles concernent ce test. La capture de raccordement actualisée figure en page 18.
+Application Bloc 2 authentifiée, capturée pendant les essais de stockage. Les compteurs visibles concernent ce test. La capture de raccordement actualisée figure en page 18.
 
 
 # 6. Capture Mongo Express
@@ -251,7 +251,7 @@ Les fichiers stats_*.jsonl conservent les relevés horodatés CPU, RAM, réseau 
 
 Réseau et disque : compteurs cumulatifs, pas le coût d’un seul essai. CPU Docker peut dépasser 100 % avec plusieurs cœurs. Les maxima échantillonnés peuvent manquer un pic court.
 
-Les limites mémoire sont des paramètres. Interfaces et navigateur produisent encore une activité de fond après l’arrêt autorisé des 36 anciens conteneurs.
+Complément du 18 octobre : scripts/infrastructure.py monitor relève état, healthcheck, CPU, mémoire, réseau et disque. Alertes locales sur absence, arrêt, santé et mémoire ≥ 85 % (seuil choisi). Trois prélèvements sains et un seuil de test à 1 % sont conservés dans Preuves/Complement_20261018. Surveillance au premier plan, sans notification distante ; santé HTTP distincte de qualité des données.
 
 
 # 7. Essais de volumétrie
@@ -309,7 +309,7 @@ La démonstration arrête PostgreSQL et MongoDB, puis consulte le même article 
 
 La vidéo assemble deux captures réelles, avec une coupe vers le retour normal. Elle est muette et ne sert pas à mesurer un temps de basculement.
 
-Les objectifs du bloc 1 restent RTO 8 heures ouvrées et RPO 24 heures. Le temps mesuré ci-dessus concerne une restauration locale de contrôle, pas une reprise après perte du Mac. SQLite du programme développé dans le bloc 3, ses instantanés, ses exports et ses checkpoints ne sont pas couverts par ce dump B2. Leur sauvegarde cohérente, une copie hors machine et un exercice de sinistre complet restent à organiser (page 17).
+Les objectifs du Bloc 1 restent RTO 8 heures ouvrées et RPO 24 heures. Le temps mesuré ci-dessus concerne une restauration locale de contrôle, pas une reprise après perte du Mac. SQLite du programme développé dans le Bloc 3, ses instantanés, ses exports et ses checkpoints ne sont pas couverts par ce dump Bloc 2. Leur sauvegarde cohérente, une copie hors machine et un exercice de sinistre complet restent à organiser (page 17).
 
 
 # 9. Droits, cohérence et reprise
@@ -331,7 +331,7 @@ Persistance | Recréation des deux conteneurs de bases en conservant leurs volum
 
 Variété | Champ JSON imbriqué supplémentaire conservé et restitué lors du test de fixture.
 
-Les versions B2 sont effacées avec l’article et son exclusion empêche le réimport. Le scénario Droits_B3_B2.json vérifie rectification, purge des versions puis effacement sur un jeu de test isolé. Copies externes, annotations et modèle exigent une procédure coordonnée ; aucun désapprentissage n’est démontré.
+Les versions Bloc 2 sont effacées avec l’article et son exclusion empêche le réimport. Le scénario Droits_B3_B2.json vérifie rectification, purge des versions puis effacement sur un jeu de test isolé. Copies externes, annotations et modèle exigent une procédure coordonnée ; aucun désapprentissage n’est démontré.
 
 Les registres de suppression et de rectification doivent accompagner le plan de reprise. Droits_B3_B2.json vérifie la réapplication d’une correction puis d’un effacement après restauration dans des bases isolées. Le registre de corrections est chiffré. Une copie ancienne du registre ne suffit pas : le script fusionne les suppressions de la sauvegarde et les suppressions locales plus récentes.
 
@@ -343,9 +343,7 @@ Les registres de suppression et de rectification doivent accompagner le plan de 
 
 Installation locale
 
-python3 scripts/setup.py
-docker compose build app
-docker compose up -d postgres mongo app
+python3 scripts/infrastructure.py deploy
 docker compose run --rm -T ops python -m osint.cli ingest \
   --file /data/corpus_clean.json
 docker compose up -d elasticsearch
@@ -353,21 +351,21 @@ docker compose run --rm -T ops python -m osint.cli init-index
 docker compose run --rm -T ops python -m osint.cli index
 docker compose up -d kibana pgadmin mongo-express portainer
 
-Le corpus doit être placé dans .data avant ingestion. Attendre la disponibilité d’Elasticsearch avant init-index. Les comptes et chemins des secrets, les adresses et les commandes de reprise figurent dans README.md. Les secrets ne sont jamais fournis dans ce PDF.
+deploy prépare les secrets absents, valide Compose, construit, attend la santé des bases et de l’API puis applique la migration additive. Il conserve les volumes, sans importer de corpus. Le fichier docker/compose.yaml inclut la définition racine. Attendre Elasticsearch avant init-index. Détails et dépannage dans README.md.
 
 Collecte et raccordement
 
-# Depuis B2, base existante :
+# Depuis Bloc 2, base existante :
 docker compose exec -T postgres psql -U postgres -d osint \
   -v ON_ERROR_STOP=1 -f /docker-entrypoint-initdb.d/02_revisions.sql
-# Ouvrir le lanceur du programme développé dans le bloc 3 après préparation du volume chiffré.
-# Suivi : sélectionner un job terminé puis Importer dans B2.
+# Préparer le volume chiffré, puis ouvrir le lanceur du Bloc 3.
+# Suivi : sélectionner un job terminé puis Importer dans Bloc 2.
 
-Le service importe un export figé, puis reconstruit l’index des articles. Consulter docs/Collecte_stockages_securite.md et le mode d’emploi du programme développé dans le bloc 3 pour montage, reprise et diagnostic.
+Le service importe un export figé, puis reconstruit l’index des articles. Consulter docs/Collecte_stockages_securite.md et le mode d’emploi du programme développé dans le Bloc 3 pour montage, reprise et diagnostic.
 
 Vérifier, diagnostiquer, arrêter
 
-docker compose ps
+python3 scripts/infrastructure.py monitor --search --samples 3
 docker compose run --rm -T ops python -m osint.cli status
 python3 scripts/benchmark.py
 # Arrêter les interfaces d’administration après usage :
@@ -385,17 +383,19 @@ Sur erreur : relever l’UUID, le point de reprise, le type d’erreur et la dis
 
 État | Contenu
 
-Testé | Ingestion, contraintes, TLS, charges synthétiques, restauration B2, lecture dégradée ; import de 5 articles, révisions, UTC, volume AES-256 et restauration des corrections/effacements sur un jeu de test.
+Testé | Ingestion, contraintes, TLS, charges synthétiques, restauration Bloc 2, lecture dégradée ; import de 5 articles, révisions, UTC, volume AES-256 et restauration des corrections/effacements sur un jeu de test.
 
 Implémenté et à approfondir | Politique d’accès, répartition des autorités, chiffrement applicatif, règles de conservation et scripts d’exploitation.
 
-Préparé | Trame orale de cinq minutes et 28 critères. Raccordement entre le programme développé dans le bloc 3 et B2 testé sur 5 articles ; NER B4 exécuté sur le corpus initial uniquement.
+Préparé | Trame orale de cinq minutes et 28 critères. Raccordement entre le programme développé dans le Bloc 3 et Bloc 2 testé sur 5 articles ; NER Bloc 4 exécuté sur le corpus initial uniquement.
 
-À réaliser avant une exploitation réelle | Chiffrement complet du stockage, gestion et rotation des clés, copie hors machine, calendrier de purge et sauvegarde, surveillance et architecture multi-hôte selon disponibilité attendue.
+À réaliser avant une exploitation réelle | Chiffrement complet du stockage, gestion et rotation des clés, copie hors machine, calendrier de purge et sauvegarde, supervision permanente et architecture multi-hôte selon disponibilité attendue.
 
-Limites du rendu local | Pas d’hébergement externe de production, de validation juridique globale, de modèle NER réentraîné ni de répétition orale observée.
+Limites du rendu local | Docker Desktop local, sans serveur virtuel autonome provisionné ni hébergement externe. Aucune validation juridique globale ou répétition orale observée.
 
 Le critère sectoriel B2-3.4 est analysé dans le cadre de la veille documentaire OSINT : les règles propres au secret médical ou au reporting financier du cas santé ne sont pas transposées. L’analyse devra être revue si l’organisation, la finalité ou le secteur changent.
+
+Révision du 18 octobre : déploiement reproductible et surveillance locale ajoutés ; code IaC Docker, modèle et limites explicités. Le redéploiement réutilise une installation existante. Une installation vierge sur un autre poste reste à vérifier.
 
 Les statuts du suivi décrivent les preuves disponibles. Ils ne sont pas des notes du jury. Les sept critères de prestation orale restent préparés ; un support écrit ne démontre pas la prestation elle-même.
 
@@ -407,11 +407,11 @@ Les statuts du suivi décrivent les preuves disponibles. Ils ne sont pas des not
 
 Références et preuves
 
-Grille école RNCP38777 : Bloc 2, cellules A6 à A33, soit 28 critères exacts. Consignes du directeur : infrastructure, code et vidéo ; présentation de 5 minutes.
+Grille école RNCP38777 : Bloc 2, cellules A6 à A33, soit 28 critères exacts. Consignes du directeur et complément Bloc 2 du 18 octobre : plan et diagrammes, IaC Docker, déploiement, monitoring et documentation ; oral de 5 minutes. Vidéo non actualisée dans cette révision.
 
 Critères qualité RNCP41993 : qualité, code et traçabilité. Le mélange des identifiants RNCP reste signalé dans le pilotage.
 
-Gouvernance OSINT bloc 1 : responsabilités, droits, durées et limites.
+Gouvernance OSINT Bloc 1 : responsabilités, droits, durées et limites.
 
 Preuves/benchmarks.json, integration.json, lifecycle.json, continuity.json, backup.json, restore.json et Environnement_et_version.json : résultats datés et versions.
 
@@ -447,21 +447,21 @@ Chaque copie a un rôle, une protection et un périmètre de reprise propres. Un
 
 Copie | Protection et reprise | Portée
 
-SQLite du programme développé dans le bloc 3 et WAL | Permissions 0700/0600 ; volume chiffré requis par le lanceur. Checkpoints durables. | Clair pour le processus après montage. Volume AES-256 et migration vérifiés ; copies externes distinctes.
+SQLite du programme développé dans le Bloc 3 et WAL | Permissions 0700/0600 ; volume chiffré requis par le lanceur. Checkpoints durables. | Clair pour le processus après montage. Volume AES-256 et migration vérifiés ; copies externes distinctes.
 
-Miroir et exports du programme développé dans le bloc 3 | Instantané SQLite vérifié et exports atomiques ; miroir de lecture seule. | Mêmes hôte et volume. Sauvegarde coordonnée externe non testée.
+Miroir et exports du programme développé dans le Bloc 3 | Instantané SQLite vérifié et exports atomiques ; miroir de lecture seule. | Mêmes hôte et volume. Sauvegarde coordonnée externe non testée.
 
-Bases et révisions B2 | TLS, rôles ; textes Mongo AES-GCM. Dumps B2 chiffrés, restauration isolée. | Métadonnées non entièrement chiffrées au repos ; clés séparées.
+Bases et révisions Bloc 2 | TLS, rôles ; textes Mongo AES-GCM. Dumps Bloc 2 chiffrés, restauration isolée. | Métadonnées non entièrement chiffrées au repos ; clés séparées.
 
-Registres de B2 et du programme développé dans le bloc 3 | Exclusions durables ; rectifications chiffrées B2, synchronisation avant exposition. | Réappliquer les décisions après restauration ; vérifier les copies externes.
+Registres de Bloc 2 et du programme développé dans le Bloc 3 | Exclusions durables ; rectifications chiffrées Bloc 2, synchronisation avant exposition. | Réappliquer les décisions après restauration ; vérifier les copies externes.
 
-Elasticsearch et NER | Index articles dérivé, reconstruction depuis les autorités ; NER B4 distinct. | Les résultats NER ne sont réutilisables que pour le bon texte et modèle.
+Elasticsearch et NER | Index articles dérivé, reconstruction depuis les autorités ; NER Bloc 4 distinct. | Les résultats NER ne sont réutilisables que pour le bon texte et modèle.
 
 Copies hors périmètre | Inventaire et suppression coordonnée : téléchargements, sources, annotations, modèles. | Aucune purge distante ni désapprentissage démontrés.
 
-Pour une sauvegarde du programme développé dans le bloc 3 : suspendre les écritures, prendre un instantané SQLite cohérent (API backup, pas une simple copie du WAL actif), conserver exports, configuration et registres, puis tester la reprise. Cette procédure est proposée ; aucun essai de sauvegarde du programme développé dans le bloc 3 hors machine n’est revendiqué.
+Pour une sauvegarde du programme développé dans le Bloc 3 : suspendre les écritures, prendre un instantané SQLite cohérent (API backup, pas une simple copie du WAL actif), conserver exports, configuration et registres, puis tester la reprise. Cette procédure est proposée ; aucun essai de sauvegarde du programme développé dans le Bloc 3 hors machine n’est revendiqué.
 
-Le script B2 restaure les deux bases dans osint_restore_test et réapplique les suppressions. Droits_B3_B2.json atteste la réapplication des corrections et suppressions après restauration sur un jeu de test isolé.
+Le script Bloc 2 restaure les deux bases dans osint_restore_test et réapplique les suppressions. Droits_B3_B2.json atteste la réapplication des corrections et suppressions après restauration sur un jeu de test isolé.
 
 
 # 14. Raccordement depuis l’Observatoire
@@ -481,7 +481,7 @@ Révisions et dates | Revisions_collecte_TASS.json : ancienne version déchiffra
 
 Accès et intégrité | Integration_collecte_TASS.json : 8 contrôles réussis, TLS, rôles, contraintes et chiffrement authentifié.
 
-Restauration B2 | Collecte_TASS/restore.json : 21 681 articles dans chaque base isolée et 4 exclusions réappliquées.
+Restauration Bloc 2 | Collecte_TASS/restore.json : 21 681 articles dans chaque base isolée et 4 exclusions réappliquées.
 
 Vidéo et version | Raccordement_Observatoire.json : journal, empreintes et état final de la capture ; capture locale, même hôte.
 
@@ -531,13 +531,13 @@ Hygiène 11, 12 : secrets | Génération locale dans scripts/setup.py ; secrets 
 
 Hygiène 19, 29 : réseau et administration | Réseau de données interne ; interfaces sur 127.0.0.1 ; profil admin ponctuel. | Pas de poste d’administration dédié ; HTTP local pgAdmin/Mongo Express, socket Portainer.
 
-Hygiène 30 : poste nomade | Textes Mongo et sauvegardes AES-GCM ; catalogue du programme du bloc 3 sur volume AES-256. | Volume_chiffre.json vérifie migration et intégrité. Métadonnées B2 et copies externes non intégralement chiffrées.
+Hygiène 30 : poste nomade | Textes Mongo et sauvegardes AES-GCM ; catalogue du programme du Bloc 3 sur volume AES-256. | Volume_chiffre.json vérifie migration et intégrité. Métadonnées Bloc 2 et copies externes non intégralement chiffrées.
 
 Hygiène 34, 35 : mises à jour | Versions et empreintes dans Compose et Environnement_et_version.json. | Inventaire présent ; procédure de correctifs, veille et fins de support à formaliser.
 
 Hygiène 36 : journalisation | Logs des opérations, erreurs, checkpoints et versions des essais. | Rétention, horodatage commun et journalisation de tous les accès à vérifier ; pas de centralisation distante.
 
-Hygiène 37 ; Essentiels, partie 2 | Dumps B2 chiffrés ; restore.json et Droits_B3_B2.json : restauration isolée, corrections et exclusions réappliquées. | Essais locaux sur un jeu de test. Fréquence automatisée, copie hors ligne et sinistre complet à organiser.
+Hygiène 37 ; Essentiels, partie 2 | Dumps Bloc 2 chiffrés ; restore.json et Droits_B3_B2.json : restauration isolée, corrections et exclusions réappliquées. | Essais locaux sur un jeu de test. Fréquence automatisée, copie hors ligne et sinistre complet à organiser.
 
 Hygiène 38 : contrôles | Tests de droits/TLS, intégrité, reprise et lecture dégradée. | Contrôles ciblés documentés ; aucun audit externe ni garantie d’absence de vulnérabilité.
 

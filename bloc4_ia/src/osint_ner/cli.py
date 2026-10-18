@@ -37,6 +37,10 @@ def main():
     x.add_argument("--interval", type=float, default=60)
     x.add_argument("--demo", action="store_true")
     x.add_argument("--epochs", type=int, default=3)
+    x.add_argument("--reference")
+    x.add_argument("--manifest")
+    x.add_argument("--current")
+    x.add_argument("--delivery-config")
     x = commands.add_parser("monitor")
     x.add_argument("--reference", required=True)
     x.add_argument("--current", required=True)
@@ -49,6 +53,7 @@ def main():
     x.add_argument("--data", required=True)
     x.add_argument("--run", required=True)
     x.add_argument("--port", type=int, default=8764)
+    x.add_argument("--host", choices=("127.0.0.1", "0.0.0.0"), default="127.0.0.1")
     x = commands.add_parser("erase")
     x.add_argument("--input", required=True)
     x.add_argument("--article-id", required=True)
@@ -94,7 +99,19 @@ def main():
         elif a.command == "watch":
             from .automation import watch
 
-            result = watch(a.train, a.dev, a.state, a.cycles, a.interval, a.demo, a.epochs)
+            result = watch(
+                a.train,
+                a.dev,
+                a.state,
+                a.cycles,
+                a.interval,
+                a.demo,
+                a.epochs,
+                reference=a.reference,
+                manifest=a.manifest,
+                current=a.current,
+                delivery=a.delivery_config,
+            )
         elif a.command == "monitor":
             from .monitor import monitor
 
@@ -112,7 +129,7 @@ def main():
         elif a.command == "serve":
             from .server import serve
 
-            serve(a.data, a.run, a.port)
+            serve(a.data, a.run, a.port, a.host)
             return
         print(json.dumps(result, ensure_ascii=False, indent=2))
     except (ValueError, OSError, KeyError, TypeError) as exc:

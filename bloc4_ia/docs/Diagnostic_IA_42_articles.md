@@ -1,6 +1,6 @@
 # Diagnostic exploratoire sur 42 articles
 
-Le 4 octobre 2026, la référence IA a été élargie de 18 à 42 articles, avec le même modèle `weak-efc7c759e0-s42-e6`. La preuve publique expurgée [Diagnostic_annotations_IA_42_articles.json](Diagnostic_annotations_IA_42_articles.json) identifie la référence, la sélection, les erreurs et le modèle. Les propositions sont produites par Codex ; cette attribution ne concerne pas Haiku.
+Le 4 octobre 2026, la référence IA a été élargie de 18 à 42 articles, avec le même modèle `weak-efc7c759e0-s42-e6`. Le fichier [Diagnostic_annotations_IA_42_articles.json](../Preuves/Diagnostic_annotations_IA_42_articles.json) identifie la référence, la sélection, les erreurs et le modèle. Les propositions sont produites par Codex ; cette attribution ne concerne pas Haiku.
 
 ## Sélection et conventions
 
@@ -54,5 +54,3 @@ export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1
 ```
 
 Cette référence IA peut omettre ou mal classer des mentions. Les 18 premiers textes gardent leur biais de sélection ; l’extension est stratifiée par longueur, non pondérée et limitée à 4 500 caractères. Les paraphrases entre groupes ne sont pas détectées exhaustivement. Aucun score global de production n’est déduit, aucune promotion n’est débloquée et aucun réentraînement n’a eu lieu. Un contrôle sur la même référence figée permettrait de comparer un futur candidat au modèle actuel.
-
-La preuve JSON publiée remplace les surfaces textuelles des erreurs par leur empreinte SHA-256 et leur longueur. Les textes et la preuve intégrale restent dans le périmètre local protégé.

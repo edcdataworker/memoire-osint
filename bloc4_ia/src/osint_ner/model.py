@@ -41,6 +41,8 @@ def examples(nlp, rows):
 
 
 def train(data_path, dev_path, output, epochs=6, seed=42):
+    if epochs < 1:
+        raise ValueError("Training requires at least one epoch")
     start = time.perf_counter()
     output = Path(output)
     if output.exists():
@@ -55,6 +57,9 @@ def train(data_path, dev_path, output, epochs=6, seed=42):
         raise ValueError("Train and dev must both contain examples")
     if {r["group_id"] for r in train_rows} & {r["group_id"] for r in dev_rows}:
         raise ValueError("Train/dev group leakage")
+    for field in ("id", "text_sha256"):
+        if {str(r[field]) for r in train_rows} & {str(r[field]) for r in dev_rows}:
+            raise ValueError(f"Train/dev {field} leakage")
     spacy.require_cpu()
     fix_random_seed(seed)
     nlp = spacy.blank("en")
@@ -148,7 +153,7 @@ class Predictor:
                 "entities": spans,
                 "model_version": self.meta["model_version"],
                 "model_sha256": self.meta["model_sha256"],
-                "annotation_status": "weak_supervision_demo",
+                "annotation_status": self.meta.get("annotation_status", "unvalidated_demo"),
                 "processed_at": utcnow(),
                 "inference_scope": "complete_text",
             }

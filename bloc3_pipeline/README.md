@@ -17,12 +17,45 @@ Version locale du 4 octobre 2026. Le pipeline collecte un fichier JSON ou JSONL 
 ## Livrables et état réel
 
 1. `Plan_pipeline_OSINT.pdf` et sa source `Plan_pipeline_OSINT.md` reprennent le plan Books : contexte, données, schéma, code, difficultés, résultats, utilisation et conclusion.
-2. `pipeline/`, `tests/`, `scripts/`, `config/` : code et configuration. `Code_OSINT_Bloc3.zip` est la copie portable sans corpus réel, base locale ni secret.
-3. `Preuves/Tests_pipeline.json` : 14 scénarios synthétiques, dont arrêt brutal au milieu d'une transaction et reprise autonome. `Preuves/Benchmark_pipeline.json` : volumes et durées réellement mesurés.
-4. `Demonstration_locale_pipeline.mp4` : enregistrement du navigateur sur cinq articles fictifs, avec pause, reprise, panne du catalogue et restauration. Le ralentissement de démonstration est explicite. Il ne s'agit pas d'une exploitation externe en production.
-5. `Correspondance_criteres_Bloc3.json` : les 33 critères exacts, preuves et écarts. `Preparation_orale_Bloc3.md` : trame de cinq minutes à répéter par Edouard.
+2. [Presentation_Bloc3_OSINT.pptx](Presentation_Bloc3_OSINT.pptx) : sept diapositives pour les cinq minutes d’oral, avec notes de présentation, schéma et graphique éditables. Deux annexes servent aux questions du jury. Le support distingue les mesures, la démonstration fictive et les limites du fonctionnement par lots.
+3. `pipeline/`, `tests/`, `scripts/`, `config/` : code et configuration. `Code_OSINT_Bloc3.zip` est la copie portable sans corpus réel, base locale ni secret.
+4. `Preuves/Tests_pipeline.json` : 14 scénarios synthétiques, dont arrêt brutal au milieu d'une transaction et reprise autonome. `Preuves/Benchmark_pipeline.json` : volumes et durées réellement mesurés.
+5. `Demonstration_locale_pipeline.mp4` : enregistrement du navigateur sur cinq articles fictifs, avec pause, reprise, panne du catalogue et restauration. Le ralentissement de démonstration est explicite. Il ne s'agit pas d'une exploitation externe en production.
+6. `Correspondance_criteres_Bloc3.json` : les 33 critères exacts, preuves et écarts. Le guide reliant les diapositives au déroulé oral reste uniquement en local.
+
+Le paquet courant `Paquet_Bloc3_20261018.zip` réunit les livrables actualisés. Les guides de préparation orale restent en local et sont exclus des archives destinées au Drive. Les vidéos sont hors périmètre de cette révision.
 
 Implémenté et testé : import, validation, nettoyage minimal, déduplication exacte, publication après qualité, persistance, planification bornée, reprise automatique, monitoring, alertes locales, effacement local et import d'un registre B2. Docker et Compose : construction et exécution locales vérifiées par le coordinateur, avec reprise au checkpoint 21 676 après correction de l’espace temporaire. Aucun job launchd/cron installé. Aucun envoi de notification à autrui.
+
+## Collecte périodique et nouvelles arrivées
+
+Le complément du 18 octobre ajoute `pipeline/collection/continuous.py`, réutilisant le collecteur, les contrôles qualité et le catalogue existants. Une interrogation périodique traite les nouvelles arrivées en micro-lots. Elle ne garantit pas de temps réel strict ni une couverture exhaustive des archives.
+
+```sh
+python3 -m pipeline collect-ui --state /Volumes/MemoireOSINT/B3 --require-encrypted --watch-config config/collecte_continue.json --open
+```
+
+Le lanceur `Lancer_collecte_continue.command` prépare le même démarrage avec le volume protégé. Cette commande démarre une collecte réseau récurrente après lancement explicite. Le réglage fourni observe les deux derniers jours UTC, au maximum 200 candidats par cycle, puis attend 60 secondes après la fin du cycle. `max_cycles: 0` poursuit jusqu’à l’arrêt du service. Aucun ordonnanceur système n’est installé. La durée entre deux découvertes comprend aussi le temps du cycle précédent et les éventuelles reprises.
+
+La création de la tâche et son rattachement au calendrier utilisent une même transaction SQLite. Un redémarrage après arrêt brutal retrouve la tâche en attente, au lieu de créer un cycle concurrent. Une pause volontaire attend une reprise explicite. Un lot bloqué par la qualité conserve la publication précédente et demande une correction. Les échecs techniques ont trois relances de cycle, après les tentatives internes du superviseur ; ces deux budgets sont distincts. Une couverture limitée déclenche une alerte pour revoir fenêtre, pagination ou quota, sans annoncer l’exhaustivité.
+
+Le suivi conserve son interface et ajoute le nombre de cycles, la prochaine échéance, la durée du dernier cycle et le retard de déclenchement. Un worker sans activité récente déclenche `POLL_STALLED`. Les alertes sont locales. En panne de stockage, la lecture de secours reste possible et les nouveaux cycles sont bloqués.
+
+La publication JSON/JSONL et le catalogue sont automatiques. L’import dans les bases du Bloc 2 reste une action distincte ; l’inférence du Bloc 4 lit un export figé. La boucle ne lance pas de réentraînement.
+
+Pour reproduire sans réseau ni corpus réel, dans un dossier neuf :
+
+```sh
+python3 scripts/demo_continuous_fixture.py .demo-flux 18753
+```
+
+Trois documents fictifs arrivent progressivement. Dix cycles réutilisent les vrais modules de collecte, stockage et HTTP, avec un intervalle de test de 0,3 seconde. Les preuves `Preuves/Complement_20261018/Flux_continu.json` identifient les délais mesurés entre disponibilité de la source fictive et publication. Ils ne prédisent ni la latence TASS ni le débit sur des articles longs. Arrêter le serveur par Ctrl+C.
+
+```sh
+python3 -m unittest discover -s tests -p continuous.py
+```
+
+L’arborescence conserve `pipeline/` pour le Python et le SQL SQLite, `config/` pour l’orchestration et `tests/` pour les vérifications. `ContinuousCollector` remplit le rôle d’ordonnanceur sans dépendance Airflow ou dbt. Le workflow du dépôt et les archives de code sont actualisés localement ; aucun nouveau push ni run GitHub n’est attribué à cette opération.
 
 ## Démarrage portable en trois commandes
 
@@ -139,3 +172,9 @@ Les générateurs de documents et de capture sont des outils de préparation fac
 ## Vérifications sur le volume chiffré
 
 Les nouvelles mesures et l’état du cycle physique de relance sont décrits dans [Collecte_TASS.md](Collecte_TASS.md#contrôles-complémentaires-du-4-octobre-2026). Preuves : Benchmark_chiffre.json et Cycle_volume_chiffre.json. Deux index ciblés accélèrent les recherches de tâches ; le contrôle des droits reste effectué avant chaque téléchargement. Les essais antérieurs restent historiques.
+
+## Essai soutenu du flux
+
+`python3 scripts/benchmark_continuous.py --output Preuves/Complement_20261018/Charge_continue.json` exécute 40 cycles de 250 nouvelles arrivées, avec 62 répétitions entre cycles et des corps fictifs d’environ 2 Kio. Le test vérifie chaque publication cumulée et le nombre final de révisions, avec le vrai collecteur, SQLite, les contrôles qualité et les exports. Seule la source réseau est injectée. Un dossier temporaire protégé est supprimé après arrêt du worker.
+
+Mesure locale : 10,000 articles en 35.48 s, soit 281.82 articles/s sur l’ensemble de l’essai. Les délais incluent l’attente de l’échéance, le traitement et la publication. Ces mesures synthétiques ne prouvent ni la latence réseau TASS ni un temps réel strict. Preuve : `Preuves/Complement_20261018/Charge_continue.json`.

@@ -33,6 +33,7 @@ def main():
     local.add_argument("--max-reject-rate", type=float, default=0.2)
     local.add_argument("--slow-article-seconds", type=float, default=10)
     local.add_argument("--require-encrypted", action="store_true")
+    local.add_argument("--watch-config", help="JSON de collecte périodique, sans tâche système")
     for name in (
         "collect-access",
         "collect-rectify",
@@ -91,6 +92,10 @@ def main():
             slow_article_seconds=args.slow_article_seconds,
             require_encrypted=args.require_encrypted,
         )
+        if args.watch_config:
+            from .collection.continuous import options
+
+            config["continuous"] = options(json.loads(Path(args.watch_config).read_text()))
         serve(config, args.port, args.open)
     elif args.command.startswith("collect-"):
         from .collection import resilience, rights, security
