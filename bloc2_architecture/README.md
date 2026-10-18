@@ -1,6 +1,6 @@
 # Architecture commune du mémoire OSINT
 
-Version 1.4 du 18 octobre 2026. Le programme développé dans le bloc 3 (Observatoire) collecte par rubrique et dates UTC, publie un export figé puis importe dans Bloc 2. Le raccordement testé conserve 21 676 articles initiaux et ajoute 5 articles, soit 21 681 articles. Voir [la cartographie des copies et la reprise](docs/Collecte_stockages_securite.md).
+Version 1.5 du 19 octobre 2026. Le programme développé dans le bloc 3 (Observatoire) collecte par rubrique et dates UTC, publie un export figé puis importe dans Bloc 2. Le raccordement testé conserve 21 676 articles initiaux et ajoute 5 articles, soit 21 681 articles. Voir [la cartographie des copies et la reprise](docs/Collecte_stockages_securite.md).
 
 Bloc 2, version locale du 4 octobre 2026. Plateforme pour la veille OSINT. Elle stocke le corpus TASS enrichi, relie la collecte du programme développé dans le bloc 3 et la restitution Bloc 4 et distingue systématiquement les données réelles des essais synthétiques.
 
@@ -8,10 +8,10 @@ Bloc 2, version locale du 4 octobre 2026. Plateforme pour la veille OSINT. Elle 
 
 1. `Plan_infrastructure_OSINT.pdf` : cahier des charges, schémas, architecture, Compose, preuves et utilisation.
 2. `docker-compose.yml`, `app/`, `sql/`, `mongo/`, `scripts/`, `tests/` : code exécutable.
-3. `Preuves/` : résultats des contrôles, mesures, captures et manifeste des versions.
+3. `verification/` : résultats des contrôles, mesures, captures et manifeste des versions.
 4. `Demonstration_locale_OSINT.mp4` : enregistrement du fonctionnement local, avec une panne simulée. Ce fichier ne prouve pas un hébergement de production externe.
-5. `Demonstration_raccordement_Observatoire.mp4` : import réel depuis le suivi du programme développé dans le bloc 3, état final des stockages et limites. Journal : `Preuves/Raccordement_Observatoire.json`.
-6. `Correspondance_criteres_Bloc2.csv` et `Preparation_orale_Bloc2.md` : correspondance des 28 critères et trame de cinq minutes.
+5. `Demonstration_raccordement_Observatoire.mp4` : import réel depuis le suivi du programme développé dans le bloc 3, état final des stockages et limites. Journal : `verification/Raccordement_Observatoire.json`.
+6. `Correspondance_criteres_Bloc2.csv` : correspondance des 28 critères. Les guides de préparation orale restent en local.
 7. [Presentation_Bloc2_OSINT.pptx](Presentation_Bloc2_OSINT.pptx) : sept diapositives pour les cinq minutes d’oral, avec notes du présentateur et références des preuves. Le minutage est prévu et reste à vérifier pendant une répétition.
 
 ## Stockages et autorité
@@ -77,7 +77,7 @@ Les métriques Docker CPU, RAM, réseau et entrées/sorties sont échantillonné
 
 Un essai complémentaire `.venv/bin/python scripts/verify_lifecycle.py` vérifie la reprise, la persistance et une suppression sur une fixture sans personne réelle. Il suppose le corpus chargé, l’index disponible et les essais de charge terminés. Il nettoie uniquement les données marquées synthétiques et recrée les conteneurs des deux bases en conservant leurs volumes.
 
-Les empreintes du code utilisé pendant les mesures et du code livré sont distinguées dans `Preuves/Environnement_et_version.json`. Après les charges, le délai Mongo des opérations écrivain a été porté à 300 secondes pour permettre un nettoyage de masse ; la lecture garde 30 secondes. La présentation HTML et les montages du service lecteur ont aussi été affinés. Les tests fonctionnels portent sur la version livrée.
+Les empreintes du code utilisé pendant les mesures et du code livré sont distinguées dans `verification/Environnement_et_version.json`. Après les charges, le délai Mongo des opérations écrivain a été porté à 300 secondes pour permettre un nettoyage de masse ; la lecture garde 30 secondes. La présentation HTML et les montages du service lecteur ont aussi été affinés. Les tests fonctionnels portent sur la version livrée.
 
 Pour vérifier la continuité sans enregistrement, exécuter `python3 scripts/verify_continuity.py` après le test de suppression. Ce script arrête et redémarre uniquement les bases du projet OSINT ; il conserve les volumes.
 
@@ -104,7 +104,7 @@ Installer les dépendances utilitaires dans un environnement Python local : `pyt
 .venv/bin/python scripts/backup_restore.py restore-test .backups/FICHIER.enc
 ```
 
-La sauvegarde prend un verrou partagé avec l’ingestion. Les mutations administratives directes doivent être suspendues pendant cette fenêtre. Elle contient les deux bases, leurs révisions et les registres de suppressions et de rectifications, chiffrés par AES-256-GCM. La restauration de contrôle cible uniquement `osint_restore_test`, réapplique aussi les suppressions plus récentes et vérifie les comptes. Elle ne remplace pas les bases de travail et ne rétablit pas automatiquement le service après perte de l’hôte. L’index doit être reconstruit depuis les autorités restaurées. La recette `Preuves/Collecte_TASS/restore.json` couvre les 21 681 articles et les suppressions. La recette de clôture du programme développé dans le bloc 3 Droits_B3_B2.json vérifie aussi la réapplication d’une rectification puis d’une suppression après restauration, sur un identifiant de test isolé (Preuves/Collecte_TASS/Droits_B3_B2.json). SQLite du programme développé dans le bloc 3, ses exports et checkpoints ne sont pas inclus dans la sauvegarde Bloc 2. La copie hors machine et l’automatisation quotidienne restent à mettre en place avant exploitation réelle.
+La sauvegarde prend un verrou partagé avec l’ingestion. Les mutations administratives directes doivent être suspendues pendant cette fenêtre. Elle contient les deux bases, leurs révisions et les registres de suppressions et de rectifications, chiffrés par AES-256-GCM. La restauration de contrôle cible uniquement `osint_restore_test`, réapplique aussi les suppressions plus récentes et vérifie les comptes. Elle ne remplace pas les bases de travail et ne rétablit pas automatiquement le service après perte de l’hôte. L’index doit être reconstruit depuis les autorités restaurées. La recette `verification/Collecte_TASS/restore.json` couvre les 21 681 articles et les suppressions. La recette de clôture du programme développé dans le bloc 3 Droits_B3_B2.json vérifie aussi la réapplication d’une rectification puis d’une suppression après restauration, sur un identifiant de test isolé (verification/Collecte_TASS/Droits_B3_B2.json). SQLite du programme développé dans le bloc 3, ses exports et checkpoints ne sont pas inclus dans la sauvegarde Bloc 2. La copie hors machine et l’automatisation quotidienne restent à mettre en place avant exploitation réelle.
 
 Les révisions sont conservées dans `article_revisions` et `document_revisions`. Un article inchangé ne crée pas d’archive supplémentaire. L’API HTTPS authentifiée `/api/articles?start=YYYY-MM-DD&end=YYYY-MM-DD` sélectionne les dates de publication inclusives UTC ; elle retourne au plus 1 000 métadonnées, sans pagination. La migration additive `sql/02_revisions.sql` s’applique sans supprimer les volumes.
 
@@ -171,12 +171,28 @@ La surveillance reste au premier plan et n'est pas installée comme service perm
 
 ### Modèle et preuve
 
-L'ERD relationnel reste adapté aux écritures opérationnelles, identifiants, sources et révisions. Aucun modèle en étoile n'est implémenté : un entrepôt décisionnel introduirait des faits/dimensions et un chargement distincts, sans besoin établi pour cette consultation documentaire. MongoDB conserve le JSON variable et le texte chiffré ; l'index Elasticsearch se reconstruit depuis les autorités SQL/Mongo.
+L’ERD reste le modèle opérationnel. Une étoile logique est ajoutée pour l’analyse : fact_article relie l’article courant à dim_date, dim_source et dim_execution. Les vues sont testées sur PostgreSQL isolé et déployées dans la VM dédiée sur 100 documents fictifs. MongoDB conserve le texte chiffré et Elasticsearch reste un index dérivé.
 
-Les nouvelles preuves sont dans `Preuves/Complement_20261018/`. Les essais de 60 000, 600 000 et 6 000 000 lignes ne sont pas relancés : code d'ingestion et schémas inchangés, résultats attribués à leur version mesurée. Le redéploiement testé sur l'environnement existant ne démontre pas une installation vierge sur un deuxième poste. Les révisions publiées et leurs vérifications distantes sont consultables dans GitHub Actions.
+Les nouvelles preuves sont dans `verification/Complement_20261018/`. Les essais de 60 000, 600 000 et 6 000 000 lignes ne sont pas relancés : code d'ingestion et schémas inchangés, résultats attribués à leur version mesurée. Le redéploiement testé sur l'environnement existant ne démontre pas une installation vierge sur un deuxième poste. Cette révision publie le modèle en étoile et ses preuves de déploiement VM. Les vérifications distantes sont consultables dans GitHub Actions.
 
 ## Provisionnement du serveur virtuel
 
-La VM `memoire-osint-bloc2` est déployée et laissée démarrée : Ubuntu 24.04.5, 4 CPU, 8 Go de RAM et 30 Go de disque virtuel. PostgreSQL, MongoDB et l’API HTTPS sont vérifiés sur 100 documents fictifs. Un redémarrage complet conserve les données et relance les services automatiquement. Trois relevés de monitoring ne déclenchent aucune alerte. La procédure corrigée, les commandes d’arrêt et les limites sont dans [vm/README.md](vm/README.md) ; preuves dans `Preuves/VM_20261018/`. Les essais TASS et les charges de Docker Desktop restent distincts. Aucun corpus, secret existant, guide oral ou vidéo transféré dans la VM.
+La VM `memoire-osint-bloc2` est déployée et laissée démarrée : Ubuntu 24.04.5, 4 CPU, 8 Go de RAM et 30 Go de disque virtuel. PostgreSQL, MongoDB et l’API HTTPS sont vérifiés sur 100 documents fictifs. Un redémarrage complet conserve les données et relance les services automatiquement. Trois relevés de monitoring ne déclenchent aucune alerte. La procédure corrigée, les commandes d’arrêt et les limites sont dans [vm/README.md](vm/README.md) ; preuves dans `verification/VM_20261018/`. Les essais TASS et les charges de Docker Desktop restent distincts. Aucun corpus, secret existant, guide oral ou vidéo transféré dans la VM.
 
-Les preuves du déploiement VM sont accessibles dans [verification/VM_20261018](verification/VM_20261018). Elles identifient les essais locaux, distincts de la CI GitHub.
+## Modèle en étoile analytique
+
+Le rapport p. 3 et la diapositive 3 présentent le modèle en complément de l’ERD existant. Le grain est **un article courant non exclu**, identifié par `article_id`. La mesure `article_count = 1` s’additionne par date de publication UTC, source et exécution d’ingestion. `content_sha256` désigne le JSON courant, distinct de l’empreinte du seul texte.
+
+`sql/03_analytics_star.sql` définit quatre vues dans le schéma `analytics` : `fact_article`, `dim_date`, `dim_source` et `dim_execution`. Les clés des vues sont logiques ; unicité et références proviennent des contraintes des tables opérationnelles. Les deux rôles applicatifs disposent seulement de SELECT sur cette interface analytique. Le rôle écrivain conserve ses droits opérationnels sur les tables d’origine.
+
+Le modèle ne copie aucun texte et ne nécessite pas un chargement analytique séparé. Une révision remplace les métadonnées courantes sans ajouter un fait ; les archives de révisions ne sont pas comptées. Les identifiants présents dans `erasures`, y compris en attente, sont exclus. Une suppression ou modification opérationnelle se reflète à la lecture. Les dimensions sont dynamiques : il n’existe ni entrepôt matérialisé ni historique analytique.
+
+Les dimensions et relations sont éditables dans `docs/star_schema.dbml` et `docs/star_schema.mmd`. `docs/analytics_example.sql` joint les trois dimensions pour compter les articles par date et source, en filtrant les données fictives et les exécutions non terminées. Le nombre d’articles mesure une couverture éditoriale ; il ne mesure ni mentions NER, ni événements militaires, ni véracité des textes.
+
+```sh
+python3 scripts/verify_star_schema.py --output verification/Etoile_20261019/Tests_etoile.json
+```
+
+Ce contrôle crée un PostgreSQL jetable avec réseau désactivé, sans port publié et stockage temporaire, puis le supprime. Huit scénarios SQL vérifient le grain, les frontières UTC indépendamment du fuseau de session, les jointures additives, l’exclusion, la révision, les droits des deux rôles et la suppression. La migration est rejouée et la requête d’exemple exécutée. Données : cinq articles fictifs et une révision. La preuve est `verification/Etoile_20261019/Tests_etoile.json`. Aucun débit de production n’est déduit de ce contrôle.
+
+Le script SQL est pris en compte par le bootstrap d’une nouvelle base utilisant le dossier SQL complet. Le 19 octobre, il a aussi été appliqué en transaction puis rejoué dans la base osint existante de la VM memoire-osint-bloc2. Quatre vues, 100 faits distincts et 100 lignes après jointure sont vérifiés ; aucun écart UTC dans trois fuseaux de session. Les deux rôles lisent les vues sans droits INSERT, UPDATE ou DELETE sur celles-ci. Les empreintes des cinq tables opérationnelles sont inchangées et les contrôles HTTPS, SQL/MongoDB et TLS passent. La requête filtrant les données fictives retourne zéro ligne, résultat attendu en l’absence de corpus réel. Preuve : `verification/Etoile_VM_20261019/Verification_etoile_VM.json`. Les bases de Docker Desktop ne sont pas modifiées. Les essais VM du 18 octobre conservent leur version et leur périmètre distincts.

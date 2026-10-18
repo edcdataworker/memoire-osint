@@ -1,0 +1,19 @@
+{
+  "revision": "Bloc 2, déploiement étoile, 19 octobre 2026",
+  "deployment_proof": "Preuves/Etoile_VM_20261019/Verification_etoile_VM.json",
+  "status": "deployed_and_verified",
+  "report_pages": 20,
+  "slides": 7,
+  "github_published": false,
+  "videos_untouched": true,
+  "limitations": "VM locale, 100 documents fictifs, aucun corpus TASS réel ni benchmark analytique",
+  "sha256": {
+    "Plan_infrastructure_OSINT.pdf": "04f0ce135be50979006a86a89039f90d84f644f0b10abd8877ab2b7bf516c3a9",
+    "Plan_infrastructure_OSINT.md": "1f0244518378b09b79048a710fdce2fef6d58dbd09b3514783d4a72b537c9ffc",
+    "Presentation_Bloc2_OSINT.pptx": "50e468b53666d50ad80bf73db5f5e011cca8a3181a7568ff63e3f6fae9b1a7a9",
+    "README.md": "ede1c63b69665e885ecdad1ba4a4236c0dd5bc097a35a98c3ef6a86bfc53ee34",
+    "Correspondance_criteres_Bloc2.csv": "d25f91fd6eb8eb4468b37d51a8eb76bdc6003988a3c501f6136a88ee0fd71225",
+    "Code_OSINT_Bloc2.zip": "6b3dd4c129dfde7aa4c33d54161923a5320799eb6a4163acb80fb7d7f4122f33",
+    "sql/03_analytics_star.sql": "71bda36f4667ef452e2aec20b9039c8464de56605975469936d6e96e4017d4d8"
+  }
+}

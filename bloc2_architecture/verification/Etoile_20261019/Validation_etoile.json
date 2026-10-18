@@ -1,0 +1,70 @@
+{
+  "revision": "19 octobre 2026, Bloc 2, modèle en étoile",
+  "report_pages": 20,
+  "slides": 7,
+  "report_section": "Schéma SQL PostgreSQL, page 3",
+  "presentation_slide": 3,
+  "grain": "Un article courant non exclu ; mesure article_count=1",
+  "dimensions": [
+    "date UTC",
+    "source",
+    "exécution d’ingestion"
+  ],
+  "implementation": "Quatre vues SQL dérivées, aucune copie du texte ni table analytique matérialisée",
+  "tests": {
+    "at_utc": "2026-10-18T22:52:17.287758+00:00",
+    "synthetic": true,
+    "network": "none",
+    "host_ports": [],
+    "image": "postgres@sha256:081f1bc7bd5e143dbb6e487b710bbc27712cdcfaced4c071b8e47349aa1b4171",
+    "tests": 8,
+    "passed": [
+      "grain",
+      "utc",
+      "joins",
+      "exclusion",
+      "revision",
+      "reader",
+      "writer",
+      "deletion"
+    ],
+    "migration_reapplied": true,
+    "example_query_executed": true,
+    "duration_seconds": 1.123,
+    "scope": "Fresh isolated PostgreSQL; five fictional current articles plus one revision. No active VM or existing database changed.",
+    "code_sha256": {
+      "sql/01_schema.sql": "ee49c6506f1386263bb0ed26c38f5a9eeff478007dcb1c9f0acd7b60f6c27b57",
+      "sql/02_revisions.sql": "3c8d4b549fc714ae3a93f55aeb5cbc2d05638729a87b23329dcf67db8f4620f3",
+      "sql/03_analytics_star.sql": "71bda36f4667ef452e2aec20b9039c8464de56605975469936d6e96e4017d4d8",
+      "tests/star_schema.sql": "05f7c8bfff004291070a70367668c3d46641d12919eab632d6dd5b90f1f00158",
+      "docs/analytics_example.sql": "22821d63e75199f833fcca8a06a9877523b774207cab7a23c2d41949594d5534",
+      "scripts/verify_star_schema.py": "ef6c127474abd6ba4630b59e4a744e29aacffd6d563b231efbd3f5b9ee0416bc"
+    }
+  },
+  "active_databases_or_vm_changed": false,
+  "videos_untouched": true,
+  "oral_guides_excluded_from_archives": true,
+  "github_published": false,
+  "criteria_affected": [
+    "B2-1.1",
+    "B2-1.2",
+    "B2-2.3",
+    "B2-5.1",
+    "B2-5.3",
+    "B2-5.5"
+  ],
+  "source_requirement": "Complément Bloc 2 : élaborer des modèles de données (ERD, star schema)",
+  "sha256": {
+    "Plan_infrastructure_OSINT.pdf": "7b219f511f43fa06acdc0617739bb6c4537f54decda0ba3a98016a6f8bef842a",
+    "Presentation_Bloc2_OSINT.pptx": "0b80ed43c155f9f1de5dbd51fc702bda8a00860a66d74688d16063fe43448807",
+    "sql/03_analytics_star.sql": "71bda36f4667ef452e2aec20b9039c8464de56605975469936d6e96e4017d4d8",
+    "docs/star_schema.dbml": "3631dc4045b6ca25c61d6b9fa533f81670ba437515aeb6723eb518dd63ff5283",
+    "docs/star_schema.mmd": "bd1e3e4864bef5e874e586b39b21bf92e451864d5247590fcac5f3ede4bdd7e9",
+    "docs/analytics_example.sql": "22821d63e75199f833fcca8a06a9877523b774207cab7a23c2d41949594d5534",
+    "scripts/verify_star_schema.py": "ef6c127474abd6ba4630b59e4a744e29aacffd6d563b231efbd3f5b9ee0416bc",
+    "tests/star_schema.sql": "05f7c8bfff004291070a70367668c3d46641d12919eab632d6dd5b90f1f00158",
+    "README.md": "a4f3b9b6ca785e60f650c354da5e6070ed54afd8383ec9e90727dff0977e2f8e",
+    "Correspondance_criteres_Bloc2.csv": "b58f68a1cfcbba44883cf180076d4005e615c9bcb7bea23c874975836457983b",
+    "Code_OSINT_Bloc2.zip": "3c34f3bded6d03a62eabce6663b46e94830b5d654070763f7bdae4b485cece04"
+  }
+}

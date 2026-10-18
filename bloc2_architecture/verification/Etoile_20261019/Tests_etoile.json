@@ -1,0 +1,30 @@
+{
+  "at_utc": "2026-10-18T22:52:17.287758+00:00",
+  "synthetic": true,
+  "network": "none",
+  "host_ports": [],
+  "image": "postgres@sha256:081f1bc7bd5e143dbb6e487b710bbc27712cdcfaced4c071b8e47349aa1b4171",
+  "tests": 8,
+  "passed": [
+    "grain",
+    "utc",
+    "joins",
+    "exclusion",
+    "revision",
+    "reader",
+    "writer",
+    "deletion"
+  ],
+  "migration_reapplied": true,
+  "example_query_executed": true,
+  "duration_seconds": 1.123,
+  "scope": "Fresh isolated PostgreSQL; five fictional current articles plus one revision. No active VM or existing database changed.",
+  "code_sha256": {
+    "sql/01_schema.sql": "ee49c6506f1386263bb0ed26c38f5a9eeff478007dcb1c9f0acd7b60f6c27b57",
+    "sql/02_revisions.sql": "3c8d4b549fc714ae3a93f55aeb5cbc2d05638729a87b23329dcf67db8f4620f3",
+    "sql/03_analytics_star.sql": "71bda36f4667ef452e2aec20b9039c8464de56605975469936d6e96e4017d4d8",
+    "tests/star_schema.sql": "05f7c8bfff004291070a70367668c3d46641d12919eab632d6dd5b90f1f00158",
+    "docs/analytics_example.sql": "22821d63e75199f833fcca8a06a9877523b774207cab7a23c2d41949594d5534",
+    "scripts/verify_star_schema.py": "ef6c127474abd6ba4630b59e4a744e29aacffd6d563b231efbd3f5b9ee0416bc"
+  }
+}

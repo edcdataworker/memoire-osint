@@ -14,7 +14,7 @@
     {
       "path": "bloc2_architecture/README.md",
       "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
-      "sha256": "a53a6b5bd15b652b7a9b1450b0c492b1b992902c0488542c7066fe270e0284aa"
+      "sha256": "67a958a5e8852186e7e0aba0d4a89cdc87e1b5829fea9a10d3d70d7f71e95caa"
     },
     {
       "path": "bloc2_architecture/app/Dockerfile",
@@ -830,7 +830,88 @@
       "path": "bloc2_architecture/vm/verify_stack.py",
       "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
       "sha256": "1c844b8c9b3ef06420ab1795bea4ca463301d1921249059888b23ac694317b9c"
+    },
+    {
+      "path": "bloc2_architecture/sql/03_analytics_star.sql",
+      "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
+      "sha256": "71bda36f4667ef452e2aec20b9039c8464de56605975469936d6e96e4017d4d8"
+    },
+    {
+      "path": "bloc2_architecture/docs/star_schema.dbml",
+      "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
+      "sha256": "3631dc4045b6ca25c61d6b9fa533f81670ba437515aeb6723eb518dd63ff5283"
+    },
+    {
+      "path": "bloc2_architecture/docs/star_schema.mmd",
+      "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
+      "sha256": "bd1e3e4864bef5e874e586b39b21bf92e451864d5247590fcac5f3ede4bdd7e9"
+    },
+    {
+      "path": "bloc2_architecture/docs/analytics_example.sql",
+      "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
+      "sha256": "22821d63e75199f833fcca8a06a9877523b774207cab7a23c2d41949594d5534"
+    },
+    {
+      "path": "bloc2_architecture/scripts/verify_star_schema.py",
+      "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
+      "sha256": "ef6c127474abd6ba4630b59e4a744e29aacffd6d563b231efbd3f5b9ee0416bc"
+    },
+    {
+      "path": "bloc2_architecture/tests/star_schema.sql",
+      "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
+      "sha256": "05f7c8bfff004291070a70367668c3d46641d12919eab632d6dd5b90f1f00158"
+    },
+    {
+      "path": "bloc2_architecture/Plan_infrastructure_OSINT.pdf",
+      "source_archive": "02_Bloc_2_Architecture/Paquet_Bloc2_20261019.zip",
+      "sha256": "04f0ce135be50979006a86a89039f90d84f644f0b10abd8877ab2b7bf516c3a9"
+    },
+    {
+      "path": "bloc2_architecture/Plan_infrastructure_OSINT.md",
+      "source_archive": "02_Bloc_2_Architecture/Paquet_Bloc2_20261019.zip",
+      "sha256": "1f0244518378b09b79048a710fdce2fef6d58dbd09b3514783d4a72b537c9ffc"
+    },
+    {
+      "path": "bloc2_architecture/Presentation_Bloc2_OSINT.pptx",
+      "source_archive": "02_Bloc_2_Architecture/Paquet_Bloc2_20261019.zip",
+      "sha256": "50e468b53666d50ad80bf73db5f5e011cca8a3181a7568ff63e3f6fae9b1a7a9"
+    },
+    {
+      "path": "bloc2_architecture/Correspondance_criteres_Bloc2.csv",
+      "source_archive": "02_Bloc_2_Architecture/Paquet_Bloc2_20261019.zip",
+      "sha256": "d8e2d061a1f06714ac79e93d07e9e1475b73b57d105d4baa09974640f53898a5"
+    },
+    {
+      "path": "bloc2_architecture/verification/Etoile_VM_20261019/Verification_etoile_VM.json",
+      "source_archive": "02_Bloc_2_Architecture/Paquet_Bloc2_20261019.zip",
+      "sha256": "8a6d5a6fba807868831d09dd5730a29b58bb2dcf72b09b21d46f02dbccca9cef"
+    },
+    {
+      "path": "bloc2_architecture/verification/Etoile_VM_20261019/Avant.json",
+      "source_archive": "02_Bloc_2_Architecture/Paquet_Bloc2_20261019.zip",
+      "sha256": "0321e3b63f2e4f1a699e3f7f6619aa1b3dd4c8394cca84cd6e036870e00b03e2"
+    },
+    {
+      "path": "bloc2_architecture/verification/Etoile_VM_20261019/Livraison_verifiee.json",
+      "source_archive": "02_Bloc_2_Architecture/Paquet_Bloc2_20261019.zip",
+      "sha256": "139824f0fcea1dacfec76837c61c8062effc7437c1187f51becb3ed24b9d6b0b"
+    },
+    {
+      "path": "bloc2_architecture/verification/Etoile_VM_20261019/Verification_VM.sql",
+      "source_archive": "02_Bloc_2_Architecture/Paquet_Bloc2_20261019.zip",
+      "sha256": "0a06c293f5b2ef7dcb193f12305ac602b2caae800c8b9d2e690be9c033c40caf"
+    },
+    {
+      "path": "bloc2_architecture/verification/Etoile_VM_20261019/Application_2.log",
+      "source_archive": "02_Bloc_2_Architecture/Paquet_Bloc2_20261019.zip",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "bloc2_architecture/verification/Etoile_VM_20261019/Application_1.log",
+      "source_archive": "02_Bloc_2_Architecture/Paquet_Bloc2_20261019.zip",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
     }
   ],
-  "vm_revision": "Bloc 2 : déploiement local du 18 octobre 2026, configuration corrigée et preuves dans bloc2_architecture/verification/VM_20261018. Les README publics adaptent les liens locaux aux chemins du dépôt."
+  "vm_revision": "Bloc 2 : déploiement local du 18 octobre 2026, configuration corrigée et preuves dans bloc2_architecture/verification/VM_20261018. Les README publics adaptent les liens locaux aux chemins du dépôt.",
+  "star_revision": "Modèle en étoile du 19 octobre 2026 : huit tests isolés ; quatre vues déployées et vérifiées dans la VM sur 100 documents fictifs, jointures et droits vérifiés, tables opérationnelles préservées. Rapport 20 pages et présentation 7 diapositives. Révision destinée à cette publication GitHub ; le résultat de la CI est vérifié séparément après le push."
 }

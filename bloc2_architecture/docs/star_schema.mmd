@@ -1,0 +1,30 @@
+erDiagram
+    DIM_DATE ||--o{ FACT_ARTICLE : date_key
+    DIM_SOURCE ||--o{ FACT_ARTICLE : source_id
+    DIM_EXECUTION ||--o{ FACT_ARTICLE : run_id
+    FACT_ARTICLE {
+        text article_id PK "article courant non exclu"
+        date date_key FK "publication UTC"
+        text source_id FK
+        uuid run_id FK
+        char64 content_sha256 "JSON courant"
+        boolean synthetic
+        integer article_count "toujours 1"
+    }
+    DIM_DATE {
+        date date_key PK
+        integer year_number
+        integer month_number
+        integer day_number
+    }
+    DIM_SOURCE {
+        text source_id PK
+        text label
+        text base_url
+    }
+    DIM_EXECUTION {
+        uuid run_id PK
+        text kind
+        text status
+        char64 source_sha256
+    }

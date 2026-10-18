@@ -76,17 +76,19 @@ Extension : une nouvelle source doit être inscrite dans la table sources ; ses 
 
 2. Schéma SQL PostgreSQL
 
-L’ERD opérationnel est retenu ; aucun entrepôt en étoile n’est implémenté. Cinq tables séparent sources, exécutions, articles, effacements et révisions. sql/01_schema.sql et la migration additive sql/02_revisions.sql définissent le schéma ; docs/sql_schema.dbml décrit aussi les archives.
+L’ERD opérationnel conserve sources, runs, articles, article_revisions et erasures. Une étoile logique dérivée permet de compter les articles courants par date UTC, source et exécution, sans recopier les textes.
 
-Les révisions archivent les métadonnées précédentes quand le contenu change. La clé composée empêche une archive dupliquée au rejeu. Les index de date servent la sélection temporelle ; une migration additive conserve les volumes.
+erasures conserve article_id, request_id, requested_at et status après effacement. Le rejeu évite les doublons ; le JSON et les versions du texte chiffré restent dans MongoDB.
 
-Table complémentaire | Rôle
+Étoile analytique : une ligne par article courant
 
-erasures | article_id, request_id, requested_at, status. Registre conservé après effacement, sans dépendance obligeant à garder le texte.
+Les clés PK/FK de cette étoile sont logiques : les vues dérivent des tables à clés contraintes de l’ERD. Seuls les articles courants non exclus par erasures figurent dans fact_article. Une révision ne crée pas un fait supplémentaire.
 
-API /api/articles : dates inclusives UTC, réalisées par published_at >= début et < lendemain de fin. Réponse limitée à 1 000 métadonnées, sans pagination. Les dates de collecte et de publication restent distinctes.
+SUM(article_count) mesure la couverture éditoriale, pas une activité militaire ni des mentions NER. Filtrer synthetic et le statut de l’exécution pour définir le périmètre. La date UTC est indépendante du fuseau de session.
 
-Le compte osint_reader lit uniquement ; osint_writer modifie les tables applicatives sans être superutilisateur. Preuves/Revisions_collecte_TASS.json vérifie révisions, rejeu, dates et effacement.
+Vues dans sql/03_analytics_star.sql ; modèle éditable docs/star_schema.dbml et requête docs/analytics_example.sql. Huit tests sur PostgreSQL isolé vérifient UTC, jointures, révisions, exclusions, droits et suppressions. VM : quatre vues déployées, 100 articles fictifs joints sans doublon, droits SELECT vérifiés. Preuves : Preuves/Etoile_20261019/Tests_etoile.json et Preuves/Etoile_VM_20261019/Verification_etoile_VM.json.
+
+Vues dynamiques sans copie ni ETL distinct : les changements opérationnels sont reflétés à la lecture. Pas de table de faits matérialisée ni d’historisation analytique. L’API temporelle existante reste limitée à 1 000 métadonnées.
 
 
 # 2. Schéma documentaire MongoDB

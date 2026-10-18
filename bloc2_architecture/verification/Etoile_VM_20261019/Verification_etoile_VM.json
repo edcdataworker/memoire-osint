@@ -1,0 +1,152 @@
+{
+  "timestamp_utc": "2026-10-18T22:57:40.109205+00:00",
+  "vm": "memoire-osint-bloc2",
+  "database": "osint",
+  "scope": "100 documents synthétiques, aucun corpus TASS réel",
+  "sql_sha256": "71bda36f4667ef452e2aec20b9039c8464de56605975469936d6e96e4017d4d8",
+  "transfer_verified": true,
+  "transactional_application": true,
+  "idempotent_reapplication": true,
+  "results": {
+    "views": [
+      "dim_date",
+      "dim_execution",
+      "dim_source",
+      "fact_article"
+    ],
+    "fact_rows": 100,
+    "unique_articles": 100,
+    "article_count": 100,
+    "expected_rows": 100,
+    "synthetic_rows": 100,
+    "joined_rows": 100,
+    "wrong_dates": 0,
+    "excluded_rows": 0,
+    "dimensions": {
+      "dates": 1,
+      "sources": 1,
+      "executions": 1
+    },
+    "rights": [
+      {
+        "role": "osint_reader",
+        "view": "dim_date",
+        "select": true,
+        "insert": false,
+        "update": false,
+        "delete": false
+      },
+      {
+        "role": "osint_reader",
+        "view": "dim_source",
+        "select": true,
+        "insert": false,
+        "update": false,
+        "delete": false
+      },
+      {
+        "role": "osint_reader",
+        "view": "dim_execution",
+        "select": true,
+        "insert": false,
+        "update": false,
+        "delete": false
+      },
+      {
+        "role": "osint_reader",
+        "view": "fact_article",
+        "select": true,
+        "insert": false,
+        "update": false,
+        "delete": false
+      },
+      {
+        "role": "osint_writer",
+        "view": "dim_date",
+        "select": true,
+        "insert": false,
+        "update": false,
+        "delete": false
+      },
+      {
+        "role": "osint_writer",
+        "view": "dim_source",
+        "select": true,
+        "insert": false,
+        "update": false,
+        "delete": false
+      },
+      {
+        "role": "osint_writer",
+        "view": "dim_execution",
+        "select": true,
+        "insert": false,
+        "update": false,
+        "delete": false
+      },
+      {
+        "role": "osint_writer",
+        "view": "fact_article",
+        "select": true,
+        "insert": false,
+        "update": false,
+        "delete": false
+      }
+    ]
+  },
+  "role_reads": {
+    "osint_reader": 100,
+    "osint_writer": 100
+  },
+  "utc_errors_by_timezone": {
+    "UTC": 0,
+    "Pacific/Honolulu": 0,
+    "Asia/Tokyo": 0
+  },
+  "example_non_synthetic_rows": 0,
+  "operational_data_unchanged": true,
+  "operational_tables_md5_before": {
+    "sources": "e601ac06dc392bbe573008235bc81f5f",
+    "runs": "05eaefb17d4db2909a68f65459cae1dc",
+    "articles": "69951100a0e7058b5f5c945a1004ac5f",
+    "article_revisions": "d41d8cd98f00b204e9800998ecf8427e",
+    "erasures": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "operational_tables_md5_after": {
+    "sources": "e601ac06dc392bbe573008235bc81f5f",
+    "runs": "05eaefb17d4db2909a68f65459cae1dc",
+    "articles": "69951100a0e7058b5f5c945a1004ac5f",
+    "article_revisions": "d41d8cd98f00b204e9800998ecf8427e",
+    "erasures": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "services": {
+    "scope": "VM dédiée, 100 documents synthétiques, aucun corpus TASS",
+    "checks": {
+      "https_health": true,
+      "unauthenticated_rejected": true,
+      "sql_mongo_counts": true,
+      "authenticated_article_roundtrip": true,
+      "postgres_tls": true
+    },
+    "status": {
+      "mode": "primary",
+      "limitations": "Lecture locale, aucun modèle NER exécuté à ce stade.",
+      "articles": 0,
+      "synthetic": 100,
+      "runs": [
+        [
+          "synthetic",
+          "complete",
+          100,
+          100
+        ]
+      ],
+      "documents": 100
+    },
+    "postgres_tls": [
+      true,
+      "TLSv1.3"
+    ]
+  },
+  "status": "deployed_and_verified"
+}

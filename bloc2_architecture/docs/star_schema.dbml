@@ -1,0 +1,33 @@
+Project analytical_star {
+  database_type: 'PostgreSQL'
+  Note: 'Étoile logique, vues SQL dérivées : une ligne par article courant non exclu. PK/FK logiques, contraintes héritées des tables opérationnelles. Aucun texte ni instantané historique copié.'
+}
+Table analytics.dim_date {
+  date_key date [pk, note: 'Date de publication en UTC']
+  year_number integer
+  month_number integer
+  day_number integer
+}
+Table analytics.dim_source {
+  source_id text [pk]
+  label text
+  base_url text
+}
+Table analytics.dim_execution {
+  run_id uuid [pk]
+  kind text
+  status text
+  source_sha256 char(64)
+  started_at timestamptz
+  completed_at timestamptz
+}
+Table analytics.fact_article {
+  article_id text [pk, note: 'Identifiant dégénéré de l’article courant']
+  date_key date [ref: > analytics.dim_date.date_key]
+  source_id text [ref: > analytics.dim_source.source_id]
+  run_id uuid [ref: > analytics.dim_execution.run_id]
+  content_sha256 char(64) [note: 'Empreinte du JSON courant, distincte de text_sha256']
+  schema_version smallint
+  synthetic boolean
+  article_count integer [note: 'Constante 1, additive selon date/source/exécution']
+}
