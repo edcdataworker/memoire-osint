@@ -1,0 +1,54 @@
+{
+  "at_utc": "2026-10-18T23:11:51.542276+00:00",
+  "scope": "Trois cycles réseau TASS, cinq articles maximum par cycle, état isolé chiffré supprimé après arrêt",
+  "synthetic_source": false,
+  "cycles": [
+    {
+      "cycle": 1,
+      "status": "complete",
+      "coverage": "article_limit",
+      "counts": {
+        "new": 5
+      },
+      "duration_seconds": 7.462,
+      "trigger_lag_seconds": 0.0
+    },
+    {
+      "cycle": 2,
+      "status": "complete",
+      "coverage": "article_limit",
+      "counts": {
+        "unchanged": 5
+      },
+      "duration_seconds": 7.484,
+      "trigger_lag_seconds": 0.141
+    },
+    {
+      "cycle": 3,
+      "status": "complete",
+      "coverage": "article_limit",
+      "counts": {
+        "unchanged": 5
+      },
+      "duration_seconds": 7.726,
+      "trigger_lag_seconds": 0.184
+    }
+  ],
+  "completed": 3,
+  "status": "finished",
+  "distinct_articles": 5,
+  "interval_seconds": 60,
+  "alert_codes": [
+    "POLL_COVERAGE_LIMITED",
+    "POLL_COVERAGE_LIMITED",
+    "POLL_COVERAGE_LIMITED"
+  ],
+  "duration_seconds": 143.012,
+  "code_sha256": "3377ec0bcb66c6a74003f8377700356a3f4a70b64c1fe9623177ceecb7669869",
+  "limitations": [
+    "Pas de collecte permanente",
+    "Couverture bornée, non exhaustive",
+    "Durée de cycle distincte du délai de publication TASS",
+    "Aucun import Bloc 2 ni NER Bloc 4 déclenché"
+  ]
+}

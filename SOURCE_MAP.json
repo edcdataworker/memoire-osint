@@ -14,7 +14,7 @@
     {
       "path": "bloc2_architecture/README.md",
       "source_archive": "02_Bloc_2_Architecture/Code_OSINT_Bloc2.zip",
-      "sha256": "67a958a5e8852186e7e0aba0d4a89cdc87e1b5829fea9a10d3d70d7f71e95caa"
+      "sha256": "d66e4616be810183aced99fb3f34a94a990538dc577336eab9cb0b923a504f43"
     },
     {
       "path": "bloc2_architecture/app/Dockerfile",
@@ -234,7 +234,7 @@
     {
       "path": "bloc3_pipeline/Correspondance_criteres_Bloc3.json",
       "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
-      "sha256": "c1ba985a4cf8cb10adfb4e26bb0798431b0a13a666835472a931bf3a8e889ff7"
+      "sha256": "ca1dbe34fc6e0da87f71b5075d1d6677a6c37325ad2711bea219ab33f8b68c13"
     },
     {
       "path": "bloc3_pipeline/Dockerfile",
@@ -264,7 +264,7 @@
     {
       "path": "bloc3_pipeline/README.md",
       "source_archive": "03_Bloc_3_Pipelines/Code_OSINT_Bloc3.zip",
-      "sha256": "ec6bdcd274f863c3548907d58b62d0ae58d0b9519a3a6e4b313aca38fe689ef7"
+      "sha256": "2ede42ca2f3552bb8a6985b5d34a6683eb5a1ecc9d5de293b9b99f978bb8d29e"
     },
     {
       "path": "bloc3_pipeline/config/collecte_continue.json",
@@ -559,7 +559,7 @@
     {
       "path": "bloc4_ia/Correspondance_criteres_Bloc4.json",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "87471bd1e678aa25fd9774e297fdce6ac8d2bb7b0de4aeec0f085b8c224e7a5e"
+      "sha256": "a680f849084e7e7ef4ac7f2c08f19ffafbd3121f4c91c7940702b31b0ca70a13"
     },
     {
       "path": "bloc4_ia/Dockerfile",
@@ -569,7 +569,7 @@
     {
       "path": "bloc4_ia/README.md",
       "source_archive": "04_Bloc_4_IA/Code_OSINT_Bloc4.zip",
-      "sha256": "1a544eee51ee380cdb546d1581a58258bda50c41beea70fbdc061f050042dca3"
+      "sha256": "721172370aae867d644f5aac188f4ad16ffe4b410b74d4d1a8c367d7b61c9c52"
     },
     {
       "path": "bloc4_ia/config/elasticsearch-entities-mapping.json",
@@ -879,7 +879,7 @@
     {
       "path": "bloc2_architecture/Correspondance_criteres_Bloc2.csv",
       "source_archive": "02_Bloc_2_Architecture/Paquet_Bloc2_20261019.zip",
-      "sha256": "d8e2d061a1f06714ac79e93d07e9e1475b73b57d105d4baa09974640f53898a5"
+      "sha256": "ae62ef54d514d64dcc66fd824c7e3ebd89783f0fa25da0e79816d51dc85f7abd"
     },
     {
       "path": "bloc2_architecture/verification/Etoile_VM_20261019/Verification_etoile_VM.json",
@@ -910,8 +910,59 @@
       "path": "bloc2_architecture/verification/Etoile_VM_20261019/Application_1.log",
       "source_archive": "02_Bloc_2_Architecture/Paquet_Bloc2_20261019.zip",
       "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "bloc1_gouvernance/README.md",
+      "source": "Compléments locaux du 19 octobre 2026",
+      "sha256": "e2e204b9ca17814164d05519e9b438e2ba84ffa6715dfbaccef5d94cca376820"
+    },
+    {
+      "path": "bloc1_gouvernance/Correspondance_criteres_Bloc1.csv",
+      "source": "Compléments locaux du 19 octobre 2026",
+      "sha256": "703569f784d25d6af4286da93516c43e64578d9cbf93d1f856a6e204214cadcb"
+    },
+    {
+      "path": "bloc1_gouvernance/Grille_utilisation_gouvernance.md",
+      "source": "Compléments locaux du 19 octobre 2026",
+      "sha256": "52b92ec430c937437aacf189bd89b70dc97e614e37b589430dad770e2a3714c4"
+    },
+    {
+      "path": "bloc1_gouvernance/Registre_decisions_et_preuves.csv",
+      "source": "Compléments locaux du 19 octobre 2026",
+      "sha256": "5aea1df6496fe00d9f2d3872a4f99674d8091b843a05f821d6b3b2a5bb04c50e"
+    },
+    {
+      "path": "bloc2_architecture/scripts/coordinated_backup.py",
+      "source": "Compléments locaux du 19 octobre 2026",
+      "sha256": "0c03395590530576fac30bcb91c37a069b19611e7398048c4df39471c723a397"
+    },
+    {
+      "path": "bloc2_architecture/verification/Corrections_20261019/backup.json",
+      "source": "Compléments locaux du 19 octobre 2026",
+      "sha256": "fc90e67e372e93b14b6d255bba96f2ce77ab0b88d674f029573a13596dccd7e1"
+    },
+    {
+      "path": "bloc2_architecture/verification/Corrections_20261019/Sauvegarde_coordonnee.json",
+      "source": "Compléments locaux du 19 octobre 2026",
+      "sha256": "aaccce8ce2aa77dc86ac926cb4feef13dcc21c3e111ea3289f3cd94855bcee24"
+    },
+    {
+      "path": "bloc3_pipeline/scripts/verify_continuous_live.py",
+      "source": "Compléments locaux du 19 octobre 2026",
+      "sha256": "3377ec0bcb66c6a74003f8377700356a3f4a70b64c1fe9623177ceecb7669869"
+    },
+    {
+      "path": "bloc3_pipeline/verification/Corrections_20261019/Collecte_continue_reelle.json",
+      "source": "Compléments locaux du 19 octobre 2026",
+      "sha256": "4a0979fd7da17b1af833e2102c1faa829515288f765ca4145e19085c33982b64"
+    },
+    {
+      "path": "bloc4_ia/verification/Corrections_20261019/Garde_revue_humaine.json",
+      "source": "Compléments locaux du 19 octobre 2026",
+      "sha256": "ba3fcc5c11cf795334406c611bcfb7f28b82bb3168c0c258f13b226e7a1d8002"
     }
   ],
   "vm_revision": "Bloc 2 : déploiement local du 18 octobre 2026, configuration corrigée et preuves dans bloc2_architecture/verification/VM_20261018. Les README publics adaptent les liens locaux aux chemins du dépôt.",
-  "star_revision": "Modèle en étoile du 19 octobre 2026 : huit tests isolés ; quatre vues déployées et vérifiées dans la VM sur 100 documents fictifs, jointures et droits vérifiés, tables opérationnelles préservées. Rapport 20 pages et présentation 7 diapositives. Révision destinée à cette publication GitHub ; le résultat de la CI est vérifié séparément après le push."
+  "star_revision": "Modèle en étoile du 19 octobre 2026 : huit tests isolés ; quatre vues déployées et vérifiées dans la VM sur 100 documents fictifs, jointures et droits vérifiés, tables opérationnelles préservées. Rapport 20 pages et présentation 7 diapositives. Révision destinée à cette publication GitHub ; le résultat de la CI est vérifié séparément après le push.",
+  "corrections_20261019": "Sauvegarde coordonnée restaurée localement, trois cycles TASS réels, suivi et garde de revue humaine actualisés. Compléments inclus dans cette publication GitHub ; aucune vidéo ni guide oral inclus."
 }

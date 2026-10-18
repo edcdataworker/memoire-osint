@@ -5,7 +5,7 @@ Plan et présentation version 1.6 du 18 octobre 2026, synchronisés. La structur
 1. [Plan de gouvernance](Plan_gouvernance_OSINT.pdf) : dix pages au total, couverture et références comprises, avec visuels intégrés, avec périmètre, RACI, traitements, droits, sécurité, dix risques et continuité.
 2. [Présentation modifiable](Presentation_Bloc1_OSINT.pptx) : douze diapositives et notes, budget de quinze minutes.
 3. [Grille d’utilisation](Grille_utilisation_gouvernance.md) : sept parcours et trois cas guidés, collecte, export jury et demande de droits.
-4. Préparation orale : guide conservé uniquement en local.
+4. [Préparation orale](Preparation_orale_Bloc1.md) : déroulé et réponses sur le fonctionnement actuel.
 5. [Correspondance des critères](Correspondance_criteres_Bloc1.csv) : les vingt-deux critères exacts de l’école, pages, preuves et limites.
 6. [Source textuelle](Plan_gouvernance_OSINT.md) et Sources/contenu_plan.json : contenu modifiable du plan.
 
@@ -15,7 +15,7 @@ Les états du critère complet restent « Implémenté » pour les quinze critè
 
 T01 couvre acquisition, consultation et synthèse, tandis que T02 encadre séparément le modèle. E01 documente les exports et D01 leur effacement coordonné. Le constat daté sur le volume chiffré Bloc 3, les comptes applicatifs individuels absents, les filtres après téléchargement et les copies sorties du périmètre sont explicites. Les cinq articles collectés récemment sont distincts du corpus historique et de ses mentions NER.
 
-Le relevé [Harmonisation_bloc3.json](Preuves/Harmonisation_bloc3.json) identifie sources, code et preuves par SHA-256. Les contrôles documentaires de cette version sont dans [Validation_bloc1.json](Preuves/Validation_bloc1.json). Les preuves antérieures restent datées ; elles ne démontrent pas une demande de droits réelle, un audit juridique ou une formation.
+Le relevé [Harmonisation_bloc3.json](verification/Harmonisation_bloc3.json) identifie sources, code et preuves par SHA-256. Les contrôles documentaires de cette version sont dans [Validation_bloc1.json](verification/Validation_bloc1.json). Les preuves antérieures restent datées ; elles ne démontrent pas une demande de droits réelle, un audit juridique ou une formation.
 
 ## Suite à réaliser
 
@@ -34,7 +34,7 @@ Le [dossier juridique et procédures](Dossier_juridique_et_procedures_OSINT.pdf)
 
 ## Synchronisation du support oral
 
-Les diapositives et notes intègrent l’activation et la migration vérifiées du volume AES-256 du Bloc 3 ainsi que les analyses et procédures J01-J07 rédigées. Autorisations, coordonnées réelles, diffusion de la notice, copies externes et revue humaine restent distinctes des documents disponibles. Douze diapositives et budget indicatif de quinze minutes conservés. Le contrôle ciblé est consigné dans [Synchronisation_presentation.json](Preuves/Synchronisation_presentation.json).
+Les diapositives et notes intègrent l’activation et la migration vérifiées du volume AES-256 du Bloc 3 ainsi que les analyses et procédures J01-J07 rédigées. Autorisations, coordonnées réelles, diffusion de la notice, copies externes et revue humaine restent distinctes des documents disponibles. Douze diapositives et budget indicatif de quinze minutes conservés. Le contrôle ciblé est consigné dans [Synchronisation_presentation.json](verification/Synchronisation_presentation.json).
 
 
 ## Complément des consignes du 18 octobre 2026
@@ -43,6 +43,13 @@ Le livrable principal respecte 8 à 10 pages : le plan comporte exactement 10 pa
 
 La collaboration est précisée par la revue mensuelle, les visas, les rôles et la vérification distincte des corrections. La formation de 45 minutes comporte programme, exercice et preuve attendue ; l’audit distingue périmètre, contrôle, constat, correction et clôture. Ces actions restent proposées, sans participants ni résultats inventés. Les évolutions locales des autres blocs sont rattachées à leurs preuves datées.
 
-Le dossier juridique de huit pages reste un outil de travail séparé. Il ne prolonge pas le plan principal et n’est pas nécessaire pour en comprendre les règles. Le guide de préparation orale reste local et exclu des nouveaux paquets de remise. La publication GitHub est distincte de tout envoi Drive.
+Le dossier juridique de huit pages reste un outil de travail séparé. Il ne prolonge pas le plan principal et n’est pas nécessaire pour en comprendre les règles. Le guide de préparation orale reste local et exclu des nouveaux paquets de remise. La révision précédente est publiée sur GitHub avec CI réussie. Les compléments du 19 octobre sont inclus dans cette publication GitHub ; aucun nouvel envoi Drive n’est effectué.
 
-Pondérations du complément : complétude 25 %, choix stratégiques 20 %, parties prenantes 15 %, risques 15 %, présentation orale 15 %, questions 10 %. Les 22 critères exacts de la grille école restent conservés et localisés. Voir `Preuves/Complement_20261018/Validation.json`.
+Pondérations du complément : complétude 25 %, choix stratégiques 20 %, parties prenantes 15 %, risques 15 %, présentation orale 15 %, questions 10 %. Les 22 critères exacts de la grille école restent conservés et localisés. Voir `verification/Complement_20261018/Validation.json`.
+
+
+## Actualisation du 19 octobre 2026
+
+Le registre `Registre_decisions_et_preuves.csv` sépare décisions métier attendues et contrôles techniques. Aucune attestation, formation ni décision juridique réelle n’est créée.
+
+Publication précédente et CI : https://github.com/edcdataworker/memoire-osint/actions/runs/39174668036. Cette révision publie les compléments du 19 octobre. Leur CI est consultable dans GitHub Actions. Les guides oraux et vidéos restent exclus de cette publication.

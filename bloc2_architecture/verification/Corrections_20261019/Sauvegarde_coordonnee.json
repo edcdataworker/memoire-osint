@@ -1,0 +1,28 @@
+{
+  "at_utc": "2026-10-18T23:16:50.995799+00:00",
+  "encryption": "AES-256-GCM",
+  "backup_sha256": "9084836da01f1ab9b85d8352f4ebd3071c95edd356661a7a3aa7cb6dbe9c2f03",
+  "bytes": 65121913,
+  "restoration": {
+    "catalog_heads": 21701,
+    "postgres_rows": 21681,
+    "mongo_documents": 21681,
+    "analytics_views": 0,
+    "hashes_verified": true,
+    "sqlite_integrity": "ok",
+    "exports": 84
+  },
+  "tampering_rejected": true,
+  "source_databases_replaced": false,
+  "off_host_copy": false,
+  "key_included": false,
+  "limitations": [
+    "Même Mac, aucun support externe disponible",
+    "Arrêt du serveur Bloc 3 et absence de mutation administrative pendant la capture requis",
+    "Les clés et la configuration de reconstruction doivent être conservées séparément",
+    "Périmètres Bloc 2 et catalogue distincts ; aucune égalité de corpus supposée",
+    "Décisions ultérieures de droits à réappliquer avant une restauration opérationnelle"
+  ],
+  "source_environment": "Docker Desktop, bases de travail ; distinct de la VM Bloc 2 à 100 documents fictifs dont les quatre vues sont déjà déployées.",
+  "script_sha256": "0c03395590530576fac30bcb91c37a069b19611e7398048c4df39471c723a397"
+}

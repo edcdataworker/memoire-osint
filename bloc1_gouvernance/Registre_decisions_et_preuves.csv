@@ -1,0 +1,8 @@
+﻿ID;Objet;Rôle du scénario;État;Preuve;Limite ou décision attendue
+G01;Réutilisation du corpus et périmètre de collecte;DIR avec conseil RPD;À décider par le responsable;Dossier_juridique_et_procedures_OSINT.pdf, J01-J03;Aucune autorisation de source ni décision juridique créée
+G02;Risques résiduels et conservation;DIR et RV;À décider par le responsable;Plan_gouvernance_OSINT.pdf, p. 6-9;Durées et arbitrages du scénario à confirmer
+G03;Continuité et sauvegarde coordonnée;TECH;Testé localement;../02_Bloc_2_Architecture/Preuves/Corrections_20261019/Sauvegarde_coordonnee.json;Hors du Mac non testé, support absent
+G04;Collecte périodique bornée;TECH;Testé, trois cycles réels;../03_Bloc_3_Pipelines/Preuves/Corrections_20261019/Collecte_continue_reelle.json;Pas de veille permanente ni exhaustivité
+G05;Qualité et promotion IA;RV avec relecteur humain;Revue humaine à réaliser;../04_Bloc_4_IA/Preuves/Corrections_20261019/Garde_revue_humaine.json;"0 attestation sur 42 ; aucune promotion"
+G06;Formation et exercice de gouvernance;RV et RPD;Prévu;Plan_gouvernance_OSINT.pdf, p. 9;Participants et résultats à renseigner après réalisation
+G07;Remise et accès du jury;Candidat;Préparation locale;../00_Pilotage/Publication_etoile_Bloc2_20261019/Publication_GitHub_etoile.json;"Compléments du 19 inclus dans cette publication ; aucun envoi automatique"

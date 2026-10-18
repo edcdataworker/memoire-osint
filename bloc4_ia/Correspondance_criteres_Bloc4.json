@@ -28,7 +28,7 @@
     "source_exacte": "Bloc 4!A7",
     "critere_exact": "1.2 - La qualité des prédictions ou des décisions faites par l'IA est mesurée en utilisant des métriques de performance appropriées pour le type de tâche (précision, rappel, AUC pour la classification; MAE, RMSE pour la régression; BLEU pour la traduction automatique, etc.).",
     "statut": "Implémenté",
-    "existant": "Diagnostic exploratoire contre référence IA : F1 32,73 %. Codex a relu les 42 textes et corrigé les brouillons comme IA. Aucune attestation ni métrique de qualité humaine ; modèle inchangé.",
+    "existant": "Diagnostic exploratoire contre référence IA : F1 32,73 %. Codex a relu les 42 textes et corrigé les brouillons comme IA. Aucune attestation ni métrique de qualité humaine ; modèle inchangé. Le 19 octobre, refus vérifié de l’évaluation des 42 brouillons sans attestation humaine ; progression inchangée, aucun score humain ni modèle promu.",
     "preuves": [
       "src/osint_ner/metrics.py",
       "Preuves/Diagnostic_annotations_IA.json",
@@ -42,7 +42,8 @@
       "src/osint_ner/human_review.py",
       "tests/test_human_review.py",
       "Preuves/Revue_humaine/Verification_interface.json",
-      "Preuves/Revue_humaine.json"
+      "Preuves/Revue_humaine.json",
+      "Preuves/Corrections_20261019/Garde_revue_humaine.json"
     ],
     "ecart": "Les 42 annotations proposées par Codex ne sont pas validées par une personne ; aucune estimation indépendante de qualité.",
     "prochaine_action": "Relire personnellement les 42 textes et attester les décisions avant de calculer les métriques humaines."
@@ -246,11 +247,12 @@
     "source_exacte": "Bloc 4!A16",
     "critere_exact": "3.1 - Le candidat a mis en place un système pour le réentrainement automatique des modèles d'IA. Cela peut être vérifié en examinant le code fourni, en inspectant les outils de gestion des tâches, les planificateurs de travaux, les scripts d'automatisation, etc.",
     "statut": "Testé",
-    "existant": "Ordonnanceur relié à évaluation, monitoring, promotion et livraison optionnelle du candidat accepté.",
+    "existant": "Ordonnanceur relié à évaluation, monitoring, promotion et livraison optionnelle du candidat accepté. Le 19 octobre, refus vérifié de l’évaluation des 42 brouillons sans attestation humaine ; progression inchangée, aucun score humain ni modèle promu.",
     "preuves": [
       "Preuves/retraining_events.jsonl",
       "src/osint_ner/automation.py",
-      "tests/test_serving_lifecycle.py"
+      "tests/test_serving_lifecycle.py",
+      "Preuves/Corrections_20261019/Garde_revue_humaine.json"
     ],
     "ecart": "Mécanisme exécuté sur fixtures ; cycle complet sur annotations TASS réellement revues à réaliser.",
     "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
@@ -320,7 +322,7 @@
     "source_exacte": "Bloc 4!A19",
     "critere_exact": "3.4 - Le système d'automatisation détecte et gère la dérive du modèle. La dérive du modèle se produit lorsque le comportement du modèle change avec le temps en raison de changements dans les données sous-jacentes. Les indicateurs de ceci peuvent inclure des mécanismes de surveillance du modèle, des alertes en cas de dérive significative, des mesures correctives automatiques, etc.",
     "statut": "Implémenté",
-    "existant": "Monitoring et gel de promotion raccordés dans la même boucle ; une dérive synthétique bloque un candidat malgré des métriques favorables de test.",
+    "existant": "Monitoring et gel de promotion raccordés dans la même boucle ; une dérive synthétique bloque un candidat malgré des métriques favorables de test. Le 19 octobre, refus vérifié de l’évaluation des 42 brouillons sans attestation humaine ; progression inchangée, aucun score humain ni modèle promu.",
     "preuves": [
       "Preuves/monitor_current.json",
       "Preuves/monitor_synthetic_shift.json",
@@ -332,7 +334,8 @@
       "tests/test_human_review.py",
       "Preuves/Revue_humaine/Verification_interface.json",
       "src/osint_ner/automation.py",
-      "tests/test_serving_lifecycle.py"
+      "tests/test_serving_lifecycle.py",
+      "Preuves/Corrections_20261019/Garde_revue_humaine.json"
     ],
     "ecart": "Capteur de longueur seulement ; baisse réelle de qualité indisponible sans référence humaine. Branche favorable vérifiée sur fixtures temporaires.",
     "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
@@ -390,7 +393,7 @@
       "Preuves_complement_20261018/Docker.json",
       "Preuves_complement_20261018/ci_correction.json"
     ],
-    "ecart": "Démonstration locale testée ; workflow distant actualisé mais non exécuté pour cette révision.",
+    "ecart": "CI distante réussie au commit 1b738d9, incluant le job IA et son déploiement éphémère ; aucun service public permanent revendiqué.",
     "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
     "complement_20261018": {
       "version": "0.2.1",
@@ -486,7 +489,7 @@
       "Preuves_complement_20261018/Docker.json",
       "Preuves_complement_20261018/ci_correction.json"
     ],
-    "ecart": "Observation bornée lancée par opérateur ; pas de service système permanent. Aucun cycle distant actuel attesté.",
+    "ecart": "Observation locale bornée et CI distante réussie au commit 1b738d9 ; pas de service système permanent.",
     "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
     "complement_20261018": {
       "version": "0.2.1",
@@ -614,12 +617,13 @@
     "source_exacte": "Bloc 4!A31",
     "critere_exact": "5.5 - La solution d'IA respecte les principes de l'IA éthique, notamment en termes d'explicabilité, de justesse, de non-discrimination, de respect de la vie privée, etc. Cela peut être vérifié par la présence de mécanismes d'explication des décisions de l'IA, de tests de biais, de protections de la vie privée, etc.",
     "statut": "Implémenté",
-    "existant": "Biais de source et de supervision explicités, erreurs concrètes présentées, passage source conservé.",
+    "existant": "Biais de source et de supervision explicités, erreurs concrètes présentées, passage source conservé. Le 19 octobre, refus vérifié de l’évaluation des 42 brouillons sans attestation humaine ; progression inchangée, aucun score humain ni modèle promu.",
     "preuves": [
       "docs/Annotation_et_protocole.md",
       "Note_analyse.md",
       "Preuves/Diagnostic_annotations_IA_42_articles.json",
-      "docs/Diagnostic_IA_42_articles.md"
+      "docs/Diagnostic_IA_42_articles.md",
+      "Preuves/Corrections_20261019/Garde_revue_humaine.json"
     ],
     "ecart": "Équité et justesse non évaluées sur référence humaine stratifiée.",
     "prochaine_action": "Mesurer erreurs par label/période et faire revue humaine des usages."
@@ -777,7 +781,7 @@
       "Preuves/GitHub_workflow_final.json",
       "Code_OSINT_GitHub.zip"
     ],
-    "ecart": "Révision courante non publiée sur GitHub ; accès du jury et version distante à synchroniser avant remise.",
+    "ecart": "Code publié et CI réussie au commit 1b738d9 ; compléments documentaires du 19 octobre inclus dans cette publication, accès du jury à vérifier.",
     "prochaine_action": "Traiter les limites indiquées, puis vérifier la version effectivement remise.",
     "complement_20261018": {
       "version": "0.2.1",

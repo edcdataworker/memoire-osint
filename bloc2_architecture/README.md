@@ -11,7 +11,7 @@ Bloc 2, version locale du 4 octobre 2026. Plateforme pour la veille OSINT. Elle 
 3. `verification/` : résultats des contrôles, mesures, captures et manifeste des versions.
 4. `Demonstration_locale_OSINT.mp4` : enregistrement du fonctionnement local, avec une panne simulée. Ce fichier ne prouve pas un hébergement de production externe.
 5. `Demonstration_raccordement_Observatoire.mp4` : import réel depuis le suivi du programme développé dans le bloc 3, état final des stockages et limites. Journal : `verification/Raccordement_Observatoire.json`.
-6. `Correspondance_criteres_Bloc2.csv` : correspondance des 28 critères. Les guides de préparation orale restent en local.
+6. `Correspondance_criteres_Bloc2.csv` et `Preparation_orale_Bloc2.md` : correspondance des 28 critères et trame de cinq minutes.
 7. [Presentation_Bloc2_OSINT.pptx](Presentation_Bloc2_OSINT.pptx) : sept diapositives pour les cinq minutes d’oral, avec notes du présentateur et références des preuves. Le minutage est prévu et reste à vérifier pendant une répétition.
 
 ## Stockages et autorité
@@ -173,7 +173,7 @@ La surveillance reste au premier plan et n'est pas installée comme service perm
 
 L’ERD reste le modèle opérationnel. Une étoile logique est ajoutée pour l’analyse : fact_article relie l’article courant à dim_date, dim_source et dim_execution. Les vues sont testées sur PostgreSQL isolé et déployées dans la VM dédiée sur 100 documents fictifs. MongoDB conserve le texte chiffré et Elasticsearch reste un index dérivé.
 
-Les nouvelles preuves sont dans `verification/Complement_20261018/`. Les essais de 60 000, 600 000 et 6 000 000 lignes ne sont pas relancés : code d'ingestion et schémas inchangés, résultats attribués à leur version mesurée. Le redéploiement testé sur l'environnement existant ne démontre pas une installation vierge sur un deuxième poste. Cette révision publie le modèle en étoile et ses preuves de déploiement VM. Les vérifications distantes sont consultables dans GitHub Actions.
+Les nouvelles preuves sont dans `verification/Complement_20261018/`. Les essais de 60 000, 600 000 et 6 000 000 lignes ne sont pas relancés : code d'ingestion et schémas inchangés, résultats attribués à leur version mesurée. Le redéploiement testé sur l'environnement existant ne démontre pas une installation vierge sur un deuxième poste. Le miroir `06_Depot_GitHub` est actualisé localement ; la nouvelle révision doit encore être publiée pour devenir consultable à distance.
 
 ## Provisionnement du serveur virtuel
 
@@ -196,3 +196,20 @@ python3 scripts/verify_star_schema.py --output verification/Etoile_20261019/Test
 Ce contrôle crée un PostgreSQL jetable avec réseau désactivé, sans port publié et stockage temporaire, puis le supprime. Huit scénarios SQL vérifient le grain, les frontières UTC indépendamment du fuseau de session, les jointures additives, l’exclusion, la révision, les droits des deux rôles et la suppression. La migration est rejouée et la requête d’exemple exécutée. Données : cinq articles fictifs et une révision. La preuve est `verification/Etoile_20261019/Tests_etoile.json`. Aucun débit de production n’est déduit de ce contrôle.
 
 Le script SQL est pris en compte par le bootstrap d’une nouvelle base utilisant le dossier SQL complet. Le 19 octobre, il a aussi été appliqué en transaction puis rejoué dans la base osint existante de la VM memoire-osint-bloc2. Quatre vues, 100 faits distincts et 100 lignes après jointure sont vérifiés ; aucun écart UTC dans trois fuseaux de session. Les deux rôles lisent les vues sans droits INSERT, UPDATE ou DELETE sur celles-ci. Les empreintes des cinq tables opérationnelles sont inchangées et les contrôles HTTPS, SQL/MongoDB et TLS passent. La requête filtrant les données fictives retourne zéro ligne, résultat attendu en l’absence de corpus réel. Preuve : `verification/Etoile_VM_20261019/Verification_etoile_VM.json`. Les bases de Docker Desktop ne sont pas modifiées. Les essais VM du 18 octobre conservent leur version et leur périmètre distincts.
+
+
+## Actualisation du 19 octobre 2026
+
+`scripts/coordinated_backup.py` capture le Bloc 2, le catalogue SQLite, les exports et les décisions gérées du Bloc 3 dans une archive AES-256-GCM. Il refuse un serveur Bloc 3 actif ou une destination privée non chiffrée. Les restaurations SQL/MongoDB utilisent des espaces uniques, supprimés après contrôle ; les bases de travail ne sont pas remplacées. Le test local restaure 21 681 lignes par moteur, 21 701 articles courants du catalogue et 84 fichiers d’export. La différence de périmètre est explicite. Preuve : `verification/Corrections_20261019/Sauvegarde_coordonnee.json`. Clés séparées et décisions ultérieures de droits à réappliquer avant restauration opérationnelle. Aucun support externe disponible, donc aucune copie hors du Mac attestée.
+
+Publication précédente et CI : https://github.com/edcdataworker/memoire-osint/actions/runs/39174668036. Cette révision publie les compléments du 19 octobre. Leur CI est consultable dans GitHub Actions. Les guides oraux et vidéos restent exclus de cette publication.
+
+### Rejouer la sauvegarde coordonnée
+
+Utiliser les sources des Blocs 2 et 3 côte à côte, comme dans le dépôt commun. Installer `requirements-tools.txt`, arrêter le serveur du Bloc 3, puis exécuter depuis le Bloc 2 :
+
+```sh
+python3 scripts/coordinated_backup.py --catalog-state /Volumes/MemoireOSINT/B3 --private-output /Volumes/MemoireOSINT --evidence-dir verification/Corrections_20261019
+```
+
+Le contrôle restaure dans des espaces temporaires uniques et les retire. Garder la clé de sauvegarde et les clés de données séparément de l’archive, par un canal privé. Le paquet de remise ne contient aucune clé ni sauvegarde réelle. Il faut disposer des bases de travail pour rejouer ce contrôle.

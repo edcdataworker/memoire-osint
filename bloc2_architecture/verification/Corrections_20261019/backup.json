@@ -1,0 +1,9 @@
+{
+  "backup": "20261018T231645Z.enc",
+  "sha256": "510b047a4421abb24153d54b72d813b6d985d4f7a1e665f2601d54bab7581d52",
+  "bytes": 47693798,
+  "encryption": "AES-256-GCM",
+  "duration_s": 1.654,
+  "scope": "PostgreSQL + MongoDB + erasure and encrypted correction ledgers; data encryption key stored separately",
+  "offsite_copy": false
+}

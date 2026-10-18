@@ -7,15 +7,16 @@
     "critere_normalise": "1.1 - Indicateur relatif au temps nécessaire pour que le pipeline traite un ensemble de données spécifique. Cet indicateur peut être quantifié en termes de temps (par exemple, minutes, secondes) ou de taux (par exemple, lignes de données traitées par seconde).",
     "oral": false,
     "statut": "testé",
-    "existant": "40 cycles, 10 000 articles fictifs d’environ 2 Kio, 35,484107 s, 281,816 articles/s ; 62 répétitions entre cycles sans révision superflue.",
+    "existant": "40 cycles, 10 000 articles fictifs d’environ 2 Kio, 35,484107 s, 281,816 articles/s ; 62 répétitions entre cycles sans révision superflue. Le 19 octobre, trois cycles réels TASS espacés de 60 secondes : cinq nouveaux articles, puis cinq inchangés à chacun des deux cycles suivants ; durées de 7,462 à 7,726 s, alertes de couverture limitée observées.",
     "preuves": [
       "Preuves/Collecte_TASS/Benchmark_chiffre.json",
       "Preuves/Collecte_TASS/Benchmark_chiffre_avant_index.json",
       "Preuves/Collecte_TASS/Version_finale.json",
       "Preuves/Complement_20261018/Flux_continu.json",
-      "Preuves/Complement_20261018/Charge_continue.json"
+      "Preuves/Complement_20261018/Charge_continue.json",
+      "Preuves/Corrections_20261019/Collecte_continue_reelle.json"
     ],
-    "ecart": "Source injectée et poste local ; ni réseau TASS ni temps réel strict démontré.",
+    "ecart": "Débit de charge mesuré sur source fictive ; durées réelles de trois petits cycles distinctes de la latence de publication TASS et d’un temps réel strict.",
     "prochaine_action": "Conserver les limites et vérifier la version effectivement remise.",
     "complement_20261018": {
       "version": "b3-20261018",
@@ -129,11 +130,12 @@
     "critere_normalise": "1.5 - Indicateur relatif à la redondance du pipeline. Y a-t-il des mesures de redondance en place pour s'assurer que le pipeline continue de fonctionner en cas de défaillance d'un de ses composants ?",
     "oral": false,
     "statut": "testé",
-    "existant": "Copie SQLite vérifiée après publication ; basculement en lecture, exports disponibles et écritures interdites ; restauration explicite.",
+    "existant": "Copie SQLite vérifiée après publication ; basculement en lecture, exports disponibles et écritures interdites ; restauration explicite. Le catalogue et ses exports sont désormais inclus dans une sauvegarde coordonnée chiffrée, restaurée sur le même Mac.",
     "preuves": [
       "Preuves/Collecte_TASS/Verification_HTTP.json",
       "Preuves/Collecte_TASS/Tests_cloture_final.log",
-      "Preuves/Collecte_TASS/Version_finale.json"
+      "Preuves/Collecte_TASS/Version_finale.json",
+      "../02_Bloc_2_Architecture/Preuves/Corrections_20261019/Sauvegarde_coordonnee.json"
     ],
     "ecart": "Même Mac et même volume ; panne du poste ou du volume non couverte.",
     "prochaine_action": "Montrer le mode de secours et sa date."
@@ -146,7 +148,7 @@
     "critere_normalise": "2.1 - Indicateur relatif à l'automatisation de la collecte des données. Le pipeline est-il programmé pour collecter les données à des moments spécifiques ou répond-il à certains déclencheurs pour collecter les données ?",
     "oral": false,
     "statut": "testé",
-    "existant": "Interrogation périodique configurable après lancement explicite du service, fenêtre UTC glissante et échéance durable.",
+    "existant": "Interrogation périodique configurable après lancement explicite du service, fenêtre UTC glissante et échéance durable. Le 19 octobre, trois cycles réels TASS espacés de 60 secondes : cinq nouveaux articles, puis cinq inchangés à chacun des deux cycles suivants ; durées de 7,462 à 7,726 s, alertes de couverture limitée observées.",
     "preuves": [
       "Preuves/Collecte_TASS/Verification_HTTP.json",
       "Preuves/Collecte_TASS/Tests_pipeline_final.log",
@@ -154,9 +156,10 @@
       "pipeline/collection/continuous.py",
       "config/collecte_continue.json",
       "Preuves/Complement_20261018/Flux_continu.json",
-      "Preuves/Complement_20261018/Charge_continue.json"
+      "Preuves/Complement_20261018/Charge_continue.json",
+      "Preuves/Corrections_20261019/Collecte_continue_reelle.json"
     ],
-    "ecart": "Fonctionnement périodique testé sur une source fictive ; aucun collecteur réseau TASS permanent activé dans cette opération.",
+    "ecart": "Collecte périodique réelle démontrée sur trois cycles bornés ; aucune exploitation permanente ni exhaustivité démontrée.",
     "prochaine_action": "Conserver les limites et vérifier la version effectivement remise.",
     "complement_20261018": {
       "version": "b3-20261018",
@@ -214,14 +217,15 @@
     "critere_normalise": "2.3 - Indicateur relatif à l'automatisation de la mise à jour des données. Le pipeline est-il capable de mettre à jour automatiquement les données dans les bases de données ou autres systèmes de stockage de données ?",
     "oral": false,
     "statut": "testé",
-    "existant": "Catalogue et exports mis à jour après validation à chaque cycle ; contrôle de doublons et conservation du pointeur en échec.",
+    "existant": "Catalogue et exports mis à jour après validation à chaque cycle ; contrôle de doublons et conservation du pointeur en échec. Le 19 octobre, trois cycles réels TASS espacés de 60 secondes : cinq nouveaux articles, puis cinq inchangés à chacun des deux cycles suivants ; durées de 7,462 à 7,726 s, alertes de couverture limitée observées.",
     "preuves": [
       "Preuves/Collecte_TASS/Tests_collecte_final.log",
       "Preuves/Collecte_TASS/Droits_B3_B2.json",
       "Preuves/Collecte_TASS/Version_finale.json",
       "tests/continuous.py",
       "Preuves/Complement_20261018/Flux_continu.json",
-      "Preuves/Complement_20261018/Charge_continue.json"
+      "Preuves/Complement_20261018/Charge_continue.json",
+      "Preuves/Corrections_20261019/Collecte_continue_reelle.json"
     ],
     "ecart": "Publication automatique dans SQLite et JSON/JSONL ; import dans le Bloc 2 et inférence du Bloc 4 restent distincts.",
     "prochaine_action": "Conserver les limites et vérifier la version effectivement remise.",
@@ -306,14 +310,15 @@
     "critere_normalise": "3.1 - Indicateur relatif à la présence d'outils de suivi des performances dans le pipeline. Le candidat a-t-il intégré des outils de monitoring qui peuvent fournir des informations en temps réel sur le fonctionnement du pipeline ?",
     "oral": false,
     "statut": "testé",
-    "existant": "Suivi HTTP de la boucle périodique dans l’interface existante, actualisée chaque seconde.",
+    "existant": "Suivi HTTP de la boucle périodique dans l’interface existante, actualisée chaque seconde. Le 19 octobre, trois cycles réels TASS espacés de 60 secondes : cinq nouveaux articles, puis cinq inchangés à chacun des deux cycles suivants ; durées de 7,462 à 7,726 s, alertes de couverture limitée observées.",
     "preuves": [
       "Preuves/Collecte_TASS/Verification_HTTP.json",
       "Preuves/Collecte_TASS/Video_cloture.json",
       "Preuves/Collecte_TASS/Cloture_suivi.png",
       "Preuves/Collecte_TASS/Version_finale.json",
       "Preuves/Complement_20261018/Verification_interface.json",
-      "Preuves/Complement_20261018/Suivi_flux_apercu.png"
+      "Preuves/Complement_20261018/Suivi_flux_apercu.png",
+      "Preuves/Corrections_20261019/Collecte_continue_reelle.json"
     ],
     "ecart": "Suivi local sur le poste ; aucune exploitation distante démontrée.",
     "prochaine_action": "Conserver les limites et vérifier la version effectivement remise.",
@@ -335,13 +340,14 @@
     "critere_normalise": "3.2 - Indicateur relatif à la variété des métriques de performance suivies. Les outils de monitoring suivent-ils une gamme suffisamment large de métriques pour donner une image complète des performances du pipeline (temps de traitement, volume de données traitées, erreurs, latence, etc.) ?",
     "oral": false,
     "statut": "testé",
-    "existant": "Cycles terminés, prochaine échéance, retard, durée et âge du succès complètent volumes et rejets.",
+    "existant": "Cycles terminés, prochaine échéance, retard, durée et âge du succès complètent volumes et rejets. Le 19 octobre, trois cycles réels TASS espacés de 60 secondes : cinq nouveaux articles, puis cinq inchangés à chacun des deux cycles suivants ; durées de 7,462 à 7,726 s, alertes de couverture limitée observées.",
     "preuves": [
       "Preuves/Collecte_TASS/Benchmark_collecteur.json",
       "Preuves/Collecte_TASS/Verification_HTTP.json",
       "Preuves/Collecte_TASS/Version_finale.json",
       "pipeline/collection/continuous.py",
-      "Preuves/Complement_20261018/Flux_continu.json"
+      "Preuves/Complement_20261018/Flux_continu.json",
+      "Preuves/Corrections_20261019/Collecte_continue_reelle.json"
     ],
     "ecart": "Le délai mesuré sur fixture utilise une disponibilité contrôlée ; pas de mesure d’arrivée réelle TASS.",
     "prochaine_action": "Conserver les limites et vérifier la version effectivement remise.",
@@ -389,14 +395,15 @@
     "critere_normalise": "3.4 - Indicateur relatif à la capacité des outils de monitoring à signaler proactivement les problèmes. Les outils de monitoring sont-ils configurés pour alerter en cas de dégradation des performances ou d'erreurs ?",
     "oral": false,
     "statut": "testé",
-    "existant": "POLL_STALLED, POLL_RETRY, POLL_COVERAGE_LIMITED et POLL_STORAGE_BLOCKED reliés aux événements.",
+    "existant": "POLL_STALLED, POLL_RETRY, POLL_COVERAGE_LIMITED et POLL_STORAGE_BLOCKED reliés aux événements. Le 19 octobre, trois cycles réels TASS espacés de 60 secondes : cinq nouveaux articles, puis cinq inchangés à chacun des deux cycles suivants ; durées de 7,462 à 7,726 s, alertes de couverture limitée observées.",
     "preuves": [
       "Preuves/Collecte_TASS/Tests_cloture_final.log",
       "Preuves/Collecte_TASS/Incident_simule.json",
       "Preuves/Collecte_TASS/Verification_HTTP.json",
       "Preuves/Collecte_TASS/Version_finale.json",
       "pipeline/collection/continuous.py",
-      "tests/continuous.py"
+      "tests/continuous.py",
+      "Preuves/Corrections_20261019/Collecte_continue_reelle.json"
     ],
     "ecart": "Seuils du projet, à calibrer pour une exploitation réseau réelle.",
     "prochaine_action": "Conserver les limites et vérifier la version effectivement remise.",

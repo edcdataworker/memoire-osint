@@ -19,9 +19,9 @@ Version locale du 4 octobre 2026. Le pipeline collecte un fichier JSON ou JSONL 
 1. `Plan_pipeline_OSINT.pdf` et sa source `Plan_pipeline_OSINT.md` reprennent le plan Books : contexte, données, schéma, code, difficultés, résultats, utilisation et conclusion.
 2. [Presentation_Bloc3_OSINT.pptx](Presentation_Bloc3_OSINT.pptx) : sept diapositives pour les cinq minutes d’oral, avec notes de présentation, schéma et graphique éditables. Deux annexes servent aux questions du jury. Le support distingue les mesures, la démonstration fictive et les limites du fonctionnement par lots.
 3. `pipeline/`, `tests/`, `scripts/`, `config/` : code et configuration. `Code_OSINT_Bloc3.zip` est la copie portable sans corpus réel, base locale ni secret.
-4. `Preuves/Tests_pipeline.json` : 14 scénarios synthétiques, dont arrêt brutal au milieu d'une transaction et reprise autonome. `Preuves/Benchmark_pipeline.json` : volumes et durées réellement mesurés.
+4. `verification/Tests_pipeline.json` : 14 scénarios synthétiques, dont arrêt brutal au milieu d'une transaction et reprise autonome. `verification/Benchmark_pipeline.json` : volumes et durées réellement mesurés.
 5. `Demonstration_locale_pipeline.mp4` : enregistrement du navigateur sur cinq articles fictifs, avec pause, reprise, panne du catalogue et restauration. Le ralentissement de démonstration est explicite. Il ne s'agit pas d'une exploitation externe en production.
-6. `Correspondance_criteres_Bloc3.json` : les 33 critères exacts, preuves et écarts. Le guide reliant les diapositives au déroulé oral reste uniquement en local.
+6. `Correspondance_criteres_Bloc3.json` : les 33 critères exacts, preuves et écarts. [Preparation_orale_Bloc3.md](Preparation_orale_Bloc3.md) relie les diapositives au déroulé à répéter par Edouard.
 
 Le paquet courant `Paquet_Bloc3_20261018.zip` réunit les livrables actualisés. Les guides de préparation orale restent en local et sont exclus des archives destinées au Drive. Les vidéos sont hors périmètre de cette révision.
 
@@ -49,13 +49,13 @@ Pour reproduire sans réseau ni corpus réel, dans un dossier neuf :
 python3 scripts/demo_continuous_fixture.py .demo-flux 18753
 ```
 
-Trois documents fictifs arrivent progressivement. Dix cycles réutilisent les vrais modules de collecte, stockage et HTTP, avec un intervalle de test de 0,3 seconde. Les preuves `Preuves/Complement_20261018/Flux_continu.json` identifient les délais mesurés entre disponibilité de la source fictive et publication. Ils ne prédisent ni la latence TASS ni le débit sur des articles longs. Arrêter le serveur par Ctrl+C.
+Trois documents fictifs arrivent progressivement. Dix cycles réutilisent les vrais modules de collecte, stockage et HTTP, avec un intervalle de test de 0,3 seconde. Les preuves `verification/Complement_20261018/Flux_continu.json` identifient les délais mesurés entre disponibilité de la source fictive et publication. Ils ne prédisent ni la latence TASS ni le débit sur des articles longs. Arrêter le serveur par Ctrl+C.
 
 ```sh
 python3 -m unittest discover -s tests -p continuous.py
 ```
 
-L’arborescence conserve `pipeline/` pour le Python et le SQL SQLite, `config/` pour l’orchestration et `tests/` pour les vérifications. `ContinuousCollector` remplit le rôle d’ordonnanceur sans dépendance Airflow ou dbt. Le workflow du dépôt et les archives de code sont actualisés localement ; aucun nouveau push ni run GitHub n’est attribué à cette opération.
+L’arborescence conserve `pipeline/` pour le Python et le SQL SQLite, `config/` pour l’orchestration et `tests/` pour les vérifications. `ContinuousCollector` remplit le rôle d’ordonnanceur sans dépendance Airflow ou dbt. Le workflow et le code sont publiés au commit 1b738d9, dont les trois jobs CI sont réussis. Cette publication inclut aussi les compléments du 19 octobre.
 
 ## Démarrage portable en trois commandes
 
@@ -144,7 +144,7 @@ Les répertoires d'état sont en 0700 et les fichiers créés par la CLI en 0600
 
 ## Docker et dépannage
 
-Le Dockerfile et le Compose reprennent l’objectif de déploiement reproductible du cours. Leur construction et une exécution locale ont été vérifiées par le coordinateur. Deux défauts d’intégration ont été corrigés : UID numérique absent de /etc/passwd (identité de secours uid:<numéro>) et espace temporaire SQLite sur système de fichiers en lecture seule (tmpfs /tmp borné à 64 Mo, index run/ordre évitant le tri des payloads). La reprise a conservé le checkpoint 21 676 et publié 21 676 articles. La preuve est Preuves/Docker_B3_reprise.log. Aucun conteneur pipeline permanent n’est laissé actif. SQLite doit rester sur un stockage local, pas un partage réseau.
+Le Dockerfile et le Compose reprennent l’objectif de déploiement reproductible du cours. Leur construction et une exécution locale ont été vérifiées par le coordinateur. Deux défauts d’intégration ont été corrigés : UID numérique absent de /etc/passwd (identité de secours uid:<numéro>) et espace temporaire SQLite sur système de fichiers en lecture seule (tmpfs /tmp borné à 64 Mo, index run/ordre évitant le tri des payloads). La reprise a conservé le checkpoint 21 676 et publié 21 676 articles. La preuve est verification/Docker_B3_reprise.log. Aucun conteneur pipeline permanent n’est laissé actif. SQLite doit rester sur un stockage local, pas un partage réseau.
 
 Avant essai Docker, créer `.state-docker` avec le propriétaire correspondant au compte non privilégié choisi, puis définir `PIPELINE_UID` et `PIPELINE_GID`. Les données source et la configuration sont montées en lecture seule ; seul `/state` est inscriptible, et le conteneur ne possède pas d'accès réseau.
 
@@ -161,7 +161,7 @@ Pour une erreur, lire `alerts.jsonl`, identifier l'UUID, puis `status`. Si SQLit
 
 `tests/integration.py` vérifie des comportements observables avec des processus séparés et des fixtures temporaires. `scripts/benchmark.py` crée les jeux de 1 000, 10 000 et 100 000 lignes et vérifie l'équivalence brut/nettoyé. Les mesures livrées proviennent d’un poste partagé, avec d’autres services actifs et une capture navigateur en parallèle, et d’un seul passage par taille, sans garantie de débit en production. Les 100 000 lignes synthétiques ont des textes courts et répétitifs ; aucune extrapolation à 100 000 articles TASS n'est justifiée.
 
-Le contrôle de style s'appuie sur Ruff 0.16.10, limité à des règles de syntaxe, imports et erreurs courantes, plus formatage. Le runtime, les versions et les hashes sont consignés dans `Preuves/Manifest.json`. La capture utilise agent-browser, puis ffmpeg pour convertir l'enregistrement WebM en MP4 sans modifier le contenu affiché.
+Le contrôle de style s'appuie sur Ruff 0.16.10, limité à des règles de syntaxe, imports et erreurs courantes, plus formatage. Le runtime, les versions et les hashes sont consignés dans `verification/Manifest.json`. La capture utilise agent-browser, puis ffmpeg pour convertir l'enregistrement WebM en MP4 sans modifier le contenu affiché.
 
 Le plan et la démarche reprennent le cours Data Pipelines for AI de Matthieu Larboullet, p. 6 à 12, 17 à 21 et 25 à 30, et le livrable Books d'Edouard Cappaert du 2 juin 2026. Le code OSINT est une nouvelle adaptation préparée avec l'assistance de Codex. Les sorties Books et leurs métriques ne sont pas présentées comme des mesures OSINT. Edouard doit relire, maîtriser et personnaliser cette version avant soutenance.
 
@@ -175,6 +175,21 @@ Les nouvelles mesures et l’état du cycle physique de relance sont décrits da
 
 ## Essai soutenu du flux
 
-`python3 scripts/benchmark_continuous.py --output Preuves/Complement_20261018/Charge_continue.json` exécute 40 cycles de 250 nouvelles arrivées, avec 62 répétitions entre cycles et des corps fictifs d’environ 2 Kio. Le test vérifie chaque publication cumulée et le nombre final de révisions, avec le vrai collecteur, SQLite, les contrôles qualité et les exports. Seule la source réseau est injectée. Un dossier temporaire protégé est supprimé après arrêt du worker.
+`python3 scripts/benchmark_continuous.py --output verification/Complement_20261018/Charge_continue.json` exécute 40 cycles de 250 nouvelles arrivées, avec 62 répétitions entre cycles et des corps fictifs d’environ 2 Kio. Le test vérifie chaque publication cumulée et le nombre final de révisions, avec le vrai collecteur, SQLite, les contrôles qualité et les exports. Seule la source réseau est injectée. Un dossier temporaire protégé est supprimé après arrêt du worker.
 
-Mesure locale : 10,000 articles en 35.48 s, soit 281.82 articles/s sur l’ensemble de l’essai. Les délais incluent l’attente de l’échéance, le traitement et la publication. Ces mesures synthétiques ne prouvent ni la latence réseau TASS ni un temps réel strict. Preuve : `Preuves/Complement_20261018/Charge_continue.json`.
+Mesure locale : 10,000 articles en 35.48 s, soit 281.82 articles/s sur l’ensemble de l’essai. Les délais incluent l’attente de l’échéance, le traitement et la publication. Ces mesures synthétiques ne prouvent ni la latence réseau TASS ni un temps réel strict. Preuve : `verification/Complement_20261018/Charge_continue.json`.
+
+
+## Actualisation du 19 octobre 2026
+
+`scripts/verify_continuous_live.py` a exécuté trois cycles TASS espacés de 60 secondes sur un état chiffré temporaire, sans changer le catalogue de travail. Cinq nouveaux articles au premier cycle, puis cinq inchangés à chacun des deux suivants ; durées 7,462 à 7,726 s. Les trois alertes POLL_COVERAGE_LIMITED correspondent au quota de cinq articles. Preuve : `verification/Corrections_20261019/Collecte_continue_reelle.json`. Aucun import Bloc 2 ni NER Bloc 4 déclenché. Pas de collecte permanente ni de mesure de délai d’arrivée de nouveaux articles.
+
+Publication précédente et CI : https://github.com/edcdataworker/memoire-osint/actions/runs/39174668036. Cette révision publie les compléments du 19 octobre. Leur CI est consultable dans GitHub Actions. Les guides oraux et vidéos restent exclus de cette publication.
+
+### Rejouer le contrôle réseau borné
+
+```sh
+python3 scripts/verify_continuous_live.py --encrypted-parent /Volumes/MemoireOSINT --output verification/Corrections_20261019/Collecte_continue_reelle.json
+```
+
+Cette commande effectue de vraies requêtes réseau, jusqu’à trois cycles de cinq articles, dans un état séparé chiffré. La preuve publique ne contient ni texte ni coordonnées de relecteur. Elle ne configure aucun service permanent. Vérifier le périmètre et les conditions d’utilisation applicables avant de relancer.

@@ -1,0 +1,10 @@
+{
+  "at_utc": "2026-10-18T23:12:23.717876+00:00",
+  "articles": 42,
+  "human_reviewed": 0,
+  "evaluation_blocked": true,
+  "progression_unchanged": true,
+  "evaluation_file_created": false,
+  "scope": "Contrôle en lecture et refus avant export ; aucune annotation ni attestation modifiée",
+  "next_action": "Lecture, correction et attestation par une personne, puis évaluation sur le test figé ; données d’entraînement distinctes."
+}
